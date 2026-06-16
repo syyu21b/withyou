@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>With You — 청첩장 만들기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           GLOBAL TOKENS
+           ============================================================ */
+        :root{
+            --ivory:#FBF5EF; --paper:#F6EEE5;
+            --wine:#8B3A42;  --wine-deep:#6E2C33;
+            --blush:#F3DCD4; --sage:#9CAF93; --sage-deep:#74876B;
+            --gold:#C8A464;  --ink:#3D332E;  --ink-soft:#7A6F68;
+            --line:rgba(139,58,66,0.14);
+            --serif:'Gowun Batang',serif;
+            --accent-font:'Cormorant Garamond',serif;
+            --sans:'Noto Sans KR',sans-serif;
+            --panel:300px;   /* left editor panel width */
+            --preview:390px; /* phone preview width */
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html,body{height:100%;font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;}
+        a{text-decoration:none;color:inherit;}
+        button{cursor:pointer;font-family:var(--sans);}
+        input,select,textarea{font-family:var(--sans);}
+
+        /* ============================================================
+           TOP BAR
+           ============================================================ */
+        .topbar{
+            position:fixed; top:0; left:0; right:0; z-index:200;
+            height:56px; background:var(--ivory); border-bottom:1px solid var(--line);
+            display:flex; align-items:center; justify-content:space-between; padding:0 20px;
+        }
+        .topbar .logo{
+            font-family:var(--accent-font); font-style:italic; font-size:20px;
+            color:var(--wine); display:flex; align-items:center; gap:6px;
+        }
+        .topbar .logo svg{width:14px;height:14px;}
+        .topbar-center{
+            display:flex; gap:4px; background:var(--paper); border-radius:999px;
+            padding:4px; border:1px solid var(--line);
+        }
+        .step-tab{
+            padding:6px 16px; border-radius:999px; font-size:12px; letter-spacing:.06em;
+            border:none; background:transparent; color:var(--ink-soft); transition:all .2s;
+        }
+        .step-tab.active{background:var(--wine); color:#fff;}
+        @media(max-width:860px){ .topbar-center{display:none;} }
+        .topbar-actions{display:flex; gap:10px; align-items:center;}
+        .btn-preview-toggle{
+            display:none; padding:8px 14px; border-radius:999px;
+            border:1px solid var(--line); background:transparent; font-size:12px; color:var(--ink);
+        }
+        @media(max-width:860px){ .btn-preview-toggle{display:inline-flex;} }
+        .btn-download{
+            padding:9px 20px; border-radius:999px; background:var(--wine); color:#fff;
+            border:none; font-size:13px; letter-spacing:.06em; transition:background .2s;
+            display:flex; align-items:center; gap:6px;
+        }
+        .btn-download:hover{background:var(--wine-deep);}
+        .btn-download svg{width:14px;height:14px;}
+
+        /* ============================================================
+           LAYOUT
+           ============================================================ */
+        .builder{
+            display:flex; height:100vh; padding-top:56px;
+        }
+
+        /* --- LEFT PANEL (steps) --- */
+        .editor{
+            width:var(--panel); flex-shrink:0;
+            height:100%; overflow-y:auto; background:var(--ivory);
+            border-right:1px solid var(--line);
+            scrollbar-width:thin; scrollbar-color:var(--blush) transparent;
+        }
+        .editor::-webkit-scrollbar{width:4px;}
+        .editor::-webkit-scrollbar-thumb{background:var(--blush); border-radius:2px;}
+
+        /* step panels */
+        .step-panel{display:none; padding:24px 20px;}
+        .step-panel.active{display:block;}
+
+        .panel-title{
+            font-family:var(--serif); font-size:16px; color:var(--wine-deep);
+            margin-bottom:4px; font-weight:700;
+        }
+        .panel-sub{
+            font-size:12px; color:var(--ink-soft); margin-bottom:20px; line-height:1.6;
+        }
+
+        /* field */
+        .field{margin-bottom:16px;}
+        .field label{
+            display:block; font-size:12px; color:var(--ink-soft); letter-spacing:.06em;
+            margin-bottom:6px;
+        }
+        .field input[type=text],
+        .field input[type=date],
+        .field input[type=time],
+        .field select,
+        .field textarea{
+            width:100%; padding:9px 11px; border:1px solid var(--line);
+            border-radius:6px; font-size:13px; color:var(--ink); background:#fff; outline:none;
+            transition:border-color .2s;
+        }
+        .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--wine);}
+        .field textarea{resize:vertical; min-height:80px; line-height:1.7;}
+        .field-row{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+
+        /* separator */
+        .sep{border:none; border-top:1px solid var(--line); margin:20px 0;}
+
+        /* theme picker */
+        .theme-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px;}
+        .theme-opt{
+            border:2px solid var(--line); border-radius:8px; overflow:hidden; cursor:pointer;
+            transition:border-color .2s;
+        }
+        .theme-opt.selected{border-color:var(--wine);}
+        .theme-opt .swatch{height:60px; display:flex; align-items:center; justify-content:center;}
+        .theme-opt .swatch span{font-size:11px; letter-spacing:.1em;}
+        .theme-opt .th-name{font-size:11px; padding:6px 8px; background:var(--paper); color:var(--ink-soft); text-align:center;}
+        .swatch.t-classic{background:linear-gradient(160deg,#f8efe6,#e3c9c0);}
+        .swatch.t-classic span{color:#8B3A42; font-family:var(--accent-font); font-style:italic;}
+        .swatch.t-minimal{background:#fff; border-bottom:1px solid #eee;}
+        .swatch.t-minimal span{color:#222; font-weight:700; letter-spacing:.18em; font-size:10px;}
+        .swatch.t-glass{background:linear-gradient(135deg,#cdd9f4,#f5d3e0);}
+        .swatch.t-glass span{background:rgba(255,255,255,.45); padding:4px 10px; border-radius:999px; color:#5b5a8c; font-size:10px;}
+        .swatch.t-natural{background:linear-gradient(160deg,#eef3e4,#cfe0c2);}
+        .swatch.t-natural span{color:#5e7c4a; font-family:var(--serif);}
+
+        /* account sub-rows */
+        .acc-entry{
+            background:var(--paper); border:1px solid var(--line); border-radius:8px;
+            padding:14px; margin-bottom:10px;
+        }
+        .acc-entry .acc-label{
+            font-size:12px; color:var(--wine-deep); letter-spacing:.06em; margin-bottom:10px;
+            font-weight:700;
+        }
+        .add-row-btn{
+            width:100%; padding:9px 0; border:1px dashed var(--sage);
+            border-radius:6px; background:transparent; color:var(--sage-deep);
+            font-size:12px; letter-spacing:.06em; margin-top:6px; transition:background .2s;
+        }
+        .add-row-btn:hover{background:rgba(156,175,147,.1);}
+
+        /* suggested phrases */
+        .suggest-list{display:flex; flex-direction:column; gap:6px; margin-top:6px;}
+        .suggest-item{
+            border:1px solid var(--line); border-radius:6px; padding:10px 12px;
+            font-size:12px; line-height:1.7; color:var(--ink-soft); cursor:pointer;
+            transition:background .2s, border-color .2s; background:#fff;
+        }
+        .suggest-item:hover{background:var(--blush); border-color:var(--wine);}
+
+        /* nav between steps (bottom of panel) */
+        .panel-nav{
+            display:flex; gap:8px; margin-top:28px; padding-top:20px; border-top:1px solid var(--line);
+        }
+        .panel-nav button{
+            flex:1; padding:11px 0; border-radius:999px; font-size:13px; letter-spacing:.06em; border:none;
+        }
+        .btn-prev{background:var(--paper); color:var(--ink-soft); border:1px solid var(--line)!important;}
+        .btn-next{background:var(--wine); color:#fff;}
+        .btn-next:hover{background:var(--wine-deep);}
+
+        /* toggle */
+        .toggle-row{
+            display:flex; align-items:center; justify-content:space-between;
+            margin-bottom:12px;
+        }
+        .toggle-row label{font-size:12px; color:var(--ink-soft);}
+        .toggle{
+            position:relative; width:38px; height:22px; display:inline-block;
+        }
+        .toggle input{opacity:0; width:0; height:0;}
+        .toggle .slider{
+            position:absolute; inset:0; background:#ddd; border-radius:22px; cursor:pointer;
+            transition:background .2s;
+        }
+        .toggle .slider:before{
+            content:''; position:absolute; width:16px; height:16px; left:3px; bottom:3px;
+            background:#fff; border-radius:50%; transition:transform .2s;
+        }
+        .toggle input:checked + .slider{background:var(--wine);}
+        .toggle input:checked + .slider:before{transform:translateX(16px);}
+
+        /* image upload placeholder */
+        .upload-zone{
+            border:2px dashed var(--line); border-radius:8px; padding:24px 16px;
+            text-align:center; cursor:pointer; background:var(--paper); transition:border-color .2s;
+            position:relative; overflow:hidden;
+        }
+        .upload-zone:hover{border-color:var(--wine);}
+        .upload-zone input[type=file]{
+            position:absolute; inset:0; opacity:0; cursor:pointer;
+        }
+        .upload-zone .icon svg{width:28px; height:28px; color:var(--ink-soft); margin:0 auto 8px;}
+        .upload-zone p{font-size:12px; color:var(--ink-soft); line-height:1.6;}
+        .upload-zone.has-img{border-color:var(--sage);}
+        .upload-zone .preview-thumb{
+            display:none; width:100%; max-height:160px; object-fit:cover; border-radius:6px;
+        }
+
+        /* photo list */
+        .photo-list{display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:10px;}
+        .photo-list .ph-item{
+            aspect-ratio:1; border-radius:6px; overflow:hidden; position:relative;
+            background:var(--blush);
+        }
+        .photo-list .ph-item img{width:100%; height:100%; object-fit:cover;}
+        .photo-list .ph-item .rm{
+            position:absolute; top:3px; right:3px; background:rgba(0,0,0,.5);
+            border:none; border-radius:50%; width:18px; height:18px;
+            color:#fff; font-size:10px; display:flex; align-items:center; justify-content:center;
+        }
+
+        /* ============================================================
+           MIDDLE DIVIDER (desktop) / resize handle
+           ============================================================ */
+        .divider-handle{
+            width:4px; background:var(--line); cursor:col-resize; flex-shrink:0;
+            transition:background .2s;
+        }
+        .divider-handle:hover{background:var(--wine);}
+
+        /* ============================================================
+           CENTER PREVIEW
+           ============================================================ */
+        .preview-wrap{
+            flex:1; overflow-y:auto; background:var(--paper);
+            display:flex; flex-direction:column; align-items:center;
+            padding:32px 20px;
+        }
+        .device-bar{
+            display:flex; gap:10px; margin-bottom:20px; align-self:flex-start; padding-left:4px;
+        }
+        .device-btn{
+            padding:6px 14px; border-radius:999px; border:1px solid var(--line);
+            background:transparent; font-size:11px; color:var(--ink-soft); transition:all .2s;
+            display:flex; align-items:center; gap:6px;
+        }
+        .device-btn svg{width:12px;height:12px;}
+        .device-btn.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+        .phone-frame{
+            width:var(--preview); border-radius:40px; background:#1a1a1a;
+            padding:14px; box-shadow:0 30px 80px -20px rgba(0,0,0,.4);
+            flex-shrink:0; position:relative;
+        }
+        .phone-frame .notch{
+            position:absolute; top:14px; left:50%; transform:translateX(-50%);
+            width:90px; height:24px; background:#1a1a1a; border-radius:0 0 16px 16px; z-index:2;
+        }
+        .phone-frame .phone-screen{
+            width:100%; height:740px; border-radius:28px;
+            overflow:hidden; position:relative;
+        }
+        .phone-frame .phone-screen iframe{
+            width:100%; height:100%; border:none; display:block;
+        }
+
+        /* tablet device */
+        .phone-frame.tablet{
+            width:560px; border-radius:24px; padding:12px;
+        }
+        .phone-frame.tablet .phone-screen{height:700px;}
+        .phone-frame.tablet .notch{display:none;}
+
+        /* ============================================================
+           RIGHT PANEL (sections quick-jump)
+           ============================================================ */
+        .sections-panel{
+            width:180px; flex-shrink:0;
+            background:var(--ivory); border-left:1px solid var(--line);
+            padding:20px 14px; overflow-y:auto;
+        }
+        @media(max-width:1100px){.sections-panel{display:none;}}
+        .sections-panel .sp-title{
+            font-size:11px; letter-spacing:.14em; color:var(--ink-soft); text-transform:uppercase;
+            margin-bottom:14px;
+        }
+        .sec-item{
+            display:flex; align-items:center; gap:8px; padding:8px 10px;
+            border-radius:6px; cursor:pointer; font-size:12px; color:var(--ink-soft);
+            transition:background .2s; margin-bottom:2px;
+        }
+        .sec-item:hover{background:var(--blush);}
+        .sec-item svg{width:13px; height:13px; flex-shrink:0; color:var(--sage-deep);}
+        .sec-item.done svg{color:var(--wine);}
+
+        /* mobile editor overlay */
+        @media(max-width:860px){
+            .editor{
+                position:fixed; left:0; top:56px; bottom:0; z-index:150;
+                transform:translateX(-100%); transition:transform .3s ease;
+                width:min(var(--panel), 90vw);
+            }
+            .editor.open{transform:translateX(0);}
+            .divider-handle{display:none;}
+            .sections-panel{display:none;}
+        }
+
+        /* toast */
+        #bToast{
+            position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+            background:var(--ink); color:var(--ivory); font-size:13px;
+            padding:10px 22px; border-radius:999px; z-index:999;
+            opacity:0; transition:opacity .3s, transform .3s; pointer-events:none; white-space:nowrap;
+        }
+        #bToast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+        /* preview message overlay */
+        .preview-overlay{
+            position:absolute; inset:0; background:rgba(251,245,239,.92);
+            display:flex; align-items:center; justify-content:center;
+            flex-direction:column; gap:10px; text-align:center; padding:24px;
+            pointer-events:none;
+        }
+        .preview-overlay p{font-size:13px; color:var(--ink-soft); line-height:1.7;}
+        .preview-overlay .spin{
+            width:24px; height:24px; border:2px solid var(--blush);
+            border-top-color:var(--wine); border-radius:50%;
+            animation:spin .8s linear infinite;
+        }
+        @keyframes spin{to{transform:rotate(360deg);}}
+    </style>
+</head>
+<body>
+
+<!-- ============================================================
+     TOP BAR
+     ============================================================ -->
+<div class="topbar">
+    <a href="index.html" class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg>
+        With You
+    </a>
+    <div class="topbar-center">
+        <button class="step-tab active" data-step="0">① 기본 정보</button>
+        <button class="step-tab" data-step="1">② 인사말·가족</button>
+        <button class="step-tab" data-step="2">③ 갤러리</button>
+        <button class="step-tab" data-step="3">④ 오시는 길</button>
+        <button class="step-tab" data-step="4">⑤ 계좌·RSVP</button>
+    </div>
+    <div class="topbar-actions">
+        <button class="btn-preview-toggle" id="editorToggle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            편집
+        </button>
+        <button class="btn-download" id="downloadBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            청첩장 다운로드
+        </button>
+    </div>
+</div>
+
+<!-- ============================================================
+     BUILDER LAYOUT
+     ============================================================ -->
+<div class="builder">
+
+    <!-- LEFT: EDITOR PANEL -->
+    <div class="editor" id="editorPanel">
+
+        <!-- STEP 0: 기본 정보 -->
+        <div class="step-panel active" data-panel="0">
+            <div class="panel-title">기본 정보</div>
+            <div class="panel-sub">신랑·신부 이름, 예식 일시, 장소를 입력하세요.</div>
+
+            <div class="field">
+                <label>테마 선택</label>
+                <div class="theme-grid">
+                    <div class="theme-opt selected" data-theme="classic">
+                        <div class="swatch t-classic"><span>With You</span></div>
+                        <div class="th-name">클래식</div>
+                    </div>
+                    <div class="theme-opt" data-theme="minimal">
+                        <div class="swatch t-minimal"><span>WITH YOU</span></div>
+                        <div class="th-name">미니멀</div>
+                    </div>
+                    <div class="theme-opt" data-theme="glass">
+                        <div class="swatch t-glass"><span>With You</span></div>
+                        <div class="th-name">글래스</div>
+                    </div>
+                    <div class="theme-opt" data-theme="natural">
+                        <div class="swatch t-natural"><span>With You</span></div>
+                        <div class="th-name">내추럴</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="sep">
+
+            <div class="field-row">
+                <div class="field">
+                    <label>신랑 이름</label>
+                    <input type="text" id="groom" placeholder="이도현" value="이도현">
+                </div>
+                <div class="field">
+                    <label>신부 이름</label>
+                    <input type="text" id="bride" placeholder="박서연" value="박서연">
+                </div>
+            </div>
+            <div class="field-row">
+                <div class="field">
+                    <label>신랑 영문</label>
+                    <input type="text" id="groomEn" placeholder="Lee Dohyun" value="Lee Dohyun">
+                </div>
+                <div class="field">
+                    <label>신부 영문</label>
+                    <input type="text" id="brideEn" placeholder="Park Seoyeon" value="Park Seoyeon">
+                </div>
+            </div>
+
+            <hr class="sep">
+
+            <div class="field-row">
+                <div class="field">
+                    <label>예식 날짜</label>
+                    <input type="date" id="weddingDate" value="2026-11-14">
+                </div>
+                <div class="field">
+                    <label>예식 시간</label>
+                    <input type="time" id="weddingTime" value="13:00">
+                </div>
+            </div>
+            <div class="field">
+                <label>예식장 이름</label>
+                <input type="text" id="venueName" placeholder="라비두스 컨벤션" value="라비두스 컨벤션">
+            </div>
+            <div class="field">
+                <label>홀 정보 (층·홀명)</label>
+                <input type="text" id="venueHall" placeholder="3F 그랑블루홀" value="3F 그랑블루홀">
+            </div>
+
+            <hr class="sep">
+
+            <div class="field">
+                <label>대표 사진 업로드 (인트로 배경)</label>
+                <div class="upload-zone" id="heroUploadZone">
+                    <input type="file" id="heroImg" accept="image/*">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-5 5"/></svg></div>
+                    <p>클릭하거나 사진을 드래그하세요<br><span style="font-size:11px; opacity:.7">JPG / PNG / WEBP</span></p>
+                    <img class="preview-thumb" id="heroThumb">
+                </div>
+            </div>
+
+            <div class="toggle-row">
+                <label>디데이 카운트다운 표시</label>
+                <label class="toggle"><input type="checkbox" id="showDday" checked><span class="slider"></span></label>
+            </div>
+
+            <div class="panel-nav">
+                <button class="btn-next" onclick="goStep(1)">다음 단계 →</button>
+            </div>
+        </div>
+
+        <!-- STEP 1: 인사말·가족 -->
+        <div class="step-panel" data-panel="1">
+            <div class="panel-title">인사말 &amp; 가족 정보</div>
+            <div class="panel-sub">초대 문구와 혼주·연락처를 입력하세요.</div>
+
+            <div class="field">
+                <label>초대 문구</label>
+                <textarea id="greeting" rows="5" placeholder="인사말을 입력하세요">두 사람이 마주 보던 시간이
+이제는 함께 걷는 길이 되었습니다.
+
+오랜 시간, 서로의 곁에서
+가장 큰 위로가 되어준 사람과
+이제 같은 곳을 바라보며 걸어가려 합니다.
+
+저희 두 사람이 만들어갈 새로운 시작을
+귀한 발걸음으로 함께해 주시면
+더없이 큰 기쁨이겠습니다.</textarea>
+            </div>
+            <div class="suggest-list">
+                <div class="suggest-item" onclick="setSuggest(0)">봄 — 꽃이 피어나는 봄날, 두 사람이 하나 되어 새로운 출발을 합니다...</div>
+                <div class="suggest-item" onclick="setSuggest(1)">가을 — 단풍이 물드는 계절, 서로의 손을 꼭 잡고 함께 걸어가려 합니다...</div>
+                <div class="suggest-item" onclick="setSuggest(2)">겨울 — 포근한 겨울날, 따뜻한 마음 하나로 평생을 함께하려 합니다...</div>
+            </div>
+
+            <hr class="sep">
+
+            <div class="acc-entry">
+                <div class="acc-label">신랑측 혼주</div>
+                <div class="field">
+                    <label>아버지 성함</label>
+                    <input type="text" id="gFather" placeholder="이재호" value="이재호">
+                </div>
+                <div class="field">
+                    <label>어머니 성함</label>
+                    <input type="text" id="gMother" placeholder="김미정" value="김미정">
+                </div>
+                <div class="field">
+                    <label>관계 설명</label>
+                    <input type="text" id="gRel" placeholder="이재호·김미정의 장남" value="이재호·김미정의 장남">
+                </div>
+                <div class="field">
+                    <label>신랑 연락처</label>
+                    <input type="text" id="groomPhone" placeholder="010-0000-0000" value="010-0000-0000">
+                </div>
+            </div>
+
+            <div class="acc-entry">
+                <div class="acc-label">신부측 혼주</div>
+                <div class="field">
+                    <label>아버지 성함</label>
+                    <input type="text" id="bFather" placeholder="박준영" value="박준영">
+                </div>
+                <div class="field">
+                    <label>어머니 성함</label>
+                    <input type="text" id="bMother" placeholder="한지수" value="한지수">
+                </div>
+                <div class="field">
+                    <label>관계 설명</label>
+                    <input type="text" id="bRel" placeholder="박준영·한지수의 차녀" value="박준영·한지수의 차녀">
+                </div>
+                <div class="field">
+                    <label>신부 연락처</label>
+                    <input type="text" id="bridePhone" placeholder="010-0000-0000" value="010-0000-0000">
+                </div>
+            </div>
+
+            <div class="panel-nav">
+                <button class="btn-prev" onclick="goStep(0)">← 이전</button>
+                <button class="btn-next" onclick="goStep(2)">다음 →</button>
+            </div>
+        </div>
+
+        <!-- STEP 2: 갤러리 -->
+        <div class="step-panel" data-panel="2">
+            <div class="panel-title">갤러리 사진</div>
+            <div class="panel-sub">최대 15장까지 업로드할 수 있습니다. 드래그로 순서를 바꿔보세요.</div>
+
+            <div class="field">
+                <label>갤러리 레이아웃</label>
+                <select id="galleryLayout">
+                    <option value="grid">격자형 (Grid)</option>
+                    <option value="swipe">슬라이드형 (Swipe)</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>사진 업로드</label>
+                <div class="upload-zone" id="galleryUploadZone" style="margin-bottom:10px;">
+                    <input type="file" id="galleryImgs" accept="image/*" multiple>
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-5 5"/></svg></div>
+                    <p>여러 장 선택 가능<br><span style="font-size:11px;opacity:.7">최대 15장</span></p>
+                </div>
+                <div class="photo-list" id="photoList"></div>
+            </div>
+
+            <div class="toggle-row">
+                <label>사진 저장 방지 기능</label>
+                <label class="toggle"><input type="checkbox" id="photoProtect" checked><span class="slider"></span></label>
+            </div>
+
+            <div class="panel-nav">
+                <button class="btn-prev" onclick="goStep(1)">← 이전</button>
+                <button class="btn-next" onclick="goStep(3)">다음 →</button>
+            </div>
+        </div>
+
+        <!-- STEP 3: 오시는 길 -->
+        <div class="step-panel" data-panel="3">
+            <div class="panel-title">오시는 길</div>
+            <div class="panel-sub">예식장 주소와 교통 정보를 입력하세요.</div>
+
+            <div class="field">
+                <label>주소</label>
+                <input type="text" id="addr" placeholder="서울특별시 종로구..." value="서울특별시 종로구 라비두스로 12">
+            </div>
+            <div class="field">
+                <label>지하철 안내</label>
+                <input type="text" id="subway" placeholder="3호선 안국역 4번 출구..." value="3호선 안국역 4번 출구 도보 5분">
+            </div>
+            <div class="field">
+                <label>버스 안내</label>
+                <input type="text" id="bus" placeholder="안국역 정류장 하차..." value="안국역 정류장 하차 (간선 102, 151)">
+            </div>
+            <div class="field">
+                <label>주차 안내</label>
+                <input type="text" id="parking" placeholder="지하주차장..." value="건물 내 지하주차장 2시간 무료 (발렛 가능)">
+            </div>
+
+            <hr class="sep">
+
+            <div class="field">
+                <label>지도 위도 (Latitude)</label>
+                <input type="text" id="mapLat" value="37.5675">
+            </div>
+            <div class="field">
+                <label>지도 경도 (Longitude)</label>
+                <input type="text" id="mapLng" value="126.985">
+            </div>
+
+            <div class="toggle-row" style="margin-top:8px;">
+                <label>온라인 생중계 버튼 표시</label>
+                <label class="toggle"><input type="checkbox" id="showLive"><span class="slider"></span></label>
+            </div>
+            <div class="field" id="liveUrlField" style="display:none;">
+                <label>생중계 URL (YouTube / Zoom)</label>
+                <input type="text" id="liveUrl" placeholder="https://youtube.com/live/...">
+            </div>
+
+            <div class="panel-nav">
+                <button class="btn-prev" onclick="goStep(2)">← 이전</button>
+                <button class="btn-next" onclick="goStep(4)">다음 →</button>
+            </div>
+        </div>
+
+        <!-- STEP 4: 계좌·RSVP -->
+        <div class="step-panel" data-panel="4">
+            <div class="panel-title">계좌 &amp; RSVP</div>
+            <div class="panel-sub">마음 전하실 계좌 정보와 참석 여부 수집 설정을 입력하세요.</div>
+
+            <div class="acc-entry">
+                <div class="acc-label">신랑측 계좌</div>
+                <div class="field">
+                    <label>예금주</label>
+                    <input type="text" id="gAccName" placeholder="이도현" value="이도현">
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label>은행명</label>
+                        <select id="gAccBank">
+                            <option>국민은행</option><option>신한은행</option><option>하나은행</option>
+                            <option>우리은행</option><option>농협은행</option><option>카카오뱅크</option>
+                            <option>토스뱅크</option><option>기업은행</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>계좌번호</label>
+                        <input type="text" id="gAccNum" placeholder="123-456-789012" value="123-456-789012">
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-entry">
+                <div class="acc-label">신부측 계좌</div>
+                <div class="field">
+                    <label>예금주</label>
+                    <input type="text" id="bAccName" placeholder="박서연" value="박서연">
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label>은행명</label>
+                        <select id="bAccBank">
+                            <option>우리은행</option><option>국민은행</option><option>신한은행</option>
+                            <option>하나은행</option><option>농협은행</option><option>카카오뱅크</option>
+                            <option>토스뱅크</option><option>기업은행</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>계좌번호</label>
+                        <input type="text" id="bAccNum" placeholder="987-654-321098" value="987-654-321098">
+                    </div>
+                </div>
+            </div>
+
+            <hr class="sep">
+
+            <div class="toggle-row">
+                <label>RSVP 참석 여부 수집</label>
+                <label class="toggle"><input type="checkbox" id="showRsvp" checked><span class="slider"></span></label>
+            </div>
+
+            <div class="panel-nav">
+                <button class="btn-prev" onclick="goStep(3)">← 이전</button>
+                <button class="btn-next" onclick="downloadInvitation()">청첩장 완성!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider-handle"></div>
+
+    <!-- CENTER: PREVIEW -->
+    <div class="preview-wrap" id="previewWrap">
+        <div class="device-bar">
+            <button class="device-btn active" data-device="mobile" onclick="setDevice('mobile',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                모바일
+            </button>
+            <button class="device-btn" data-device="tablet" onclick="setDevice('tablet',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                태블릿
+            </button>
+        </div>
+
+        <div class="phone-frame" id="phoneFrame">
+            <div class="notch"></div>
+            <div class="phone-screen">
+                <iframe id="previewFrame" title="청첩장 미리보기"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT: SECTIONS QUICK JUMP -->
+    <div class="sections-panel">
+        <div class="sp-title">섹션 목록</div>
+        <div class="sec-item done" onclick="scrollPreview('hero')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg>
+            메인 비주얼
+        </div>
+        <div class="sec-item" onclick="scrollPreview('greeting')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg>
+            인사말
+        </div>
+        <div class="sec-item" onclick="scrollPreview('family')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            신랑·신부
+        </div>
+        <div class="sec-item" onclick="scrollPreview('theday')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+            예식 일정
+        </div>
+        <div class="sec-item" onclick="scrollPreview('gallery')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-5 5"/></svg>
+            갤러리
+        </div>
+        <div class="sec-item" onclick="scrollPreview('location')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>
+            오시는 길
+        </div>
+        <div class="sec-item" onclick="scrollPreview('account')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            마음 전하실 곳
+        </div>
+        <div class="sec-item" onclick="scrollPreview('rsvp')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>
+            RSVP
+        </div>
+    </div>
+</div>
+
+<div id="bToast"></div>
+
+<!-- ============================================================
+     SCRIPT
+     ============================================================ -->
+<script>
+    /* ---- state ---- */
+    const D = {
+        theme:'classic',
+        groom:'이도현', bride:'박서연',
+        groomEn:'Lee Dohyun', brideEn:'Park Seoyeon',
+        weddingDate:'2026-11-14', weddingTime:'13:00',
+        venueName:'라비두스 컨벤션', venueHall:'3F 그랑블루홀',
+        heroImgB64: null,
+        showDday:true,
+        greeting:`두 사람이 마주 보던 시간이\n이제는 함께 걷는 길이 되었습니다.\n\n오랜 시간, 서로의 곁에서\n가장 큰 위로가 되어준 사람과\n이제 같은 곳을 바라보며 걸어가려 합니다.\n\n저희 두 사람이 만들어갈 새로운 시작을\n귀한 발걸음으로 함께해 주시면\n더없이 큰 기쁨이겠습니다.`,
+        gFather:'이재호', gMother:'김미정', gRel:'이재호·김미정의 장남', groomPhone:'010-0000-0000',
+        bFather:'박준영', bMother:'한지수', bRel:'박준영·한지수의 차녀', bridePhone:'010-0000-0000',
+        galleryLayout:'grid', photos:[], photoProtect:true,
+        addr:'서울특별시 종로구 라비두스로 12', subway:'3호선 안국역 4번 출구 도보 5분',
+        bus:'안국역 정류장 하차 (간선 102, 151)', parking:'건물 내 지하주차장 2시간 무료 (발렛 가능)',
+        mapLat:'37.5675', mapLng:'126.985', showLive:false, liveUrl:'',
+        gAccName:'이도현', gAccBank:'국민은행', gAccNum:'123-456-789012',
+        bAccName:'박서연', bAccBank:'우리은행', bAccNum:'987-654-321098',
+        showRsvp:true,
+    };
+
+    const SUGGESTS = [
+        `꽃이 피어나는 봄날,\n두 사람이 하나가 되어\n새로운 출발을 합니다.\n\n저희의 작은 시작을\n축복해 주시면 감사하겠습니다.`,
+        `단풍이 물드는 가을,\n서로의 손을 꼭 잡고\n함께 걷고자 합니다.\n\n행복한 시작을\n함께해 주시겠습니까.`,
+        `눈이 내리는 겨울날,\n따뜻한 마음 하나로\n평생을 함께하려 합니다.\n\n소중한 걸음 부탁드립니다.`,
+    ];
+
+    let currentStep = 0;
+
+    /* ---- bind inputs ---- */
+    function bind(id, key, transform){
+        const el = document.getElementById(id);
+        if(!el) return;
+        const event = (el.type==='checkbox') ? 'change' : 'input';
+        el.addEventListener(event, ()=>{
+            D[key] = (el.type==='checkbox') ? el.checked : (transform ? transform(el.value) : el.value);
+            scheduleRefresh();
+        });
+    }
+
+    bind('groom','groom'); bind('bride','bride');
+    bind('groomEn','groomEn'); bind('brideEn','brideEn');
+    bind('weddingDate','weddingDate'); bind('weddingTime','weddingTime');
+    bind('venueName','venueName'); bind('venueHall','venueHall');
+    bind('showDday','showDday'); bind('greeting','greeting');
+    bind('gFather','gFather'); bind('gMother','gMother'); bind('gRel','gRel'); bind('groomPhone','groomPhone');
+    bind('bFather','bFather'); bind('bMother','bMother'); bind('bRel','bRel'); bind('bridePhone','bridePhone');
+    bind('galleryLayout','galleryLayout'); bind('photoProtect','photoProtect');
+    bind('addr','addr'); bind('subway','subway'); bind('bus','bus'); bind('parking','parking');
+    bind('mapLat','mapLat'); bind('mapLng','mapLng'); bind('showLive','showLive'); bind('liveUrl','liveUrl');
+    bind('gAccName','gAccName'); bind('gAccBank','gAccBank'); bind('gAccNum','gAccNum');
+    bind('bAccName','bAccName'); bind('bAccBank','bAccBank'); bind('bAccNum','bAccNum');
+    bind('showRsvp','showRsvp');
+
+    /* live URL toggle */
+    document.getElementById('showLive').addEventListener('change', function(){
+        document.getElementById('liveUrlField').style.display = this.checked ? 'block' : 'none';
+    });
+
+    /* ---- theme picker ---- */
+    document.querySelectorAll('.theme-opt').forEach(opt=>{
+        opt.addEventListener('click', ()=>{
+            document.querySelectorAll('.theme-opt').forEach(o=>o.classList.remove('selected'));
+            opt.classList.add('selected');
+            D.theme = opt.dataset.theme;
+            scheduleRefresh();
+        });
+    });
+
+    /* ---- suggest phrases ---- */
+    function setSuggest(i){
+        D.greeting = SUGGESTS[i];
+        document.getElementById('greeting').value = SUGGESTS[i];
+        scheduleRefresh();
+    }
+
+    /* ---- hero image upload ---- */
+    document.getElementById('heroImg').addEventListener('change', function(){
+        const file = this.files[0]; if(!file) return;
+        const reader = new FileReader();
+        reader.onload = e=>{
+            D.heroImgB64 = e.target.result;
+            const z = document.getElementById('heroUploadZone');
+            z.classList.add('has-img');
+            const thumb = document.getElementById('heroThumb');
+            thumb.src = e.target.result;
+            thumb.style.display = 'block';
+            z.querySelector('.icon').style.display='none';
+            z.querySelector('p').style.display='none';
+            scheduleRefresh();
+        };
+        reader.readAsDataURL(file);
+    });
+
+    /* ---- gallery photos ---- */
+    document.getElementById('galleryImgs').addEventListener('change', function(){
+        const files = Array.from(this.files);
+        const remaining = 15 - D.photos.length;
+        if(files.length > remaining){ showToast(`최대 15장까지 업로드 가능합니다`); }
+        const slice = files.slice(0, remaining);
+        slice.forEach(file=>{
+            const r = new FileReader();
+            r.onload = e=>{
+                D.photos.push(e.target.result);
+                renderPhotoList();
+                scheduleRefresh();
+            };
+            r.readAsDataURL(file);
+        });
+    });
+
+    function renderPhotoList(){
+        const list = document.getElementById('photoList');
+        list.innerHTML = '';
+        D.photos.forEach((src,i)=>{
+            const div = document.createElement('div');
+            div.className = 'ph-item';
+            const img = document.createElement('img');
+            img.src = src;
+            const rm = document.createElement('button');
+            rm.className = 'rm';
+            rm.textContent = '×';
+            rm.onclick = ()=>{ D.photos.splice(i,1); renderPhotoList(); scheduleRefresh(); };
+            div.appendChild(img); div.appendChild(rm);
+            list.appendChild(div);
+        });
+    }
+
+    /* ---- step navigation ---- */
+    function goStep(n){
+        currentStep = n;
+        document.querySelectorAll('.step-panel').forEach((p,i)=>{
+            p.classList.toggle('active', i===n);
+        });
+        document.querySelectorAll('.step-tab').forEach((t,i)=>{
+            t.classList.toggle('active', i===n);
+        });
+        document.getElementById('editorPanel').scrollTop = 0;
+    }
+    document.querySelectorAll('.step-tab').forEach((tab,i)=>{
+        tab.addEventListener('click', ()=> goStep(i));
+    });
+
+    /* ---- mobile editor toggle ---- */
+    document.getElementById('editorToggle').addEventListener('click', ()=>{
+        document.getElementById('editorPanel').classList.toggle('open');
+    });
+
+    /* ---- device view ---- */
+    function setDevice(type, btn){
+        document.querySelectorAll('.device-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const frame = document.getElementById('phoneFrame');
+        if(type==='tablet'){
+            frame.classList.add('tablet');
+        } else {
+            frame.classList.remove('tablet');
+        }
+    }
+
+    /* ---- scroll preview to section ---- */
+    function scrollPreview(id){
+        const iframe = document.getElementById('previewFrame');
+        try{
+            const el = iframe.contentDocument.getElementById(id);
+            if(el) el.scrollIntoView({behavior:'smooth'});
+        } catch(e){}
+    }
+
+    /* ---- refresh debounce ---- */
+    let refreshTimer;
+    function scheduleRefresh(){
+        clearTimeout(refreshTimer);
+        refreshTimer = setTimeout(refreshPreview, 400);
+    }
+
+    /* ---- THEME VARS ---- */
+    const THEMES = {
+        classic:{
+            ivory:'#FBF5EF', paper:'#F6EEE5', wine:'#8B3A42', wineDeep:'#6E2C33',
+            blush:'#F3DCD4', sage:'#9CAF93', sageDeep:'#74876B', gold:'#C8A464',
+            ink:'#3D332E', inkSoft:'#7A6F68', line:'rgba(139,58,66,0.16)',
+            bodyBg:'#F6EEE5',
+        },
+        minimal:{
+            ivory:'#FFFFFF', paper:'#F8F8F8', wine:'#222222', wineDeep:'#111111',
+            blush:'#EEEEEE', sage:'#888888', sageDeep:'#666666', gold:'#444444',
+            ink:'#111111', inkSoft:'#666666', line:'rgba(0,0,0,0.1)',
+            bodyBg:'#F0F0F0',
+        },
+        glass:{
+            ivory:'#F0F4FF', paper:'#E8EEFF', wine:'#5B5A8C', wineDeep:'#3D3C70',
+            blush:'#F5D3E0', sage:'#A8B4D8', sageDeep:'#7A88BF', gold:'#B8A0D0',
+            ink:'#2A2A4A', inkSoft:'#6A6A8A', line:'rgba(91,90,140,0.15)',
+            bodyBg:'linear-gradient(135deg,#cdd9f4,#f5d3e0)',
+        },
+        natural:{
+            ivory:'#F4F7EE', paper:'#EBF0E2', wine:'#5E7C4A', wineDeep:'#435A34',
+            blush:'#D8E8C8', sage:'#8BAD72', sageDeep:'#6B9050', gold:'#A0B878',
+            ink:'#2C3820', inkSoft:'#5A6E48', line:'rgba(94,124,74,0.15)',
+            bodyBg:'#EBF0E2',
+        },
+    };
+
+    /* ---- BUILD INVITATION HTML ---- */
+    function buildHTML(){
+        const t = THEMES[D.theme] || THEMES.classic;
+        const gFirst = (D.groom||'신랑').charAt(0).toUpperCase();
+        const bFirst = (D.bride||'신부').charAt(0).toUpperCase();
+
+        const dateObj = D.weddingDate ? new Date(D.weddingDate) : new Date('2026-11-14');
+        const DAYS = ['일','월','화','수','목','금','토'];
+        const dayKr = DAYS[dateObj.getDay()];
+        const yyyy = dateObj.getFullYear();
+        const mm = dateObj.getMonth()+1;
+        const dd = dateObj.getDate();
+        const [hh, mn] = (D.weddingTime||'13:00').split(':').map(Number);
+        const ampm = hh < 12 ? '오전' : '오후';
+        const h12 = hh % 12 || 12;
+
+        const weddingISO = `${D.weddingDate}T${D.weddingTime}:00+09:00`;
+
+        /* calendar — compute first day of month */
+        const firstDay = new Date(yyyy, dateObj.getMonth(), 1).getDay();
+        const daysInMonth = new Date(yyyy, dateObj.getMonth()+1, 0).getDate();
+        let calRows = '';
+        let dayCount = 1;
+        for(let w=0; w<6; w++){
+            if(dayCount > daysInMonth) break;
+            for(let d=0; d<7; d++){
+                const cellDay = w*7 + d - firstDay + 1;
+                if(cellDay<1||cellDay>daysInMonth){
+                    calRows += `<div class="day blank"></div>`;
+                } else {
+                    const isDday = cellDay === dd;
+                    calRows += `<div class="day${isDday?' dday':''}">${cellDay}</div>`;
+                    dayCount++;
+                }
+            }
+        }
+
+        /* gallery photos */
+        let galleryGridItems = '';
+        let gallerySwipeItems = '';
+        const photoBgs = ['linear-gradient(150deg,#f3dcd4,#d8c2bd)','linear-gradient(150deg,#e7ece2,#b9c8ad)','linear-gradient(150deg,#f6eee5,#e2c9b8)','linear-gradient(150deg,#e3d6cf,#9caf93)','linear-gradient(150deg,#f0ddd6,#c9a464)','linear-gradient(150deg,#dfe7d8,#d8c2bd)'];
+        if(D.photos.length > 0){
+            D.photos.forEach((src,i)=>{
+                galleryGridItems += `<div class="ph-photo" style="background:url('${src}') center/cover no-repeat;"></div>`;
+                gallerySwipeItems += `<div class="ph-photo" style="background:url('${src}') center/cover no-repeat; flex:0 0 78%; scroll-snap-align:center; aspect-ratio:4/5;"></div>`;
+            });
+        } else {
+            for(let i=0;i<6;i++){
+                const ic = `<svg style="width:40%;opacity:.7" viewBox="0 0 24 24" fill="none" stroke="${t.inkSoft}" stroke-width="1.2"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg>`;
+                galleryGridItems += `<div class="ph-photo" style="background:${photoBgs[i]}">${ic}</div>`;
+                gallerySwipeItems += `<div class="ph-photo" style="background:${photoBgs[i]}; flex:0 0 78%; scroll-snap-align:center; aspect-ratio:4/5;">${ic}</div>`;
+            }
+        }
+
+        /* greeting lines */
+        const greetingLines = (D.greeting||'').split('\n').map(l=> `<p>${l||'&nbsp;'}</p>`).join('');
+
+        /* hero art */
+        const heroArt = D.heroImgB64
+            ? `<div class="hero-art" style="background:url('${D.heroImgB64}') center/cover no-repeat;">`
+            : `<div class="hero-art">`;
+
+        /* map src */
+        const lat = parseFloat(D.mapLat)||37.5675;
+        const lng = parseFloat(D.mapLng)||126.985;
+        const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.012}%2C${lat-0.007}%2C${lng+0.012}%2C${lat+0.007}&layer=mapnik&marker=${lat}%2C${lng}`;
+
+        /* RSVP section */
+        const rsvpSection = D.showRsvp ? `
+  <section id="rsvp">
+    <span class="eyebrow"><span class="num">07</span> · RSVP</span>
+    <h2 class="title">참석 의사 전달</h2>
+    <p style="font-size:13px;color:var(--ink-soft);line-height:1.8;margin-bottom:24px;">
+      따뜻한 식사 준비를 위해 참석 여부를 알려주시면<br>큰 도움이 됩니다. 감사합니다.
+    </p>
+    <form id="rsvpForm">
+      <div class="rsvp-field"><label>성함</label><input type="text" placeholder="이름을 입력해주세요" required></div>
+      <div class="rsvp-field"><label>참석 여부</label>
+        <div class="seg">
+          <input type="radio" name="attend" id="att-yes" value="참석" checked><label for="att-yes">참석합니다</label>
+          <input type="radio" name="attend" id="att-no" value="불참"><label for="att-no">참석이 어려워요</label>
+        </div>
+      </div>
+      <div class="rsvp-field"><label>식사 여부</label>
+        <div class="seg">
+          <input type="radio" name="meal" id="meal-yes" value="식사함" checked><label for="meal-yes">식사 가능</label>
+          <input type="radio" name="meal" id="meal-no" value="식사안함"><label for="meal-no">식사 안 함</label>
+        </div>
+      </div>
+      <div class="rsvp-field"><label>동반 인원 (본인 제외)</label>
+        <select><option>0명</option><option>1명</option><option>2명</option><option>3명</option><option>4명 이상</option></select>
+      </div>
+      <div class="rsvp-field"><label>전하실 말씀 (선택)</label>
+        <textarea placeholder="신랑·신부에게 전할 메시지를 남겨주세요"></textarea>
+      </div>
+      <button type="submit" class="submit-btn">전달하기</button>
+    </form>
+    <div class="rsvp-thanks" id="rsvpThanks" style="display:none;">
+      소중한 답변, 감사합니다.
+      <p>전해주신 마음을 가지고<br>더 행복한 하루를 준비하겠습니다.</p>
+    </div>
+  </section>` : '';
+
+        return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>With You — ${D.groom||'신랑'} · ${D.bride||'신부'} 결혼식에 초대합니다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:${t.ivory}; --paper:${t.paper}; --wine:${t.wine}; --wine-deep:${t.wineDeep};
+  --blush:${t.blush}; --sage:${t.sage}; --sage-deep:${t.sageDeep}; --gold:${t.gold};
+  --ink:${t.ink}; --ink-soft:${t.inkSoft}; --line:${t.line};
+  --serif:'Gowun Batang',serif; --accent-font:'Cormorant Garamond',serif; --sans:'Noto Sans KR',sans-serif;
+  --max-w:480px;
+}
+*{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{font-family:var(--sans);color:var(--ink);background:${t.bodyBg};-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.page{max-width:var(--max-w);margin:0 auto;background:var(--ivory);position:relative;min-height:100vh;box-shadow:0 0 60px rgba(0,0,0,0.08);overflow:hidden;}
+@media(min-width:540px){body{background:${t.bodyBg};}.page{margin:24px auto;min-height:calc(100vh - 48px);border-radius:6px;}}
+.thread-track{position:absolute;left:16px;top:0;bottom:0;width:2px;background:rgba(0,0,0,0.07);z-index:5;}
+.thread-fill{position:absolute;left:0;top:0;width:100%;height:0%;background:linear-gradient(to bottom,var(--sage),var(--wine));transition:height .15s linear;}
+.thread-mark{position:absolute;left:50%;top:0%;transform:translate(-50%,-50%);width:18px;height:18px;transition:top .15s linear;color:var(--wine);}
+.thread-mark svg{width:100%;height:100%;display:block;}
+#cover{position:fixed;inset:0;z-index:9999;background:var(--ivory);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:opacity 1s ease,visibility 1s ease;}
+#cover.hide{opacity:0;visibility:hidden;pointer-events:none;}
+#cover .frame{width:min(78vw,300px);aspect-ratio:3/4;border:1px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;animation:coverIn 1.4s ease both;}
+@keyframes coverIn{from{opacity:0;transform:scale(.94);}to{opacity:1;transform:scale(1);}}
+#cover .eyebrow{font-family:var(--accent-font);font-style:italic;font-size:13px;letter-spacing:.3em;color:var(--sage-deep);text-transform:uppercase;}
+#cover .monogram{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  color:var(--wine);
+}
+
+#cover .names-full{
+  font-family:var(--serif);
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:0.05em;
+}
+
+#cover .names-full svg{
+  width:20px;
+  height:20px;
+  color:var(--wine);
+  flex-shrink:0;
+}
+#cover .monogram svg{width:16px;height:16px;}
+#cover .names-kr{font-family:var(--serif);font-size:19px;letter-spacing:.18em;}
+#cover .tap{margin-top:10px;font-size:12px;color:var(--ink-soft);letter-spacing:.15em;animation:pulse 2.2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:.45;}50%{opacity:1;}}
+section{position:relative;padding:64px 28px 56px 40px;opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease;}
+section.show{opacity:1;transform:translateY(0);}
+section+section{border-top:1px solid var(--line);}
+.eyebrow{font-family:var(--accent-font);font-style:italic;font-size:13px;letter-spacing:.28em;color:var(--sage-deep);text-transform:uppercase;display:block;margin-bottom:10px;}
+.eyebrow .num{color:var(--wine);font-style:normal;}
+h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:.06em;margin-bottom:22px;color:var(--wine-deep);}
+.ic{width:18px;height:18px;flex-shrink:0;}
+#hero{padding:0;border-top:none;}
+.hero-art{position:relative;width:100%;aspect-ratio:3/4;background:radial-gradient(120% 90% at 18% 12%,var(--blush),transparent 55%),linear-gradient(160deg,var(--ivory) 0%,var(--blush) 45%,var(--paper) 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-meta{padding:30px 28px 38px 40px;text-align:center;}
+.hero-meta .date{font-family:var(--accent-font);font-size:26px;letter-spacing:.06em;color:var(--wine);}
+.hero-meta .place{margin-top:6px;font-size:14px;color:var(--ink-soft);letter-spacing:.04em;}
+.ddays{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:24px;}
+.ddays .cell{background:var(--blush);border-radius:4px;padding:12px 4px;text-align:center;}
+.ddays .cell .num{font-family:var(--accent-font);font-size:24px;color:var(--wine-deep);font-weight:500;}
+.ddays .cell .lab{margin-top:4px;font-size:11px;letter-spacing:.12em;color:var(--ink-soft);}
+.dday-flag{margin-top:14px;font-family:var(--serif);font-size:14px;letter-spacing:.2em;color:var(--sage-deep);}
+#greeting p{font-size:15px;line-height:2;color:var(--ink);letter-spacing:.02em;}
+#greeting p+p{margin-top:18px;}
+#greeting .closing{margin-top:30px;font-family:var(--serif);font-size:15px;letter-spacing:.06em;color:var(--wine-deep);}
+.family-card{display:flex;align-items:flex-start;gap:14px;padding:18px 0;border-top:1px solid var(--line);}
+.family-card:first-of-type{border-top:none;}
+.family-card .role{font-family:var(--accent-font);font-style:italic;font-size:13px;color:var(--sage-deep);width:46px;flex-shrink:0;padding-top:3px;}
+.family-card .info .name{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);}
+.family-card .info .rel{margin-top:4px;font-size:13px;color:var(--ink-soft);line-height:1.7;}
+.family-card .actions{margin-top:10px;display:flex;gap:8px;}
+.pill-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;font-size:12px;color:var(--wine-deep);letter-spacing:.04em;cursor:pointer;font-family:var(--sans);text-decoration:none;transition:background .2s ease,color .2s ease;}
+.pill-btn:hover{background:var(--wine);color:#fff;border-color:var(--wine);}
+.cal{background:var(--paper);border-radius:6px;padding:20px;border:1px solid var(--line);}
+.cal-head{text-align:center;font-family:var(--accent-font);font-size:17px;letter-spacing:.1em;color:var(--wine-deep);margin-bottom:14px;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:12px;}
+.cal-grid .dow{color:var(--ink-soft);padding-bottom:6px;letter-spacing:.05em;}
+.cal-grid .dow.sat{color:var(--sage-deep);}.cal-grid .dow.sun{color:var(--wine);}
+.cal-grid .day{padding:8px 0;color:var(--ink);border-radius:50%;}
+.cal-grid .day.blank{visibility:hidden;}
+.cal-grid .day.dday{background:var(--wine);color:#fff;font-weight:700;box-shadow:0 0 0 3px var(--blush);}
+.cal-foot{margin-top:16px;text-align:center;font-size:13px;color:var(--ink-soft);letter-spacing:.04em;}
+.cal-actions{margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.gallery-toggle{display:flex;gap:8px;margin-bottom:18px;}
+.toggle-btn{flex:1;padding:9px 0;text-align:center;font-size:12px;letter-spacing:.12em;border:1px solid var(--line);background:transparent;color:var(--ink-soft);cursor:pointer;border-radius:999px;font-family:var(--sans);transition:all .2s ease;}
+.toggle-btn.active{background:var(--wine);color:#fff;border-color:var(--wine);}
+.ph-photo{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+#gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+#gallery-grid .ph-photo:first-child{grid-column:1/3;aspect-ratio:4/3;}
+#gallery-swipe{display:none;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;-ms-overflow-style:none;scrollbar-width:none;}
+#gallery-swipe::-webkit-scrollbar{display:none;}
+.gallery-note{margin-top:16px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-soft);letter-spacing:.03em;}
+.map-box{border-radius:6px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:var(--paper);}
+.map-box iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.85) sepia(.06);}
+.loc-info{margin-top:16px;}
+.loc-info .row{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.7;}
+.loc-info .row:first-child{border-top:none;}
+.loc-info .row .ic{color:var(--sage-deep);margin-top:2px;}
+.loc-info .row .lab{color:var(--ink-soft);width:54px;flex-shrink:0;}
+.acc-item{border:1px solid var(--line);border-radius:6px;margin-bottom:10px;overflow:hidden;background:var(--paper);}
+.acc-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer;gap:10px;}
+.acc-head .label{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:10px;}
+.acc-head .label .ic{color:var(--wine);}
+.acc-chevron{transition:transform .3s ease;color:var(--ink-soft);}
+.acc-item.open .acc-chevron{transform:rotate(180deg);}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.acc-item.open .acc-body{max-height:400px;}
+.acc-row{padding:12px 18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.acc-row .who{font-size:13px;color:var(--ink-soft);}
+.acc-row .num{font-size:14px;letter-spacing:.03em;margin-top:2px;}
+.acc-row .bank{font-size:12px;color:var(--ink-soft);}
+.copy-btn{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 12px;font-size:11px;color:var(--wine-deep);letter-spacing:.06em;cursor:pointer;flex-shrink:0;font-family:var(--sans);}
+.acc-pay{display:flex;gap:8px;padding:14px 18px;border-top:1px solid var(--line);}
+.rsvp-field{margin-bottom:18px;}
+.rsvp-field label{display:block;font-size:13px;color:var(--ink-soft);margin-bottom:8px;letter-spacing:.04em;}
+.rsvp-field input[type=text],.rsvp-field select,.rsvp-field textarea{width:100%;border:1px solid var(--line);border-radius:4px;padding:11px 12px;font-size:14px;font-family:var(--sans);color:var(--ink);background:#fff;outline:none;}
+.rsvp-field textarea{resize:vertical;min-height:70px;}
+.seg{display:flex;gap:8px;}
+.seg label{flex:1;text-align:center;padding:10px 0;border:1px solid var(--line);border-radius:4px;font-size:13px;color:var(--ink-soft);cursor:pointer;margin:0;transition:all .2s ease;}
+.seg input{display:none;}
+.seg input:checked+label{background:var(--wine);color:#fff;border-color:var(--wine);}
+.submit-btn{width:100%;padding:14px 0;border:none;border-radius:4px;background:var(--wine);color:#fff;font-size:14px;letter-spacing:.18em;font-family:var(--sans);cursor:pointer;margin-top:6px;transition:background .2s ease;}
+.submit-btn:hover{background:var(--wine-deep);}
+.rsvp-thanks{text-align:center;padding:40px 10px;font-family:var(--serif);color:var(--wine-deep);}
+.rsvp-thanks p{font-size:15px;line-height:1.9;color:var(--ink-soft);margin-top:10px;font-family:var(--sans);}
+#footer{text-align:center;padding:72px 28px 100px 40px;}
+#footer .mono{font-family:var(--accent-font);font-size:34px;color:var(--wine);}
+#footer .names-kr{margin-top:14px;font-family:var(--serif);font-size:16px;letter-spacing:.2em;color:var(--ink);}
+#footer .msg{margin-top:22px;font-size:13px;color:var(--ink-soft);line-height:1.9;}
+#footer .copyright{margin-top:36px;font-size:11px;letter-spacing:.2em;color:var(--ink-soft);text-transform:uppercase;}
+.float-btn{position:fixed;right:18px;z-index:50;width:46px;height:46px;border-radius:50%;background:var(--ivory);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--wine);box-shadow:0 4px 14px rgba(0,0,0,0.1);}
+#bgm-btn{bottom:24px;}
+@media(min-width:540px){.float-btn{right:calc(50% - 240px + 18px);}}
+#toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--ivory);font-size:13px;letter-spacing:.05em;padding:10px 20px;border-radius:999px;z-index:200;opacity:0;transition:opacity .3s ease,transform .3s ease;pointer-events:none;white-space:nowrap;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="thread-track">
+    <div class="thread-fill" id="threadFill"></div>
+    <div class="thread-mark" id="threadMark">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg>
+    </div>
+  </div>
+
+  <div id="cover">
+    <div class="frame">
+      <span class="eyebrow">You are invited</span>
+      <div class="monogram names-full">
+  <span>${D.groom || '신랑이름'}</span>
+
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/>
+  </svg>
+
+  <span>${D.bride || '신부이름'}</span>
+</div>
+      <span class="names-kr">Wedding Invitation</span>
+      <span class="tap" style="margin-top:10px;font-size:12px;color:var(--ink-soft);letter-spacing:.15em;animation:pulse 2.2s ease-in-out infinite;">화면을 눌러 청첩장을 열어보세요</span>
+    </div>
+  </div>
+
+  <section id="hero" class="show">
+    ${heroArt}
+      <svg class="wreath" viewBox="0 0 320 320" fill="none" stroke="${t.wine}" stroke-width="1.4" stroke-linecap="round" style="width:78%;max-width:320px;${D.heroImgB64?'display:none;':''}">
+        <g opacity="0.55">
+          <path d="M60 160c-10-40 10-80 50-90"/><path d="M70 150c10-8 24-8 32 2"/>
+          <path d="M260 160c10-40-10-80-50-90"/><path d="M250 150c-10-8-24-8-32 2"/>
+          <path d="M110 250c-30-10-50-40-46-78"/><path d="M210 250c30-10 50-40 46-78"/>
+        </g>
+        <g stroke="${t.sage}"><ellipse cx="92" cy="120" rx="10" ry="16" transform="rotate(-30 92 120)"/><ellipse cx="228" cy="120" rx="10" ry="16" transform="rotate(30 228 120)"/></g>
+        <g stroke="${t.gold}"><circle cx="160" cy="90" r="14"/><circle cx="160" cy="90" r="5"/><path d="M146 90h-10M174 90h10M160 76v-10M160 104v10"/></g>
+        <text x="160" y="170" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="26" fill="${t.wine}" stroke="none">${gFirst} &amp; ${bFirst}</text>
+        <text x="160" y="192" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" letter-spacing="3" fill="${t.inkSoft}" stroke="none">${yyyy} . ${String(mm).padStart(2,'0')} . ${String(dd).padStart(2,'0')}</text>
+      </svg>
+    </div>
+    <div class="hero-meta">
+      <span class="eyebrow">With You — Wedding Invitation</span>
+      <div style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--ink);">${D.groom||'신랑'} · ${D.bride||'신부'}</div>
+      <div style="margin-top:4px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:.12em;color:var(--ink-soft);">${D.groomEn} &amp; ${D.brideEn}</div>
+      <div class="date">${yyyy}. ${mm}. ${dd}. ${dayKr}요일 ${ampm} ${h12}시</div>
+      <div class="place">${D.venueName} · ${D.venueHall}</div>
+      ${D.showDday ? `
+      <div class="ddays" id="ddays">
+        <div class="cell"><div class="num" id="dd-d">--</div><div class="lab">DAYS</div></div>
+        <div class="cell"><div class="num" id="dd-h">--</div><div class="lab">HOUR</div></div>
+        <div class="cell"><div class="num" id="dd-m">--</div><div class="lab">MIN</div></div>
+        <div class="cell"><div class="num" id="dd-s">--</div><div class="lab">SEC</div></div>
+      </div>
+      <div class="dday-flag" id="ddFlag">우리, 함께할 날을 기다립니다</div>` : ''}
+    </div>
+  </section>
+
+  <section id="greeting">
+    <span class="eyebrow"><span class="num">01</span> · Prologue</span>
+    <h2 class="title">마음을 전합니다</h2>
+    ${greetingLines}
+    <div class="closing">${D.groom||'신랑'} · ${D.bride||'신부'} 올림</div>
+  </section>
+
+  <section id="family">
+    <span class="eyebrow"><span class="num">02</span> · Our Family</span>
+    <h2 class="title">신랑 · 신부 소개</h2>
+    <div class="family-card">
+      <span class="role">신랑</span>
+      <div class="info">
+        <div class="name">${D.groom||'신랑'}</div>
+        <div class="rel">${D.gRel}</div>
+        <div class="actions">
+          <a class="pill-btn" href="tel:${D.groomPhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>전화</a>
+          <a class="pill-btn" href="sms:${D.groomPhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg>문자</a>
+        </div>
+      </div>
+    </div>
+    <div class="family-card">
+      <span class="role">신부</span>
+      <div class="info">
+        <div class="name">${D.bride||'신부'}</div>
+        <div class="rel">${D.bRel}</div>
+        <div class="actions">
+          <a class="pill-btn" href="tel:${D.bridePhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>전화</a>
+          <a class="pill-btn" href="sms:${D.bridePhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg>문자</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="theday">
+    <span class="eyebrow"><span class="num">03</span> · The Day</span>
+    <h2 class="title">예식 안내</h2>
+    <div class="cal">
+      <div class="cal-head">${yyyy} . ${dateObj.toLocaleString('en',{month:'long'})}</div>
+      <div class="cal-grid">
+        <div class="dow sun">일</div><div class="dow">월</div><div class="dow">화</div><div class="dow">수</div><div class="dow">목</div><div class="dow">금</div><div class="dow sat">토</div>
+        ${calRows}
+      </div>
+      <div class="cal-foot">${yyyy}년 ${mm}월 ${dd}일 ${dayKr}요일 ${ampm} ${h12}시</div>
+      <div class="cal-actions">
+        <button class="pill-btn" id="icsBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>캘린더에 추가</button>
+        ${D.showLive ? `<a class="pill-btn" href="${D.liveUrl}" target="_blank"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="14" height="12" rx="1"/><path d="M17 9l4-2v10l-4-2"/></svg>온라인 생중계</a>` : ''}
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <span class="eyebrow"><span class="num">04</span> · Our Story in Photos</span>
+    <h2 class="title">갤러리</h2>
+    <div class="gallery-toggle">
+      <button class="toggle-btn ${D.galleryLayout==='grid'?'active':''}" data-view="grid">격자형</button>
+      <button class="toggle-btn ${D.galleryLayout==='swipe'?'active':''}" data-view="swipe">슬라이드형</button>
+    </div>
+    <div id="gallery-grid" style="${D.galleryLayout==='swipe'?'display:none;':''}">
+      ${galleryGridItems}
+    </div>
+    <div id="gallery-swipe" style="display:${D.galleryLayout==='swipe'?'flex':'none'};">
+      ${gallerySwipeItems}
+    </div>
+    <div class="gallery-note">
+      <svg class="ic" style="color:var(--sage-deep)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      소중한 추억이 담긴 사진입니다. 별도 저장은 자제해 주세요.
+    </div>
+  </section>
+
+  <section id="location">
+    <span class="eyebrow"><span class="num">05</span> · Find Us</span>
+    <h2 class="title">오시는 길</h2>
+    <div class="map-box"><iframe loading="lazy" title="예식장 위치 지도" src="${mapSrc}"></iframe></div>
+    <div class="loc-info">
+      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg><div><span class="lab" style="color:var(--ink-soft);width:54px;flex-shrink:0;">주소</span><br>${D.addr}</div></div>
+      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="16" rx="2"/><path d="M9 19l-1 2M15 19l1 2M8 7h8"/></svg><div><span class="lab" style="color:var(--ink-soft);">지하철</span><br>${D.subway}</div></div>
+      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16l1.5-6h13L20 16M4 16h16v3H4z"/><circle cx="7.5" cy="19" r="1"/><circle cx="16.5" cy="19" r="1"/></svg><div><span class="lab" style="color:var(--ink-soft);">버스</span><br>${D.bus}</div></div>
+      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="11" rx="1"/><path d="M7 18v2M17 18v2"/></svg><div><span class="lab" style="color:var(--ink-soft);">주차</span><br>${D.parking}</div></div>
+    </div>
+  </section>
+
+  <section id="account">
+    <span class="eyebrow"><span class="num">06</span> · With Love</span>
+    <h2 class="title">마음 전하실 곳</h2>
+    <p style="font-size:13px;color:var(--ink-soft);line-height:1.8;margin-bottom:18px;">참석이 어려우신 분들을 위해 안내드립니다.<br>전해주시는 마음, 감사한 마음으로 잘 간직하겠습니다.</p>
+    <div class="acc-item">
+      <div class="acc-head" data-acc>
+        <span class="label"><svg class="ic" style="color:var(--wine)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg>신랑측</span>
+        <span class="acc-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+      </div>
+      <div class="acc-body">
+        <div class="acc-row"><div><div class="who">${D.gAccName}</div><div class="num">${D.gAccNum}</div><div class="bank">${D.gAccBank}</div></div><button class="copy-btn" data-copy="${D.gAccNum}">복사</button></div>
+        <div class="acc-pay"><a class="pill-btn" href="#" style="flex:1;justify-content:center;">카카오페이 송금</a><a class="pill-btn" href="#" style="flex:1;justify-content:center;">토스로 보내기</a></div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head" data-acc>
+        <span class="label"><svg class="ic" style="color:var(--wine)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg>신부측</span>
+        <span class="acc-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+      </div>
+      <div class="acc-body">
+        <div class="acc-row"><div><div class="who">${D.bAccName}</div><div class="num">${D.bAccNum}</div><div class="bank">${D.bAccBank}</div></div><button class="copy-btn" data-copy="${D.bAccNum}">복사</button></div>
+        <div class="acc-pay"><a class="pill-btn" href="#" style="flex:1;justify-content:center;">카카오페이 송금</a><a class="pill-btn" href="#" style="flex:1;justify-content:center;">토스로 보내기</a></div>
+      </div>
+    </div>
+  </section>
+
+  ${rsvpSection}
+
+  <section id="footer">
+    <div class="mono">${gFirst} &amp; ${bFirst}</div>
+    <div class="names-kr">${D.groom} · ${D.bride}, 함께 걷겠습니다</div>
+    <div class="msg">귀한 시간 내어 끝까지 읽어주셔서 감사합니다.<br>${yyyy}년 ${mm}월 ${dd}일, 그 자리에서 뵙겠습니다.</div>
+    <div class="copyright">With You — Wedding Invitation</div>
+  </section>
+</div>
+
+<button class="float-btn" id="bgm-btn" aria-label="배경음악 재생" style="bottom:24px;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/></svg>
+</button>
+<div id="toast"></div>
+
+<script>
+document.getElementById('cover').addEventListener('click',function(){this.classList.add('hide');});
+const tf=document.getElementById('threadFill'),tm=document.getElementById('threadMark');
+function ut(){const p=document.querySelector('.page'),tot=p.scrollHeight-window.innerHeight,sc=Math.min(Math.max(window.scrollY,0),tot),pct=tot>0?(sc/tot)*100:0;tf.style.height=pct+'%';tm.style.top=pct+'%';}
+window.addEventListener('scroll',ut);window.addEventListener('resize',ut);ut();
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:0.15});
+document.querySelectorAll('section').forEach(s=>io.observe(s));
+${D.showDday?`
+const target=new Date('${weddingISO}').getTime();
+function tick(){const now=Date.now();let diff=target-now;const flag=document.getElementById('ddFlag');
+if(diff<=0){['dd-d','dd-h','dd-m','dd-s'].forEach(id=>document.getElementById(id).textContent='00');flag.textContent='오늘, 두 사람이 함께합니다';return;}
+const d=Math.floor(diff/(1000*60*60*24)),h=Math.floor((diff/(1000*60*60))%24),m=Math.floor((diff/(1000*60))%60),s=Math.floor((diff/1000)%60);
+document.getElementById('dd-d').textContent=String(d).padStart(2,'0');
+document.getElementById('dd-h').textContent=String(h).padStart(2,'0');
+document.getElementById('dd-m').textContent=String(m).padStart(2,'0');
+document.getElementById('dd-s').textContent=String(s).padStart(2,'0');
+flag.textContent='D-'+d+', 우리 함께할 날을 기다립니다';}
+tick();setInterval(tick,1000);`:''}
+const gv=document.getElementById('gallery-grid'),sv=document.getElementById('gallery-swipe');
+document.querySelectorAll('.toggle-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');if(btn.dataset.view==='grid'){gv.style.display='grid';sv.style.display='none';}else{gv.style.display='none';sv.style.display='flex';}});});
+${D.photoProtect?`document.querySelectorAll('.ph-photo').forEach(el=>{el.addEventListener('contextmenu',e=>e.preventDefault());el.addEventListener('dragstart',e=>e.preventDefault());});`:''}
+document.querySelectorAll('[data-acc]').forEach(head=>{head.addEventListener('click',()=>{const item=head.closest('.acc-item');const wasOpen=item.classList.contains('open');document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),1800);}
+document.querySelectorAll('.copy-btn').forEach(btn=>{btn.addEventListener('click',(e)=>{e.stopPropagation();const text=btn.dataset.copy;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>showToast('계좌번호가 복사되었습니다')).catch(()=>showToast('복사에 실패했습니다'));}else{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');showToast('계좌번호가 복사되었습니다');}catch(err){showToast('복사에 실패했습니다');}ta.remove();}});});
+const icsBtn=document.getElementById('icsBtn');
+if(icsBtn)icsBtn.addEventListener('click',()=>{const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','SUMMARY:${D.groom} · ${D.bride} 결혼식','DTSTART:${weddingISO.replace(/[-:]/g,'').replace('+0900','').slice(0,13)}0000Z','LOCATION:${D.venueName} ${D.venueHall}','DESCRIPTION:With You - Wedding Invitation','END:VEVENT','END:VCALENDAR'].join('\\r\\n');const blob=new Blob([ics],{type:'text/calendar'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='wedding.ics';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);showToast('캘린더 파일이 다운로드되었습니다');});
+${D.showRsvp?`document.getElementById('rsvpForm').addEventListener('submit',(e)=>{e.preventDefault();document.getElementById('rsvpForm').style.display='none';document.getElementById('rsvpThanks').style.display='block';});`:''}
+<\/script>
+</body>
+</html>`;
+    }
+
+    /* ---- refresh iframe ---- */
+    function refreshPreview(){
+        const html = buildHTML();
+        const blob = new Blob([html], {type:'text/html'});
+        const url = URL.createObjectURL(blob);
+        const iframe = document.getElementById('previewFrame');
+        const scroll = iframe.contentWindow ? iframe.contentWindow.scrollY : 0;
+        iframe.onload = ()=>{
+            try{ iframe.contentWindow.scrollTo(0, scroll); }catch(e){}
+            URL.revokeObjectURL(url);
+        };
+        iframe.src = url;
+    }
+
+    /* ---- download button ---- */
+    function downloadInvitation(){
+        const html = buildHTML();
+        const blob = new Blob([html], {type:'text/html'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `withyou-${D.groom||'groom'}-${D.bride||'bride'}.html`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        showToast('청첩장이 다운로드되었습니다 🎉');
+    }
+    document.getElementById('downloadBtn').addEventListener('click', downloadInvitation);
+
+    /* ---- toast ---- */
+    function showToast(msg){
+        const t = document.getElementById('bToast');
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(window._bt);
+        window._bt = setTimeout(()=> t.classList.remove('show'), 2200);
+    }
+
+    /* ---- initial load ---- */
+    refreshPreview();
+</script>
+</body>
+</html>
