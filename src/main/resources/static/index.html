@@ -1212,15 +1212,21 @@
 
 <script>
     /* ===== PAGE SWITCHING ===== */
+    const BUILDER_HASH = '#builder';
+    const BUILDER_STATE_KEY = 'withyou-builder-open';
+    let pendingPreviewScrollId = null;
+
     function showLanding() {
         document.getElementById('landing-view').classList.add('active');
         document.getElementById('builder-view').classList.remove('active');
+        syncPageState(false);
         window.scrollTo(0, 0);
     }
 
     function showBuilder() {
         document.getElementById('landing-view').classList.remove('active');
         document.getElementById('builder-view').classList.add('active');
+        syncPageState(true);
 
         // 빌더 진입 시 즉시 미리보기 로드
         refreshPreview();
@@ -1229,6 +1235,23 @@
         // close mobile editor if open
         const ed = document.getElementById('editorPanel');
         if (ed) ed.classList.remove('open');
+    }
+
+    function syncPageState(isBuilder) {
+        try {
+            sessionStorage.setItem(BUILDER_STATE_KEY, isBuilder ? '1' : '0');
+        } catch (error) {
+            // 세션 저장이 막힌 환경은 해시만 갱신합니다.
+        }
+
+        if (history.replaceState) {
+            const nextUrl = isBuilder
+                ? `${window.location.pathname}${window.location.search}${BUILDER_HASH}`
+                : `${window.location.pathname}${window.location.search}`;
+            history.replaceState(null, '', nextUrl);
+        } else {
+            window.location.hash = isBuilder ? BUILDER_HASH : '';
+        }
     }
 
     function showToast(msg) {
@@ -1460,6 +1483,7 @@
     /* ---- scroll preview to section ---- */
     function scrollPreview(id){
         const iframe = document.getElementById('previewFrame');
+        pendingPreviewScrollId = id;
         try { iframe.contentWindow.postMessage({type:'scrollTo', id:id}, '*'); } catch(e){}
     }
 
@@ -1973,6 +1997,13 @@ window.addEventListener('message',function(e){if(e.data&&e.data.type==='scrollTo
         iframe.onload = function(){
             URL.revokeObjectURL(url);
             iframe.onload = null;
+            if (pendingPreviewScrollId) {
+                const targetId = pendingPreviewScrollId;
+                pendingPreviewScrollId = null;
+                requestAnimationFrame(() => {
+                    try { iframe.contentWindow.postMessage({type:'scrollTo', id: targetId}, '*'); } catch (error) {}
+                });
+            }
         };
         iframe.src = url;
     }
@@ -2064,8 +2095,21 @@ window.addEventListener('message',function(e){if(e.data&&e.data.type==='scrollTo
 
     /* ---- initial load ---- */
     document.addEventListener('DOMContentLoaded', () => {
-        refreshPreview();
+        const shouldOpenBuilder = window.location.hash === BUILDER_HASH || getStoredBuilderState();
+        if (shouldOpenBuilder) {
+            showBuilder();
+        } else {
+            refreshPreview();
+        }
     });
+
+    function getStoredBuilderState() {
+        try {
+            return sessionStorage.getItem(BUILDER_STATE_KEY) === '1';
+        } catch (error) {
+            return false;
+        }
+    }
 
 
     /* ===== LANDING LOGIC ===== */
