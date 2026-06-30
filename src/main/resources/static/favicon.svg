@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Cream circle — no white margin -->
+  <circle cx="50" cy="50" r="50" fill="#F6EAD8"/>
+
+  <!-- Heart outline at top -->
+  <path d="M50 23 C50 23 47.5 19.5 44 19.5 C40.5 19.5 38 22.2 38 25.5
+           C38 30 43.5 34.5 50 40
+           C56.5 34.5 62 30 62 25.5
+           C62 22.2 59.5 19.5 56 19.5
+           C52.5 19.5 50 23 50 23Z"
+        fill="none" stroke="#8B3A42" stroke-width="2.2" stroke-linejoin="round"/>
+
+  <!-- W — bold serif style -->
+  <path d="M12 38 L20 74 L30 52 L40 74 L48 38"
+        fill="none" stroke="#8B3A42" stroke-width="7.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Y — overlapping W on the right -->
+  <path d="M50 38 L64 56 M78 38 L64 56 L64 80"
+        fill="none" stroke="#7A3038" stroke-width="6.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Bottom decoration: dash · star · dash -->
+  <line x1="28" y1="89" x2="40" y2="89" stroke="#8B3A42" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M50 86 L51.4 89.4 L55 90 L52.5 92.4 L53.1 96 L50 94.2 L46.9 96 L47.5 92.4 L45 90 L48.6 89.4Z"
+        fill="#8B3A42"/>
+  <line x1="60" y1="89" x2="72" y2="89" stroke="#8B3A42" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Tiny leaf left -->
+  <path d="M20 68 Q16 62 22 58" fill="none" stroke="#9CAF93" stroke-width="2" stroke-linecap="round"/>
+  <!-- Tiny leaf right -->
+  <path d="M80 68 Q84 62 78 58" fill="none" stroke="#9CAF93" stroke-width="2" stroke-linecap="round"/>
+</svg>

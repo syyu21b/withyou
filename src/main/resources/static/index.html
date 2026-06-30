@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>With You — 모바일 청첩장</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -655,12 +656,19 @@
         html{overflow-x:hidden;}
         body{overflow-x:hidden;}
 
-        /* iOS dynamic viewport height */
+        /* iOS dynamic viewport height — builder fills exact visible area */
         #builder-view.active{
             height:100vh;
             height:100dvh;
+            overscroll-behavior:none;
         }
-        #builder-view.active{overscroll-behavior:none;}
+        /* builder 내부도 부모 높이 100% 사용 (iOS 100vh 초과 방지) */
+        @media(max-width:860px){
+            .builder{
+                height:100%;       /* #builder-view.active(100dvh) 상속 */
+                min-height:0;      /* flex-child 높이 수축 허용 */
+            }
+        }
 
         /* Touch-action & tap highlight on all interactive elements */
         button,a,
@@ -676,9 +684,24 @@
             -webkit-overflow-scrolling:touch;
         }
 
-        /* Phone frame — responsive so it never overflows on small phones */
+        /* Phone frame — responsive width (절대 화면 밖으로 안 넘침) */
         .phone-frame{
             width:min(var(--preview), calc(100vw - 40px));
+        }
+
+        /* 모바일에서 폰 프레임 높이를 뷰포트에 맞게 자동 축소
+           (중첩 스크롤 제거: 화면 하나에 폰 전체가 보임) */
+        @media(max-width:860px){
+            .device-bar{display:none;}
+            .preview-wrap{
+                padding:12px 10px;
+                justify-content:center;
+            }
+            .phone-frame .phone-screen{
+                /* 56px 탑바 + 24px 패딩 + 28px 프레임 여백 */
+                height:min(740px, calc(100dvh - 108px));
+                height:min(740px, calc(100vh - 108px)); /* 폴백 */
+            }
         }
 
         /* Editor backdrop for mobile (closes panel when tapping preview) */
@@ -696,10 +719,9 @@
         /* Gallery swipe arrows — 44px min tap target on mobile */
         @media(max-width:860px){
             .swipe-nav{width:44px;height:44px;}
-            .preview-wrap{padding:20px 12px;}
         }
 
-        /* iOS input zoom prevention (< 16px triggers auto-zoom) */
+        /* iOS input zoom prevention (< 16px 입력 시 자동 확대됨) */
         @media(max-width:860px){
             .field input[type=text],
             .field input[type=date],
@@ -710,34 +732,39 @@
             }
         }
 
-        /* Theme modal on very small phones */
+        /* 테마 모달 — 소형 폰 최적화 */
         @media(max-width:480px){
-            .t-modal-box{padding:16px;gap:16px;border-radius:16px;}
-            .t-modal-frame{width:min(320px,78vw);}
-            .t-modal-screen{height:390px;}
+            .t-modal-box{padding:16px;gap:16px;border-radius:16px;max-height:92vh;}
+            .t-modal-frame{width:min(300px,75vw);}
+            .t-modal-screen{height:360px;}
             .t-modal-info h3{font-size:17px;}
             .t-modal-info p{font-size:12px;}
         }
 
-        /* Topbar on very small screens */
+        /* 최소 폰(360px 이하) 탑바 정리 */
         @media(max-width:380px){
             .topbar{padding:0 10px;}
-            .topbar .logo{font-size:17px;}
-            .btn-download{padding:8px 14px;font-size:12px;}
+            .topbar .logo{font-size:16px;}
+            .btn-download{padding:8px 12px;font-size:11px;}
         }
 
-        /* Landing hero & sections on narrow phones */
+        /* 랜딩 페이지 소형 폰 */
         @media(max-width:480px){
             .hero h1{font-size:26px;}
             .hero .lead{font-size:14px;}
-            section{padding:48px 0;}
-            .cta-section{margin:0 12px;padding:48px 20px;}
+            section{padding:44px 0;}
+            .cta-section{margin:0 12px;padding:44px 20px;}
             .cta-section h2{font-size:22px;}
+            /* 버튼이 좁은 화면에서 줄바꿈 안 되게 */
+            .hero-actions{flex-direction:column;align-items:flex-start;}
         }
 
-        /* iOS notch safe area padding */
+        /* iOS 노치 safe area */
         @supports(padding:env(safe-area-inset-bottom)){
-            .topbar{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right));}
+            .topbar{
+                padding-left:max(20px,env(safe-area-inset-left));
+                padding-right:max(20px,env(safe-area-inset-right));
+            }
             .wrap{
                 padding-left:max(20px,env(safe-area-inset-left));
                 padding-right:max(20px,env(safe-area-inset-right));
@@ -1576,9 +1603,11 @@
         refreshPreview();
         window._previewBuilt = true;
 
-        // close mobile editor if open
+        // close mobile editor + backdrop if open
         const ed = document.getElementById('editorPanel');
+        const bd = document.getElementById('editorBackdrop');
         if (ed) ed.classList.remove('open');
+        if (bd) bd.classList.remove('visible');
     }
 
     function syncPageState(isBuilder) {
