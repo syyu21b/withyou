@@ -227,41 +227,45 @@
         .swatch.t-classic{background:linear-gradient(160deg,#f8efe6,#e3c9c0);}
         .swatch.t-classic span{color:#8B3A42;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:17px;}
         /* 1. 심플 라인 아트 */
-        .swatch.t-simpleline{background:#fff;border-bottom:1px solid #eee;}
-        .swatch.t-simpleline span{color:#1A1A1A;font-family:'Noto Sans KR',sans-serif;font-weight:300;letter-spacing:.28em;font-size:10px;text-transform:uppercase;}
+        .swatch.t-simpleline{background:#fff;border-bottom:1px solid #eee;flex-direction:column;gap:6px;}
+        .swatch.t-simpleline .sw-art{width:38px;height:44px;flex-shrink:0;opacity:.85;}
+        .swatch.t-simpleline span{color:#1A1A1A;font-family:'Noto Sans KR',sans-serif;font-weight:300;letter-spacing:.22em;font-size:9px;text-transform:uppercase;}
         /* 2. 클래식 화이트 */
-        .swatch.t-classicwhite{background:#fff;}
-        .swatch.t-classicwhite::before{content:'⌒';position:absolute;font-size:72px;color:rgba(200,168,112,.22);top:-8px;left:50%;transform:translateX(-50%);line-height:1;}
-        .swatch.t-classicwhite span{color:#7A5C38;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;}
+        .swatch.t-classicwhite{background:#fff;flex-direction:column;gap:6px;}
+        .swatch.t-classicwhite .sw-art{width:52px;height:56px;flex-shrink:0;}
+        .swatch.t-classicwhite span{color:#8B6A3A;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;}
         /* 3. 내추럴 그린 */
-        .swatch.t-naturalgreen{background:linear-gradient(160deg,#EDF6E2,#DEEFC8);}
-        .swatch.t-naturalgreen::before{content:'✦';position:absolute;font-size:52px;color:rgba(61,96,64,.12);top:50%;left:50%;transform:translate(-50%,-50%);}
-        .swatch.t-naturalgreen span{color:#3D6040;font-family:'Gowun Batang',serif;font-size:17px;position:relative;}
+        .swatch.t-naturalgreen{background:linear-gradient(160deg,#EDF6E2,#DEEFC8);overflow:hidden;}
+        .swatch.t-naturalgreen .sw-art{position:absolute;inset:0;width:100%;height:100%;}
+        .swatch.t-naturalgreen span{color:#3D6040;font-family:'Gowun Batang',serif;font-size:17px;position:relative;z-index:1;}
         /* 4. 로맨틱 핑코 */
-        .swatch.t-romanticpink{background:linear-gradient(160deg,#FFF0F4,#FFD8E4);position:relative;overflow:hidden;}
-        .swatch.t-romanticpink::before{content:'✿  ✿  ✿';position:absolute;top:28px;left:0;right:0;text-align:center;font-size:16px;color:rgba(194,96,122,.25);letter-spacing:8px;}
-        .swatch.t-romanticpink span{color:#C2607A;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;}
+        .swatch.t-romanticpink{background:linear-gradient(160deg,#FFF0F4,#FFD8E4);flex-direction:column;gap:4px;}
+        .swatch.t-romanticpink .sw-art{width:54px;height:60px;flex-shrink:0;}
+        .swatch.t-romanticpink span{color:#C2607A;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;}
         /* 5. 모던 미니얼 */
-        .swatch.t-modernminimal{background:#fff;border-bottom:1px solid #ebebeb;}
-        .swatch.t-modernminimal span{color:#2A2A2A;font-family:'Noto Sans KR',sans-serif;font-weight:400;letter-spacing:.26em;font-size:10px;text-transform:uppercase;}
+        .swatch.t-modernminimal{background:#fff;border-bottom:1px solid #ebebeb;flex-direction:column;gap:6px;}
+        .swatch.t-modernminimal .sw-art{width:32px;height:48px;flex-shrink:0;opacity:.7;}
+        .swatch.t-modernminimal span{color:#2A2A2A;font-family:'Noto Sans KR',sans-serif;font-weight:300;letter-spacing:.22em;font-size:9px;text-transform:uppercase;}
         /* 6. 빈티지 우드 */
-        .swatch.t-vintagewood{background:linear-gradient(160deg,#3C2810,#2C1A08);}
+        .swatch.t-vintagewood{background:linear-gradient(160deg,#3C2810,#2C1A08);flex-direction:column;gap:4px;}
+        .swatch.t-vintagewood .sw-art{width:44px;height:52px;flex-shrink:0;}
         .swatch.t-vintagewood span{color:#F0DCA8;font-family:'Gowun Batang',serif;font-size:17px;}
         /* 7. 트레디셔널 터치 */
-        .swatch.t-traditional{background:#FBF0D0;}
-        .swatch.t-traditional::before{content:'◈';position:absolute;font-size:54px;color:rgba(184,120,0,.18);top:50%;left:50%;transform:translate(-50%,-50%);}
-        .swatch.t-traditional span{color:#B87800;font-family:'Gowun Batang',serif;font-size:17px;position:relative;}
+        .swatch.t-traditional{background:#FBF0D0;overflow:hidden;}
+        .swatch.t-traditional .sw-art{position:absolute;inset:0;width:100%;height:100%;}
+        .swatch.t-traditional span{color:#B87800;font-family:'Gowun Batang',serif;font-size:17px;position:relative;z-index:1;}
         /* 8. 바다의 속사임 */
-        .swatch.t-oceanwhisper{background:linear-gradient(175deg,#B0D4F4,#4E84C0);}
-        .swatch.t-oceanwhisper::before{content:'〜  〜  〜';position:absolute;top:30px;left:0;right:0;text-align:center;font-size:12px;color:rgba(255,255,255,.4);letter-spacing:6px;}
-        .swatch.t-oceanwhisper span{color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;}
+        .swatch.t-oceanwhisper{background:linear-gradient(175deg,#A8D4F4 0%,#78B4E4 40%,#4E84C0 100%);overflow:hidden;}
+        .swatch.t-oceanwhisper .sw-art{position:absolute;bottom:0;left:0;right:0;width:100%;}
+        .swatch.t-oceanwhisper span{color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;z-index:1;}
         /* 9. 가을의 온도 */
-        .swatch.t-autumn{background:linear-gradient(160deg,#F5C860,#C06830);}
-        .swatch.t-autumn::before{content:'◆';position:absolute;font-size:50px;color:rgba(255,255,255,.12);top:50%;left:50%;transform:translate(-50%,-50%);}
-        .swatch.t-autumn span{color:#2A1200;font-family:'Gowun Batang',serif;font-size:17px;position:relative;}
+        .swatch.t-autumn{background:linear-gradient(160deg,#F8CC60,#E89830 50%,#C86020 100%);overflow:hidden;}
+        .swatch.t-autumn .sw-art{position:absolute;inset:0;width:100%;height:100%;}
+        .swatch.t-autumn span{color:#2A1200;font-family:'Gowun Batang',serif;font-size:17px;position:relative;z-index:1;}
         /* 10. 겨울의 노을 */
-        .swatch.t-winterdusk{background:linear-gradient(160deg,#5020A0,#C06080 55%,#1A0A38);}
-        .swatch.t-winterdusk span{color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;}
+        .swatch.t-winterdusk{background:linear-gradient(175deg,#4A18A0 0%,#C05880 55%,#E86840 78%,#1A0838 100%);overflow:hidden;}
+        .swatch.t-winterdusk .sw-art{position:absolute;bottom:0;left:0;right:0;width:100%;}
+        .swatch.t-winterdusk span{color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;z-index:1;}
 
         /* ===== Theme card hover + preview btn ===== */
         .theme-card{cursor:pointer;transition:transform .2s,box-shadow .2s;}
@@ -920,43 +924,73 @@
                     <div class="label"><div class="name">클래식 명조</div><div class="desc">아이보리 &amp; 와인, 차분하고 고급스러운 무드</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('simpleline')">
-                    <div class="swatch t-simpleline"><span>With You</span></div>
+                    <div class="swatch t-simpleline">
+                        <svg class="sw-art" viewBox="0 0 42 50" fill="none"><circle cx="15" cy="9" r="7" stroke="#1a1a1a" stroke-width="0.9"/><path d="M9 12 Q4 22 4 38" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M21 12 Q25 22 25 38" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M4 38 Q15 41 25 38" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round"/><circle cx="30" cy="7" r="8" stroke="#1a1a1a" stroke-width="0.9"/><path d="M22 13 Q18 23 17 40" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M38 13 Q42 22 41 40" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M17 40 Q29 44 41 40" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round"/><path d="M22 16 Q15 13 10 16" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">심플 라인 아트</div><div class="desc">화이트 바탕, 세밀한 라인 드로잉 커플 일러스트</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('classicwhite')">
-                    <div class="swatch t-classicwhite"><span>With You</span></div>
+                    <div class="swatch t-classicwhite">
+                        <svg class="sw-art" viewBox="0 0 56 60" fill="none"><path d="M10 58 L10 34 Q10 14 28 14 Q46 14 46 34 L46 58" stroke="#C8A464" stroke-width="1.4"/><ellipse cx="28" cy="15" rx="6" ry="4" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><ellipse cx="12" cy="32" rx="5" ry="7" transform="rotate(-28,12,32)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><ellipse cx="44" cy="32" rx="5" ry="7" transform="rotate(28,44,32)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><path d="M8 34 Q2 27 6 22 Q10 28 8 34Z" fill="#9CAF70" opacity=".5"/><path d="M48 34 Q54 27 50 22 Q46 28 48 34Z" fill="#9CAF70" opacity=".5"/></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">클래식 화이트</div><div class="desc">흰 아치와 목련, 따뜻한 골드 텍스트</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('naturalgreen')">
-                    <div class="swatch t-naturalgreen"><span>With You</span></div>
+                    <div class="swatch t-naturalgreen">
+                        <svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M5 140 C10 110 9 85 12 64 C15 46 18 26 22 8" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M12 64 Q2 57 4 48 Q12 54 12 64Z" fill="#7AAA66" opacity=".75"/><path d="M14 48 Q4 40 6 30 Q14 38 14 48Z" fill="#6A9858" opacity=".7"/><path d="M17 32 Q8 23 11 14 Q18 22 17 32Z" fill="#88B470" opacity=".62"/><path d="M10 82 Q0 74 2 65 Q10 72 10 82Z" fill="#7AAA66" opacity=".68"/><path d="M95 140 C90 110 91 85 88 64 C85 46 82 26 78 8" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M88 64 Q98 57 96 48 Q88 54 88 64Z" fill="#7AAA66" opacity=".75"/><path d="M86 48 Q96 40 94 30 Q86 38 86 48Z" fill="#6A9858" opacity=".7"/><path d="M83 32 Q92 23 89 14 Q82 22 83 32Z" fill="#88B470" opacity=".62"/><path d="M90 82 Q100 74 98 65 Q90 72 90 82Z" fill="#7AAA66" opacity=".68"/></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">내추럴 그린</div><div class="desc">세이지 그린 그라데이션, 보타니컬 잎사귀 프레임</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('romanticpink')">
-                    <div class="swatch t-romanticpink"><span>With You</span></div>
+                    <div class="swatch t-romanticpink">
+                        <svg class="sw-art" viewBox="0 0 60 68" fill="none"><ellipse cx="30" cy="34" rx="22" ry="28" stroke="#D890A8" stroke-width="1.2"/><path d="M10 15 Q18 11 25 7" stroke="#C2607A" stroke-width="0.9" stroke-linecap="round" opacity=".55"/><circle cx="12" cy="14" r="3.5" fill="#FFB8D0" opacity=".7"/><circle cx="18" cy="11" r="3" fill="#FFD0E4" opacity=".75"/><circle cx="25" cy="8" r="3.5" fill="#FFB8D0" opacity=".65"/><path d="M50 15 Q42 11 35 7" stroke="#C2607A" stroke-width="0.9" stroke-linecap="round" opacity=".55"/><circle cx="48" cy="14" r="3.5" fill="#FFB8D0" opacity=".7"/><circle cx="42" cy="11" r="3" fill="#FFD0E4" opacity=".75"/><circle cx="35" cy="8" r="3.5" fill="#FFB8D0" opacity=".65"/></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">로맨틱 핑코</div><div class="desc">핑크 그라데이션, 벚꽃잎과 오벌 프레임</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('modernminimal')">
-                    <div class="swatch t-modernminimal"><span>With You</span></div>
+                    <div class="swatch t-modernminimal">
+                        <svg class="sw-art" viewBox="0 0 32 50" fill="none"><path d="M8 48 Q14 38 18 28 Q22 18 26 8" stroke="#909090" stroke-width="1" stroke-linecap="round"/><path d="M20 26 Q26 20 30 22 Q26 28 20 26Z" fill="#A8A898" opacity=".5"/><path d="M22 18 Q28 13 31 16 Q27 21 22 18Z" fill="#A8A898" opacity=".44"/><path d="M16 33 Q10 28 11 22 Q16 26 16 33Z" fill="#B0B0A0" opacity=".44"/></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">모던 미니얼</div><div class="desc">퓨어 화이트, 싱글 브랜치 클린 산세리프</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('vintagewood')">
-                    <div class="swatch t-vintagewood"><span>With You</span></div>
+                    <div class="swatch t-vintagewood">
+                        <svg class="sw-art" viewBox="0 0 48 56" fill="none"><path d="M24 52 Q21 40 19 28 Q17 18 16 8" stroke="#D4A840" stroke-width="1.4" stroke-linecap="round"/><path d="M24 52 Q24 40 24 28 Q24 18 23 8" stroke="#D4A840" stroke-width="1.3" stroke-linecap="round"/><path d="M24 52 Q27 40 29 28 Q31 18 32 8" stroke="#D4A840" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="16" cy="6" rx="3" ry="7" transform="rotate(-8,16,6)" fill="#D4A840" opacity=".8"/><ellipse cx="21" cy="4" rx="3" ry="7" fill="#D4A840" opacity=".88"/><ellipse cx="27" cy="4" rx="3" ry="7" fill="#D4A840" opacity=".88"/><ellipse cx="32" cy="6" rx="3" ry="7" transform="rotate(8,32,6)" fill="#D4A840" opacity=".8"/><path d="M18 46 Q24 44 30 46" stroke="#7A5020" stroke-width="2.5" stroke-linecap="round" opacity=".7"/><path d="M20 50 Q24 48 28 50" stroke="#5A3010" stroke-width="1.5" stroke-linecap="round" opacity=".55"/></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">빈티지 우드</div><div class="desc">다크 우드 배경, 드라이 팜파스 그라스 번들</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('traditional')">
-                    <div class="swatch t-traditional"><span>With You</span></div>
+                    <div class="swatch t-traditional">
+                        <svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><rect x="4" y="4" width="92" height="132" stroke="#C89820" stroke-width="1.2"/><rect x="10" y="10" width="80" height="120" stroke="#C89820" stroke-width="0.5" opacity=".5"/><line x1="4" y1="24" x2="96" y2="24" stroke="#C89820" stroke-width="0.5" opacity=".4"/><line x1="4" y1="116" x2="96" y2="116" stroke="#C89820" stroke-width="0.5" opacity=".4"/><path d="M22 14 L26 10 L30 14 L26 18Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M48 14 L52 10 L56 14 L52 18Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M74 14 L78 10 L82 14 L78 18Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M22 126 L26 122 L30 126 L26 130Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M48 126 L52 122 L56 126 L52 130Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M74 126 L78 122 L82 126 L78 130Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M50 28 Q44 34 42 40 Q46 36 50 38 Q54 36 58 40 Q56 34 50 28Z" fill="#C89820" opacity=".7"/><line x1="47" y1="42" x2="47" y2="70" stroke="#8A6030" stroke-width="0.9" opacity=".65"/><line x1="50" y1="42" x2="50" y2="70" stroke="#8A6030" stroke-width="1" opacity=".7"/><line x1="53" y1="42" x2="53" y2="70" stroke="#8A6030" stroke-width="0.9" opacity=".65"/><rect x="44" y="39" width="12" height="4" rx="2" fill="#C89820" opacity=".75"/></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">트레디셔널 터치</div><div class="desc">크림 &amp; 한국 격자 보더, 매화 &amp; 매듭</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('oceanwhisper')">
-                    <div class="swatch t-oceanwhisper"><span>With You</span></div>
+                    <div class="swatch t-oceanwhisper">
+                        <svg class="sw-art" viewBox="0 0 100 50" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M0 20 Q12 14 25 20 Q37 26 50 20 Q62 14 75 20 Q87 26 100 20 L100 50 L0 50Z" fill="#3A6CA8" opacity=".5"/><path d="M0 30 Q15 24 30 30 Q45 36 60 30 Q75 24 90 30 Q95 33 100 30 L100 50 L0 50Z" fill="#2A5898" opacity=".55"/><path d="M0 20 Q12 14 25 20" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none"/><path d="M50 20 Q62 14 75 20" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none"/><path d="M28 8 Q32 5 36 8" stroke="rgba(255,255,255,0.5)" stroke-width="1" fill="none" stroke-linecap="round"/><path d="M60 4 Q64 1 68 4" stroke="rgba(255,255,255,0.4)" stroke-width="1" fill="none" stroke-linecap="round"/></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">바다의 속사임</div><div class="desc">오션 블루 그라데이션, 파도와 갈매기, 글라스</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('autumn')">
-                    <div class="swatch t-autumn"><span>With You</span></div>
+                    <div class="swatch t-autumn">
+                        <svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M0 140 L0 104 Q20 88 40 96 Q50 100 60 90 Q75 76 90 94 Q95 98 100 92 L100 140Z" fill="rgba(0,0,0,0.2)"/><g transform="translate(12,18) rotate(-15)"><path d="M0 0 C-5-9-16-8-13 0 C-16 0-18-10-10-13 C-10-19-3-22 0-16 C3-22 10-19 10-13 C18-10 16 0 13 0 C16-8 5-9 0 0Z" fill="#C83010" opacity=".88"/></g><g transform="translate(52,12) rotate(-5)"><path d="M0 0 C-6-10-18-9-15 0 C-18 0-20-12-12-15 C-12-23-4-26 0-19 C4-26 12-23 12-15 C20-12 18 0 15 0 C18-9 6-10 0 0Z" fill="#B82808" opacity=".85"/></g><g transform="translate(82,20) rotate(20)"><path d="M0 0 C-4-8-14-7-12 0 C-14 0-16-10-9-12 C-9-18-3-20 0-15 C3-20 9-18 9-12 C16-10 14 0 12 0 C14-7 4-8 0 0Z" fill="#E08020" opacity=".78"/></g><g transform="translate(30,38) rotate(25) scale(0.75)"><path d="M0 0 C-4-8-14-7-12 0 C-14 0-16-10-9-12 C-9-18-3-20 0-15 C3-20 9-18 9-12 C16-10 14 0 12 0 C14-7 4-8 0 0Z" fill="#D06820" opacity=".7"/></g></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">가을의 온도</div><div class="desc">앰버 그라데이션, 단풍잎과 산 실루엣</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('winterdusk')">
-                    <div class="swatch t-winterdusk"><span>With You</span></div>
+                    <div class="swatch t-winterdusk">
+                        <svg class="sw-art" viewBox="0 0 100 60" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M8 60 L8 40 L2 44 L8 32 L3 36 L12 18 L21 36 L16 32 L22 44 L16 40 L20 60Z" fill="#120628" opacity=".88"/><path d="M42 60 L42 38 L36 42 L42 28 L38 32 L48 12 L58 32 L54 28 L60 42 L54 38 L56 60Z" fill="#120628" opacity=".92"/><path d="M80 60 L80 40 L74 44 L80 32 L75 36 L84 18 L93 36 L88 32 L94 44 L88 40 L92 60Z" fill="#120628" opacity=".88"/><path d="M0 54 Q25 50 50 52 Q75 54 100 51 L100 60 L0 60Z" fill="rgba(255,255,255,0.12)"/></svg>
+                        <span>With You</span>
+                    </div>
                     <div class="label"><div class="name">겨울의 노을</div><div class="desc">퍼플·오렌지 노을 그라데이션, 소나무 실루엣</div><button class="preview-btn">미리보기</button></div>
                 </div>
             </div>
@@ -1094,43 +1128,43 @@
                             <div class="th-name">클래식 명조</div>
                         </div>
                         <div class="theme-opt" data-theme="simpleline">
-                            <div class="swatch t-simpleline"><span>With You</span></div>
+                            <div class="swatch t-simpleline"><svg class="sw-art" viewBox="0 0 42 50" fill="none"><circle cx="15" cy="9" r="7" stroke="#1a1a1a" stroke-width="0.9"/><path d="M9 12 Q4 22 4 38" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M21 12 Q25 22 25 38" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M4 38 Q15 41 25 38" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round"/><circle cx="30" cy="7" r="8" stroke="#1a1a1a" stroke-width="0.9"/><path d="M22 13 Q18 23 17 40" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M38 13 Q42 22 41 40" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M17 40 Q29 44 41 40" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round"/><path d="M22 16 Q15 13 10 16" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/></svg><span>심플 라인</span></div>
                             <div class="th-name">심플 라인 아트</div>
                         </div>
                         <div class="theme-opt" data-theme="classicwhite">
-                            <div class="swatch t-classicwhite"><span>With You</span></div>
+                            <div class="swatch t-classicwhite"><svg class="sw-art" viewBox="0 0 56 60" fill="none"><path d="M10 58 L10 34 Q10 14 28 14 Q46 14 46 34 L46 58" stroke="#C8A464" stroke-width="1.4"/><ellipse cx="28" cy="15" rx="6" ry="4" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><ellipse cx="12" cy="32" rx="5" ry="7" transform="rotate(-28,12,32)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><ellipse cx="44" cy="32" rx="5" ry="7" transform="rotate(28,44,32)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/></svg><span>클래식 화이트</span></div>
                             <div class="th-name">클래식 화이트</div>
                         </div>
                         <div class="theme-opt" data-theme="naturalgreen">
-                            <div class="swatch t-naturalgreen"><span>With You</span></div>
+                            <div class="swatch t-naturalgreen"><svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M5 140 C10 110 9 85 12 64 C15 46 18 26 22 8" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M12 64 Q2 57 4 48 Q12 54 12 64Z" fill="#7AAA66" opacity=".75"/><path d="M14 48 Q4 40 6 30 Q14 38 14 48Z" fill="#6A9858" opacity=".7"/><path d="M95 140 C90 110 91 85 88 64 C85 46 82 26 78 8" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M88 64 Q98 57 96 48 Q88 54 88 64Z" fill="#7AAA66" opacity=".75"/><path d="M86 48 Q96 40 94 30 Q86 38 86 48Z" fill="#6A9858" opacity=".7"/></svg><span>내추럴 그린</span></div>
                             <div class="th-name">내추럴 그린</div>
                         </div>
                         <div class="theme-opt" data-theme="romanticpink">
-                            <div class="swatch t-romanticpink"><span>With You</span></div>
+                            <div class="swatch t-romanticpink"><svg class="sw-art" viewBox="0 0 60 68" fill="none"><ellipse cx="30" cy="34" rx="22" ry="28" stroke="#D890A8" stroke-width="1.2"/><circle cx="12" cy="14" r="3.5" fill="#FFB8D0" opacity=".7"/><circle cx="18" cy="11" r="3" fill="#FFD0E4" opacity=".75"/><circle cx="25" cy="8" r="3.5" fill="#FFB8D0" opacity=".65"/><circle cx="48" cy="14" r="3.5" fill="#FFB8D0" opacity=".7"/><circle cx="42" cy="11" r="3" fill="#FFD0E4" opacity=".75"/><circle cx="35" cy="8" r="3.5" fill="#FFB8D0" opacity=".65"/></svg><span>로맨틱 핑코</span></div>
                             <div class="th-name">로맨틱 핑코</div>
                         </div>
                         <div class="theme-opt" data-theme="modernminimal">
-                            <div class="swatch t-modernminimal"><span>With You</span></div>
+                            <div class="swatch t-modernminimal"><svg class="sw-art" viewBox="0 0 32 50" fill="none"><path d="M8 48 Q14 38 18 28 Q22 18 26 8" stroke="#909090" stroke-width="1" stroke-linecap="round"/><path d="M20 26 Q26 20 30 22 Q26 28 20 26Z" fill="#A8A898" opacity=".5"/><path d="M22 18 Q28 13 31 16 Q27 21 22 18Z" fill="#A8A898" opacity=".44"/><path d="M16 33 Q10 28 11 22 Q16 26 16 33Z" fill="#B0B0A0" opacity=".44"/></svg><span>모던 미니얼</span></div>
                             <div class="th-name">모던 미니얼</div>
                         </div>
                         <div class="theme-opt" data-theme="vintagewood">
-                            <div class="swatch t-vintagewood"><span>With You</span></div>
+                            <div class="swatch t-vintagewood"><svg class="sw-art" viewBox="0 0 48 56" fill="none"><path d="M24 52 Q21 40 19 28 Q17 18 16 8" stroke="#D4A840" stroke-width="1.4" stroke-linecap="round"/><path d="M24 52 Q24 40 24 28 Q24 18 23 8" stroke="#D4A840" stroke-width="1.3" stroke-linecap="round"/><path d="M24 52 Q27 40 29 28 Q31 18 32 8" stroke="#D4A840" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="21" cy="4" rx="3" ry="7" fill="#D4A840" opacity=".88"/><ellipse cx="27" cy="4" rx="3" ry="7" fill="#D4A840" opacity=".88"/><path d="M18 46 Q24 44 30 46" stroke="#7A5020" stroke-width="2.5" stroke-linecap="round" opacity=".7"/></svg><span>빈티지 우드</span></div>
                             <div class="th-name">빈티지 우드</div>
                         </div>
                         <div class="theme-opt" data-theme="traditional">
-                            <div class="swatch t-traditional"><span>With You</span></div>
+                            <div class="swatch t-traditional"><svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><rect x="4" y="4" width="92" height="132" stroke="#C89820" stroke-width="1.2"/><rect x="10" y="10" width="80" height="120" stroke="#C89820" stroke-width="0.5" opacity=".5"/><line x1="4" y1="24" x2="96" y2="24" stroke="#C89820" stroke-width="0.5" opacity=".4"/><line x1="4" y1="116" x2="96" y2="116" stroke="#C89820" stroke-width="0.5" opacity=".4"/><path d="M50 28 Q44 34 42 40 Q46 36 50 38 Q54 36 58 40 Q56 34 50 28Z" fill="#C89820" opacity=".7"/><line x1="50" y1="42" x2="50" y2="70" stroke="#8A6030" stroke-width="1" opacity=".7"/></svg><span>트레디셔널</span></div>
                             <div class="th-name">트레디셔널 터치</div>
                         </div>
                         <div class="theme-opt" data-theme="oceanwhisper">
-                            <div class="swatch t-oceanwhisper"><span>With You</span></div>
+                            <div class="swatch t-oceanwhisper"><svg class="sw-art" viewBox="0 0 100 50" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M0 20 Q12 14 25 20 Q37 26 50 20 Q62 14 75 20 Q87 26 100 20 L100 50 L0 50Z" fill="#3A6CA8" opacity=".5"/><path d="M0 30 Q15 24 30 30 Q45 36 60 30 Q75 24 90 30 L100 50 L0 50Z" fill="#2A5898" opacity=".55"/><path d="M28 8 Q32 5 36 8" stroke="rgba(255,255,255,0.5)" stroke-width="1" fill="none" stroke-linecap="round"/></svg><span>바다의 속사임</span></div>
                             <div class="th-name">바다의 속사임</div>
                         </div>
                         <div class="theme-opt" data-theme="autumn">
-                            <div class="swatch t-autumn"><span>With You</span></div>
+                            <div class="swatch t-autumn"><svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M30 140 Q34 110 40 85 Q48 60 50 40" stroke="#C86020" stroke-width="1.8" stroke-linecap="round" opacity=".6"/><path d="M70 140 Q66 110 60 85 Q52 60 50 40" stroke="#C86020" stroke-width="1.8" stroke-linecap="round" opacity=".6"/><ellipse cx="25" cy="68" rx="9" ry="13" transform="rotate(-25,25,68)" fill="#E84010" opacity=".45"/><ellipse cx="75" cy="72" rx="9" ry="13" transform="rotate(25,75,72)" fill="#E05010" opacity=".45"/><ellipse cx="42" cy="55" rx="8" ry="11" transform="rotate(-15,42,55)" fill="#F06020" opacity=".4"/><path d="M20 115 Q35 108 50 114 Q65 108 80 115" stroke="#F09848" stroke-width="2" stroke-linecap="round" opacity=".35"/></svg><span>가을의 온도</span></div>
                             <div class="th-name">가을의 온도</div>
                         </div>
                         <div class="theme-opt" data-theme="winterdusk">
-                            <div class="swatch t-winterdusk"><span>With You</span></div>
+                            <div class="swatch t-winterdusk"><svg class="sw-art" viewBox="0 0 100 50" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M50 0 L44 20 L50 18 L56 20Z" fill="rgba(255,255,255,0.25)"/><path d="M50 20 L46 32 L50 30 L54 32Z" fill="rgba(255,255,255,0.2)"/><path d="M10 50 L16 36 L22 50Z" fill="rgba(255,255,255,0.2)"/><path d="M78 50 L84 36 L90 50Z" fill="rgba(255,255,255,0.2)"/><path d="M0 42 Q25 38 50 42 Q75 38 100 42 L100 50 L0 50Z" fill="rgba(30,8,56,0.5)"/></svg><span>겨울의 노을</span></div>
                             <div class="th-name">겨울의 노을</div>
                         </div>
                     </div>
@@ -2413,6 +2447,336 @@
         }
     }
 
+    /* ---- THEME COVER DESIGNS ---- */
+    function getCoverHTML(theme, t, D, yyyy, mm, dd, dayKr, ampm, h12) {
+        const gr = D.groom || '신랑';
+        const br = D.bride || '신부';
+        const dE = ['SUN','MON','TUE','WED','THU','FRI','SAT'][(new Date(D.weddingDate||'2026-11-14')).getDay()];
+        const amE = ampm === '오후' ? 'PM' : 'AM';
+        const mm0 = String(mm).padStart(2,'0');
+        const dd0 = String(dd).padStart(2,'0');
+        const dStr = `${yyyy}.${mm0}.${dd0} ${dE}`;
+        const tStr = `${amE} ${h12}:00`;
+        const vn = ((D.venueName||'') + (D.venueHall ? ' '+D.venueHall : '')).trim() || '예식장';
+
+        if(theme==='classic') return `
+            <div class="frame">
+                <span class="eyebrow">YOU ARE INVITED</span>
+                <div class="names-kr">${gr} <span class="heart">♥</span> ${br}</div>
+                <div class="sub-title">Wedding Invitation</div>
+                <span class="tap">화면을 눌러 청첩장을 열어보세요</span>
+            </div>`;
+
+        const names = (nc,sc) =>
+            `<p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:${nc};line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
+            <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:${sc};line-height:2;">${dStr}<br>${tStr}</p>
+            <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:${sc};opacity:.85;">${vn}</p>`;
+
+        const tap = (c) => `<p style="padding:14px 0 18px;text-align:center;color:${c};font-size:15px;flex-shrink:0;margin:0;animation:pulse 2.2s ease-in-out infinite;">∨</p>`;
+
+        switch(theme) {
+
+        case 'simpleline': return `
+        <div style="position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                <svg viewBox="0 0 200 220" fill="none" style="width:64%;max-width:200px;">
+                    <circle cx="76" cy="42" r="19" stroke="#1a1a1a" stroke-width="1.2"/>
+                    <path d="M58 37 Q50 54 52 78 Q54 92 58 98" stroke="#1a1a1a" stroke-width="1.1" stroke-linecap="round"/>
+                    <path d="M58 58 Q46 94 44 156" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
+                    <path d="M94 58 Q106 90 110 156" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
+                    <path d="M44 156 Q77 166 110 156" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M58 58 Q76 52 94 58" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M60 95 Q77 99 94 95" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round" opacity=".3"/>
+                    <circle cx="128" cy="35" r="21" stroke="#1a1a1a" stroke-width="1.2"/>
+                    <path d="M107 56 Q96 92 92 162" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
+                    <path d="M149 56 Q162 90 166 162" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
+                    <path d="M92 162 Q129 174 166 162" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M107 56 Q128 48 149 56" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M128 55 L120 77 L128 71 L136 77 L128 55" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round" opacity=".4"/>
+                    <path d="M107 67 Q92 60 76 68" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+                    <line x1="38" y1="188" x2="162" y2="188" stroke="#e8e8e8" stroke-width="0.8"/>
+                </svg>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;">
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.44em;color:#aaa;text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
+                ${names('#1a1a1a','#666')}
+            </div>
+            ${tap('#ccc')}
+        </div>`;
+
+        case 'classicwhite': return `
+        <div style="position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                <svg viewBox="0 0 240 250" fill="none" style="width:80%;max-width:260px;">
+                    <path d="M50 248 L50 145 Q50 58 120 58 Q190 58 190 145 L190 248" stroke="#C8A464" stroke-width="1.8"/>
+                    <path d="M65 248 L65 148 Q65 80 120 80 Q175 80 175 148 L175 248" stroke="#C8A464" stroke-width="0.6" opacity=".4"/>
+                    <ellipse cx="120" cy="60" rx="13" ry="9" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8"/>
+                    <ellipse cx="106" cy="68" rx="11" ry="7" transform="rotate(-20,106,68)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".82"/>
+                    <ellipse cx="134" cy="68" rx="11" ry="7" transform="rotate(20,134,68)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".82"/>
+                    <ellipse cx="53" cy="140" rx="11" ry="15" transform="rotate(-30,53,140)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8"/>
+                    <ellipse cx="43" cy="126" rx="9" ry="12" transform="rotate(-50,43,126)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".78"/>
+                    <ellipse cx="39" cy="152" rx="8" ry="11" transform="rotate(-12,39,152)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".72"/>
+                    <path d="M36 128 Q28 118 34 110 Q39 120 36 128Z" fill="#9CAF70" opacity=".5"/>
+                    <path d="M33 150 Q23 142 29 133 Q35 144 33 150Z" fill="#9CAF70" opacity=".45"/>
+                    <ellipse cx="187" cy="140" rx="11" ry="15" transform="rotate(30,187,140)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8"/>
+                    <ellipse cx="197" cy="126" rx="9" ry="12" transform="rotate(50,197,126)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".78"/>
+                    <ellipse cx="201" cy="152" rx="8" ry="11" transform="rotate(12,201,152)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".72"/>
+                    <path d="M204 128 Q212 118 206 110 Q201 120 204 128Z" fill="#9CAF70" opacity=".5"/>
+                    <path d="M207 150 Q217 142 211 133 Q205 144 207 150Z" fill="#9CAF70" opacity=".45"/>
+                </svg>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;">
+                <p style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#C8A464;text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
+                ${names('#8B6A3A','#7A6040')}
+            </div>
+            ${tap('rgba(200,164,100,0.5)')}
+        </div>`;
+
+        case 'naturalgreen': return `
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#EDF6E2,#DEEFC8);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
+                <svg viewBox="0 0 280 400" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;">
+                    <path d="M18 400 C28 340 26 275 34 210 C40 158 50 100 58 40" stroke="#5A8050" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M34 210 Q10 193 14 172 Q32 187 34 210Z" fill="#7AAA66" opacity=".72"/>
+                    <path d="M38 170 Q12 152 16 130 Q36 148 38 170Z" fill="#6A9858" opacity=".68"/>
+                    <path d="M43 130 Q20 110 26 90 Q44 108 43 130Z" fill="#88B470" opacity=".62"/>
+                    <path d="M50 90 Q30 72 36 54 Q52 70 50 90Z" fill="#7AAA66" opacity=".58"/>
+                    <path d="M30 250 Q4 234 8 214 Q26 228 30 250Z" fill="#7AAA66" opacity=".66"/>
+                    <path d="M24 292 Q-2 276 4 256 Q22 272 24 292Z" fill="#6A9858" opacity=".6"/>
+                    <path d="M262 400 C252 340 254 275 246 210 C240 158 230 100 222 40" stroke="#5A8050" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M246 210 Q270 193 266 172 Q248 187 246 210Z" fill="#7AAA66" opacity=".72"/>
+                    <path d="M242 170 Q268 152 264 130 Q244 148 242 170Z" fill="#6A9858" opacity=".68"/>
+                    <path d="M237 130 Q260 110 254 90 Q236 108 237 130Z" fill="#88B470" opacity=".62"/>
+                    <path d="M230 90 Q250 72 244 54 Q228 70 230 90Z" fill="#7AAA66" opacity=".58"/>
+                    <path d="M250 250 Q276 234 272 214 Q254 228 250 250Z" fill="#7AAA66" opacity=".66"/>
+                    <path d="M256 292 Q282 276 276 256 Q258 272 256 292Z" fill="#6A9858" opacity=".6"/>
+                    <path d="M58 40 Q100 20 140 15 Q180 10 222 40" stroke="#5A8050" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".55"/>
+                    <path d="M130 14 Q120 0 112 8 Q124 12 130 14Z" fill="#7AAA66" opacity=".5"/>
+                    <path d="M150 14 Q160 0 168 8 Q156 12 150 14Z" fill="#6A9858" opacity=".5"/>
+                </svg>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.38em;color:#5A8050;text-transform:uppercase;margin-bottom:11px;">WE ARE GETTING MARRIED</p>
+                ${names('#3D6040','#4A6440')}
+            </div>
+            ${tap('rgba(61,96,64,0.45)')}
+        </div>`;
+
+        case 'romanticpink': return `
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#FFF0F4,#FFD8E4);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                <svg viewBox="0 0 260 290" fill="none" style="width:82%;max-width:270px;">
+                    <ellipse cx="130" cy="145" rx="96" ry="120" stroke="#D890A8" stroke-width="1.5"/>
+                    <ellipse cx="130" cy="145" rx="83" ry="104" stroke="#D890A8" stroke-width="0.5" opacity=".4"/>
+                    <path d="M50 65 Q80 50 108 30" stroke="#C2607A" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+                    <circle cx="56" cy="62" r="7" fill="#FFB8D0" opacity=".7"/>
+                    <circle cx="70" cy="53" r="6.5" fill="#FFD0E4" opacity=".75"/>
+                    <circle cx="85" cy="45" r="8" fill="#FFB8D0" opacity=".68"/>
+                    <g transform="translate(70,53)"><ellipse rx="5" ry="8" transform="rotate(0)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(72)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(144)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(216)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(288)" fill="#FFD0E4" opacity=".55"/><circle r="4" fill="#FFB8D0" opacity=".8"/></g>
+                    <path d="M210 65 Q180 50 152 30" stroke="#C2607A" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+                    <circle cx="204" cy="62" r="7" fill="#FFB8D0" opacity=".7"/>
+                    <circle cx="190" cy="53" r="6.5" fill="#FFD0E4" opacity=".75"/>
+                    <circle cx="175" cy="45" r="8" fill="#FFB8D0" opacity=".68"/>
+                    <g transform="translate(190,53)"><ellipse rx="5" ry="8" transform="rotate(0)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(72)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(144)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(216)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(288)" fill="#FFD0E4" opacity=".55"/><circle r="4" fill="#FFB8D0" opacity=".8"/></g>
+                    <ellipse cx="38" cy="122" rx="5" ry="8" transform="rotate(30,38,122)" fill="#FFD0E4" opacity=".45"/>
+                    <ellipse cx="222" cy="108" rx="4" ry="7" transform="rotate(-20,222,108)" fill="#FFB8D0" opacity=".4"/>
+                    <path d="M68 240 Q100 252 130 250 Q160 252 192 240" stroke="#C2607A" stroke-width="1" stroke-linecap="round" opacity=".38"/>
+                    <circle cx="100" cy="248" r="5" fill="#FFB8D0" opacity=".52"/>
+                    <circle cx="130" cy="251" r="6" fill="#FFD0E4" opacity=".58"/>
+                    <circle cx="160" cy="248" r="5" fill="#FFB8D0" opacity=".52"/>
+                </svg>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;">
+                <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.18em;color:#C2607A;margin-bottom:11px;">The Wedding of</p>
+                ${names('#C2607A','#986078')}
+            </div>
+            ${tap('rgba(194,96,122,0.45)')}
+        </div>`;
+
+        case 'modernminimal': return `
+        <div style="position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                <svg viewBox="0 0 200 240" fill="none" style="width:66%;max-width:200px;">
+                    <path d="M38 230 Q58 190 78 150 Q98 110 118 76 Q132 50 142 32" stroke="#909090" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M93 108 Q109 94 119 99 Q111 113 93 108Z" fill="#A8A898" opacity=".48"/>
+                    <path d="M107 84 Q124 70 132 77 Q124 90 107 84Z" fill="#A8A898" opacity=".44"/>
+                    <path d="M118 62 Q134 50 141 58 Q132 69 118 62Z" fill="#A8A898" opacity=".4"/>
+                    <path d="M71 135 Q54 122 55 112 Q68 118 71 135Z" fill="#B0B0A0" opacity=".44"/>
+                    <path d="M84 112 Q67 100 68 90 Q82 97 84 112Z" fill="#A8A898" opacity=".4"/>
+                    <circle cx="143" cy="33" r="3" fill="#888" opacity=".48"/>
+                    <circle cx="137" cy="39" r="2.5" fill="#888" opacity=".42"/>
+                    <circle cx="148" cy="27" r="2" fill="#888" opacity=".38"/>
+                </svg>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;">
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:7.5px;letter-spacing:.48em;color:#aaa;text-transform:uppercase;margin-bottom:11px;">WE ARE GETTING MARRIED</p>
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:23px;font-weight:300;color:#2a2a2a;line-height:1.6;letter-spacing:.08em;">${gr}<br>&amp;<br>${br}</p>
+                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:#666;line-height:2;">${dStr}<br>${tStr}</p>
+                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:#666;opacity:.82;">${vn}</p>
+            </div>
+            ${tap('#d0d0d0')}
+        </div>`;
+
+        case 'vintagewood': return `
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#3C2810 0%,#2C1A08 60%,#1E1208 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                <svg viewBox="0 0 200 230" fill="none" style="width:70%;max-width:210px;">
+                    <path d="M100 210 Q94 168 86 128 Q80 90 76 52" stroke="#D4A840" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M100 210 Q100 166 100 126 Q100 88 98 50" stroke="#D4A840" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M100 210 Q106 168 114 128 Q120 90 124 52" stroke="#D4A840" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M100 210 Q88 168 78 130 Q68 94 62 56" stroke="#C89820" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+                    <path d="M100 210 Q112 168 122 130 Q132 94 138 56" stroke="#C89820" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+                    <path d="M100 210 Q84 170 70 135 Q58 100 52 62" stroke="#B87800" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+                    <path d="M100 210 Q116 170 130 135 Q142 100 148 62" stroke="#B87800" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+                    <ellipse cx="76" cy="44" rx="5.5" ry="14" transform="rotate(-8,76,44)" fill="#D4A840" opacity=".78"/>
+                    <ellipse cx="87" cy="38" rx="5.5" ry="14" transform="rotate(-3,87,38)" fill="#D4A840" opacity=".84"/>
+                    <ellipse cx="99" cy="36" rx="5.5" ry="14" fill="#D4A840" opacity=".9"/>
+                    <ellipse cx="111" cy="38" rx="5.5" ry="14" transform="rotate(3,111,38)" fill="#D4A840" opacity=".84"/>
+                    <ellipse cx="122" cy="44" rx="5.5" ry="14" transform="rotate(8,122,44)" fill="#D4A840" opacity=".78"/>
+                    <ellipse cx="62" cy="54" rx="4" ry="12" transform="rotate(-14,62,54)" fill="#C89820" opacity=".6"/>
+                    <ellipse cx="138" cy="54" rx="4" ry="12" transform="rotate(14,138,54)" fill="#C89820" opacity=".6"/>
+                    <ellipse cx="52" cy="58" rx="7" ry="16" transform="rotate(-18,52,58)" fill="#E0C870" opacity=".5"/>
+                    <ellipse cx="148" cy="58" rx="7" ry="16" transform="rotate(18,148,58)" fill="#E0C870" opacity=".5"/>
+                    <path d="M74 190 Q100 184 126 190" stroke="#7A5020" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>
+                    <path d="M78 198 Q100 193 122 198" stroke="#7A5020" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+                    <path d="M88 190 Q78 178 84 170 Q94 180 88 190Z" fill="#5A3010" opacity=".65"/>
+                    <path d="M112 190 Q122 178 116 170 Q106 180 112 190Z" fill="#5A3010" opacity=".65"/>
+                    <circle cx="100" cy="189" r="4.5" fill="#3E1E08" opacity=".75"/>
+                </svg>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;">
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.42em;color:#A88040;text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
+                <p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:#F0DCA8;line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
+                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:#C8A870;line-height:2;">${dStr}<br>${tStr}</p>
+                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:#C8A870;opacity:.82;">${vn}</p>
+            </div>
+            ${tap('rgba(240,220,168,0.38)')}
+        </div>`;
+
+        case 'traditional': return `
+        <div style="position:absolute;inset:0;background:#FBF0D0;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
+                <svg viewBox="0 0 280 380" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;">
+                    <rect x="10" y="10" width="260" height="360" stroke="#C89820" stroke-width="1.5"/>
+                    <rect x="18" y="18" width="244" height="344" stroke="#C89820" stroke-width="0.6" opacity=".5"/>
+                    <line x1="10" y1="52" x2="270" y2="52" stroke="#C89820" stroke-width="0.5" opacity=".35"/>
+                    <line x1="10" y1="328" x2="270" y2="328" stroke="#C89820" stroke-width="0.5" opacity=".35"/>
+                    <line x1="10" y1="340" x2="270" y2="340" stroke="#C89820" stroke-width="0.5" opacity=".25"/>
+                    <path d="M47 10 L47 52 M94 10 L94 52 M141 10 L141 52 M188 10 L188 52 M235 10 L235 52" stroke="#C89820" stroke-width="0.5" opacity=".3"/>
+                    <path d="M47 328 L47 370 M94 328 L94 370 M141 328 L141 370 M188 328 L188 370 M235 328 L235 370" stroke="#C89820" stroke-width="0.5" opacity=".3"/>
+                    <path d="M28 31 L34 25 L40 31 L34 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M75 31 L81 25 L87 31 L81 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M122 31 L128 25 L134 31 L128 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M169 31 L175 25 L181 31 L175 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M216 31 L222 25 L228 31 L222 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M242 31 L248 25 L254 31 L248 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M28 349 L34 343 L40 349 L34 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M75 349 L81 343 L87 349 L81 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M122 349 L128 343 L134 349 L128 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M169 349 L175 343 L181 349 L175 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M216 349 L222 343 L228 349 L222 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                    <path d="M242 349 L248 343 L254 349 L248 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+                </svg>
+                <div style="text-align:center;position:relative;z-index:1;">
+                    <svg viewBox="0 0 100 120" fill="none" style="width:52px;display:block;margin:0 auto 4px;">
+                        <path d="M50 8 Q42 22 34 28 Q42 34 50 28 Q58 34 66 28 Q58 22 50 8Z" fill="#C89820" opacity=".8"/>
+                        <path d="M34 28 Q24 36 26 48 Q34 40 50 44 Q66 40 74 48 Q76 36 66 28 Q58 34 50 38 Q42 34 34 28Z" fill="#D4A840" opacity=".7"/>
+                        <path d="M50 44 Q34 48 32 58 Q50 56 68 58 Q66 48 50 44Z" fill="#C89820" opacity=".65"/>
+                        <line x1="44" y1="62" x2="44" y2="115" stroke="#8A6030" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+                        <line x1="47" y1="62" x2="45" y2="115" stroke="#8A6030" stroke-width="1" stroke-linecap="round" opacity=".6"/>
+                        <line x1="50" y1="62" x2="50" y2="115" stroke="#8A6030" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+                        <line x1="53" y1="62" x2="55" y2="115" stroke="#8A6030" stroke-width="1" stroke-linecap="round" opacity=".6"/>
+                        <line x1="56" y1="62" x2="56" y2="115" stroke="#8A6030" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+                        <rect x="40" y="58" width="20" height="5" rx="2.5" fill="#C89820" opacity=".8"/>
+                    </svg>
+                </div>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
+                <p style="font-family:'Gowun Batang',serif;font-size:8.5px;letter-spacing:.4em;color:#906800;text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
+                ${names('#B87800','#7A5020')}
+            </div>
+            ${tap('rgba(184,120,0,0.4)')}
+        </div>`;
+
+        case 'oceanwhisper': return `
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#A8D4F4 0%,#78B4E4 35%,#4E84C0 65%,#2A5898 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative;">
+                <svg viewBox="0 0 280 200" fill="none" preserveAspectRatio="xMidYMax meet" style="position:absolute;bottom:0;left:0;right:0;width:100%;">
+                    <path d="M0 100 Q35 80 70 100 Q105 120 140 100 Q175 80 210 100 Q245 120 280 100 L280 200 L0 200 Z" fill="#3A6CA8" opacity=".5"/>
+                    <path d="M0 120 Q40 105 80 120 Q120 135 160 120 Q200 105 240 120 Q260 128 280 120 L280 200 L0 200 Z" fill="#2A5898" opacity=".55"/>
+                    <path d="M0 145 Q45 132 90 145 Q135 158 180 145 Q225 132 280 145 L280 200 L0 200 Z" fill="#1A4888" opacity=".6"/>
+                    <path d="M0 100 Q35 80 70 100" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
+                    <path d="M70 100 Q105 120 140 100" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+                    <path d="M140 100 Q175 80 210 100" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
+                    <path d="M210 100 Q245 120 280 100" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+                    <path d="M72 42 Q80 37 88 42" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                    <path d="M156 30 Q164 25 172 30" stroke="rgba(255,255,255,0.45)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                    <path d="M204 55 Q210 51 216 55" stroke="rgba(255,255,255,0.35)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
+                <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.2em;color:rgba(255,255,255,0.8);margin-bottom:11px;">The Wedding of</p>
+                <p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:#fff;line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
+                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:rgba(255,255,255,0.78);line-height:2;">${dStr}<br>${tStr}</p>
+                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:rgba(255,255,255,0.72);">${vn}</p>
+            </div>
+            ${tap('rgba(255,255,255,0.38)')}
+        </div>`;
+
+        case 'autumn': return `
+        <div style="position:absolute;inset:0;background:linear-gradient(175deg,#F8CC60 0%,#E89830 45%,#C86020 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
+                <svg viewBox="0 0 280 360" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;">
+                    <path d="M0 360 L0 285 Q40 248 80 268 Q100 276 120 256 Q150 228 180 260 Q200 272 220 255 Q250 233 280 260 L280 360 Z" fill="rgba(0,0,0,0.18)"/>
+                    <g transform="translate(30,42) rotate(-15)"><path d="M0 0 C-6-11-20-9-17 0 C-20 0-22-13-13-16 C-13-24-4-27 0-20 C4-27 13-24 13-16 C22-13 20 0 17 0 C20-9 6-11 0 0Z" fill="#C83010" opacity=".88"/><line x1="0" y1="0" x2="0" y2="22" stroke="#9A1E08" stroke-width="0.9" opacity=".6"/></g>
+                    <g transform="translate(82,22) rotate(10)"><path d="M0 0 C-5-10-18-8-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-8 5-10 0 0Z" fill="#E06020" opacity=".82"/><line x1="0" y1="0" x2="0" y2="18" stroke="#B04010" stroke-width="0.9" opacity=".5"/></g>
+                    <g transform="translate(145,16) rotate(-5)"><path d="M0 0 C-7-13-22-10-19 0 C-22 0-24-14-15-18 C-15-26-5-29 0-22 C5-29 15-26 15-18 C24-14 22 0 19 0 C22-10 7-13 0 0Z" fill="#B82808" opacity=".88"/><line x1="0" y1="0" x2="0" y2="24" stroke="#8A1800" stroke-width="0.9" opacity=".5"/></g>
+                    <g transform="translate(205,32) rotate(22)"><path d="M0 0 C-5-10-18-8-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-8 5-10 0 0Z" fill="#E08020" opacity=".78"/></g>
+                    <g transform="translate(255,52) rotate(-12)"><path d="M0 0 C-4-8-14-6-12 0 C-14 0-16-10-9-12 C-9-18-3-20 0-15 C3-20 9-18 9-12 C16-10 14 0 12 0 C14-6 4-8 0 0Z" fill="#D06820" opacity=".72"/></g>
+                    <g transform="translate(56,66) rotate(28) scale(0.75)"><path d="M0 0 C-5-10-18-8-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-8 5-10 0 0Z" fill="#C84020" opacity=".7"/></g>
+                    <g transform="translate(172,56) rotate(-24) scale(0.7)"><path d="M0 0 C-5-10-18-8-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-8 5-10 0 0Z" fill="#E07030" opacity=".65"/></g>
+                </svg>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.42em;color:rgba(42,18,0,0.65);text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
+                <p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:#2A1200;line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
+                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:#5A2400;line-height:2;">${dStr}<br>${tStr}</p>
+                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:#5A2400;opacity:.85;">${vn}</p>
+            </div>
+            ${tap('rgba(42,18,0,0.35)')}
+        </div>`;
+
+        case 'winterdusk': return `
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#4A18A0 0%,#7828B8 20%,#C05880 55%,#E86840 78%,#1A0838 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative;">
+                <svg viewBox="0 0 280 260" fill="none" preserveAspectRatio="xMidYMax meet" style="position:absolute;bottom:0;left:0;right:0;width:100%;">
+                    <path d="M28 260 L28 188 L12 196 L28 170 L18 178 L32 148 L20 158 L36 122 L28 132 L46 82 L64 132 L56 122 L72 158 L60 148 L76 178 L66 170 L82 196 L68 188 L68 260 Z" fill="#120628" opacity=".88"/>
+                    <path d="M0 260 L0 204 L-10 210 L0 188 L-8 195 L4 170 L12 195 L4 188 L16 210 L6 204 L6 260 Z" fill="#120628" opacity=".72"/>
+                    <path d="M212 260 L212 188 L196 196 L212 170 L202 178 L216 148 L204 158 L220 122 L212 132 L230 82 L248 132 L240 122 L256 158 L244 148 L260 178 L250 170 L266 196 L252 188 L252 260 Z" fill="#120628" opacity=".88"/>
+                    <path d="M274 260 L274 204 L264 210 L274 188 L266 195 L278 170 L286 195 L278 188 L290 210 L280 204 L280 260 Z" fill="#120628" opacity=".72"/>
+                    <path d="M130 260 L130 200 L118 206 L130 182 L122 190 L134 162 L124 170 L138 138 L130 148 L146 102 L162 148 L154 138 L168 170 L158 162 L172 190 L164 182 L176 206 L164 200 L164 260 Z" fill="#120628" opacity=".94"/>
+                    <path d="M0 248 Q70 238 140 244 Q210 250 280 242 L280 260 L0 260 Z" fill="rgba(255,255,255,0.12)"/>
+                </svg>
+            </div>
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.42em;color:rgba(255,255,255,0.62);text-transform:uppercase;margin-bottom:11px;">WE ARE GETTING MARRIED</p>
+                <p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:#fff;line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
+                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:rgba(255,255,255,0.75);line-height:2;">${dStr}<br>${tStr}</p>
+                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:rgba(255,255,255,0.68);">${vn}</p>
+            </div>
+            ${tap('rgba(255,255,255,0.35)')}
+        </div>`;
+
+        default: return `
+            <div class="frame">
+                <span class="eyebrow">YOU ARE INVITED</span>
+                <div class="names-kr">${gr} <span class="heart">♥</span> ${br}</div>
+                <div class="sub-title">Wedding Invitation</div>
+                <span class="tap">화면을 눌러 청첩장을 열어보세요</span>
+            </div>`;
+        }
+    }
+
     /* ---- BUILD INVITATION HTML ---- */
     function buildHTML(){
         const t = THEMES[D.theme] || THEMES.classic;
@@ -2545,7 +2909,7 @@ body{font-family:var(--sans);color:var(--ink);background:${t.bodyBg};-webkit-fon
 .thread-fill{position:absolute;left:0;top:0;width:100%;height:0%;background:linear-gradient(to bottom,var(--sage),var(--wine));transition:height .15s linear;}
 .thread-mark{position:absolute;left:50%;top:0%;transform:translate(-50%,-50%);width:18px;height:18px;transition:top .15s linear;color:var(--wine);}
 .thread-mark svg{width:100%;height:100%;display:block;}
-#cover{position:fixed;inset:0;z-index:9999;background:var(--ivory);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:opacity 1s ease,visibility 1s ease;}
+#cover{position:fixed;inset:0;z-index:9999;cursor:pointer;transition:opacity 1s ease,visibility 1s ease;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 #cover.hide{opacity:0;visibility:hidden;pointer-events:none;}
 #cover .frame{width:min(78vw,300px);aspect-ratio:3/4;border:1px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;animation:coverIn 1.4s ease both;}
 @keyframes coverIn{from{opacity:0;transform:scale(.94);}to{opacity:1;transform:scale(1);}}
@@ -2667,14 +3031,7 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
   <!-- 하트 스크롤 제거됨 -->
 
   <div id="cover">
-    <div class="frame">
-      <span class="eyebrow">YOU ARE INVITED</span>
-      <div class="names-kr">
-        ${D.groom||'신랑'} <span class="heart">♥</span> ${D.bride||'신부'}
-      </div>
-      <div class="sub-title">Wedding Invitation</div>
-      <span class="tap">화면을 눌러 청첩장을 열어보세요</span>
-    </div>
+    ${getCoverHTML(D.theme, t, D, yyyy, mm, dd, dayKr, ampm, h12)}
   </div>
 
   <section id="hero" class="show">
