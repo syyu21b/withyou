@@ -29,7 +29,7 @@
     <meta name="twitter:image:alt" content="With You 모바일 청첩장 미리보기" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         /* ===== PAGE SWITCHING ===== */
         .page-view { display: none !important; }
@@ -208,9 +208,10 @@
 
         /* ===== Themes preview ===== */
         .themes{
-            display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+            display:grid; grid-template-columns:repeat(5,1fr); gap:16px;
         }
-        @media (max-width:860px){ .themes{grid-template-columns:repeat(2,1fr);} }
+        @media (max-width:1000px){ .themes{grid-template-columns:repeat(3,1fr);} }
+        @media (max-width:640px){ .themes{grid-template-columns:repeat(2,1fr);} }
         .theme-card{
             border-radius:12px; overflow:hidden; border:1px solid var(--line);
         }
@@ -219,14 +220,88 @@
         .theme-card .label{padding:14px 16px; font-size:13px; background:var(--paper);}
         .theme-card .label .name{font-family:var(--serif); font-size:15px; color:var(--ink); margin-bottom:2px;}
         .theme-card .label .desc{color:var(--ink-soft); font-size:12px;}
-        .swatch.t-classic{background:linear-gradient(160deg,#f8efe6,#e3c9c0); }
-        .swatch.t-classic span{color:#8B3A42; font-style:italic; font-family:var(--accent-font);}
-        .swatch.t-minimal{background:#ffffff; border-bottom:1px solid #eee;}
-        .swatch.t-minimal span{color:#222; font-family:var(--sans); font-weight:700; letter-spacing:.2em; font-size:13px;}
-        .swatch.t-glass{background:linear-gradient(135deg,#cdd9f4,#f5d3e0);}
-        .swatch.t-glass span{background:rgba(255,255,255,.45); padding:8px 18px; border-radius:999px; backdrop-filter:blur(6px); color:#5b5a8c; font-family:var(--sans); font-size:13px;}
-        .swatch.t-natural{background:linear-gradient(160deg,#eef3e4,#cfe0c2);}
-        .swatch.t-natural span{color:#5e7c4a; font-family:var(--serif);}
+        .swatch.t-classic{background:linear-gradient(160deg,#f8efe6,#e3c9c0);}
+        .swatch.t-classic span{color:#8B3A42;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:17px;}
+        .swatch.t-minimal{background:#fff;border-bottom:1px solid #e8e8e8;}
+        .swatch.t-minimal span{color:#111;font-family:'Noto Sans KR',sans-serif;font-weight:700;letter-spacing:.28em;font-size:11px;text-transform:uppercase;}
+        .swatch.t-blossom{background:linear-gradient(160deg,#ffe8f2,#ffcce0);position:relative;overflow:hidden;}
+        .swatch.t-blossom::before{content:'✿  ✿  ✿';position:absolute;top:30px;left:0;right:0;text-align:center;font-size:18px;color:rgba(192,80,122,.25);letter-spacing:8px;}
+        .swatch.t-blossom span{color:#B5446E;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;}
+        .swatch.t-rosegold{background:linear-gradient(135deg,#f9edea,#f0d8cc);}
+        .swatch.t-rosegold::before{content:'◆';position:absolute;font-size:56px;color:rgba(176,112,96,.12);top:50%;left:50%;transform:translate(-50%,-50%);}
+        .swatch.t-rosegold span{color:#B07060;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;}
+        .swatch.t-botanical{background:linear-gradient(160deg,#e6eddc,#c8d8b4);}
+        .swatch.t-botanical::before{content:'✦';position:absolute;font-size:60px;color:rgba(58,106,72,.12);top:50%;left:50%;transform:translate(-50%,-50%);}
+        .swatch.t-botanical span{color:#3A6A48;font-family:'Gowun Batang',serif;font-size:17px;position:relative;}
+        .swatch.t-ocean{background:linear-gradient(160deg,#e0eaf5,#b8ceea);}
+        .swatch.t-ocean::before{content:'〜  〜  〜';position:absolute;top:30px;left:0;right:0;text-align:center;font-size:14px;color:rgba(30,78,140,.2);letter-spacing:4px;}
+        .swatch.t-ocean span{color:#1E4E8C;font-family:'Noto Sans KR',sans-serif;font-weight:700;letter-spacing:.2em;font-size:11px;text-transform:uppercase;position:relative;}
+        .swatch.t-dark{background:linear-gradient(160deg,#2a2a2a,#181818);}
+        .swatch.t-dark::before{content:'✦';position:absolute;font-size:64px;color:rgba(212,175,55,.18);top:50%;left:50%;transform:translate(-50%,-50%);}
+        .swatch.t-dark span{color:#D4AF37;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;}
+        .swatch.t-sunset{background:linear-gradient(160deg,#fde8dc,#f8c8a0);}
+        .swatch.t-sunset::before{content:'◉';position:absolute;font-size:56px;color:rgba(194,90,48,.12);top:50%;left:50%;transform:translate(-50%,-50%);}
+        .swatch.t-sunset span{color:#C25A30;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;}
+        .swatch.t-lavender{background:linear-gradient(160deg,#ede8ff,#d8ccee);}
+        .swatch.t-lavender::before{content:'✿';position:absolute;font-size:64px;color:rgba(112,80,176,.15);top:50%;left:50%;transform:translate(-50%,-50%);}
+        .swatch.t-lavender span{color:#7050B0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;}
+        .swatch.t-vintage{background:linear-gradient(160deg,#ede3d0,#dcc8a8);}
+        .swatch.t-vintage::before{content:'❧';position:absolute;font-size:52px;color:rgba(122,74,42,.15);top:50%;left:50%;transform:translate(-50%,-50%);}
+        .swatch.t-vintage span{color:#7A4A2A;font-family:'Gowun Batang',serif;font-size:17px;position:relative;}
+
+        /* ===== Theme card hover + preview btn ===== */
+        .theme-card{cursor:pointer;transition:transform .2s,box-shadow .2s;}
+        .theme-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px -10px rgba(139,58,66,.2);}
+        .theme-card .preview-btn{
+            display:inline-block;margin-top:8px;padding:5px 14px;border-radius:999px;
+            border:1px solid var(--line);background:transparent;font-size:11px;
+            color:var(--wine-deep);letter-spacing:.06em;cursor:pointer;
+            transition:background .2s;font-family:var(--sans);
+        }
+        .theme-card .preview-btn:hover{background:var(--wine);color:#fff;border-color:var(--wine);}
+
+        /* ===== Theme preview modal ===== */
+        .t-modal{
+            position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;
+            opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;
+        }
+        .t-modal.open{opacity:1;visibility:visible;}
+        .t-modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);}
+        .t-modal-box{
+            position:relative;z-index:1;display:flex;gap:28px;align-items:flex-start;
+            background:var(--ivory);border-radius:20px;padding:28px;
+            box-shadow:0 40px 80px -20px rgba(0,0,0,.5);
+            max-width:640px;width:90vw;max-height:90vh;overflow-y:auto;
+        }
+        @media(max-width:640px){.t-modal-box{flex-direction:column;align-items:center;padding:20px;}}
+        .t-modal-close{
+            position:absolute;top:16px;right:16px;width:32px;height:32px;
+            border-radius:50%;border:1px solid var(--line);background:var(--paper);
+            font-size:16px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;
+        }
+        .t-modal-phone{flex-shrink:0;}
+        .t-modal-frame{
+            width:220px;border-radius:28px;background:#1a1a1a;padding:10px;
+            box-shadow:0 20px 50px -15px rgba(0,0,0,.5);
+        }
+        .t-modal-screen{
+            width:100%;height:440px;border-radius:20px;overflow:hidden;
+        }
+        .t-modal-screen iframe{width:100%;height:100%;border:none;display:block;}
+        .t-modal-info{flex:1;min-width:0;}
+        .t-modal-info h3{font-family:var(--serif);font-size:22px;color:var(--wine-deep);margin-bottom:6px;}
+        .t-modal-info p{font-size:13px;color:var(--ink-soft);line-height:1.7;margin-bottom:20px;}
+        .t-modal-use{
+            display:inline-flex;align-items:center;gap:8px;padding:12px 24px;
+            border-radius:999px;background:var(--wine);color:#fff;border:none;
+            font-size:13px;letter-spacing:.08em;cursor:pointer;transition:background .2s;
+        }
+        .t-modal-use:hover{background:var(--wine-deep);}
+        .t-modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+        .t-modal-tag{
+            padding:4px 12px;border-radius:999px;border:1px solid var(--line);
+            font-size:11px;color:var(--ink-soft);background:var(--paper);
+        }
 
         /* ===== CTA ===== */
         .cta-section{
@@ -357,23 +432,17 @@
         .sep{border:none; border-top:1px solid var(--line); margin:20px 0;}
 
         /* theme picker */
-        .theme-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px;}
+        .theme-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; max-height:360px; overflow-y:auto; padding-right:2px;}
+        .theme-grid::-webkit-scrollbar{width:3px;}.theme-grid::-webkit-scrollbar-thumb{background:var(--blush);border-radius:2px;}
         .theme-opt{
             border:2px solid var(--line); border-radius:8px; overflow:hidden; cursor:pointer;
-            transition:border-color .2s;
+            transition:border-color .2s, transform .15s;
         }
+        .theme-opt:hover{transform:scale(1.02);}
         .theme-opt.selected{border-color:var(--wine);}
-        .theme-opt .swatch{height:60px; display:flex; align-items:center; justify-content:center;}
-        .theme-opt .swatch span{font-size:11px; letter-spacing:.1em;}
-        .theme-opt .th-name{font-size:11px; padding:6px 8px; background:var(--paper); color:var(--ink-soft); text-align:center;}
-        .swatch.t-classic{background:linear-gradient(160deg,#f8efe6,#e3c9c0);}
-        .swatch.t-classic span{color:#8B3A42; font-family:var(--accent-font); font-style:italic;}
-        .swatch.t-minimal{background:#fff; border-bottom:1px solid #eee;}
-        .swatch.t-minimal span{color:#222; font-weight:700; letter-spacing:.18em; font-size:10px;}
-        .swatch.t-glass{background:linear-gradient(135deg,#cdd9f4,#f5d3e0);}
-        .swatch.t-glass span{background:rgba(255,255,255,.45); padding:4px 10px; border-radius:999px; color:#5b5a8c; font-size:10px;}
-        .swatch.t-natural{background:linear-gradient(160deg,#eef3e4,#cfe0c2);}
-        .swatch.t-natural span{color:#5e7c4a; font-family:var(--serif);}
+        .theme-opt .swatch{height:56px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
+        .theme-opt .swatch span{font-size:11px; letter-spacing:.08em; position:relative; z-index:1;}
+        .theme-opt .th-name{font-size:10px; padding:5px 6px; background:var(--paper); color:var(--ink-soft); text-align:center; line-height:1.3;}
 
         /* account sub-rows */
         .acc-entry{
@@ -618,7 +687,7 @@
                     <a href="#themes" class="btn-secondary">테마 둘러보기</a>
                 </div>
                 <div class="hero-meta">
-                    <div class="stat"><div class="num">4</div><div class="lab">SKIN THEMES</div></div>
+                    <div class="stat"><div class="num">10</div><div class="lab">SKIN THEMES</div></div>
                     <div class="stat"><div class="num">100%</div><div class="lab">MOBILE OPTIMIZED</div></div>
                     <div class="stat"><div class="num">실시간</div><div class="lab">LIVE PREVIEW</div></div>
                 </div>
@@ -692,8 +761,8 @@
                 </div>
                 <div class="feature-card">
                     <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7l8-4 8 4-8 4-8-4z"/><path d="M4 7v10l8 4 8-4V7"/></svg></div>
-                    <h3>4종 테마</h3>
-                    <p>클래식, 미니멀, 글래스모피즘, 내추럴까지 — 두 사람의 취향에 맞는 분위기를 선택할 수 있습니다.</p>
+                    <h3>10종 프리미엄 테마</h3>
+                    <p>클래식, 미니멀, 체리블로썸, 로즈골드, 보타니컬, 오션, 다크엘레강스, 선셋, 라벤더, 빈티지까지 — 두 사람의 취향에 맞는 분위기를 선택할 수 있습니다.</p>
                 </div>
             </div>
         </section>
@@ -703,27 +772,75 @@
             <div class="section-head">
                 <span class="eyebrow">Skins</span>
                 <h2>마음에 드는 분위기를 선택하세요</h2>
-                <p>제작 단계에서 언제든 테마를 바꿔보며 가장 우리다운 스타일을 찾을 수 있습니다.</p>
+                <p>10가지 프리미엄 테마 중 가장 우리다운 스타일을 골라 청첩장을 완성해보세요. 테마 클릭 시 전체 미리보기를 확인할 수 있습니다.</p>
             </div>
             <div class="themes">
-                <div class="theme-card">
+                <div class="theme-card" onclick="openThemePreview('classic')">
                     <div class="swatch t-classic"><span>With You</span></div>
-                    <div class="label"><div class="name">클래식 (명조)</div><div class="desc">아이보리 &amp; 와인, 차분하고 고급스러운 무드</div></div>
+                    <div class="label"><div class="name">클래식 명조</div><div class="desc">아이보리 &amp; 와인, 차분하고 고급스러운 무드</div><button class="preview-btn">미리보기</button></div>
                 </div>
-                <div class="theme-card">
+                <div class="theme-card" onclick="openThemePreview('minimal')">
                     <div class="swatch t-minimal"><span>WITH YOU</span></div>
-                    <div class="label"><div class="name">미니멀</div><div class="desc">화이트 베이스, 정돈된 타이포그래피</div></div>
+                    <div class="label"><div class="name">미니멀 모노</div><div class="desc">퓨어 화이트, 절제된 블랙 타이포그래피</div><button class="preview-btn">미리보기</button></div>
                 </div>
-                <div class="theme-card">
-                    <div class="swatch t-glass"><span>With You</span></div>
-                    <div class="label"><div class="name">글래스모피즘</div><div class="desc">파스텔 그라디언트와 반투명 카드</div></div>
+                <div class="theme-card" onclick="openThemePreview('blossom')">
+                    <div class="swatch t-blossom"><span>With You</span></div>
+                    <div class="label"><div class="name">체리블로썸</div><div class="desc">분홍 벚꽃, 봄날의 설레는 낭만</div><button class="preview-btn">미리보기</button></div>
                 </div>
-                <div class="theme-card">
-                    <div class="swatch t-natural"><span>With You</span></div>
-                    <div class="label"><div class="name">내추럴 (그린/플라워)</div><div class="desc">그린 톤과 플로럴 모티프, 자연스러운 분위기</div></div>
+                <div class="theme-card" onclick="openThemePreview('rosegold')">
+                    <div class="swatch t-rosegold"><span>With You</span></div>
+                    <div class="label"><div class="name">로즈골드</div><div class="desc">따뜻한 로즈골드, 메탈릭 럭셔리 감성</div><button class="preview-btn">미리보기</button></div>
+                </div>
+                <div class="theme-card" onclick="openThemePreview('botanical')">
+                    <div class="swatch t-botanical"><span>With You</span></div>
+                    <div class="label"><div class="name">보타니컬</div><div class="desc">깊은 숲의 초록, 자연스러운 보타닉 감성</div><button class="preview-btn">미리보기</button></div>
+                </div>
+                <div class="theme-card" onclick="openThemePreview('ocean')">
+                    <div class="swatch t-ocean"><span>WITH YOU</span></div>
+                    <div class="label"><div class="name">오션딥</div><div class="desc">고요한 네이비 &amp; 실버, 코스탈 럭셔리</div><button class="preview-btn">미리보기</button></div>
+                </div>
+                <div class="theme-card" onclick="openThemePreview('dark')">
+                    <div class="swatch t-dark"><span>With You</span></div>
+                    <div class="label"><div class="name">다크엘레강스</div><div class="desc">블랙 &amp; 골드, 압도적인 다크 럭셔리</div><button class="preview-btn">미리보기</button></div>
+                </div>
+                <div class="theme-card" onclick="openThemePreview('sunset')">
+                    <div class="swatch t-sunset"><span>With You</span></div>
+                    <div class="label"><div class="name">선셋코랄</div><div class="desc">노을빛 코랄, 따뜻하고 낭만적인 감성</div><button class="preview-btn">미리보기</button></div>
+                </div>
+                <div class="theme-card" onclick="openThemePreview('lavender')">
+                    <div class="swatch t-lavender"><span>With You</span></div>
+                    <div class="label"><div class="name">라벤더</div><div class="desc">은은한 라벤더, 몽환적인 퍼플 로맨스</div><button class="preview-btn">미리보기</button></div>
+                </div>
+                <div class="theme-card" onclick="openThemePreview('vintage')">
+                    <div class="swatch t-vintage"><span>With You</span></div>
+                    <div class="label"><div class="name">빈티지세피아</div><div class="desc">따뜻한 세피아, 고풍스러운 빈티지 감성</div><button class="preview-btn">미리보기</button></div>
                 </div>
             </div>
         </section>
+
+        <!-- ===== Theme Preview Modal ===== -->
+        <div id="themeModal" class="t-modal">
+            <div class="t-modal-backdrop" onclick="closeThemeModal()"></div>
+            <div class="t-modal-box">
+                <button class="t-modal-close" onclick="closeThemeModal()">✕</button>
+                <div class="t-modal-phone">
+                    <div class="t-modal-frame">
+                        <div class="t-modal-screen">
+                            <iframe id="themePreviewIframe" title="테마 미리보기"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-modal-info">
+                    <h3 id="tModalName">테마 이름</h3>
+                    <p id="tModalDesc">테마 설명</p>
+                    <div class="t-modal-tags" id="tModalTags"></div>
+                    <button class="t-modal-use" onclick="useThemeFromModal()">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        이 테마로 만들기
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <!-- ===== How it works ===== -->
         <section id="how">
@@ -823,23 +940,47 @@
                 <div class="panel-sub">신랑·신부 이름, 예식 일시, 장소를 입력하세요.</div>
 
                 <div class="field">
-                    <label>테마 선택</label>
+                    <label>테마 선택 <span style="font-size:10px;color:var(--sage-deep);">(스크롤하여 더 보기)</span></label>
                     <div class="theme-grid">
                         <div class="theme-opt selected" data-theme="classic">
                             <div class="swatch t-classic"><span>With You</span></div>
-                            <div class="th-name">클래식</div>
+                            <div class="th-name">클래식 명조</div>
                         </div>
                         <div class="theme-opt" data-theme="minimal">
                             <div class="swatch t-minimal"><span>WITH YOU</span></div>
-                            <div class="th-name">미니멀</div>
+                            <div class="th-name">미니멀 모노</div>
                         </div>
-                        <div class="theme-opt" data-theme="glass">
-                            <div class="swatch t-glass"><span>With You</span></div>
-                            <div class="th-name">글래스</div>
+                        <div class="theme-opt" data-theme="blossom">
+                            <div class="swatch t-blossom"><span>With You</span></div>
+                            <div class="th-name">체리블로썸</div>
                         </div>
-                        <div class="theme-opt" data-theme="natural">
-                            <div class="swatch t-natural"><span>With You</span></div>
-                            <div class="th-name">내추럴</div>
+                        <div class="theme-opt" data-theme="rosegold">
+                            <div class="swatch t-rosegold"><span>With You</span></div>
+                            <div class="th-name">로즈골드</div>
+                        </div>
+                        <div class="theme-opt" data-theme="botanical">
+                            <div class="swatch t-botanical"><span>With You</span></div>
+                            <div class="th-name">보타니컬</div>
+                        </div>
+                        <div class="theme-opt" data-theme="ocean">
+                            <div class="swatch t-ocean"><span>WITH YOU</span></div>
+                            <div class="th-name">오션딥</div>
+                        </div>
+                        <div class="theme-opt" data-theme="dark">
+                            <div class="swatch t-dark"><span>With You</span></div>
+                            <div class="th-name">다크엘레강스</div>
+                        </div>
+                        <div class="theme-opt" data-theme="sunset">
+                            <div class="swatch t-sunset"><span>With You</span></div>
+                            <div class="th-name">선셋코랄</div>
+                        </div>
+                        <div class="theme-opt" data-theme="lavender">
+                            <div class="swatch t-lavender"><span>With You</span></div>
+                            <div class="th-name">라벤더</div>
+                        </div>
+                        <div class="theme-opt" data-theme="vintage">
+                            <div class="swatch t-vintage"><span>With You</span></div>
+                            <div class="th-name">빈티지세피아</div>
                         </div>
                     </div>
                 </div>
@@ -1481,10 +1622,14 @@
     }
 
     /* ---- scroll preview to section ---- */
+    let previewReady = false;
     function scrollPreview(id){
         const iframe = document.getElementById('previewFrame');
-        pendingPreviewScrollId = id;
-        try { iframe.contentWindow.postMessage({type:'scrollTo', id:id}, '*'); } catch(e){}
+        if(previewReady){
+            try { iframe.contentWindow.postMessage({type:'scrollTo', id:id}, '*'); } catch(e){}
+        } else {
+            pendingPreviewScrollId = id;
+        }
     }
 
     /* ---- refresh debounce ---- */
@@ -1497,30 +1642,354 @@
     /* ---- THEME VARS ---- */
     const THEMES = {
         classic:{
+            name:'클래식 명조', desc:'아이보리 & 와인, 차분하고 고급스러운 무드', tags:['수수한','고전적','명조체'],
             ivory:'#FBF5EF', paper:'#F6EEE5', wine:'#8B3A42', wineDeep:'#6E2C33',
             blush:'#F3DCD4', sage:'#9CAF93', sageDeep:'#74876B', gold:'#C8A464',
             ink:'#3D332E', inkSoft:'#7A6F68', line:'rgba(139,58,66,0.16)',
-            bodyBg:'#F6EEE5',
+            bodyBg:'#F6EEE5', extraCSS:'',
         },
         minimal:{
-            ivory:'#FFFFFF', paper:'#F8F8F8', wine:'#222222', wineDeep:'#111111',
-            blush:'#EEEEEE', sage:'#888888', sageDeep:'#666666', gold:'#444444',
-            ink:'#111111', inkSoft:'#666666', line:'rgba(0,0,0,0.1)',
-            bodyBg:'#F0F0F0',
+            name:'미니멀 모노', desc:'퓨어 화이트, 절제된 블랙 타이포그래피', tags:['심플','현대적','세련된'],
+            ivory:'#FFFFFF', paper:'#F6F6F6', wine:'#1A1A1A', wineDeep:'#000000',
+            blush:'#E8E8E8', sage:'#888888', sageDeep:'#555555', gold:'#333333',
+            ink:'#0A0A0A', inkSoft:'#606060', line:'rgba(0,0,0,0.08)',
+            bodyBg:'#EDEDED',
+            extraCSS:`
+                .eyebrow{letter-spacing:.5em;font-style:normal;}
+                h2.title{font-family:'Noto Sans KR',sans-serif;font-weight:300;letter-spacing:.22em;font-size:20px;}
+                section+section{border-top:1px solid #e0e0e0;}
+                .cal{background:#fff;border:1px solid #e0e0e0;}
+                .acc-item{background:#fff;border-color:#e0e0e0;}
+                .rsvp-field input,.rsvp-field select,.rsvp-field textarea{background:#fff;}
+                .pill-btn{border-color:#ddd;}
+                .ddays .cell{background:#f0f0f0;border-radius:2px;}
+                #cover{background:#fff;}
+                #cover .frame{border-color:#e0e0e0;}
+                #cover .names-kr{color:#1a1a1a;}
+            `,
         },
-        glass:{
-            ivory:'#F0F4FF', paper:'#E8EEFF', wine:'#5B5A8C', wineDeep:'#3D3C70',
-            blush:'#F5D3E0', sage:'#A8B4D8', sageDeep:'#7A88BF', gold:'#B8A0D0',
-            ink:'#2A2A4A', inkSoft:'#6A6A8A', line:'rgba(91,90,140,0.15)',
-            bodyBg:'linear-gradient(135deg,#cdd9f4,#f5d3e0)',
+        blossom:{
+            name:'체리블로썸', desc:'분홍 벚꽃, 봄날의 설레는 낭만', tags:['로맨틱','봄','여성스러운'],
+            ivory:'#FFF5F8', paper:'#FFECF2', wine:'#B5446E', wineDeep:'#8C2F55',
+            blush:'#FFD4E5', sage:'#E0A4BE', sageDeep:'#C07898', gold:'#D88AA8',
+            ink:'#3A1828', inkSoft:'#9A5870', line:'rgba(181,68,110,0.15)',
+            bodyBg:'linear-gradient(160deg,#fff0f5,#ffdced)',
+            extraCSS:`
+                body{background:linear-gradient(160deg,#fff0f5,#ffdced);}
+                h2.title{font-family:'Cormorant Garamond',serif;font-style:italic;}
+                .hero-art{background:radial-gradient(120% 90% at 18% 12%,#ffd4e5,transparent 55%),linear-gradient(160deg,#fff5f8 0%,#ffd4e5 45%,#f8b8d0 100%)!important;}
+                .ddays .cell{background:linear-gradient(135deg,#ffd4e5,#f8b8d0);border-radius:50%;}
+                section+section{border-top:1px dashed rgba(181,68,110,0.2);}
+                .cal{background:#fff5f8;border-color:rgba(181,68,110,0.2);}
+                .submit-btn{background:linear-gradient(135deg,#B5446E,#8C2F55);}
+                #cover .frame{border-color:#D88AA8;}
+                #cover .names-kr{color:#B5446E;}
+                .acc-item{background:#fff5f8;}
+                .toggle-btn.active{background:#B5446E;border-color:#B5446E;}
+            `,
         },
-        natural:{
-            ivory:'#F4F7EE', paper:'#EBF0E2', wine:'#5E7C4A', wineDeep:'#435A34',
-            blush:'#D8E8C8', sage:'#8BAD72', sageDeep:'#6B9050', gold:'#A0B878',
-            ink:'#2C3820', inkSoft:'#5A6E48', line:'rgba(94,124,74,0.15)',
-            bodyBg:'#EBF0E2',
+        rosegold:{
+            name:'로즈골드', desc:'따뜻한 로즈골드, 메탈릭 럭셔리 감성', tags:['고급진','럭셔리','메탈릭'],
+            ivory:'#FFF8F5', paper:'#F9EEE8', wine:'#B07060', wineDeep:'#8A5248',
+            blush:'#F5D8CC', sage:'#D4A898', sageDeep:'#B48070', gold:'#C09068',
+            ink:'#3A2018', inkSoft:'#8A6055', line:'rgba(176,112,96,0.2)',
+            bodyBg:'linear-gradient(135deg,#fdf0e8,#f5e0d5)',
+            extraCSS:`
+                body{background:linear-gradient(135deg,#fdf0e8,#f5e0d5);}
+                h2.title{font-family:'Cormorant Garamond',serif;font-style:italic;}
+                .eyebrow{font-style:normal;letter-spacing:.3em;}
+                .ddays .cell{background:linear-gradient(135deg,#f5d8cc,#f0c8b8);}
+                .cal{background:linear-gradient(160deg,#fff8f5,#f5ece5);border-color:rgba(192,144,104,0.3);}
+                section+section{border-top:1px solid rgba(192,144,104,0.2);}
+                .pill-btn{border-color:rgba(192,144,104,0.4);}
+                .acc-item{background:#fff8f5;}
+                #cover .frame{border-color:#C09068;}
+                .submit-btn{background:linear-gradient(135deg,#B07060,#8A5248);}
+            `,
+        },
+        botanical:{
+            name:'보타니컬', desc:'깊은 숲의 초록, 자연스러운 보타닉 감성', tags:['자연','내추럴','수수한'],
+            ivory:'#F2F6EC', paper:'#E5EDD8', wine:'#3A6A48', wineDeep:'#285038',
+            blush:'#C8DABC', sage:'#74A882', sageDeep:'#507860', gold:'#8AAA68',
+            ink:'#1A2E18', inkSoft:'#4A6A50', line:'rgba(58,106,72,0.18)',
+            bodyBg:'#E5EDD8',
+            extraCSS:`
+                h2.title{font-family:'Gowun Batang',serif;}
+                .hero-art{background:radial-gradient(120% 90% at 18% 12%,#c8dabc,transparent 55%),linear-gradient(160deg,#f2f6ec 0%,#c8dabc 45%,#a8c490 100%)!important;}
+                .ddays .cell{background:linear-gradient(135deg,#c8dabc,#b0ca98);}
+                .cal{background:#f2f6ec;border-color:rgba(58,106,72,0.2);}
+                .acc-item{background:#f2f6ec;}
+                section{border-top:1px solid rgba(58,106,72,0.12);}
+                .toggle-btn.active{background:#3A6A48;border-color:#3A6A48;}
+                .submit-btn{background:linear-gradient(135deg,#3A6A48,#285038);}
+                #cover .frame{border-color:#8AAA68;}
+                #cover .names-kr{color:#3A6A48;}
+            `,
+        },
+        ocean:{
+            name:'오션딥', desc:'고요한 네이비 & 실버, 코스탈 럭셔리', tags:['고급진','바다','세련된'],
+            ivory:'#F0F5FA', paper:'#E0EAF5', wine:'#1E4E8C', wineDeep:'#0E3870',
+            blush:'#B8CEEA', sage:'#6898CC', sageDeep:'#3A70A8', gold:'#5890B8',
+            ink:'#08203A', inkSoft:'#305878', line:'rgba(30,78,140,0.18)',
+            bodyBg:'linear-gradient(160deg,#e0eaf5,#c8d8ec)',
+            extraCSS:`
+                body{background:linear-gradient(160deg,#e0eaf5,#c8d8ec);}
+                h2.title{font-family:'Noto Sans KR',sans-serif;font-weight:700;letter-spacing:.06em;}
+                .eyebrow{font-style:normal;letter-spacing:.35em;}
+                .ddays .cell{background:linear-gradient(135deg,#b8ceea,#90b8e0);}
+                .cal{background:#f0f5fa;border-color:rgba(30,78,140,0.2);}
+                section+section{border-top:1px solid rgba(30,78,140,0.12);}
+                .hero-art{background:linear-gradient(180deg,#e8f2ff 0%,#c0d8f0 50%,#a8c8e8 100%)!important;}
+                .acc-item{background:#f0f5fa;}
+                .toggle-btn.active{background:#1E4E8C;border-color:#1E4E8C;}
+                #cover .frame{border-color:#5890B8;}
+                #cover .names-kr{color:#1E4E8C;}
+                .submit-btn{background:linear-gradient(135deg,#1E4E8C,#0E3870);}
+            `,
+        },
+        dark:{
+            name:'다크엘레강스', desc:'블랙 & 골드, 압도적인 다크 럭셔리', tags:['고급진','시크','강렬한'],
+            ivory:'#1C1C1C', paper:'#262626', wine:'#D4AF37', wineDeep:'#B89220',
+            blush:'#3A3A3A', sage:'#907A38', sageDeep:'#806A28', gold:'#D4AF37',
+            ink:'#F0E8D0', inkSoft:'#C0B090', line:'rgba(212,175,55,0.25)',
+            bodyBg:'#141414',
+            extraCSS:`
+                body{background:#141414;}
+                .page{background:var(--ivory);box-shadow:0 0 80px rgba(0,0,0,0.8);}
+                section{border-top:1px solid rgba(212,175,55,0.15);}
+                h2.title{font-family:'Cormorant Garamond',serif;font-style:italic;color:#D4AF37!important;}
+                .eyebrow{font-style:normal;letter-spacing:.4em;color:#806A28!important;}
+                .ddays .cell{background:rgba(212,175,55,0.15);border:1px solid rgba(212,175,55,0.3);}
+                .cal{background:#262626;border-color:rgba(212,175,55,0.2);}
+                .cal-head{color:#D4AF37;}
+                .cal-grid .day.dday{background:#D4AF37;color:#1a1a1a;}
+                .acc-item{background:#262626;border-color:rgba(212,175,55,0.25);}
+                .acc-head .label{color:#F0E8D0;}
+                .acc-row .who,.acc-row .bank{color:#C0B090;}
+                .acc-row .num{color:#F0E8D0;}
+                .rsvp-field input,.rsvp-field select,.rsvp-field textarea{background:#262626;color:#F0E8D0;border-color:rgba(212,175,55,0.25);}
+                .hero-art{background:linear-gradient(160deg,#2a2a2a 0%,#1a1a1a 100%)!important;}
+                #cover{background:#1a1a1a;}
+                #cover .frame{border-color:#D4AF37;}
+                #cover .names-kr{color:#D4AF37;}
+                #cover .eyebrow{color:#806A28;}
+                #cover .sub-title{color:#C0B090;}
+                #cover .tap{color:rgba(212,175,55,0.4);}
+                .submit-btn{background:#D4AF37;color:#1a1a1a;}
+                .submit-btn:hover{background:#B89220;}
+                .copy-btn{border-color:rgba(212,175,55,0.4);color:#D4AF37;}
+                .pill-btn{border-color:rgba(212,175,55,0.35);color:#D4AF37;}
+                .pill-btn:hover{background:#D4AF37;color:#1a1a1a;border-color:#D4AF37;}
+                .family-card{border-color:rgba(212,175,55,0.15);}
+                .loc-info .row{border-color:rgba(212,175,55,0.15);}
+                .toggle-btn{border-color:rgba(212,175,55,0.3);color:#C0B090;}
+                .toggle-btn.active{background:#D4AF37;color:#1a1a1a;border-color:#D4AF37;}
+                .gallery-note{color:#C0B090;}
+                .rsvp-field label{color:#C0B090;}
+                .seg label{border-color:rgba(212,175,55,0.3);color:#C0B090;}
+                .seg input:checked+label{background:#D4AF37;color:#1a1a1a;border-color:#D4AF37;}
+                .cal-grid .dow{color:#C0B090;}
+                .cal-grid .day{color:#F0E8D0;}
+                .cal-foot{color:#C0B090;}
+                .loc-info .row .lab{color:#C0B090;}
+                #footer .mono{color:#D4AF37;}
+                #footer .names-kr{color:#F0E8D0;}
+                #footer .msg{color:#C0B090;}
+                #footer .copyright{color:#806A28;}
+                .dday-flag{color:#806A28;}
+            `,
+        },
+        sunset:{
+            name:'선셋코랄', desc:'노을빛 코랄, 따뜻하고 낭만적인 감성', tags:['로맨틱','따뜻한','활기찬'],
+            ivory:'#FFF5EE', paper:'#FDE8D8', wine:'#C25A30', wineDeep:'#9E4020',
+            blush:'#F8C8A0', sage:'#E0904A', sageDeep:'#C07038', gold:'#D88840',
+            ink:'#3C1A08', inkSoft:'#8A5028', line:'rgba(194,90,48,0.18)',
+            bodyBg:'linear-gradient(160deg,#fff0e8,#f8d8c0)',
+            extraCSS:`
+                body{background:linear-gradient(160deg,#fff0e8,#f8d8c0);}
+                h2.title{font-family:'Cormorant Garamond',serif;font-style:italic;}
+                .hero-art{background:linear-gradient(180deg,#fff0e8 0%,#f8c8a0 50%,#f0a878 100%)!important;}
+                .ddays .cell{background:linear-gradient(135deg,#f8c8a0,#f0a870);border-radius:4px;}
+                .cal{background:#fff5ee;border-color:rgba(194,90,48,0.2);}
+                section+section{border-top:1px solid rgba(194,90,48,0.12);}
+                .acc-item{background:#fff5ee;}
+                .submit-btn{background:linear-gradient(135deg,#C25A30,#9E4020);}
+                #cover .frame{border-color:#D88840;}
+                #cover .names-kr{color:#C25A30;}
+                .toggle-btn.active{background:#C25A30;border-color:#C25A30;}
+            `,
+        },
+        lavender:{
+            name:'라벤더', desc:'은은한 라벤더, 몽환적인 퍼플 로맨스', tags:['로맨틱','몽환적','우아한'],
+            ivory:'#F8F5FF', paper:'#EDE8FF', wine:'#7050B0', wineDeep:'#5038A0',
+            blush:'#D8CCEE', sage:'#A898D8', sageDeep:'#7870B8', gold:'#9888C8',
+            ink:'#280E48', inkSoft:'#6A5888', line:'rgba(112,80,176,0.16)',
+            bodyBg:'linear-gradient(160deg,#ede8ff,#d8ccee)',
+            extraCSS:`
+                body{background:linear-gradient(160deg,#ede8ff,#d8ccee);}
+                h2.title{font-family:'Cormorant Garamond',serif;font-style:italic;}
+                .ddays .cell{background:linear-gradient(135deg,#d8ccee,#c8b8e0);border-radius:50%;}
+                .cal{background:#f8f5ff;border-color:rgba(112,80,176,0.2);}
+                section+section{border-top:1px dashed rgba(112,80,176,0.15);}
+                .hero-art{background:radial-gradient(120% 90% at 18% 12%,#d8ccee,transparent 55%),linear-gradient(160deg,#f8f5ff 0%,#d8ccee 45%,#c0b0e0 100%)!important;}
+                .acc-item{background:#f8f5ff;}
+                .submit-btn{background:linear-gradient(135deg,#7050B0,#5038A0);}
+                #cover .frame{border-color:#9888C8;}
+                #cover .names-kr{color:#7050B0;}
+                .toggle-btn.active{background:#7050B0;border-color:#7050B0;}
+            `,
+        },
+        vintage:{
+            name:'빈티지세피아', desc:'따뜻한 세피아, 고풍스러운 빈티지 감성', tags:['빈티지','수수한','고풍스러운'],
+            ivory:'#F7F2EA', paper:'#EDE3D0', wine:'#7A4A2A', wineDeep:'#5E3418',
+            blush:'#DCC8A8', sage:'#A89068', sageDeep:'#887050', gold:'#B09060',
+            ink:'#2A1808', inkSoft:'#7A5E38', line:'rgba(122,74,42,0.18)',
+            bodyBg:'#EDE3D0',
+            extraCSS:`
+                h2.title{font-family:'Gowun Batang',serif;}
+                .eyebrow{font-style:normal;letter-spacing:.35em;}
+                .hero-art{background:radial-gradient(120% 90% at 18% 12%,#dcc8a8,transparent 55%),linear-gradient(160deg,#f7f2ea 0%,#dcc8a8 45%,#c8a878 100%)!important;}
+                .ddays .cell{background:linear-gradient(135deg,#dcc8a8,#c8b090);}
+                section+section{border-top:1px solid rgba(122,74,42,0.15);}
+                .cal{background:#f7f2ea;border-color:rgba(122,74,42,0.2);}
+                .acc-item{background:#f7f2ea;}
+                .submit-btn{background:linear-gradient(135deg,#7A4A2A,#5E3418);}
+                #cover .frame{border-color:#B09060;}
+                #cover .names-kr{color:#7A4A2A;}
+                .toggle-btn.active{background:#7A4A2A;border-color:#7A4A2A;}
+            `,
         },
     };
+
+    /* ---- THEME-SPECIFIC HERO SVG ---- */
+    function getHeroSVG(theme, t, gFirst, bFirst, yyyy, mm, dd){
+        const ds = `${yyyy} . ${String(mm).padStart(2,'0')} . ${String(dd).padStart(2,'0')}`;
+        const mono = `${gFirst} &amp; ${bFirst}`;
+        switch(theme){
+            case 'minimal':
+                return `<svg viewBox="0 0 300 300" fill="none" style="width:72%;max-width:280px;">
+                    <line x1="50" y1="125" x2="250" y2="125" stroke="${t.line}" stroke-width="1"/>
+                    <text x="150" y="170" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="58" fill="${t.wine}" opacity="0.9">${mono}</text>
+                    <line x1="50" y1="185" x2="250" y2="185" stroke="${t.line}" stroke-width="1"/>
+                    <text x="150" y="208" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="10" letter-spacing="5" fill="${t.inkSoft}">${ds}</text>
+                </svg>`;
+            case 'blossom':
+                return `<svg viewBox="0 0 320 380" fill="none" stroke-linecap="round" style="width:76%;max-width:300px;">
+                    <path d="M80 360 Q110 300 150 240 Q185 180 210 110" stroke="#C07898" stroke-width="2"/>
+                    <path d="M150 240 Q170 200 190 170" stroke="#C07898" stroke-width="1.5"/>
+                    <g transform="translate(210,108)">
+                        <ellipse rx="10" ry="16" transform="rotate(0)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5"/>
+                        <ellipse rx="10" ry="16" transform="rotate(72)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5"/>
+                        <ellipse rx="10" ry="16" transform="rotate(144)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5"/>
+                        <ellipse rx="10" ry="16" transform="rotate(216)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5"/>
+                        <ellipse rx="10" ry="16" transform="rotate(288)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5"/>
+                        <circle r="6" fill="${t.wine}" opacity="0.7"/>
+                    </g>
+                    <g transform="translate(170,165)">
+                        <ellipse rx="8" ry="13" transform="rotate(20)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5" opacity="0.8"/>
+                        <ellipse rx="8" ry="13" transform="rotate(92)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5" opacity="0.8"/>
+                        <ellipse rx="8" ry="13" transform="rotate(164)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5" opacity="0.8"/>
+                        <ellipse rx="8" ry="13" transform="rotate(236)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5" opacity="0.8"/>
+                        <ellipse rx="8" ry="13" transform="rotate(308)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5" opacity="0.8"/>
+                        <circle r="5" fill="${t.wine}" opacity="0.6"/>
+                    </g>
+                    <ellipse cx="100" cy="200" rx="7" ry="11" transform="rotate(45,100,200)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.4" opacity="0.5"/>
+                    <ellipse cx="240" cy="190" rx="6" ry="10" transform="rotate(-30,240,190)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.4" opacity="0.5"/>
+                    <ellipse cx="130" cy="290" rx="5" ry="9" transform="rotate(60,130,290)" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.4" opacity="0.4"/>
+                    <text x="160" y="318" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="28" fill="${t.wine}">${mono}</text>
+                    <text x="160" y="342" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="11" letter-spacing="3" fill="${t.inkSoft}">${ds}</text>
+                </svg>`;
+            case 'rosegold':
+                return `<svg viewBox="0 0 320 320" fill="none" style="width:72%;max-width:300px;">
+                    <rect x="80" y="80" width="160" height="160" transform="rotate(45 160 160)" stroke="${t.gold}" stroke-width="1" fill="none"/>
+                    <rect x="95" y="95" width="130" height="130" transform="rotate(45 160 160)" stroke="${t.gold}" stroke-width="0.5" fill="none" opacity="0.5"/>
+                    <circle cx="160" cy="160" r="60" stroke="${t.line}" stroke-width="0.8" fill="none"/>
+                    <text x="160" y="155" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="32" fill="${t.wine}">${mono}</text>
+                    <text x="160" y="180" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="10" letter-spacing="4" fill="${t.inkSoft}">${ds}</text>
+                    <circle cx="160" cy="80" r="4" fill="${t.gold}"/><circle cx="160" cy="240" r="4" fill="${t.gold}"/>
+                    <circle cx="80" cy="160" r="4" fill="${t.gold}"/><circle cx="240" cy="160" r="4" fill="${t.gold}"/>
+                </svg>`;
+            case 'botanical':
+                return `<svg viewBox="0 0 320 320" fill="none" style="width:72%;max-width:300px;">
+                    <path d="M100 280 C80 220 100 160 160 140" stroke="${t.sageDeep}" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M220 280 C240 220 220 160 160 140" stroke="${t.sageDeep}" stroke-width="1.5" stroke-linecap="round"/>
+                    <ellipse cx="120" cy="200" rx="22" ry="12" transform="rotate(-40,120,200)" fill="${t.blush}" stroke="${t.sageDeep}" stroke-width="0.8"/>
+                    <ellipse cx="100" cy="240" rx="18" ry="10" transform="rotate(-50,100,240)" fill="${t.blush}" stroke="${t.sageDeep}" stroke-width="0.8"/>
+                    <ellipse cx="200" cy="200" rx="22" ry="12" transform="rotate(40,200,200)" fill="${t.blush}" stroke="${t.sageDeep}" stroke-width="0.8"/>
+                    <ellipse cx="220" cy="240" rx="18" ry="10" transform="rotate(50,220,240)" fill="${t.blush}" stroke="${t.sageDeep}" stroke-width="0.8"/>
+                    <ellipse cx="140" cy="175" rx="16" ry="9" transform="rotate(-20,140,175)" fill="${t.sage}" stroke="${t.sageDeep}" stroke-width="0.8" opacity="0.7"/>
+                    <ellipse cx="180" cy="175" rx="16" ry="9" transform="rotate(20,180,175)" fill="${t.sage}" stroke="${t.sageDeep}" stroke-width="0.8" opacity="0.7"/>
+                    <text x="160" y="138" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="30" fill="${t.wine}">${mono}</text>
+                    <text x="160" y="158" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="10" letter-spacing="3" fill="${t.inkSoft}">${ds}</text>
+                </svg>`;
+            case 'ocean':
+                return `<svg viewBox="0 0 320 320" fill="none" style="width:72%;max-width:300px;">
+                    <path d="M60 220 Q90 210 120 220 Q150 230 180 220 Q210 210 240 220 Q270 230 300 220" stroke="${t.sage}" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M60 235 Q90 225 120 235 Q150 245 180 235 Q210 225 240 235 Q270 245 300 235" stroke="${t.sage}" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                    <path d="M60 250 Q90 240 120 250 Q150 260 180 250 Q210 240 240 250 Q270 260 300 250" stroke="${t.sage}" stroke-width="0.6" stroke-linecap="round" opacity="0.4"/>
+                    <circle cx="160" cy="130" r="45" stroke="${t.wine}" stroke-width="0.8" fill="none" stroke-dasharray="3 4"/>
+                    <text x="160" y="125" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-weight="700" font-size="14" letter-spacing="6" fill="${t.wine}">${mono}</text>
+                    <text x="160" y="148" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="10" letter-spacing="4" fill="${t.inkSoft}">${ds}</text>
+                </svg>`;
+            case 'dark':
+                return `<svg viewBox="0 0 320 320" fill="none" style="width:72%;max-width:300px;">
+                    <g stroke="${t.gold}" stroke-width="0.8" opacity="0.4">
+                        ${[0,30,60,90,120,150].map(a=>`<line x1="160" y1="160" x2="${160+90*Math.cos(a*Math.PI/180)}" y2="${160+90*Math.sin(a*Math.PI/180)}"/><line x1="160" y1="160" x2="${160-90*Math.cos(a*Math.PI/180)}" y2="${160-90*Math.sin(a*Math.PI/180)}"/>`).join('')}
+                    </g>
+                    <polygon points="160,80 175,148 245,148 188,190 210,258 160,215 110,258 132,190 75,148 145,148" stroke="${t.gold}" stroke-width="1" fill="none"/>
+                    <circle cx="160" cy="160" r="35" stroke="${t.gold}" stroke-width="0.8" fill="none"/>
+                    <text x="160" y="155" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="22" fill="${t.gold}">${mono}</text>
+                    <text x="160" y="175" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="9" letter-spacing="4" fill="${t.inkSoft}">${ds}</text>
+                </svg>`;
+            case 'sunset':
+                return `<svg viewBox="0 0 320 320" fill="none" style="width:72%;max-width:300px;">
+                    <path d="M40 230 L160 130 L280 230 Z" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.8" opacity="0.6"/>
+                    <path d="M20 255 L160 175 L300 255 Z" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.5" opacity="0.4"/>
+                    <circle cx="160" cy="115" r="38" fill="${t.blush}" stroke="${t.wine}" stroke-width="1"/>
+                    ${[0,30,60,90,120,150,180,210,240,270,300,330].map(a=>`<line x1="${160+44*Math.cos(a*Math.PI/180)}" y1="${115+44*Math.sin(a*Math.PI/180)}" x2="${160+55*Math.cos(a*Math.PI/180)}" y2="${115+55*Math.sin(a*Math.PI/180)}" stroke="${t.gold}" stroke-width="1.2" stroke-linecap="round"/>`).join('')}
+                    <text x="160" y="112" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="22" fill="${t.wine}">${mono}</text>
+                    <text x="160" y="130" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="9" letter-spacing="3" fill="${t.wineDeep}">${ds}</text>
+                </svg>`;
+            case 'lavender':
+                return `<svg viewBox="0 0 320 360" fill="none" stroke-linecap="round" style="width:72%;max-width:290px;">
+                    <path d="M160 310 L160 180" stroke="${t.sageDeep}" stroke-width="1.8"/>
+                    <path d="M160 280 Q145 265 135 245 Q130 230 140 220" stroke="${t.sageDeep}" stroke-width="1.2"/>
+                    <path d="M160 260 Q175 245 185 225 Q190 210 180 200" stroke="${t.sageDeep}" stroke-width="1.2"/>
+                    ${[0,1,2,3,4].map(i=>`
+                    <ellipse cx="160" cy="${175-i*14}" rx="8" ry="14" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.6"/>
+                    <ellipse cx="148" cy="${182-i*14}" rx="7" ry="12" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.6" opacity="0.8"/>
+                    <ellipse cx="172" cy="${182-i*14}" rx="7" ry="12" fill="${t.blush}" stroke="${t.wine}" stroke-width="0.6" opacity="0.8"/>`).join('')}
+                    <text x="160" y="330" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="26" fill="${t.wine}">${mono}</text>
+                    <text x="160" y="350" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="10" letter-spacing="3" fill="${t.inkSoft}">${ds}</text>
+                </svg>`;
+            case 'vintage':
+                return `<svg viewBox="0 0 320 320" fill="none" style="width:72%;max-width:300px;">
+                    <rect x="40" y="40" width="240" height="240" stroke="${t.gold}" stroke-width="1" fill="none"/>
+                    <rect x="50" y="50" width="220" height="220" stroke="${t.gold}" stroke-width="0.4" fill="none"/>
+                    <path d="M40 40 Q70 70 100 40" stroke="${t.gold}" stroke-width="0.8" fill="none"/>
+                    <path d="M280 40 Q250 70 220 40" stroke="${t.gold}" stroke-width="0.8" fill="none"/>
+                    <path d="M40 280 Q70 250 100 280" stroke="${t.gold}" stroke-width="0.8" fill="none"/>
+                    <path d="M280 280 Q250 250 220 280" stroke="${t.gold}" stroke-width="0.8" fill="none"/>
+                    <ellipse cx="160" cy="110" rx="30" ry="20" stroke="${t.sageDeep}" stroke-width="0.8" fill="none"/>
+                    <ellipse cx="130" cy="130" rx="16" ry="10" transform="rotate(-30,130,130)" stroke="${t.sageDeep}" stroke-width="0.7" fill="${t.blush}" opacity="0.5"/>
+                    <ellipse cx="190" cy="130" rx="16" ry="10" transform="rotate(30,190,130)" stroke="${t.sageDeep}" stroke-width="0.7" fill="${t.blush}" opacity="0.5"/>
+                    <text x="160" y="178" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="30" fill="${t.wine}">${mono}</text>
+                    <text x="160" y="200" text-anchor="middle" font-family="Gowun Batang,serif" font-size="11" letter-spacing="3" fill="${t.inkSoft}">${ds}</text>
+                </svg>`;
+            default: /* classic */
+                return `<svg class="wreath" viewBox="0 0 320 320" fill="none" stroke="${t.wine}" stroke-width="1.4" stroke-linecap="round" style="width:78%;max-width:320px;">
+                    <g opacity="0.55">
+                        <path d="M60 160c-10-40 10-80 50-90"/><path d="M70 150c10-8 24-8 32 2"/>
+                        <path d="M260 160c10-40-10-80-50-90"/><path d="M250 150c-10-8-24-8-32 2"/>
+                        <path d="M110 250c-30-10-50-40-46-78"/><path d="M210 250c30-10 50-40 46-78"/>
+                    </g>
+                    <g stroke="${t.sage}"><ellipse cx="92" cy="120" rx="10" ry="16" transform="rotate(-30 92 120)"/><ellipse cx="228" cy="120" rx="10" ry="16" transform="rotate(30 228 120)"/></g>
+                    <g stroke="${t.gold}"><circle cx="160" cy="90" r="14"/><circle cx="160" cy="90" r="5"/><path d="M146 90h-10M174 90h10M160 76v-10M160 104v10"/></g>
+                    <text x="160" y="170" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="26" fill="${t.wine}" stroke="none">${mono}</text>
+                    <text x="160" y="192" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" letter-spacing="3" fill="${t.inkSoft}" stroke="none">${ds}</text>
+                </svg>`;
+        }
+    }
 
     /* ---- BUILD INVITATION HTML ---- */
     function buildHTML(){
@@ -1578,6 +2047,9 @@
 
         /* greeting lines */
         const greetingLines = (D.greeting||'').split('\n').map(l=> `<p>${l||'&nbsp;'}</p>`).join('');
+
+        /* theme hero svg */
+        const heroSVG = D.heroImgB64 ? '' : getHeroSVG(D.theme, t, gFirst, bFirst, yyyy, mm, dd);
 
         /* hero art */
         const heroArt = D.heroImgB64
@@ -1643,6 +2115,7 @@
   --max-w:480px;
 }
 *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+${t.extraCSS||''}
 body{font-family:var(--sans);color:var(--ink);background:${t.bodyBg};-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 .page{max-width:var(--max-w);margin:0 auto;background:var(--ivory);position:relative;min-height:100vh;box-shadow:0 0 60px rgba(0,0,0,0.08);overflow:hidden;}
 @media(min-width:540px){body{background:${t.bodyBg};}.page{margin:24px auto;min-height:calc(100vh - 48px);border-radius:6px;}}
@@ -1769,17 +2242,7 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
 
   <section id="hero" class="show">
     ${heroArt}
-      <svg class="wreath" viewBox="0 0 320 320" fill="none" stroke="${t.wine}" stroke-width="1.4" stroke-linecap="round" style="width:78%;max-width:320px;${D.heroImgB64?'display:none;':''}">
-        <g opacity="0.55">
-          <path d="M60 160c-10-40 10-80 50-90"/><path d="M70 150c10-8 24-8 32 2"/>
-          <path d="M260 160c10-40-10-80-50-90"/><path d="M250 150c-10-8-24-8-32 2"/>
-          <path d="M110 250c-30-10-50-40-46-78"/><path d="M210 250c30-10 50-40 46-78"/>
-        </g>
-        <g stroke="${t.sage}"><ellipse cx="92" cy="120" rx="10" ry="16" transform="rotate(-30 92 120)"/><ellipse cx="228" cy="120" rx="10" ry="16" transform="rotate(30 228 120)"/></g>
-        <g stroke="${t.gold}"><circle cx="160" cy="90" r="14"/><circle cx="160" cy="90" r="5"/><path d="M146 90h-10M174 90h10M160 76v-10M160 104v10"/></g>
-        <text x="160" y="170" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="26" fill="${t.wine}" stroke="none">${gFirst} &amp; ${bFirst}</text>
-        <text x="160" y="192" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" letter-spacing="3" fill="${t.inkSoft}" stroke="none">${yyyy} . ${String(mm).padStart(2,'0')} . ${String(dd).padStart(2,'0')}</text>
-      </svg>
+      ${heroSVG}
     </div>
     <div class="hero-meta">
       <span class="eyebrow">With You — Wedding Invitation</span>
@@ -1990,12 +2453,14 @@ window.addEventListener('message',function(e){if(e.data&&e.data.type==='scrollTo
 
     /* ---- refresh iframe ---- */
     function refreshPreview(){
+        previewReady = false;
         const html = buildHTML();
         const blob = new Blob([html], {type:'text/html'});
         const url = URL.createObjectURL(blob);
         const iframe = document.getElementById('previewFrame');
         iframe.onload = function(){
             URL.revokeObjectURL(url);
+            previewReady = true;
             iframe.onload = null;
             if (pendingPreviewScrollId) {
                 const targetId = pendingPreviewScrollId;
@@ -2092,6 +2557,52 @@ window.addEventListener('message',function(e){if(e.data&&e.data.type==='scrollTo
         clearTimeout(window._bt);
         window._bt = setTimeout(()=> t.classList.remove('show'), 2200);
     }
+
+    /* ---- theme preview modal (landing) ---- */
+    let _currentModalTheme = null;
+
+    function openThemePreview(themeId){
+        const th = THEMES[themeId];
+        if(!th) return;
+        _currentModalTheme = themeId;
+        document.getElementById('tModalName').textContent = th.name;
+        document.getElementById('tModalDesc').textContent = th.desc;
+        const tagsEl = document.getElementById('tModalTags');
+        tagsEl.innerHTML = (th.tags||[]).map(t=>`<span class="t-modal-tag">${t}</span>`).join('');
+
+        const savedTheme = D.theme;
+        D.theme = themeId;
+        const html = buildHTML();
+        D.theme = savedTheme;
+
+        const blob = new Blob([html],{type:'text/html'});
+        const url = URL.createObjectURL(blob);
+        const iframe = document.getElementById('themePreviewIframe');
+        iframe.src = url;
+        iframe.onload = ()=>{ URL.revokeObjectURL(url); iframe.onload=null; };
+
+        document.getElementById('themeModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeThemeModal(){
+        document.getElementById('themeModal').classList.remove('open');
+        document.body.style.overflow = '';
+        _currentModalTheme = null;
+    }
+
+    function useThemeFromModal(){
+        if(!_currentModalTheme) return;
+        D.theme = _currentModalTheme;
+        document.querySelectorAll('.theme-opt').forEach(opt=>{
+            opt.classList.toggle('selected', opt.dataset.theme === _currentModalTheme);
+        });
+        closeThemeModal();
+        showBuilder();
+        scheduleRefresh();
+    }
+
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeThemeModal(); });
 
     /* ---- initial load ---- */
     document.addEventListener('DOMContentLoaded', () => {
