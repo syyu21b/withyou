@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>With You — 모바일 청첩장</title>
     <meta name="description" content="두 사람의 이야기를, 가장 아름다운 모바일 청첩장으로. 사진 업로드부터 디데이 카운트다운, 갤러리, 계좌 안내, 참석 여부 확인까지." />
     <link rel="canonical" href="https://young-union-8a76.syyu21b.workers.dev/" />
@@ -646,6 +646,102 @@
         }
         @keyframes spin{to{transform:rotate(360deg);}}
 
+        /* ============================================================
+           MOBILE & TOUCH COMPATIBILITY
+           ============================================================ */
+        html{overflow-x:hidden;}
+        body{overflow-x:hidden;}
+
+        /* iOS dynamic viewport height */
+        #builder-view.active{
+            height:100vh;
+            height:100dvh;
+        }
+        #builder-view.active{overscroll-behavior:none;}
+
+        /* Touch-action & tap highlight on all interactive elements */
+        button,a,
+        .sec-item,.theme-opt,.theme-card,.suggest-item,
+        .upload-zone,.add-row-btn,.preview-btn,.swipe-nav,
+        .toggle .slider,.nav-cta{
+            touch-action:manipulation;
+            -webkit-tap-highlight-color:transparent;
+        }
+
+        /* iOS smooth scroll on scrollable containers */
+        .editor,.preview-wrap,.theme-grid,.sections-panel{
+            -webkit-overflow-scrolling:touch;
+        }
+
+        /* Phone frame — responsive so it never overflows on small phones */
+        .phone-frame{
+            width:min(var(--preview), calc(100vw - 40px));
+        }
+
+        /* Editor backdrop for mobile (closes panel when tapping preview) */
+        .editor-backdrop{
+            display:none;
+            position:fixed;
+            inset:0;
+            top:56px;
+            background:rgba(0,0,0,.45);
+            z-index:145;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .editor-backdrop.visible{display:block;}
+
+        /* Gallery swipe arrows — 44px min tap target on mobile */
+        @media(max-width:860px){
+            .swipe-nav{width:44px;height:44px;}
+            .preview-wrap{padding:20px 12px;}
+        }
+
+        /* iOS input zoom prevention (< 16px triggers auto-zoom) */
+        @media(max-width:860px){
+            .field input[type=text],
+            .field input[type=date],
+            .field input[type=time],
+            .field select,
+            .field textarea{
+                font-size:16px;
+            }
+        }
+
+        /* Theme modal on very small phones */
+        @media(max-width:480px){
+            .t-modal-box{padding:16px;gap:16px;border-radius:16px;}
+            .t-modal-frame{width:min(320px,78vw);}
+            .t-modal-screen{height:390px;}
+            .t-modal-info h3{font-size:17px;}
+            .t-modal-info p{font-size:12px;}
+        }
+
+        /* Topbar on very small screens */
+        @media(max-width:380px){
+            .topbar{padding:0 10px;}
+            .topbar .logo{font-size:17px;}
+            .btn-download{padding:8px 14px;font-size:12px;}
+        }
+
+        /* Landing hero & sections on narrow phones */
+        @media(max-width:480px){
+            .hero h1{font-size:26px;}
+            .hero .lead{font-size:14px;}
+            section{padding:48px 0;}
+            .cta-section{margin:0 12px;padding:48px 20px;}
+            .cta-section h2{font-size:22px;}
+        }
+
+        /* iOS notch safe area padding */
+        @supports(padding:env(safe-area-inset-bottom)){
+            .topbar{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right));}
+            .wrap{
+                padding-left:max(20px,env(safe-area-inset-left));
+                padding-right:max(20px,env(safe-area-inset-right));
+            }
+            #bToast{bottom:max(24px,env(safe-area-inset-bottom));}
+        }
+
     </style>
 </head>
 <body>
@@ -929,6 +1025,9 @@
             </button>
         </div>
     </div>
+
+    <!-- Editor backdrop (mobile: tap to close panel) -->
+    <div class="editor-backdrop" id="editorBackdrop" onclick="closeEditorPanel()"></div>
 
     <!-- ============================================================
          BUILDER LAYOUT
@@ -1721,8 +1820,15 @@
     });
 
     /* ---- mobile editor toggle ---- */
+    function closeEditorPanel(){
+        document.getElementById('editorPanel').classList.remove('open');
+        document.getElementById('editorBackdrop').classList.remove('visible');
+    }
     document.getElementById('editorToggle').addEventListener('click', ()=>{
-        document.getElementById('editorPanel').classList.toggle('open');
+        const panel = document.getElementById('editorPanel');
+        const backdrop = document.getElementById('editorBackdrop');
+        const isOpen = panel.classList.toggle('open');
+        backdrop.classList.toggle('visible', isOpen);
     });
 
     /* ---- device view ---- */
