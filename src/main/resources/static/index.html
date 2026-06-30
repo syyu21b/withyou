@@ -2445,7 +2445,17 @@ const icsBtn=document.getElementById('icsBtn');
 if(icsBtn)icsBtn.addEventListener('click',()=>{const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','SUMMARY:${D.groom} · ${D.bride} 결혼식','DTSTART:${weddingISO.replace(/[-:]/g,'').replace('+0900','').slice(0,13)}0000Z','LOCATION:${D.venueName} ${D.venueHall}','DESCRIPTION:With You - Wedding Invitation','END:VEVENT','END:VCALENDAR'].join('\\r\\n');const blob=new Blob([ics],{type:'text/calendar'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='wedding.ics';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);showToast('캘린더 파일이 다운로드되었습니다');});
 ${D.showRsvp?`document.getElementById('rsvpForm').addEventListener('submit',(e)=>{e.preventDefault();document.getElementById('rsvpForm').style.display='none';document.getElementById('rsvpThanks').style.display='block';});`:''}
 
-window.addEventListener('message',function(e){if(e.data&&e.data.type==='scrollTo'){var el=document.getElementById(e.data.id);if(el)el.scrollIntoView({behavior:'smooth'});}});
+window.addEventListener('message',function(e){
+  if(e.data&&e.data.type==='scrollTo'){
+    var cover=document.getElementById('cover');
+    if(cover&&!cover.classList.contains('hide')){
+      cover.classList.add('hide');
+      setTimeout(function(){var el=document.getElementById(e.data.id);if(el)el.scrollIntoView({behavior:'smooth'});},350);
+    } else {
+      var el=document.getElementById(e.data.id);if(el)el.scrollIntoView({behavior:'smooth'});
+    }
+  }
+});
 <\/script>
 </body>
 </html>`;
