@@ -91,6 +91,14 @@
             font-size:13px; letter-spacing:.08em; transition:background .2s;
         }
         .nav-cta:hover{background:var(--wine-deep);}
+        .ui-lang-sw{position:relative;display:flex;align-items:center;}
+        .ui-lang-btn{display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;font-size:13px;color:var(--ink-soft);cursor:pointer;font-family:var(--sans);letter-spacing:.04em;transition:border-color .2s,color .2s;}
+        .ui-lang-btn:hover{border-color:var(--wine);color:var(--wine);}
+        .ui-lang-pop{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.14);border:1px solid rgba(0,0,0,0.07);overflow:hidden;min-width:140px;z-index:200;}
+        .ui-lang-pop.open{display:block;}
+        .ui-lang-opt{display:block;padding:10px 16px;border:none;background:none;font-size:14px;cursor:pointer;white-space:nowrap;width:100%;text-align:left;font-family:var(--sans);transition:background .15s;color:var(--ink);}
+        .ui-lang-opt:hover{background:var(--blush);}
+        .ui-lang-opt.active{font-weight:700;color:var(--wine);}
         @media (max-width:720px){
             .nav-links a:not(.nav-cta){display:none;}
         }
@@ -803,11 +811,22 @@
                 With You
             </a>
             <nav class="nav-links">
-                <a href="#features">기능</a>
-                <a href="#themes">테마</a>
-                <a href="#how">이용 방법</a>
-                <a href="#" onclick="showBuilder(); return false;" class="nav-cta">청첩장 만들기</a>
+                <a href="#features" data-ui-i18n="navFeatures">기능</a>
+                <a href="#themes" data-ui-i18n="navThemes">테마</a>
+                <a href="#how" data-ui-i18n="navHow">이용 방법</a>
+                <a href="#" onclick="showBuilder(); return false;" class="nav-cta" data-ui-i18n="navCta">청첩장 만들기</a>
             </nav>
+            <div class="ui-lang-sw" id="uiLangSw">
+                <button class="ui-lang-btn" id="uiLangBtn" aria-label="UI 언어 선택">
+                    <span id="uiLangFlag">🌐</span><span id="uiLangName" data-ui-i18n="langName">한국어</span>
+                </button>
+                <div class="ui-lang-pop" id="uiLangPop">
+                    <button class="ui-lang-opt" data-ui-lang="ko">🇰🇷 한국어</button>
+                    <button class="ui-lang-opt" data-ui-lang="en">🇺🇸 English</button>
+                    <button class="ui-lang-opt" data-ui-lang="ja">🇯🇵 日本語</button>
+                    <button class="ui-lang-opt" data-ui-lang="zh">🇨🇳 中文</button>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -817,18 +836,18 @@
         <section class="hero">
             <div>
                 <span class="eyebrow">Mobile Wedding Invitation</span>
-                <h1>두 사람의 이야기를,<br>가장 아름다운 <span>모바일 청첩장</span>으로</h1>
-                <p class="lead">
+                <h1 data-ui-i18n="heroH1">두 사람의 이야기를,<br>가장 아름다운 <span>모바일 청첩장</span>으로</h1>
+                <p class="lead" data-ui-i18n="heroLead">
                     사진 업로드부터 디데이 카운트다운, 갤러리, 계좌 안내, 참석 여부 확인까지.
                     With You에서는 별도의 디자인 지식 없이도 감성적인 모바일 청첩장을
                     직접 만들고, 실시간으로 미리 보며 완성할 수 있습니다.
                 </p>
                 <div class="hero-actions">
-                    <a href="#" onclick="showBuilder(); return false;" class="btn-primary">
+                    <a href="#" onclick="showBuilder(); return false;" class="btn-primary" data-ui-i18n="heroCta">
                         모바일 청첩장 만들기
                         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                     </a>
-                    <a href="#themes" class="btn-secondary">테마 둘러보기</a>
+                    <a href="#themes" class="btn-secondary" data-ui-i18n="heroThemes">테마 둘러보기</a>
                 </div>
                 <div class="hero-meta">
                     <div class="stat"><div class="num">10</div><div class="lab">SKIN THEMES</div></div>
@@ -865,7 +884,7 @@
                 </div>
                 <div class="float-card f2">
                     <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg></span>
-                    참석 의사 전달 완료
+                    <span data-ui-i18n="heroRsvpDone">참석 의사 전달 완료</span>
                 </div>
             </div>
         </section>
@@ -874,39 +893,39 @@
         <section id="features">
             <div class="section-head">
                 <span class="eyebrow">Features</span>
-                <h2>하나의 페이지에, 필요한 모든 것</h2>
-                <p>하객을 위한 화면부터 신랑·신부를 위한 관리 기능까지, 청첩장에 필요한 모든 요소를 담았습니다.</p>
+                <h2 data-ui-i18n="featH2">하나의 페이지에, 필요한 모든 것</h2>
+                <p data-ui-i18n="featDesc">하객을 위한 화면부터 신랑·신부를 위한 관리 기능까지, 청첩장에 필요한 모든 요소를 담았습니다.</p>
             </div>
             <div class="features">
                 <div class="feature-card">
                     <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg></div>
-                    <h3>실시간 디데이</h3>
-                    <p>예식일까지 남은 시간을 일·시·분·초 단위로 보여주는 카운트다운으로 설레는 마음을 더합니다.</p>
+                    <h3 data-ui-i18n="feat1H">실시간 디데이</h3>
+                    <p data-ui-i18n="feat1P">예식일까지 남은 시간을 일·시·분·초 단위로 보여주는 카운트다운으로 설레는 마음을 더합니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-5 5"/></svg></div>
-                    <h3>갤러리 &amp; 보안</h3>
-                    <p>격자형·슬라이드형 레이아웃을 지원하고, 길게 누르기·우클릭 저장을 차단해 소중한 사진을 보호합니다.</p>
+                    <h3 data-ui-i18n="feat2H">갤러리 &amp; 보안</h3>
+                    <p data-ui-i18n="feat2P">격자형·슬라이드형 레이아웃을 지원하고, 길게 누르기·우클릭 저장을 차단해 소중한 사진을 보호합니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-                    <h3>마음 전하실 곳</h3>
-                    <p>신랑측·신부측·혼주별 계좌를 아코디언으로 정리하고, 원클릭 복사와 카카오페이·토스 송금을 지원합니다.</p>
+                    <h3 data-ui-i18n="feat3H">마음 전하실 곳</h3>
+                    <p data-ui-i18n="feat3P">신랑측·신부측·혼주별 계좌를 아코디언으로 정리하고, 원클릭 복사와 카카오페이·토스 송금을 지원합니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg></div>
-                    <h3>RSVP 참석 관리</h3>
-                    <p>참석 여부, 식사 여부, 동반 인원을 하객이 직접 입력해 식장 보증 인원 예측에 활용할 수 있습니다.</p>
+                    <h3 data-ui-i18n="feat4H">RSVP 참석 관리</h3>
+                    <p data-ui-i18n="feat4P">참석 여부, 식사 여부, 동반 인원을 하객이 직접 입력해 식장 보증 인원 예측에 활용할 수 있습니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 9c0-1.5 3-1.5 3 0s-3 1.5-3 3 3 1.5 3 0"/></svg></div>
-                    <h3>실시간 미리보기</h3>
-                    <p>정보를 입력하는 즉시 모바일 화면에 그대로 반영되어, 완성된 모습을 보면서 자유롭게 편집할 수 있습니다.</p>
+                    <h3 data-ui-i18n="feat5H">실시간 미리보기</h3>
+                    <p data-ui-i18n="feat5P">정보를 입력하는 즉시 모바일 화면에 그대로 반영되어, 완성된 모습을 보면서 자유롭게 편집할 수 있습니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7l8-4 8 4-8 4-8-4z"/><path d="M4 7v10l8 4 8-4V7"/></svg></div>
-                    <h3>10종 프리미엄 테마</h3>
-                    <p>클래식, 미니멀, 체리블로썸, 로즈골드, 보타니컬, 오션, 다크엘레강스, 선셋, 라벤더, 빈티지까지 — 두 사람의 취향에 맞는 분위기를 선택할 수 있습니다.</p>
+                    <h3 data-ui-i18n="feat6H">10종 프리미엄 테마</h3>
+                    <p data-ui-i18n="feat6P">클래식, 미니멀, 체리블로썸, 로즈골드, 보타니컬, 오션, 다크엘레강스, 선셋, 라벤더, 빈티지까지 — 두 사람의 취향에 맞는 분위기를 선택할 수 있습니다.</p>
                 </div>
             </div>
         </section>
@@ -915,13 +934,13 @@
         <section id="themes">
             <div class="section-head">
                 <span class="eyebrow">Skins</span>
-                <h2>마음에 드는 분위기를 선택하세요</h2>
-                <p>10가지 프리미엄 테마 중 가장 우리다운 스타일을 골라 청첩장을 완성해보세요. 테마 클릭 시 전체 미리보기를 확인할 수 있습니다.</p>
+                <h2 data-ui-i18n="themeH2">마음에 드는 분위기를 선택하세요</h2>
+                <p data-ui-i18n="themeDesc">10가지 프리미엄 테마 중 가장 우리다운 스타일을 골라 청첩장을 완성해보세요. 테마 클릭 시 전체 미리보기를 확인할 수 있습니다.</p>
             </div>
             <div class="themes">
                 <div class="theme-card" onclick="openThemePreview('classic')">
                     <div class="swatch t-classic"><span>With You</span></div>
-                    <div class="label"><div class="name">클래식 명조</div><div class="desc">아이보리 &amp; 와인, 차분하고 고급스러운 무드</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">클래식 명조</div><div class="desc">아이보리 &amp; 와인, 차분하고 고급스러운 무드</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('simpleline')">
                     <div class="swatch t-simpleline">
@@ -942,7 +961,7 @@
                             <line x1="16" y1="136" x2="104" y2="136" stroke="#e8e8e8" stroke-width="0.8"/>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">심플 라인 아트</div><div class="desc">화이트 바탕, 세밀한 라인 드로잉 커플 일러스트</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">심플 라인 아트</div><div class="desc">화이트 바탕, 세밀한 라인 드로잉 커플 일러스트</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('classicwhite')">
                     <div class="swatch t-classicwhite">
@@ -960,7 +979,7 @@
                             <path d="M112 66 Q118 58 114 50 Q110 58 112 66Z" fill="#9CAF70" opacity=".5"/>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">클래식 화이트</div><div class="desc">흰 아치와 목련, 따뜻한 골드 텍스트</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">클래식 화이트</div><div class="desc">흰 아치와 목련, 따뜻한 골드 텍스트</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('naturalgreen')">
                     <div class="swatch t-naturalgreen">
@@ -979,7 +998,7 @@
                             <path d="M110 98 Q122 90 118 80 Q110 88 110 98Z" fill="#6A9858" opacity=".62"/>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">내추럴 그린</div><div class="desc">세이지 그린 그라데이션, 보타니컬 잎사귀 프레임</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">내추럴 그린</div><div class="desc">세이지 그린 그라데이션, 보타니컬 잎사귀 프레임</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('romanticpink')">
                     <div class="swatch t-romanticpink">
@@ -994,7 +1013,7 @@
                             <g transform="translate(112,60)"><ellipse rx="4" ry="6" transform="rotate(-30)" fill="#FFB8D0" opacity=".6"/><ellipse rx="4" ry="6" transform="rotate(42)" fill="#FFB8D0" opacity=".6"/><ellipse rx="4" ry="6" transform="rotate(114)" fill="#FFB8D0" opacity=".6"/><circle r="2" fill="#FFD0E4" opacity=".7"/></g>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">로맨틱 핑코</div><div class="desc">핑크 그라데이션, 벚꽃잎과 오벌 프레임</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">로맨틱 핑코</div><div class="desc">핑크 그라데이션, 벚꽃잎과 오벌 프레임</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('modernminimal')">
                     <div class="swatch t-modernminimal">
@@ -1008,7 +1027,7 @@
                             <circle cx="54" cy="8" r="2.5" fill="#A8A898" opacity=".5"/>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">모던 미니얼</div><div class="desc">퓨어 화이트, 싱글 브랜치 클린 산세리프</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">모던 미니얼</div><div class="desc">퓨어 화이트, 싱글 브랜치 클린 산세리프</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('vintagewood')">
                     <div class="swatch t-vintagewood">
@@ -1038,7 +1057,7 @@
                             <path d="M86 72 Q92 70 98 72" stroke="#7A5020" stroke-width="2" stroke-linecap="round" opacity=".7"/>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">빈티지 우드</div><div class="desc">다크 우드 배경, 양피지 카드와 드라이 플라워 번들</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">빈티지 우드</div><div class="desc">다크 우드 배경, 양피지 카드와 드라이 플라워 번들</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('traditional')">
                     <div class="swatch t-traditional">
@@ -1075,7 +1094,7 @@
                             <circle cx="90" cy="52" r="2" fill="#FFE0C0" opacity=".55"/>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">트레디셔널 터치</div><div class="desc">크림 &amp; 한국 격자 보더, 매화 &amp; 매듭</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">트레디셔널 터치</div><div class="desc">크림 &amp; 한국 격자 보더, 매화 &amp; 매듭</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('oceanwhisper')">
                     <div class="swatch t-oceanwhisper">
@@ -1091,7 +1110,7 @@
                             <path d="M14 22 Q17 20 20 22" stroke="rgba(255,255,255,0.4)" stroke-width="0.9" fill="none" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">바다의 속사임</div><div class="desc">오션 블루 그라데이션, 파도와 갈매기, 글라스</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">바다의 속사임</div><div class="desc">오션 블루 그라데이션, 파도와 갈매기, 글라스</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('autumn')">
                     <div class="swatch t-autumn">
@@ -1105,7 +1124,7 @@
                             <g transform="translate(70,36) rotate(-22) scale(0.75)"><path d="M0 0 C-5-9-16-8-13 0 C-16 0-18-10-10-13 C-10-19-3-22 0-16 C3-22 10-19 10-13 C18-10 16 0 13 0 C16-8 5-9 0 0Z" fill="#E07030" opacity=".7"/></g>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">가을의 온도</div><div class="desc">앰버 그라데이션, 단풍잎과 산 실루엣</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">가을의 온도</div><div class="desc">앰버 그라데이션, 단풍잎과 산 실루엣</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('winterdusk')">
                     <div class="swatch t-winterdusk">
@@ -1116,7 +1135,7 @@
                             <path d="M0 64 Q30 60 60 62 Q90 64 120 61 L120 72 L0 72Z" fill="rgba(255,255,255,0.1)"/>
                         </svg>
                     </div>
-                    <div class="label"><div class="name">겨울의 노을</div><div class="desc">퍼플·오렌지 노을 그라데이션, 소나무 실루엣</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">겨울의 노을</div><div class="desc">퍼플·오렌지 노을 그라데이션, 소나무 실루엣</div><button class="preview-btn" data-ui-i18n="previewBtn">미리보기</button></div>
                 </div>
             </div>
         </section>
@@ -1137,7 +1156,7 @@
                     <h3 id="tModalName">테마 이름</h3>
                     <p id="tModalDesc">테마 설명</p>
                     <div class="t-modal-tags" id="tModalTags"></div>
-                    <button class="t-modal-use" onclick="useThemeFromModal()">
+                    <button class="t-modal-use" onclick="useThemeFromModal()" data-ui-i18n="useThemeBtn">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                         이 테마로 만들기
                     </button>
@@ -1149,23 +1168,23 @@
         <section id="how">
             <div class="section-head">
                 <span class="eyebrow">How it works</span>
-                <h2>이렇게 만들어요</h2>
+                <h2 data-ui-i18n="howH2">이렇게 만들어요</h2>
             </div>
             <div class="steps">
                 <div class="step">
                     <div class="step-num">01</div>
-                    <h3>정보 입력</h3>
-                    <p>신랑·신부 정보, 예식 일정과 장소, 인사말을 입력합니다. 자주 쓰는 추천 문구를 활용할 수 있어요.</p>
+                    <h3 data-ui-i18n="how1H">정보 입력</h3>
+                    <p data-ui-i18n="how1P">신랑·신부 정보, 예식 일정과 장소, 인사말을 입력합니다. 자주 쓰는 추천 문구를 활용할 수 있어요.</p>
                 </div>
                 <div class="step">
                     <div class="step-num">02</div>
-                    <h3>테마와 사진 선택</h3>
-                    <p>원하는 테마를 고르고 대표 사진과 갤러리 이미지를 업로드하면, 왼쪽 화면에 바로 반영됩니다.</p>
+                    <h3 data-ui-i18n="how2H">테마와 사진 선택</h3>
+                    <p data-ui-i18n="how2P">원하는 테마를 고르고 대표 사진과 갤러리 이미지를 업로드하면, 왼쪽 화면에 바로 반영됩니다.</p>
                 </div>
                 <div class="step">
                     <div class="step-num">03</div>
-                    <h3>완성 &amp; 공유</h3>
-                    <p>계좌 정보와 RSVP 설정을 마치면 완성! 링크를 복사해 카카오톡으로 하객에게 공유하세요.</p>
+                    <h3 data-ui-i18n="how3H">완성 &amp; 공유</h3>
+                    <p data-ui-i18n="how3P">계좌 정보와 RSVP 설정을 마치면 완성! 링크를 복사해 카카오톡으로 하객에게 공유하세요.</p>
                 </div>
             </div>
         </section>
@@ -1174,9 +1193,9 @@
         <section>
             <div class="cta-section">
                 <span class="eyebrow">Start now</span>
-                <h2>지금, 두 사람의 이야기를 시작하세요</h2>
-                <p>입력한 내용은 바로 미리보기에 반영됩니다. 편하게 둘러보며 우리만의 청첩장을 완성해보세요.</p>
-                <a href="#" onclick="showBuilder(); return false;" class="btn-primary">
+                <h2 data-ui-i18n="ctaH2">지금, 두 사람의 이야기를 시작하세요</h2>
+                <p data-ui-i18n="ctaP">입력한 내용은 바로 미리보기에 반영됩니다. 편하게 둘러보며 우리만의 청첩장을 완성해보세요.</p>
+                <a href="#" onclick="showBuilder(); return false;" class="btn-primary" data-ui-i18n="heroCta">
                     모바일 청첩장 만들기
                     <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
@@ -1211,18 +1230,18 @@
             With You
         </a>
         <div class="topbar-center">
-            <button class="step-tab active" data-step="0">① 기본 정보</button>
-            <button class="step-tab" data-step="1">② 인사말·가족</button>
-            <button class="step-tab" data-step="2">③ 갤러리</button>
-            <button class="step-tab" data-step="3">④ 오시는 길</button>
-            <button class="step-tab" data-step="4">⑤ 계좌·RSVP</button>
+            <button class="step-tab active" data-step="0" data-ui-i18n="tab1">① 기본 정보</button>
+            <button class="step-tab" data-step="1" data-ui-i18n="tab2">② 인사말·가족</button>
+            <button class="step-tab" data-step="2" data-ui-i18n="tab3">③ 갤러리</button>
+            <button class="step-tab" data-step="3" data-ui-i18n="tab4">④ 오시는 길</button>
+            <button class="step-tab" data-step="4" data-ui-i18n="tab5">⑤ 계좌·RSVP</button>
         </div>
         <div class="topbar-actions">
-            <button class="btn-preview-toggle" id="editorToggle">
+            <button class="btn-preview-toggle" id="editorToggle" data-ui-i18n="btnEdit">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
                 편집
             </button>
-            <button class="btn-download" id="downloadBtn">
+            <button class="btn-download" id="downloadBtn" data-ui-i18n="btnDownload">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                 청첩장 다운로드
             </button>
@@ -1771,6 +1790,166 @@
 <div id="g-toast" style="position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(16px);background:#3D332E;color:#FBF5EF;font-size:13px;padding:9px 20px;border-radius:999px;z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap;"></div>
 
 <script>
+    /* ===== UI I18N ===== */
+    const UI_I18N = {
+        ko: {
+            langName:'한국어',
+            navFeatures:'기능', navThemes:'테마', navHow:'이용 방법', navCta:'청첩장 만들기',
+            heroH1:'두 사람의 이야기를,<br>가장 아름다운 <span>모바일 청첩장</span>으로',
+            heroLead:'사진 업로드부터 디데이 카운트다운, 갤러리, 계좌 안내, 참석 여부 확인까지. With You에서는 별도의 디자인 지식 없이도 감성적인 모바일 청첩장을 직접 만들고, 실시간으로 미리 보며 완성할 수 있습니다.',
+            heroCta:'모바일 청첩장 만들기 <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+            heroThemes:'테마 둘러보기',
+            heroRsvpDone:'참석 의사 전달 완료',
+            featH2:'하나의 페이지에, 필요한 모든 것',
+            featDesc:'하객을 위한 화면부터 신랑·신부를 위한 관리 기능까지, 청첩장에 필요한 모든 요소를 담았습니다.',
+            feat1H:'실시간 디데이', feat1P:'예식일까지 남은 시간을 일·시·분·초 단위로 보여주는 카운트다운으로 설레는 마음을 더합니다.',
+            feat2H:'갤러리 & 보안', feat2P:'격자형·슬라이드형 레이아웃을 지원하고, 길게 누르기·우클릭 저장을 차단해 소중한 사진을 보호합니다.',
+            feat3H:'마음 전하실 곳', feat3P:'신랑측·신부측·혼주별 계좌를 아코디언으로 정리하고, 원클릭 복사와 카카오페이·토스 송금을 지원합니다.',
+            feat4H:'RSVP 참석 관리', feat4P:'참석 여부, 식사 여부, 동반 인원을 하객이 직접 입력해 식장 보증 인원 예측에 활용할 수 있습니다.',
+            feat5H:'실시간 미리보기', feat5P:'정보를 입력하는 즉시 모바일 화면에 그대로 반영되어, 완성된 모습을 보면서 자유롭게 편집할 수 있습니다.',
+            feat6H:'10종 프리미엄 테마', feat6P:'클래식, 미니멀, 체리블로썸, 로즈골드, 보타니컬, 오션, 다크엘레강스, 선셋, 라벤더, 빈티지까지 — 두 사람의 취향에 맞는 분위기를 선택할 수 있습니다.',
+            themeH2:'마음에 드는 분위기를 선택하세요',
+            themeDesc:'10가지 프리미엄 테마 중 가장 우리다운 스타일을 골라 청첩장을 완성해보세요. 테마 클릭 시 전체 미리보기를 확인할 수 있습니다.',
+            previewBtn:'미리보기', useThemeBtn:'이 테마로 만들기',
+            howH2:'이렇게 만들어요',
+            how1H:'정보 입력', how1P:'신랑·신부 정보, 예식 일정과 장소, 인사말을 입력합니다. 자주 쓰는 추천 문구를 활용할 수 있어요.',
+            how2H:'테마와 사진 선택', how2P:'원하는 테마를 고르고 대표 사진과 갤러리 이미지를 업로드하면, 왼쪽 화면에 바로 반영됩니다.',
+            how3H:'완성 & 공유', how3P:'계좌 정보와 RSVP 설정을 마치면 완성! 링크를 복사해 카카오톡으로 하객에게 공유하세요.',
+            ctaH2:'지금, 두 사람의 이야기를 시작하세요',
+            ctaP:'입력한 내용은 바로 미리보기에 반영됩니다. 편하게 둘러보며 우리만의 청첩장을 완성해보세요.',
+            tab1:'① 기본 정보', tab2:'② 인사말·가족', tab3:'③ 갤러리', tab4:'④ 오시는 길', tab5:'⑤ 계좌·RSVP',
+            btnEdit:'편집', btnDownload:'청첩장 다운로드'
+        },
+        en: {
+            langName:'English',
+            navFeatures:'Features', navThemes:'Themes', navHow:'How it works', navCta:'Create Invitation',
+            heroH1:'Your Love Story,<br>as a beautiful <span>Mobile Invitation</span>',
+            heroLead:'From photo uploads to D-day countdowns, gallery, account info, and RSVP — create a gorgeous mobile wedding invitation with With You, no design skills needed.',
+            heroCta:'Create Invitation <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+            heroThemes:'Browse Themes',
+            heroRsvpDone:'RSVP Submitted',
+            featH2:'Everything you need, in one page',
+            featDesc:'From the guest-facing view to management features for the couple — every element a wedding invitation needs.',
+            feat1H:'Live D-Day', feat1P:'A countdown showing days, hours, minutes, and seconds until the ceremony — building anticipation for the big day.',
+            feat2H:'Gallery & Security', feat2P:'Supports grid and slide layouts, with long-press and right-click saving blocked to protect your cherished photos.',
+            feat3H:'Gift Account', feat3P:'Organizes groom\'s and bride\'s accounts in an accordion, with one-click copy and KakaoPay/Toss transfer support.',
+            feat4H:'RSVP Management', feat4P:'Guests can submit attendance, meal preference, and guest count directly — great for estimating headcount.',
+            feat5H:'Live Preview', feat5P:'Every change is reflected on the mobile screen instantly, so you can edit while seeing the finished look.',
+            feat6H:'10 Premium Themes', feat6P:'Classic, Minimal, Cherry Blossom, Rose Gold, Botanical, Ocean, Dark Elegance, Sunset, Lavender, Vintage — pick your style.',
+            themeH2:'Choose your perfect mood',
+            themeDesc:'Pick the style that best represents you from 10 premium themes. Click a theme card to see a full preview.',
+            previewBtn:'Preview', useThemeBtn:'Use this theme',
+            howH2:'How it works',
+            how1H:'Enter Details', how1P:'Fill in names, ceremony schedule, venue, and a personal greeting. Use suggested phrases if you need inspiration.',
+            how2H:'Pick Theme & Photos', how2P:'Choose a theme, upload a hero photo and gallery images — the preview updates instantly on the left.',
+            how3H:'Done & Share', how3P:'Add account info and RSVP settings and you\'re done! Copy the link and share via KakaoTalk.',
+            ctaH2:'Start your story, right now',
+            ctaP:'Everything you enter is reflected in the preview immediately. Browse freely and create your perfect invitation.',
+            tab1:'① Basic Info', tab2:'② Greeting·Family', tab3:'③ Gallery', tab4:'④ Location', tab5:'⑤ Account·RSVP',
+            btnEdit:'Edit', btnDownload:'Download Invitation'
+        },
+        ja: {
+            langName:'日本語',
+            navFeatures:'機能', navThemes:'テーマ', navHow:'使い方', navCta:'招待状を作る',
+            heroH1:'二人の物語を、<br>最も美しい <span>モバイル招待状</span>に',
+            heroLead:'写真アップロードからDデーカウントダウン、ギャラリー、口座案内、出欠確認まで。With Youならデザインの知識がなくても、感性豊かなモバイル招待状を作れます。',
+            heroCta:'招待状を作る <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+            heroThemes:'テーマを見る',
+            heroRsvpDone:'出欠を送信しました',
+            featH2:'必要なすべてが、一つのページに',
+            featDesc:'ゲスト向け画面から新郎新婦の管理機能まで、招待状に必要な全要素を揃えました。',
+            feat1H:'リアルタイムDデー', feat1P:'挙式まで残り日数・時間・分・秒をカウントダウンで表示し、ワクワク感を高めます。',
+            feat2H:'ギャラリー & セキュリティ', feat2P:'グリッド・スライドレイアウトに対応。長押し・右クリック保存をブロックして大切な写真を守ります。',
+            feat3H:'ご祝儀口座', feat3P:'新郎新婦・ご両親の口座をアコーディオン整理。ワンクリックコピーとKakaoPay/Toss送金に対応。',
+            feat4H:'RSVP管理', feat4P:'ゲストが直接出欠・食事有無・同伴人数を入力できるので、人数予測に役立ちます。',
+            feat5H:'リアルタイムプレビュー', feat5P:'入力した情報がすぐにモバイル画面に反映されるので、完成形を見ながら自由に編集できます。',
+            feat6H:'10種のプレミアムテーマ', feat6P:'クラシック、ミニマル、チェリーブロッサム、ローズゴールド、ボタニカル、オーシャン、ダークエレガンス、サンセット、ラベンダー、ヴィンテージ。',
+            themeH2:'お好みの雰囲気を選んでください',
+            themeDesc:'10種のプレミアムテーマからベストスタイルを選んで招待状を完成させましょう。テーマをクリックするとプレビューを確認できます。',
+            previewBtn:'プレビュー', useThemeBtn:'このテーマで作る',
+            howH2:'こうやって作ります',
+            how1H:'情報入力', how1P:'新郎新婦の情報、挙式日程と場所、挨拶文を入力します。よく使うフレーズも活用できます。',
+            how2H:'テーマと写真を選ぶ', how2P:'好みのテーマを選び、メイン写真とギャラリー画像をアップロードすると、左画面にすぐ反映されます。',
+            how3H:'完成 & シェア', how3P:'口座情報とRSVP設定を済ませたら完成！リンクをコピーしてKakaoTalkでゲストに共有しましょう。',
+            ctaH2:'今すぐ、二人の物語を始めましょう',
+            ctaP:'入力内容はリアルタイムでプレビューに反映されます。気軽に試しながら招待状を完成させてください。',
+            tab1:'① 基本情報', tab2:'② 挨拶·家族', tab3:'③ ギャラリー', tab4:'④ アクセス', tab5:'⑤ 口座·RSVP',
+            btnEdit:'編集', btnDownload:'招待状をダウンロード'
+        },
+        zh: {
+            langName:'中文',
+            navFeatures:'功能', navThemes:'主题', navHow:'使用方法', navCta:'制作请柬',
+            heroH1:'记录两个人的故事，<br>制作最美的 <span>手机婚礼请柬</span>',
+            heroLead:'从上传照片到倒计时、相册、账户信息、出席确认，With You 让您无需设计技能，也能轻松制作精美的手机婚礼请柬，实时预览效果。',
+            heroCta:'制作请柬 <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+            heroThemes:'浏览主题',
+            heroRsvpDone:'已确认出席',
+            featH2:'一个页面，满足所有需求',
+            featDesc:'从宾客浏览界面到新郎新娘管理功能，请柬所需的一切尽在其中。',
+            feat1H:'实时倒计时', feat1P:'以天、时、分、秒显示婚礼剩余时间，让期待感倍增。',
+            feat2H:'相册 & 安全', feat2P:'支持网格和幻灯片布局，屏蔽长按和右键保存，保护珍贵照片。',
+            feat3H:'收款账户', feat3P:'以折叠面板整理新郎新娘及双方家长账户，一键复制并支持KakaoPay/Toss转账。',
+            feat4H:'RSVP管理', feat4P:'宾客可直接填写出席情况、用餐意向和同行人数，便于预估人数。',
+            feat5H:'实时预览', feat5P:'输入信息后立即反映在手机画面上，边看完成效果边自由编辑。',
+            feat6H:'10款高级主题', feat6P:'经典、简约、樱花、玫瑰金、植物、海洋、暗夜优雅、日落、薰衣草、复古，选择最适合你们的风格。',
+            themeH2:'选择您喜欢的风格',
+            themeDesc:'从10款高级主题中选出最适合你们的风格，完成请柬制作。点击主题卡片可查看完整预览。',
+            previewBtn:'预览', useThemeBtn:'使用此主题',
+            howH2:'制作流程',
+            how1H:'填写信息', how1P:'填写新郎新娘信息、婚礼日程、场地及祝词。可使用常用推荐语句。',
+            how2H:'选择主题和照片', how2P:'选择主题，上传封面照片和相册图片，左侧预览立即更新。',
+            how3H:'完成 & 分享', how3P:'设置好账户和RSVP后即告完成！复制链接通过KakaoTalk分享给宾客。',
+            ctaH2:'现在就开始，记录你们的故事',
+            ctaP:'输入的内容会实时反映在预览中，轻松浏览并完成专属请柬。',
+            tab1:'① 基本信息', tab2:'② 致辞·家庭', tab3:'③ 相册', tab4:'④ 地址', tab5:'⑤ 账户·RSVP',
+            btnEdit:'编辑', btnDownload:'下载请柬'
+        }
+    };
+    const UI_LANG_KEY = 'withyou-ui-lang';
+    let _uiLang = 'ko';
+
+    function applyUILang(lang) {
+        _uiLang = lang;
+        const tr = UI_I18N[lang] || UI_I18N.ko;
+        document.querySelectorAll('[data-ui-i18n]').forEach(el => {
+            const k = el.getAttribute('data-ui-i18n');
+            if (tr[k] !== undefined) el.innerHTML = tr[k];
+        });
+        const flags = {ko:'🇰🇷', en:'🇺🇸', ja:'🇯🇵', zh:'🇨🇳'};
+        const flagEl = document.getElementById('uiLangFlag');
+        if (flagEl) flagEl.textContent = flags[lang] || '🌐';
+        document.querySelectorAll('.ui-lang-opt').forEach(o => {
+            o.classList.toggle('active', o.dataset.uiLang === lang);
+        });
+        try { localStorage.setItem(UI_LANG_KEY, lang); } catch(e) {}
+    }
+
+    (function initUILang() {
+        let saved = 'ko';
+        try { saved = localStorage.getItem(UI_LANG_KEY) || 'ko'; } catch(e) {}
+        if (!UI_I18N[saved]) saved = 'ko';
+
+        const btn = document.getElementById('uiLangBtn');
+        const pop = document.getElementById('uiLangPop');
+        if (btn && pop) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                pop.classList.toggle('open');
+            });
+            document.addEventListener('click', function() {
+                pop.classList.remove('open');
+            });
+            document.querySelectorAll('.ui-lang-opt').forEach(function(o) {
+                o.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    applyUILang(o.dataset.uiLang);
+                    pop.classList.remove('open');
+                });
+            });
+        }
+        applyUILang(saved);
+    })();
+
     /* ===== PAGE SWITCHING ===== */
     const BUILDER_HASH = '#builder';
     const BUILDER_STATE_KEY = 'withyou-builder-open';
