@@ -1261,11 +1261,11 @@
 
             <!-- STEP 0: 기본 정보 -->
             <div class="step-panel active" data-panel="0">
-                <div class="panel-title">기본 정보</div>
-                <div class="panel-sub">신랑·신부 이름, 예식 일시, 장소를 입력하세요.</div>
+                <div class="panel-title" data-ui-i18n="panelTitleStep0">기본 정보</div>
+                <div class="panel-sub" data-ui-i18n="panelSubStep0">신랑·신부 이름, 예식 일시, 장소를 입력하세요.</div>
 
                 <div class="field">
-                    <label>테마 선택 <span style="font-size:10px;color:var(--sage-deep);">(스크롤하여 더 보기)</span></label>
+                    <label><span data-ui-i18n="themeSelectLabel">테마 선택</span> <span style="font-size:10px;color:var(--sage-deep);" data-ui-i18n="themeSelectHint">(스크롤하여 더 보기)</span></label>
                     <div class="theme-grid">
                         <div class="theme-opt selected" data-theme="classic">
                             <div class="swatch t-classic"><span>With You</span></div>
@@ -1318,21 +1318,21 @@
 
                 <div class="field-row">
                     <div class="field">
-                        <label>신랑 이름</label>
+                        <label data-ui-i18n="groomNameLabel">신랑 이름</label>
                         <input type="text" id="groom" placeholder="이도현" value="이도현">
                     </div>
                     <div class="field">
-                        <label>신부 이름</label>
+                        <label data-ui-i18n="brideNameLabel">신부 이름</label>
                         <input type="text" id="bride" placeholder="박서연" value="박서연">
                     </div>
                 </div>
                 <div class="field-row">
                     <div class="field">
-                        <label>신랑 영문</label>
+                        <label data-ui-i18n="groomEnLabel">신랑 영문</label>
                         <input type="text" id="groomEn" placeholder="Lee Dohyun" value="Lee Dohyun">
                     </div>
                     <div class="field">
-                        <label>신부 영문</label>
+                        <label data-ui-i18n="brideEnLabel">신부 영문</label>
                         <input type="text" id="brideEn" placeholder="Park Seoyeon" value="Park Seoyeon">
                     </div>
                 </div>
@@ -1341,74 +1341,62 @@
 
                 <div class="field-row">
                     <div class="field">
-                        <label>예식 날짜</label>
+                        <label data-ui-i18n="weddingDateLabel">예식 날짜</label>
                         <input type="date" id="weddingDate" value="2026-11-14">
                     </div>
                     <div class="field">
-                        <label>예식 시간</label>
+                        <label data-ui-i18n="weddingTimeLabel">예식 시간</label>
                         <input type="time" id="weddingTime" value="13:00">
                     </div>
                 </div>
                 <div class="field">
-                    <label>예식장 이름</label>
+                    <label data-ui-i18n="venueNameLabel">예식장 이름</label>
                     <input type="text" id="venueName" placeholder="라비두스 컨벤션" value="라비두스 컨벤션">
                 </div>
                 <div class="field">
-                    <label>홀 정보 (층·홀명)</label>
+                    <label data-ui-i18n="venueHallLabel">홀 정보 (층·홀명)</label>
                     <input type="text" id="venueHall" placeholder="3F 그랑블루홀" value="3F 그랑블루홀">
                 </div>
 
                 <hr class="sep">
 
                 <div class="field">
-                    <label>대표 사진 업로드 (인트로 배경)</label>
+                    <label data-ui-i18n="heroUploadLabel">대표 사진 업로드 (인트로 배경)</label>
                     <div class="upload-zone" id="heroUploadZone">
                         <input type="file" id="heroImg" accept="image/*">
                         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-5 5"/></svg></div>
-                        <p>클릭하거나 사진을 드래그하세요<br><span style="font-size:11px; opacity:.7">JPG / PNG / WEBP</span></p>
+                        <p data-ui-i18n="heroUploadHint">클릭하거나 사진을 드래그하세요<br><span style="font-size:11px; opacity:.7">JPG / PNG / WEBP</span></p>
                         <img class="preview-thumb" id="heroThumb">
                     </div>
                 </div>
 
                 <div class="field">
-                    <label>배경음악(BGM) 업로드</label>
+                    <label data-ui-i18n="bgmUploadLabel">배경음악(BGM) 업로드</label>
                     <div class="upload-zone" id="bgmUploadZone" style="padding:15px; border-style:dashed;">
                         <input type="file" id="bgmFile" accept="audio/*">
                         <div class="icon" style="margin-bottom:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="width:24px;height:24px;"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-                        <p id="bgmFileName" style="font-size:12px;">음악 파일을 선택해주세요 (MP3, WAV 등)</p>
-                        <button id="bgmRemoveBtn" style="display:none; margin-top:8px; background:var(--wine); color:white; border:none; padding:4px 10px; border-radius:4px; font-size:11px; cursor:pointer; position:relative; z-index:10;">삭제</button>
+                        <p id="bgmFileName" style="font-size:12px;" data-ui-i18n="bgmFileNameDefault">음악 파일을 선택해주세요 (MP3, WAV 등)</p>
+                        <button id="bgmRemoveBtn" data-ui-i18n="deleteBtn" style="display:none; margin-top:8px; background:var(--wine); color:white; border:none; padding:4px 10px; border-radius:4px; font-size:11px; cursor:pointer; position:relative; z-index:10;">삭제</button>
                     </div>
                 </div>
 
-                <hr class="sep">
-
-                <div class="field">
-                    <label>청첩장 기본 언어 <span style="font-size:10px;color:var(--sage-deep);">· 하객이 변경 가능</span></label>
-                    <select id="invLang">
-                        <option value="ko">🇰🇷 한국어</option>
-                        <option value="en">🇺🇸 English</option>
-                        <option value="ja">🇯🇵 日本語</option>
-                        <option value="zh">🇨🇳 中文</option>
-                    </select>
-                </div>
-
                 <div class="toggle-row">
-                    <label>디데이 카운트다운 표시</label>
+                    <label data-ui-i18n="ddayToggleLabel">디데이 카운트다운 표시</label>
                     <label class="toggle"><input type="checkbox" id="showDday" checked><span class="slider"></span></label>
                 </div>
 
                 <div class="panel-nav">
-                    <button class="btn-next" onclick="goStep(1)">다음 단계 →</button>
+                    <button class="btn-next" onclick="goStep(1)" data-ui-i18n="nextStepBtn">다음 단계 →</button>
                 </div>
             </div>
 
             <!-- STEP 1: 인사말·가족 -->
             <div class="step-panel" data-panel="1">
-                <div class="panel-title">인사말 &amp; 가족 정보</div>
-                <div class="panel-sub">초대 문구와 혼주·연락처를 입력하세요.</div>
+                <div class="panel-title" data-ui-i18n="panelTitleStep1">인사말 &amp; 가족 정보</div>
+                <div class="panel-sub" data-ui-i18n="panelSubStep1">초대 문구와 혼주·연락처를 입력하세요.</div>
 
                 <div class="field">
-                    <label>초대 문구</label>
+                    <label data-ui-i18n="greetingLabel">초대 문구</label>
                     <textarea id="greeting" rows="5" placeholder="인사말을 입력하세요">두 사람이 마주 보던 시간이
 이제는 함께 걷는 길이 되었습니다.
 
@@ -1421,185 +1409,185 @@
 더없이 큰 기쁨이겠습니다.</textarea>
                 </div>
                 <div class="suggest-list">
-                    <div class="suggest-item" onclick="setSuggest(0)">봄 — 꽃이 피어나는 봄날, 두 사람이 하나 되어 새로운 출발을 합니다...</div>
-                    <div class="suggest-item" onclick="setSuggest(1)">가을 — 단풍이 물드는 계절, 서로의 손을 꼭 잡고 함께 걸어가려 합니다...</div>
-                    <div class="suggest-item" onclick="setSuggest(2)">겨울 — 포근한 겨울날, 따뜻한 마음 하나로 평생을 함께하려 합니다...</div>
+                    <div class="suggest-item" data-ui-i18n="suggestSpring" onclick="setSuggest(0)">봄 — 꽃이 피어나는 봄날, 두 사람이 하나 되어 새로운 출발을 합니다...</div>
+                    <div class="suggest-item" data-ui-i18n="suggestAutumn" onclick="setSuggest(1)">가을 — 단풍이 물드는 계절, 서로의 손을 꼭 잡고 함께 걸어가려 합니다...</div>
+                    <div class="suggest-item" data-ui-i18n="suggestWinter" onclick="setSuggest(2)">겨울 — 포근한 겨울날, 따뜻한 마음 하나로 평생을 함께하려 합니다...</div>
                 </div>
 
                 <hr class="sep">
 
                 <div class="acc-entry">
-                    <div class="acc-label">신랑측 혼주</div>
+                    <div class="acc-label" data-ui-i18n="groomFamilyLabel">신랑측 혼주</div>
                     <div class="field">
-                        <label>아버지 성함</label>
+                        <label data-ui-i18n="fatherNameLabel">아버지 성함</label>
                         <input type="text" id="gFather" placeholder="이재호" value="이재호">
                     </div>
                     <div class="field">
-                        <label>어머니 성함</label>
+                        <label data-ui-i18n="motherNameLabel">어머니 성함</label>
                         <input type="text" id="gMother" placeholder="김미정" value="김미정">
                     </div>
                     <div class="field">
-                        <label>관계 설명</label>
+                        <label data-ui-i18n="relationLabel">관계 설명</label>
                         <input type="text" id="gRel" placeholder="이재호·김미정의 장남" value="이재호·김미정의 장남">
                     </div>
                     <div class="field">
-                        <label>신랑 연락처</label>
+                        <label data-ui-i18n="groomPhoneLabel">신랑 연락처</label>
                         <input type="text" id="groomPhone" placeholder="010-0000-0000" value="010-0000-0000">
                     </div>
                 </div>
 
                 <div class="acc-entry">
-                    <div class="acc-label">신부측 혼주</div>
+                    <div class="acc-label" data-ui-i18n="brideFamilyLabel">신부측 혼주</div>
                     <div class="field">
-                        <label>아버지 성함</label>
+                        <label data-ui-i18n="fatherNameLabel">아버지 성함</label>
                         <input type="text" id="bFather" placeholder="박준영" value="박준영">
                     </div>
                     <div class="field">
-                        <label>어머니 성함</label>
+                        <label data-ui-i18n="motherNameLabel">어머니 성함</label>
                         <input type="text" id="bMother" placeholder="한지수" value="한지수">
                     </div>
                     <div class="field">
-                        <label>관계 설명</label>
+                        <label data-ui-i18n="relationLabel">관계 설명</label>
                         <input type="text" id="bRel" placeholder="박준영·한지수의 차녀" value="박준영·한지수의 차녀">
                     </div>
                     <div class="field">
-                        <label>신부 연락처</label>
+                        <label data-ui-i18n="bridePhoneLabel">신부 연락처</label>
                         <input type="text" id="bridePhone" placeholder="010-0000-0000" value="010-0000-0000">
                     </div>
                 </div>
 
                 <div class="panel-nav">
-                    <button class="btn-prev" onclick="goStep(0)">← 이전</button>
-                    <button class="btn-next" onclick="goStep(2)">다음 →</button>
+                    <button class="btn-prev" onclick="goStep(0)" data-ui-i18n="prevBtn">← 이전</button>
+                    <button class="btn-next" onclick="goStep(2)" data-ui-i18n="nextBtn">다음 →</button>
                 </div>
             </div>
 
             <!-- STEP 2: 갤러리 -->
             <div class="step-panel" data-panel="2">
-                <div class="panel-title">갤러리 사진</div>
-                <div class="panel-sub">최대 15장까지 업로드할 수 있습니다. 드래그로 순서를 바꿔보세요.</div>
+                <div class="panel-title" data-ui-i18n="panelTitleStep2">갤러리 사진</div>
+                <div class="panel-sub" data-ui-i18n="panelSubStep2">최대 15장까지 업로드할 수 있습니다. 드래그로 순서를 바꿔보세요.</div>
 
                 <div class="field">
-                    <label>갤러리 레이아웃</label>
+                    <label data-ui-i18n="galleryLayoutLabel">갤러리 레이아웃</label>
                     <select id="galleryLayout">
-                        <option value="grid">격자형 (Grid)</option>
-                        <option value="swipe">슬라이드형 (Swipe)</option>
+                        <option value="grid" data-ui-i18n="galleryLayoutGrid">격자형 (Grid)</option>
+                        <option value="swipe" data-ui-i18n="galleryLayoutSwipe">슬라이드형 (Swipe)</option>
                     </select>
                 </div>
 
                 <div class="field">
-                    <label>사진 업로드</label>
+                    <label data-ui-i18n="galleryUploadLabel">사진 업로드</label>
                     <div class="upload-zone" id="galleryUploadZone" style="margin-bottom:10px;">
                         <input type="file" id="galleryImgs" accept="image/*" multiple>
                         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-5 5"/></svg></div>
-                        <p>여러 장 선택 가능<br><span style="font-size:11px;opacity:.7">최대 15장</span></p>
+                        <p data-ui-i18n="galleryUploadHint">여러 장 선택 가능<br><span style="font-size:11px;opacity:.7">최대 15장</span></p>
                     </div>
                     <div class="photo-list" id="photoList"></div>
                 </div>
 
                 <div class="toggle-row">
-                    <label>사진 저장 방지 기능</label>
+                    <label data-ui-i18n="photoProtectLabel">사진 저장 방지 기능</label>
                     <label class="toggle"><input type="checkbox" id="photoProtect" checked><span class="slider"></span></label>
                 </div>
 
                 <div class="panel-nav">
-                    <button class="btn-prev" onclick="goStep(1)">← 이전</button>
-                    <button class="btn-next" onclick="goStep(3)">다음 →</button>
+                    <button class="btn-prev" onclick="goStep(1)" data-ui-i18n="prevBtn">← 이전</button>
+                    <button class="btn-next" onclick="goStep(3)" data-ui-i18n="nextBtn">다음 →</button>
                 </div>
             </div>
 
             <!-- STEP 3: 오시는 길 -->
             <div class="step-panel" data-panel="3">
-                <div class="panel-title">오시는 길</div>
-                <div class="panel-sub">예식장 주소와 교통 정보를 입력하세요.</div>
+                <div class="panel-title" data-ui-i18n="panelTitleStep3">오시는 길</div>
+                <div class="panel-sub" data-ui-i18n="panelSubStep3">예식장 주소와 교통 정보를 입력하세요.</div>
 
                 <div class="field">
-                    <label>주소</label>
+                    <label data-ui-i18n="addrFieldLabel">주소</label>
                     <input type="text" id="addr" placeholder="서울특별시 종로구..." value="서울특별시 종로구 라비두스로 12">
                 </div>
                 <div class="field">
-                    <label>지하철 안내</label>
+                    <label data-ui-i18n="subwayFieldLabel">지하철 안내</label>
                     <input type="text" id="subway" placeholder="3호선 안국역 4번 출구..." value="3호선 안국역 4번 출구 도보 5분">
                 </div>
                 <div class="field">
-                    <label>버스 안내</label>
+                    <label data-ui-i18n="busFieldLabel">버스 안내</label>
                     <input type="text" id="bus" placeholder="안국역 정류장 하차..." value="안국역 정류장 하차 (간선 102, 151)">
                 </div>
                 <div class="field">
-                    <label>주차 안내</label>
+                    <label data-ui-i18n="parkingFieldLabel">주차 안내</label>
                     <input type="text" id="parking" placeholder="지하주차장..." value="건물 내 지하주차장 2시간 무료 (발렛 가능)">
                 </div>
 
                 <hr class="sep">
 
                 <div class="field">
-                    <label>지도 위도 (Latitude)</label>
+                    <label data-ui-i18n="mapLatLabel">지도 위도 (Latitude)</label>
                     <input type="text" id="mapLat" value="37.5675">
                 </div>
                 <div class="field">
-                    <label>지도 경도 (Longitude)</label>
+                    <label data-ui-i18n="mapLngLabel">지도 경도 (Longitude)</label>
                     <input type="text" id="mapLng" value="126.985">
                 </div>
 
                 <div class="toggle-row" style="margin-top:8px;">
-                    <label>온라인 생중계 버튼 표시</label>
+                    <label data-ui-i18n="showLiveLabel">온라인 생중계 버튼 표시</label>
                     <label class="toggle"><input type="checkbox" id="showLive"><span class="slider"></span></label>
                 </div>
                 <div class="field" id="liveUrlField" style="display:none;">
-                    <label>생중계 URL (YouTube / Zoom)</label>
+                    <label data-ui-i18n="liveUrlLabel">생중계 URL (YouTube / Zoom)</label>
                     <input type="text" id="liveUrl" placeholder="https://youtube.com/live/...">
                 </div>
 
                 <div class="panel-nav">
-                    <button class="btn-prev" onclick="goStep(2)">← 이전</button>
-                    <button class="btn-next" onclick="goStep(4)">다음 →</button>
+                    <button class="btn-prev" onclick="goStep(2)" data-ui-i18n="prevBtn">← 이전</button>
+                    <button class="btn-next" onclick="goStep(4)" data-ui-i18n="nextBtn">다음 →</button>
                 </div>
             </div>
 
             <!-- STEP 4: 계좌·RSVP -->
             <div class="step-panel" data-panel="4">
-                <div class="panel-title">계좌 &amp; RSVP</div>
-                <div class="panel-sub">마음 전하실 계좌 정보와 참석 여부 수집 설정을 입력하세요.</div>
+                <div class="panel-title" data-ui-i18n="panelTitleStep4">계좌 &amp; RSVP</div>
+                <div class="panel-sub" data-ui-i18n="panelSubStep4">마음 전하실 계좌 정보와 참석 여부 수집 설정을 입력하세요.</div>
 
                 <div class="acc-entry">
-                    <div class="acc-label">신랑측 계좌</div>
+                    <div class="acc-label" data-ui-i18n="groomAccLabel">신랑측 계좌</div>
                     <div class="field">
-                        <label>예금주</label>
+                        <label data-ui-i18n="accHolderLabel">예금주</label>
                         <input type="text" id="gAccName" placeholder="이도현" value="이도현">
                     </div>
                     <div class="field-row">
                         <div class="field">
-                            <label>은행명</label>
+                            <label data-ui-i18n="bankNameLabel">은행명</label>
                             <select id="gAccBank">
-                                <option>국민은행</option><option>신한은행</option><option>하나은행</option>
-                                <option>우리은행</option><option>농협은행</option><option>카카오뱅크</option>
-                                <option>토스뱅크</option><option>기업은행</option>
+                                <option data-ui-i18n="bankKookmin">국민은행</option><option data-ui-i18n="bankShinhan">신한은행</option><option data-ui-i18n="bankHana">하나은행</option>
+                                <option data-ui-i18n="bankWoori">우리은행</option><option data-ui-i18n="bankNonghyup">농협은행</option><option data-ui-i18n="bankKakao">카카오뱅크</option>
+                                <option data-ui-i18n="bankToss">토스뱅크</option><option data-ui-i18n="bankIbk">기업은행</option>
                             </select>
                         </div>
                         <div class="field">
-                            <label>계좌번호</label>
+                            <label data-ui-i18n="accNumLabel">계좌번호</label>
                             <input type="text" id="gAccNum" placeholder="123-456-789012" value="123-456-789012">
                         </div>
                     </div>
                 </div>
 
                 <div class="acc-entry">
-                    <div class="acc-label">신부측 계좌</div>
+                    <div class="acc-label" data-ui-i18n="brideAccLabel">신부측 계좌</div>
                     <div class="field">
-                        <label>예금주</label>
+                        <label data-ui-i18n="accHolderLabel">예금주</label>
                         <input type="text" id="bAccName" placeholder="박서연" value="박서연">
                     </div>
                     <div class="field-row">
                         <div class="field">
-                            <label>은행명</label>
+                            <label data-ui-i18n="bankNameLabel">은행명</label>
                             <select id="bAccBank">
-                                <option>우리은행</option><option>국민은행</option><option>신한은행</option>
-                                <option>하나은행</option><option>농협은행</option><option>카카오뱅크</option>
-                                <option>토스뱅크</option><option>기업은행</option>
+                                <option data-ui-i18n="bankWoori">우리은행</option><option data-ui-i18n="bankKookmin">국민은행</option><option data-ui-i18n="bankShinhan">신한은행</option>
+                                <option data-ui-i18n="bankHana">하나은행</option><option data-ui-i18n="bankNonghyup">농협은행</option><option data-ui-i18n="bankKakao">카카오뱅크</option>
+                                <option data-ui-i18n="bankToss">토스뱅크</option><option data-ui-i18n="bankIbk">기업은행</option>
                             </select>
                         </div>
                         <div class="field">
-                            <label>계좌번호</label>
+                            <label data-ui-i18n="accNumLabel">계좌번호</label>
                             <input type="text" id="bAccNum" placeholder="987-654-321098" value="987-654-321098">
                         </div>
                     </div>
@@ -1608,94 +1596,94 @@
                 <hr class="sep">
 
                 <div class="toggle-row">
-                    <label>혼주(부모님) 계좌 추가</label>
+                    <label data-ui-i18n="parentAccToggleLabel">혼주(부모님) 계좌 추가</label>
                     <label class="toggle"><input type="checkbox" id="showParentAcc"><span class="slider"></span></label>
                 </div>
 
                 <div id="parentAccFields" style="display:none;">
                     <div class="acc-entry">
-                        <div class="acc-label">신랑 아버지 계좌</div>
+                        <div class="acc-label" data-ui-i18n="groomFatherAccLabel">신랑 아버지 계좌</div>
                         <div class="field">
-                            <label>예금주</label>
+                            <label data-ui-i18n="accHolderLabel">예금주</label>
                             <input type="text" id="gFatherAccName" placeholder="이재호">
                         </div>
                         <div class="field-row">
                             <div class="field">
-                                <label>은행명</label>
+                                <label data-ui-i18n="bankNameLabel">은행명</label>
                                 <select id="gFatherAccBank">
-                                    <option>국민은행</option><option>신한은행</option><option>하나은행</option>
-                                    <option>우리은행</option><option>농협은행</option><option>카카오뱅크</option>
-                                    <option>토스뱅크</option><option>기업은행</option>
+                                    <option data-ui-i18n="bankKookmin">국민은행</option><option data-ui-i18n="bankShinhan">신한은행</option><option data-ui-i18n="bankHana">하나은행</option>
+                                    <option data-ui-i18n="bankWoori">우리은행</option><option data-ui-i18n="bankNonghyup">농협은행</option><option data-ui-i18n="bankKakao">카카오뱅크</option>
+                                    <option data-ui-i18n="bankToss">토스뱅크</option><option data-ui-i18n="bankIbk">기업은행</option>
                                 </select>
                             </div>
                             <div class="field">
-                                <label>계좌번호</label>
+                                <label data-ui-i18n="accNumLabel">계좌번호</label>
                                 <input type="text" id="gFatherAccNum" placeholder="000-000-000000">
                             </div>
                         </div>
                     </div>
 
                     <div class="acc-entry">
-                        <div class="acc-label">신랑 어머니 계좌</div>
+                        <div class="acc-label" data-ui-i18n="groomMotherAccLabel">신랑 어머니 계좌</div>
                         <div class="field">
-                            <label>예금주</label>
+                            <label data-ui-i18n="accHolderLabel">예금주</label>
                             <input type="text" id="gMotherAccName" placeholder="김미정">
                         </div>
                         <div class="field-row">
                             <div class="field">
-                                <label>은행명</label>
+                                <label data-ui-i18n="bankNameLabel">은행명</label>
                                 <select id="gMotherAccBank">
-                                    <option>국민은행</option><option>신한은행</option><option>하나은행</option>
-                                    <option>우리은행</option><option>농협은행</option><option>카카오뱅크</option>
-                                    <option>토스뱅크</option><option>기업은행</option>
+                                    <option data-ui-i18n="bankKookmin">국민은행</option><option data-ui-i18n="bankShinhan">신한은행</option><option data-ui-i18n="bankHana">하나은행</option>
+                                    <option data-ui-i18n="bankWoori">우리은행</option><option data-ui-i18n="bankNonghyup">농협은행</option><option data-ui-i18n="bankKakao">카카오뱅크</option>
+                                    <option data-ui-i18n="bankToss">토스뱅크</option><option data-ui-i18n="bankIbk">기업은행</option>
                                 </select>
                             </div>
                             <div class="field">
-                                <label>계좌번호</label>
+                                <label data-ui-i18n="accNumLabel">계좌번호</label>
                                 <input type="text" id="gMotherAccNum" placeholder="000-000-000000">
                             </div>
                         </div>
                     </div>
 
                     <div class="acc-entry">
-                        <div class="acc-label">신부 아버지 계좌</div>
+                        <div class="acc-label" data-ui-i18n="brideFatherAccLabel">신부 아버지 계좌</div>
                         <div class="field">
-                            <label>예금주</label>
+                            <label data-ui-i18n="accHolderLabel">예금주</label>
                             <input type="text" id="bFatherAccName" placeholder="박준영">
                         </div>
                         <div class="field-row">
                             <div class="field">
-                                <label>은행명</label>
+                                <label data-ui-i18n="bankNameLabel">은행명</label>
                                 <select id="bFatherAccBank">
-                                    <option>국민은행</option><option>신한은행</option><option>하나은행</option>
-                                    <option>우리은행</option><option>농협은행</option><option>카카오뱅크</option>
-                                    <option>토스뱅크</option><option>기업은행</option>
+                                    <option data-ui-i18n="bankKookmin">국민은행</option><option data-ui-i18n="bankShinhan">신한은행</option><option data-ui-i18n="bankHana">하나은행</option>
+                                    <option data-ui-i18n="bankWoori">우리은행</option><option data-ui-i18n="bankNonghyup">농협은행</option><option data-ui-i18n="bankKakao">카카오뱅크</option>
+                                    <option data-ui-i18n="bankToss">토스뱅크</option><option data-ui-i18n="bankIbk">기업은행</option>
                                 </select>
                             </div>
                             <div class="field">
-                                <label>계좌번호</label>
+                                <label data-ui-i18n="accNumLabel">계좌번호</label>
                                 <input type="text" id="bFatherAccNum" placeholder="000-000-000000">
                             </div>
                         </div>
                     </div>
 
                     <div class="acc-entry">
-                        <div class="acc-label">신부 어머니 계좌</div>
+                        <div class="acc-label" data-ui-i18n="brideMotherAccLabel">신부 어머니 계좌</div>
                         <div class="field">
-                            <label>예금주</label>
+                            <label data-ui-i18n="accHolderLabel">예금주</label>
                             <input type="text" id="bMotherAccName" placeholder="한지수">
                         </div>
                         <div class="field-row">
                             <div class="field">
-                                <label>은행명</label>
+                                <label data-ui-i18n="bankNameLabel">은행명</label>
                                 <select id="bMotherAccBank">
-                                    <option>국민은행</option><option>신한은행</option><option>하나은행</option>
-                                    <option>우리은행</option><option>농협은행</option><option>카카오뱅크</option>
-                                    <option>토스뱅크</option><option>기업은행</option>
+                                    <option data-ui-i18n="bankKookmin">국민은행</option><option data-ui-i18n="bankShinhan">신한은행</option><option data-ui-i18n="bankHana">하나은행</option>
+                                    <option data-ui-i18n="bankWoori">우리은행</option><option data-ui-i18n="bankNonghyup">농협은행</option><option data-ui-i18n="bankKakao">카카오뱅크</option>
+                                    <option data-ui-i18n="bankToss">토스뱅크</option><option data-ui-i18n="bankIbk">기업은행</option>
                                 </select>
                             </div>
                             <div class="field">
-                                <label>계좌번호</label>
+                                <label data-ui-i18n="accNumLabel">계좌번호</label>
                                 <input type="text" id="bMotherAccNum" placeholder="000-000-000000">
                             </div>
                         </div>
@@ -1705,13 +1693,13 @@
                 <hr class="sep">
 
                 <div class="toggle-row">
-                    <label>RSVP 참석 여부 수집</label>
+                    <label data-ui-i18n="rsvpToggleLabel">RSVP 참석 여부 수집</label>
                     <label class="toggle"><input type="checkbox" id="showRsvp" checked><span class="slider"></span></label>
                 </div>
 
                 <div class="panel-nav">
-                    <button class="btn-prev" onclick="goStep(3)">← 이전</button>
-                    <button class="btn-next" onclick="downloadInvitation()">청첩장 완성!</button>
+                    <button class="btn-prev" onclick="goStep(3)" data-ui-i18n="prevBtn">← 이전</button>
+                    <button class="btn-next" onclick="downloadInvitation()" data-ui-i18n="finishBtn">청첩장 완성!</button>
                 </div>
             </div>
         </div>
@@ -1724,11 +1712,11 @@
             <div class="device-bar">
                 <button class="device-btn active" data-device="mobile" onclick="setDevice('mobile',this)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-                    모바일
+                    <span data-ui-i18n="deviceMobile">모바일</span>
                 </button>
                 <button class="device-btn" data-device="tablet" onclick="setDevice('tablet',this)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-                    태블릿
+                    <span data-ui-i18n="deviceTablet">태블릿</span>
                 </button>
             </div>
 
@@ -1742,34 +1730,34 @@
 
         <!-- RIGHT: SECTIONS QUICK JUMP -->
         <div class="sections-panel">
-            <div class="sp-title">섹션 목록</div>
+            <div class="sp-title" data-ui-i18n="sectionListTitle">섹션 목록</div>
             <div class="sec-item done" onclick="scrollPreview('hero')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg>
-                메인 비주얼
+                <span data-ui-i18n="sectionHero">메인 비주얼</span>
             </div>
             <div class="sec-item" onclick="scrollPreview('greeting')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg>
-                인사말
+                <span data-ui-i18n="sectionGreeting">인사말</span>
             </div>
             <div class="sec-item" onclick="scrollPreview('family')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                신랑·신부
+                <span data-ui-i18n="sectionFamily">신랑·신부</span>
             </div>
             <div class="sec-item" onclick="scrollPreview('theday')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
-                예식 일정
+                <span data-ui-i18n="sectionWedding">예식 일정</span>
             </div>
             <div class="sec-item" onclick="scrollPreview('gallery')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-5 5"/></svg>
-                갤러리
+                <span data-ui-i18n="sectionGallery">갤러리</span>
             </div>
             <div class="sec-item" onclick="scrollPreview('location')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>
-                오시는 길
+                <span data-ui-i18n="sectionLocation">오시는 길</span>
             </div>
             <div class="sec-item" onclick="scrollPreview('account')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-                마음 전하실 곳
+                <span data-ui-i18n="sectionAccount">마음 전하실 곳</span>
             </div>
             <div class="sec-item" onclick="scrollPreview('rsvp')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>
@@ -1818,7 +1806,46 @@
             ctaH2:'지금, 두 사람의 이야기를 시작하세요',
             ctaP:'입력한 내용은 바로 미리보기에 반영됩니다. 편하게 둘러보며 우리만의 청첩장을 완성해보세요.',
             tab1:'① 기본 정보', tab2:'② 인사말·가족', tab3:'③ 갤러리', tab4:'④ 오시는 길', tab5:'⑤ 계좌·RSVP',
-            btnEdit:'편집', btnDownload:'청첩장 다운로드'
+            btnEdit:'편집', btnDownload:'청첩장 다운로드',
+            ddayToggleLabel:'디데이 카운트다운 표시',
+            panelTitleStep0:'기본 정보', panelSubStep0:'신랑·신부 이름, 예식 일시, 장소를 입력하세요.',
+            themeSelectLabel:'테마 선택', themeSelectHint:'(스크롤하여 더 보기)',
+            groomNameLabel:'신랑 이름', brideNameLabel:'신부 이름', groomEnLabel:'신랑 영문', brideEnLabel:'신부 영문',
+            weddingDateLabel:'예식 날짜', weddingTimeLabel:'예식 시간', venueNameLabel:'예식장 이름', venueHallLabel:'홀 정보 (층·홀명)',
+            heroUploadLabel:'대표 사진 업로드 (인트로 배경)', heroUploadHint:'클릭하거나 사진을 드래그하세요<br><span style="font-size:11px; opacity:.7">JPG / PNG / WEBP</span>',
+            bgmUploadLabel:'배경음악(BGM) 업로드', bgmFileNameDefault:'음악 파일을 선택해주세요 (MP3, WAV 등)', bgmFileSet:'배경음악이 설정되었습니다',
+            deleteBtn:'삭제', nextStepBtn:'다음 단계 →', prevBtn:'← 이전', nextBtn:'다음 →', finishBtn:'청첩장 완성!',
+            panelTitleStep1:'인사말 &amp; 가족 정보', panelSubStep1:'초대 문구와 혼주·연락처를 입력하세요.',
+            greetingLabel:'초대 문구',
+            suggestSpring:'봄 — 꽃이 피어나는 봄날, 두 사람이 하나 되어 새로운 출발을 합니다...',
+            suggestAutumn:'가을 — 단풍이 물드는 계절, 서로의 손을 꼭 잡고 함께 걸어가려 합니다...',
+            suggestWinter:'겨울 — 포근한 겨울날, 따뜻한 마음 하나로 평생을 함께하려 합니다...',
+            groomFamilyLabel:'신랑측 혼주', brideFamilyLabel:'신부측 혼주',
+            fatherNameLabel:'아버지 성함', motherNameLabel:'어머니 성함', relationLabel:'관계 설명',
+            groomPhoneLabel:'신랑 연락처', bridePhoneLabel:'신부 연락처',
+            panelTitleStep2:'갤러리 사진', panelSubStep2:'최대 15장까지 업로드할 수 있습니다. 드래그로 순서를 바꿔보세요.',
+            galleryLayoutLabel:'갤러리 레이아웃', galleryLayoutGrid:'격자형 (Grid)', galleryLayoutSwipe:'슬라이드형 (Swipe)',
+            galleryUploadLabel:'사진 업로드', galleryUploadHint:'여러 장 선택 가능<br><span style="font-size:11px;opacity:.7">최대 15장</span>',
+            photoProtectLabel:'사진 저장 방지 기능', maxPhotosToast:'최대 15장까지 업로드 가능합니다',
+            panelTitleStep3:'오시는 길', panelSubStep3:'예식장 주소와 교통 정보를 입력하세요.',
+            addrFieldLabel:'주소', subwayFieldLabel:'지하철 안내', busFieldLabel:'버스 안내', parkingFieldLabel:'주차 안내',
+            mapLatLabel:'지도 위도 (Latitude)', mapLngLabel:'지도 경도 (Longitude)',
+            showLiveLabel:'온라인 생중계 버튼 표시', liveUrlLabel:'생중계 URL (YouTube / Zoom)',
+            panelTitleStep4:'계좌 &amp; RSVP', panelSubStep4:'마음 전하실 계좌 정보와 참석 여부 수집 설정을 입력하세요.',
+            groomAccLabel:'신랑측 계좌', brideAccLabel:'신부측 계좌',
+            accHolderLabel:'예금주', bankNameLabel:'은행명', accNumLabel:'계좌번호',
+            parentAccToggleLabel:'혼주(부모님) 계좌 추가',
+            groomFatherAccLabel:'신랑 아버지 계좌', groomMotherAccLabel:'신랑 어머니 계좌',
+            brideFatherAccLabel:'신부 아버지 계좌', brideMotherAccLabel:'신부 어머니 계좌',
+            rsvpToggleLabel:'RSVP 참석 여부 수집',
+            bankKookmin:'국민은행', bankShinhan:'신한은행', bankHana:'하나은행', bankWoori:'우리은행',
+            bankNonghyup:'농협은행', bankKakao:'카카오뱅크', bankToss:'토스뱅크', bankIbk:'기업은행',
+            deviceMobile:'모바일', deviceTablet:'태블릿',
+            sectionListTitle:'섹션 목록', sectionHero:'메인 비주얼', sectionGreeting:'인사말', sectionFamily:'신랑·신부',
+            sectionWedding:'예식 일정', sectionGallery:'갤러리', sectionLocation:'오시는 길', sectionAccount:'마음 전하실 곳',
+            downloadSuccessToast:'청첩장이 다운로드되었습니다 🎉', downloadFailToast:'다운로드에 실패했습니다. 다시 시도해주세요.',
+            genericErrorToast:'오류가 발생했습니다. 다시 시도해주세요.', shareSuccessToast:'청첩장이 공유되었습니다 ✨',
+            shareTitle:'모바일 청첩장', shareTextTemplate:'{groom} ♥ {bride}의 모바일 청첩장입니다.'
         },
         en: {
             langName:'English',
@@ -1846,7 +1873,46 @@
             ctaH2:'Start your story, right now',
             ctaP:'Everything you enter is reflected in the preview immediately. Browse freely and create your perfect invitation.',
             tab1:'① Basic Info', tab2:'② Greeting·Family', tab3:'③ Gallery', tab4:'④ Location', tab5:'⑤ Account·RSVP',
-            btnEdit:'Edit', btnDownload:'Download Invitation'
+            btnEdit:'Edit', btnDownload:'Download Invitation',
+            ddayToggleLabel:'Show D-Day countdown',
+            panelTitleStep0:'Basic Info', panelSubStep0:"Enter the couple's names, ceremony date/time, and venue.",
+            themeSelectLabel:'Choose a theme', themeSelectHint:'(scroll for more)',
+            groomNameLabel:"Groom's Name", brideNameLabel:"Bride's Name", groomEnLabel:"Groom's Name (English)", brideEnLabel:"Bride's Name (English)",
+            weddingDateLabel:'Ceremony Date', weddingTimeLabel:'Ceremony Time', venueNameLabel:'Venue Name', venueHallLabel:'Hall Info (Floor · Hall name)',
+            heroUploadLabel:'Upload Hero Photo (intro background)', heroUploadHint:'Click or drag a photo here<br><span style="font-size:11px; opacity:.7">JPG / PNG / WEBP</span>',
+            bgmUploadLabel:'Upload Background Music (BGM)', bgmFileNameDefault:'Please choose a music file (MP3, WAV, etc.)', bgmFileSet:'Background music has been set',
+            deleteBtn:'Delete', nextStepBtn:'Next Step →', prevBtn:'← Back', nextBtn:'Next →', finishBtn:'Finish Invitation!',
+            panelTitleStep1:'Greeting &amp; Family', panelSubStep1:'Enter your invitation message and parents\' contact info.',
+            greetingLabel:'Invitation Message',
+            suggestSpring:'Spring — On a blooming spring day, two people become one and begin a new journey...',
+            suggestAutumn:'Autumn — As the leaves turn, we wish to walk forward hand in hand...',
+            suggestWinter:'Winter — On a cozy winter day, we hope to spend a lifetime together with one warm heart...',
+            groomFamilyLabel:"Groom's Parents", brideFamilyLabel:"Bride's Parents",
+            fatherNameLabel:"Father's Name", motherNameLabel:"Mother's Name", relationLabel:'Relationship',
+            groomPhoneLabel:"Groom's Phone", bridePhoneLabel:"Bride's Phone",
+            panelTitleStep2:'Gallery Photos', panelSubStep2:'Upload up to 15 photos. Drag to reorder.',
+            galleryLayoutLabel:'Gallery Layout', galleryLayoutGrid:'Grid', galleryLayoutSwipe:'Swipe',
+            galleryUploadLabel:'Upload Photos', galleryUploadHint:'Select multiple photos<br><span style="font-size:11px;opacity:.7">Up to 15</span>',
+            photoProtectLabel:'Prevent photo saving', maxPhotosToast:'You can upload up to 15 photos',
+            panelTitleStep3:'Directions', panelSubStep3:'Enter the venue address and transit information.',
+            addrFieldLabel:'Address', subwayFieldLabel:'Subway Info', busFieldLabel:'Bus Info', parkingFieldLabel:'Parking Info',
+            mapLatLabel:'Map Latitude', mapLngLabel:'Map Longitude',
+            showLiveLabel:'Show live stream button', liveUrlLabel:'Live Stream URL (YouTube / Zoom)',
+            panelTitleStep4:'Account &amp; RSVP', panelSubStep4:'Enter gift account details and RSVP settings.',
+            groomAccLabel:"Groom's Account", brideAccLabel:"Bride's Account",
+            accHolderLabel:'Account Holder', bankNameLabel:'Bank', accNumLabel:'Account Number',
+            parentAccToggleLabel:"Add parents' accounts",
+            groomFatherAccLabel:"Groom's Father Account", groomMotherAccLabel:"Groom's Mother Account",
+            brideFatherAccLabel:"Bride's Father Account", brideMotherAccLabel:"Bride's Mother Account",
+            rsvpToggleLabel:'Collect RSVP responses',
+            bankKookmin:'KB Kookmin Bank', bankShinhan:'Shinhan Bank', bankHana:'Hana Bank', bankWoori:'Woori Bank',
+            bankNonghyup:'NH Nonghyup Bank', bankKakao:'Kakao Bank', bankToss:'Toss Bank', bankIbk:'IBK (Industrial Bank of Korea)',
+            deviceMobile:'Mobile', deviceTablet:'Tablet',
+            sectionListTitle:'Sections', sectionHero:'Main Visual', sectionGreeting:'Greeting', sectionFamily:'Groom & Bride',
+            sectionWedding:'Ceremony', sectionGallery:'Gallery', sectionLocation:'Directions', sectionAccount:'Gift Account',
+            downloadSuccessToast:'Invitation downloaded 🎉', downloadFailToast:'Download failed. Please try again.',
+            genericErrorToast:'Something went wrong. Please try again.', shareSuccessToast:'Invitation shared ✨',
+            shareTitle:'Mobile Wedding Invitation', shareTextTemplate:"This is {groom} & {bride}'s mobile wedding invitation."
         },
         ja: {
             langName:'日本語',
@@ -1874,7 +1940,46 @@
             ctaH2:'今すぐ、二人の物語を始めましょう',
             ctaP:'入力内容はリアルタイムでプレビューに反映されます。気軽に試しながら招待状を完成させてください。',
             tab1:'① 基本情報', tab2:'② 挨拶·家族', tab3:'③ ギャラリー', tab4:'④ アクセス', tab5:'⑤ 口座·RSVP',
-            btnEdit:'編集', btnDownload:'招待状をダウンロード'
+            btnEdit:'編集', btnDownload:'招待状をダウンロード',
+            ddayToggleLabel:'Dデーカウントダウンを表示',
+            panelTitleStep0:'基本情報', panelSubStep0:'新郎新婦のお名前、挙式日時、会場を入力してください。',
+            themeSelectLabel:'テーマ選択', themeSelectHint:'(スクロールでさらに表示)',
+            groomNameLabel:'新郎のお名前', brideNameLabel:'新婦のお名前', groomEnLabel:'新郎(英語表記)', brideEnLabel:'新婦(英語表記)',
+            weddingDateLabel:'挙式日', weddingTimeLabel:'挙式時間', venueNameLabel:'会場名', venueHallLabel:'ホール情報(階·ホール名)',
+            heroUploadLabel:'メイン写真アップロード(イントロ背景)', heroUploadHint:'クリックまたは写真をドラッグしてください<br><span style="font-size:11px; opacity:.7">JPG / PNG / WEBP</span>',
+            bgmUploadLabel:'BGMアップロード', bgmFileNameDefault:'音楽ファイルを選択してください(MP3, WAVなど)', bgmFileSet:'BGMが設定されました',
+            deleteBtn:'削除', nextStepBtn:'次のステップ →', prevBtn:'← 戻る', nextBtn:'次へ →', finishBtn:'招待状を完成する！',
+            panelTitleStep1:'ご挨拶 &amp; ご家族情報', panelSubStep1:'招待メッセージとご両親の連絡先を入力してください。',
+            greetingLabel:'招待メッセージ',
+            suggestSpring:'春 — 花咲く春の日、二人がひとつになり新たな一歩を踏み出します...',
+            suggestAutumn:'秋 — 紅葉の季節、互いの手をしっかり握り共に歩んでいきます...',
+            suggestWinter:'冬 — 温かな冬の日、ひとつの温かい心で一生を共にします...',
+            groomFamilyLabel:'新郎側ご家族', brideFamilyLabel:'新婦側ご家族',
+            fatherNameLabel:'お父様のお名前', motherNameLabel:'お母様のお名前', relationLabel:'続柄',
+            groomPhoneLabel:'新郎の連絡先', bridePhoneLabel:'新婦の連絡先',
+            panelTitleStep2:'ギャラリー写真', panelSubStep2:'最大15枚までアップロードできます。ドラッグで順番を変更できます。',
+            galleryLayoutLabel:'ギャラリーレイアウト', galleryLayoutGrid:'グリッド (Grid)', galleryLayoutSwipe:'スライド (Swipe)',
+            galleryUploadLabel:'写真アップロード', galleryUploadHint:'複数選択可能<br><span style="font-size:11px;opacity:.7">最大15枚</span>',
+            photoProtectLabel:'写真保存防止機能', maxPhotosToast:'最大15枚までアップロードできます',
+            panelTitleStep3:'アクセス', panelSubStep3:'会場の住所と交通情報を入力してください。',
+            addrFieldLabel:'住所', subwayFieldLabel:'地下鉄案内', busFieldLabel:'バス案内', parkingFieldLabel:'駐車場案内',
+            mapLatLabel:'地図緯度 (Latitude)', mapLngLabel:'地図経度 (Longitude)',
+            showLiveLabel:'オンライン生中継ボタンを表示', liveUrlLabel:'生中継URL (YouTube / Zoom)',
+            panelTitleStep4:'口座 &amp; RSVP', panelSubStep4:'ご祝儀口座情報とRSVP収集設定を入力してください。',
+            groomAccLabel:'新郎側口座', brideAccLabel:'新婦側口座',
+            accHolderLabel:'口座名義', bankNameLabel:'銀行名', accNumLabel:'口座番号',
+            parentAccToggleLabel:'ご両親の口座を追加',
+            groomFatherAccLabel:'新郎父の口座', groomMotherAccLabel:'新郎母の口座',
+            brideFatherAccLabel:'新婦父の口座', brideMotherAccLabel:'新婦母の口座',
+            rsvpToggleLabel:'RSVP出欠確認を収集',
+            bankKookmin:'KB国民銀行', bankShinhan:'新韓銀行', bankHana:'ハナ銀行', bankWoori:'ウリィ銀行',
+            bankNonghyup:'農協銀行', bankKakao:'カカオバンク', bankToss:'トスバンク', bankIbk:'企業銀行(IBK)',
+            deviceMobile:'モバイル', deviceTablet:'タブレット',
+            sectionListTitle:'セクション一覧', sectionHero:'メインビジュアル', sectionGreeting:'ご挨拶', sectionFamily:'新郎新婦',
+            sectionWedding:'挙式日程', sectionGallery:'ギャラリー', sectionLocation:'アクセス', sectionAccount:'ご祝儀',
+            downloadSuccessToast:'招待状がダウンロードされました 🎉', downloadFailToast:'ダウンロードに失敗しました。もう一度お試しください。',
+            genericErrorToast:'エラーが発生しました。もう一度お試しください。', shareSuccessToast:'招待状が共有されました ✨',
+            shareTitle:'モバイル招待状', shareTextTemplate:'{groom} ♥ {bride}のモバイル招待状です。'
         },
         zh: {
             langName:'中文',
@@ -1902,7 +2007,46 @@
             ctaH2:'现在就开始，记录你们的故事',
             ctaP:'输入的内容会实时反映在预览中，轻松浏览并完成专属请柬。',
             tab1:'① 基本信息', tab2:'② 致辞·家庭', tab3:'③ 相册', tab4:'④ 地址', tab5:'⑤ 账户·RSVP',
-            btnEdit:'编辑', btnDownload:'下载请柬'
+            btnEdit:'编辑', btnDownload:'下载请柬',
+            ddayToggleLabel:'显示倒计时',
+            panelTitleStep0:'基本信息', panelSubStep0:'请输入新郎新娘姓名、婚礼日期时间及地点。',
+            themeSelectLabel:'选择主题', themeSelectHint:'(滚动查看更多)',
+            groomNameLabel:'新郎姓名', brideNameLabel:'新娘姓名', groomEnLabel:'新郎英文名', brideEnLabel:'新娘英文名',
+            weddingDateLabel:'婚礼日期', weddingTimeLabel:'婚礼时间', venueNameLabel:'婚礼场地名称', venueHallLabel:'厅室信息(楼层·厅名)',
+            heroUploadLabel:'上传主图(首页背景)', heroUploadHint:'点击或拖拽照片到此处<br><span style="font-size:11px; opacity:.7">JPG / PNG / WEBP</span>',
+            bgmUploadLabel:'上传背景音乐(BGM)', bgmFileNameDefault:'请选择音乐文件(MP3、WAV等)', bgmFileSet:'背景音乐已设置',
+            deleteBtn:'删除', nextStepBtn:'下一步 →', prevBtn:'← 上一步', nextBtn:'下一步 →', finishBtn:'完成请柬！',
+            panelTitleStep1:'致辞 &amp; 家庭信息', panelSubStep1:'请输入邀请文和双方家长联系方式。',
+            greetingLabel:'邀请文',
+            suggestSpring:'春 — 在鲜花盛开的春日，两人携手开启新的旅程...',
+            suggestAutumn:'秋 — 在枫叶染红的季节，愿紧握彼此的手一同前行...',
+            suggestWinter:'冬 — 在温暖的冬日，愿以一颗真心相伴一生...',
+            groomFamilyLabel:'新郎方家长', brideFamilyLabel:'新娘方家长',
+            fatherNameLabel:'父亲姓名', motherNameLabel:'母亲姓名', relationLabel:'关系说明',
+            groomPhoneLabel:'新郎联系方式', bridePhoneLabel:'新娘联系方式',
+            panelTitleStep2:'相册照片', panelSubStep2:'最多可上传15张照片，可拖拽调整顺序。',
+            galleryLayoutLabel:'相册布局', galleryLayoutGrid:'网格 (Grid)', galleryLayoutSwipe:'滑动 (Swipe)',
+            galleryUploadLabel:'上传照片', galleryUploadHint:'可多选<br><span style="font-size:11px;opacity:.7">最多15张</span>',
+            photoProtectLabel:'照片防保存功能', maxPhotosToast:'最多可上传15张照片',
+            panelTitleStep3:'交通指引', panelSubStep3:'请输入婚礼场地地址及交通信息。',
+            addrFieldLabel:'地址', subwayFieldLabel:'地铁指引', busFieldLabel:'公交指引', parkingFieldLabel:'停车指引',
+            mapLatLabel:'地图纬度 (Latitude)', mapLngLabel:'地图经度 (Longitude)',
+            showLiveLabel:'显示在线直播按钮', liveUrlLabel:'直播链接 (YouTube / Zoom)',
+            panelTitleStep4:'账户 &amp; RSVP', panelSubStep4:'请输入礼金账户信息及出席确认收集设置。',
+            groomAccLabel:'新郎方账户', brideAccLabel:'新娘方账户',
+            accHolderLabel:'账户名', bankNameLabel:'银行名称', accNumLabel:'账号',
+            parentAccToggleLabel:'添加双方家长账户',
+            groomFatherAccLabel:'新郎父亲账户', groomMotherAccLabel:'新郎母亲账户',
+            brideFatherAccLabel:'新娘父亲账户', brideMotherAccLabel:'新娘母亲账户',
+            rsvpToggleLabel:'收集RSVP出席确认',
+            bankKookmin:'KB国民银行', bankShinhan:'新韩银行', bankHana:'韩亚银行', bankWoori:'友利银行',
+            bankNonghyup:'农协银行', bankKakao:'Kakao银行', bankToss:'Toss银行', bankIbk:'企业银行(IBK)',
+            deviceMobile:'手机', deviceTablet:'平板',
+            sectionListTitle:'章节列表', sectionHero:'主视觉', sectionGreeting:'致辞', sectionFamily:'新郎新娘',
+            sectionWedding:'婚礼日程', sectionGallery:'相册', sectionLocation:'交通指引', sectionAccount:'礼金账户',
+            downloadSuccessToast:'请柬已下载 🎉', downloadFailToast:'下载失败，请重试。',
+            genericErrorToast:'发生错误，请重试。', shareSuccessToast:'请柬已分享 ✨',
+            shareTitle:'手机婚礼请柬', shareTextTemplate:'这是{groom} ♥ {bride}的手机婚礼请柬。'
         }
     };
     const UI_LANG_KEY = 'withyou-ui-lang';
@@ -1922,6 +2066,29 @@
             o.classList.toggle('active', o.dataset.uiLang === lang);
         });
         try { localStorage.setItem(UI_LANG_KEY, lang); } catch(e) {}
+
+        // 테마 이름/설명, 빌더 미리보기, 테마 확인 모달도 함께 갱신 (빌더 스크립트 초기화 전 최초 호출 시에는 건너뜀)
+        if (window._builderReady) {
+            document.querySelectorAll('.theme-opt[data-theme]').forEach(opt => {
+                const tt = themeText(opt.dataset.theme, lang);
+                if (!tt) return;
+                const nameEl = opt.querySelector('.th-name');
+                if (nameEl) nameEl.textContent = tt.name;
+                const swatchSpan = opt.querySelector('.swatch > span');
+                if (swatchSpan && opt.dataset.theme !== 'classic') swatchSpan.textContent = tt.name;
+            });
+            if (_currentModalTheme) openThemePreview(_currentModalTheme);
+            if (window._previewBuilt) refreshPreview();
+            // BGM 상태 안내 문구는 실제 D.bgmB64 상태에 맞춰 다시 계산한다
+            // (위 data-ui-i18n 루프가 기본 안내 문구로 덮어썼을 수 있으므로 이후에 실행)
+            const bgmNameEl = document.getElementById('bgmFileName');
+            if (bgmNameEl && D.bgmB64) bgmNameEl.textContent = uiT('bgmFileSet');
+        }
+    }
+
+    function uiT(key) {
+        const tr = UI_I18N[_uiLang] || UI_I18N.ko;
+        return tr[key] !== undefined ? tr[key] : (UI_I18N.ko[key] || key);
     }
 
     (function initUILang() {
@@ -2009,7 +2176,7 @@
 
     /* ---- state ---- */
     const D = {
-        theme:'classic', lang:'ko',
+        theme:'classic',
         groom:'이도현', bride:'박서연',
         groomEn:'Lee Dohyun', brideEn:'Park Seoyeon',
         weddingDate:'2026-11-14', weddingTime:'13:00',
@@ -2080,7 +2247,6 @@
     bind('bFatherAccName','bFatherAccName'); bind('bFatherAccBank','bFatherAccBank'); bind('bFatherAccNum','bFatherAccNum');
     bind('bMotherAccName','bMotherAccName'); bind('bMotherAccBank','bMotherAccBank'); bind('bMotherAccNum','bMotherAccNum');
     bind('showRsvp','showRsvp');
-    bind('invLang','lang');
 
     /* live URL toggle */
     document.getElementById('showLive').addEventListener('change', function(){
@@ -2128,7 +2294,7 @@
             if(!removeBtn) {
                 removeBtn = document.createElement('button');
                 removeBtn.id = 'heroRemoveBtn';
-                removeBtn.innerHTML = '삭제';
+                removeBtn.innerHTML = uiT('deleteBtn');
                 removeBtn.style = 'position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.5); color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:12px; z-index:10;';
                 removeBtn.onclick = (e) => {
                     e.stopPropagation();
@@ -2163,7 +2329,7 @@
     document.getElementById('bgmRemoveBtn').onclick = (e) => {
         e.stopPropagation();
         D.bgmB64 = null;
-        document.getElementById('bgmFileName').textContent = '음악 파일을 선택해주세요 (MP3, WAV 등)';
+        document.getElementById('bgmFileName').textContent = uiT('bgmFileNameDefault');
         document.getElementById('bgmRemoveBtn').style.display = 'none';
         document.getElementById('bgmFile').value = '';
         scheduleRefresh();
@@ -2171,7 +2337,7 @@
 
     // 초기 로드 시 BGM 상태 확인
     if(D.bgmB64) {
-        document.getElementById('bgmFileName').textContent = '배경음악이 설정되었습니다';
+        document.getElementById('bgmFileName').textContent = uiT('bgmFileSet');
         document.getElementById('bgmRemoveBtn').style.display = 'inline-block';
     }
 
@@ -2179,7 +2345,7 @@
     document.getElementById('galleryImgs').addEventListener('change', function(){
         const files = Array.from(this.files);
         const remaining = 15 - D.photos.length;
-        if(files.length > remaining){ showToast(`최대 15장까지 업로드 가능합니다`); }
+        if(files.length > remaining){ showToast(uiT('maxPhotosToast')); }
         const slice = files.slice(0, remaining);
         slice.forEach(file=>{
             const r = new FileReader();
@@ -2235,7 +2401,7 @@
          'venueName','venueHall','greeting',
          'gFather','gMother','gRel','groomPhone',
          'bFather','bMother','bRel','bridePhone',
-         'galleryLayout', 'invLang',
+         'galleryLayout',
          'addr','subway','bus','parking','mapLat','mapLng','liveUrl',
          'gAccName','gAccBank','gAccNum',
          'bAccName','bAccBank','bAccNum',
@@ -2267,7 +2433,7 @@
             if (!document.getElementById('heroRemoveBtn')) {
                 const btn = document.createElement('button');
                 btn.id = 'heroRemoveBtn';
-                btn.innerHTML = '삭제';
+                btn.innerHTML = uiT('deleteBtn');
                 btn.style = 'position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.5); color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:12px; z-index:10;';
                 btn.onclick = e => {
                     e.stopPropagation();
@@ -2283,7 +2449,7 @@
             }
         }
         if (D.bgmB64) {
-            document.getElementById('bgmFileName').textContent = '배경음악이 설정되었습니다';
+            document.getElementById('bgmFileName').textContent = uiT('bgmFileSet');
             document.getElementById('bgmRemoveBtn').style.display = 'inline-block';
         }
         if (D.photos && D.photos.length > 0) renderPhotoList();
@@ -2672,6 +2838,55 @@
         },
     };
 
+    /* ---- THEME NAME/DESC/TAGS TRANSLATIONS (ko lives in THEMES above) ---- */
+    const THEME_I18N = {
+        en: {
+            classic:{name:'Classic Serif', desc:'Ivory & wine tones for a calm, elegant mood.', tags:['Understated','Classic','Serif']},
+            simpleline:{name:'Simple Line Art', desc:'White background with a delicate line-drawn couple illustration.', tags:['Simple','Modern','Refined']},
+            classicwhite:{name:'Classic White', desc:'A white arch and magnolias with warm gold text.', tags:['Elegant','Classic','Luxurious']},
+            naturalgreen:{name:'Natural Green', desc:'Sage green gradient with a botanical leaf frame.', tags:['Natural','Fresh','Botanical']},
+            romanticpink:{name:'Romantic Pink', desc:'Pink gradient with cherry blossoms in an oval frame.', tags:['Romantic','Spring','Feminine']},
+            modernminimal:{name:'Modern Minimal', desc:'Pure white with a clean single-branch sans-serif look.', tags:['Minimal','Modern','Clean']},
+            vintagewood:{name:'Vintage Wood', desc:'Dark wood background with a dried pampas grass bundle.', tags:['Vintage','Dark','Antique']},
+            traditional:{name:'Traditional Touch', desc:'Cream tone with a Korean lattice border, plum blossoms & knots.', tags:['Traditional','Korean','Antique']},
+            oceanwhisper:{name:"Ocean's Whisper", desc:'Ocean blue gradient with waves, seagulls and a glass texture.', tags:['Ocean','Fresh','Cool']},
+            autumn:{name:'Warmth of Autumn', desc:'Amber gradient with maple leaves and mountain silhouettes.', tags:['Autumn','Warm','Natural']},
+            winterdusk:{name:'Winter Dusk', desc:'Purple-orange dusk gradient with pine tree silhouettes.', tags:['Winter','Dreamy','Bold']},
+        },
+        ja: {
+            classic:{name:'クラシック明朝', desc:'アイボリー×ワイン、落ち着いた高級感のあるムード。', tags:['控えめ','クラシック','明朝体']},
+            simpleline:{name:'シンプルラインアート', desc:'白地に繊細なラインドローイングのカップルイラスト。', tags:['シンプル','モダン','洗練']},
+            classicwhite:{name:'クラシックホワイト', desc:'白いアーチと木蓮、温かみのあるゴールドの文字。', tags:['上品','クラシック','高級']},
+            naturalgreen:{name:'ナチュラルグリーン', desc:'セージグリーンのグラデーションとボタニカルリーフフレーム。', tags:['自然','ナチュラル','爽やか']},
+            romanticpink:{name:'ロマンティックピンク', desc:'ピンクのグラデーションと桜の花びらの楕円フレーム。', tags:['ロマンティック','春','女性らしい']},
+            modernminimal:{name:'モダンミニマル', desc:'ピュアホワイトにシングルブランチのクリーンなサンセリフ。', tags:['ミニマル','モダン','清潔感']},
+            vintagewood:{name:'ヴィンテージウッド', desc:'ダークウッドの背景にドライパンパスグラスの束。', tags:['ヴィンテージ','ダーク','アンティーク']},
+            traditional:{name:'トラディショナルタッチ', desc:'クリーム×韓国格子ボーダー、梅と結び紐の装飾。', tags:['伝統','韓国的','クラシック']},
+            oceanwhisper:{name:'オーシャンウィスパー', desc:'オーシャンブルーのグラデーション、波とカモメ、ガラス質感。', tags:['海','爽やか','涼しげ']},
+            autumn:{name:'秋のぬくもり', desc:'アンバーグラデーションと紅葉、山のシルエット。', tags:['秋','暖かい','自然']},
+            winterdusk:{name:'冬の夕暮れ', desc:'紫とオレンジの夕暮れグラデーション、松のシルエット。', tags:['冬','幻想的','強烈']},
+        },
+        zh: {
+            classic:{name:'经典明朝体', desc:'象牙白与酒红色调，沉稳高雅的氛围。', tags:['朴素','经典','明朝体']},
+            simpleline:{name:'简约线条艺术', desc:'白色背景，精致的线条手绘情侣插画。', tags:['简约','现代','精致']},
+            classicwhite:{name:'经典白', desc:'白色拱门与玉兰花，温暖的金色文字。', tags:['优雅','经典','高级']},
+            naturalgreen:{name:'自然绿', desc:'鼠尾草绿渐变，植物叶片相框。', tags:['自然','清新','植物']},
+            romanticpink:{name:'浪漫粉', desc:'粉色渐变，樱花瓣与椭圆相框。', tags:['浪漫','春天','女性化']},
+            modernminimal:{name:'现代极简', desc:'纯白背景，单枝干净无衬线风格。', tags:['极简','现代','干净']},
+            vintagewood:{name:'复古木纹', desc:'深色木纹背景，干燥芦苇草束。', tags:['复古','深色','古典']},
+            traditional:{name:'传统之美', desc:'米色调与韩式格纹边框，梅花与绳结装饰。', tags:['传统','韩式','古典']},
+            oceanwhisper:{name:'海洋私语', desc:'海洋蓝渐变，海浪与海鸥，玻璃质感。', tags:['海洋','清新','凉爽']},
+            autumn:{name:'秋日暖意', desc:'琥珀色渐变，枫叶与山峦剪影。', tags:['秋天','温暖','自然']},
+            winterdusk:{name:'冬日暮色', desc:'紫橙色暮色渐变，松树剪影。', tags:['冬天','梦幻','强烈']},
+        },
+    };
+    function themeText(themeId, lang){
+        const th = THEMES[themeId];
+        if(!th) return null;
+        const tr = (lang && lang !== 'ko') ? (THEME_I18N[lang] || {})[themeId] : null;
+        return tr ? {name:tr.name, desc:tr.desc, tags:tr.tags} : {name:th.name, desc:th.desc, tags:th.tags};
+    }
+
     /* ---- THEME-SPECIFIC HERO SVG ---- */
     function getHeroSVG(theme, t, gFirst, bFirst, yyyy, mm, dd){
         const ds = `${yyyy} . ${String(mm).padStart(2,'0')} . ${String(dd).padStart(2,'0')}`;
@@ -2863,7 +3078,7 @@
                 <span class="eyebrow">YOU ARE INVITED</span>
                 <div class="names-kr">${gr} <span class="heart">♥</span> ${br}</div>
                 <div class="sub-title">Wedding Invitation</div>
-                <span class="tap">화면을 눌러 청첩장을 열어보세요</span>
+                <span class="tap" data-i18n="tapHint">화면을 눌러 청첩장을 열어보세요</span>
             </div>`;
 
         const names = (nc,sc) =>
@@ -3318,7 +3533,7 @@
                 <span class="eyebrow">YOU ARE INVITED</span>
                 <div class="names-kr">${gr} <span class="heart">♥</span> ${br}</div>
                 <div class="sub-title">Wedding Invitation</div>
-                <span class="tap">화면을 눌러 청첩장을 열어보세요</span>
+                <span class="tap" data-i18n="tapHint">화면을 눌러 청첩장을 열어보세요</span>
             </div>`;
         }
     }
@@ -3568,11 +3783,6 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
 .float-btn{position:fixed;right:18px;z-index:50;width:46px;height:46px;border-radius:50%;background:var(--ivory);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--wine);box-shadow:0 4px 14px rgba(0,0,0,0.1);}
 #bgm-btn{bottom:24px;}
 @media(min-width:540px){.float-btn{right:calc(50% - 240px + 18px);}}
-#_langSw{position:fixed;right:18px;bottom:80px;z-index:10001;}
-@media(min-width:540px){#_langSw{right:calc(50% - 240px + 18px);}}
-#_langBtn{width:46px;height:46px;border-radius:50%;background:white;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;box-shadow:0 4px 14px rgba(0,0,0,0.12);line-height:1;padding:0;}
-#_langPop{display:none;position:absolute;bottom:54px;right:0;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.18);overflow:hidden;border:1px solid rgba(0,0,0,0.07);min-width:136px;}
-.lang-opt{display:block;padding:11px 16px;border:none;background:none;font-size:14px;cursor:pointer;white-space:nowrap;width:100%;text-align:left;font-family:var(--sans);transition:background .15s;}
 #toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--ivory);font-size:13px;letter-spacing:.05em;padding:10px 20px;border-radius:999px;z-index:200;opacity:0;transition:opacity .3s ease,transform .3s ease;pointer-events:none;white-space:nowrap;}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
@@ -3740,15 +3950,6 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
   </section>
 </div>
 
-<div id="_langSw">
-  <button id="_langBtn" aria-label="언어 선택"><span id="_langLbl">🌐</span></button>
-  <div id="_langPop">
-    <button class="lang-opt" data-lang="ko">🇰🇷 한국어</button>
-    <button class="lang-opt" data-lang="en">🇺🇸 English</button>
-    <button class="lang-opt" data-lang="ja">🇯🇵 日本語</button>
-    <button class="lang-opt" data-lang="zh">🇨🇳 中文</button>
-  </div>
-</div>
 <button class="float-btn" id="bgm-btn" aria-label="배경음악 재생" style="bottom:24px; font-size:20px; color:var(--wine); background:white; border:1px solid var(--wine); display:none; align-items:center; justify-content:center;">
   ♬
 </button>
@@ -3761,12 +3962,12 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
 <script>
 // ── i18n ──────────────────────────────────────────────────────────────────
 const I18N={
-  ko:{greetingSection:'마음을 전합니다',familySection:'신랑 · 신부 소개',weddingSection:'예식 안내',gallerySection:'갤러리',locationSection:'오시는 길',accountSection:'마음 전하실 곳',rsvpSection:'참석 의사 전달',groomRole:'신랑',brideRole:'신부',callBtn:'전화',smsBtn:'문자',addCal:'캘린더에 추가',liveBtn:'온라인 생중계',dowSun:'일',dowMon:'월',dowTue:'화',dowWed:'수',dowThu:'목',dowFri:'금',dowSat:'토',gridView:'격자형',slideView:'슬라이드형',photoNote:'소중한 추억이 담긴 사진입니다. 별도 저장은 자제해 주세요.',addrLabel:'주소',subwayLabel:'지하철',busLabel:'버스',parkingLabel:'주차',groomSide:'신랑측',brideSide:'신부측',fatherLabel:'부친',motherLabel:'모친',copyBtn:'복사',kakaoPayBtn:'카카오페이 송금',tossBtn:'토스로 보내기',accountDesc:'참석이 어려우신 분들을 위해 안내드립니다.<br>전해주시는 마음, 감사한 마음으로 잘 간직하겠습니다.',rsvpDesc:'따뜻한 식사 준비를 위해 참석 여부를 알려주시면<br>큰 도움이 됩니다. 감사합니다.',nameLabel:'성함',attendLabel:'참석 여부',attendYes:'참석합니다',attendNo:'참석이 어려워요',mealLabel:'식사 여부',mealYes:'식사 가능',mealNo:'식사 안 함',companionLabel:'동반 인원 (본인 제외)',memoLabel:'전하실 말씀 (선택)',submitBtn:'전달하기',thankYou:'소중한 답변, 감사합니다.',thankYouMsg:'전해주신 마음을 가지고<br>더 행복한 하루를 준비하겠습니다.',ddayWaiting:'우리, 함께할 날을 기다립니다',ddayToday:'오늘, 두 사람이 함께합니다',footerTogether:'함께 걷겠습니다',footerMsg:'귀한 시간 내어 끝까지 읽어주셔서 감사합니다.',copied:'계좌번호가 복사되었습니다',copyFail:'복사에 실패했습니다',calAdded:'캘린더 파일이 다운로드되었습니다'},
-  en:{greetingSection:'Our Message',familySection:'Groom & Bride',weddingSection:'Wedding Details',gallerySection:'Gallery',locationSection:'Directions',accountSection:'Gift Account',rsvpSection:'RSVP',groomRole:'Groom',brideRole:'Bride',callBtn:'Call',smsBtn:'Text',addCal:'Add to Calendar',liveBtn:'Live Stream',dowSun:'Sun',dowMon:'Mon',dowTue:'Tue',dowWed:'Wed',dowThu:'Thu',dowFri:'Fri',dowSat:'Sat',gridView:'Grid',slideView:'Slide',photoNote:'Precious memories. Please refrain from saving.',addrLabel:'Address',subwayLabel:'Subway',busLabel:'Bus',parkingLabel:'Parking',groomSide:"Groom's",brideSide:"Bride's",fatherLabel:'Father',motherLabel:'Mother',copyBtn:'Copy',kakaoPayBtn:'KakaoPay',tossBtn:'Toss',accountDesc:'For those unable to attend,<br>we have provided account details below.',rsvpDesc:'To help us prepare,<br>please let us know if you can attend.',nameLabel:'Name',attendLabel:'Attendance',attendYes:'Attending',attendNo:'Declining',mealLabel:'Meal',mealYes:'Yes',mealNo:'No',companionLabel:'Additional guests (excl. you)',memoLabel:'Message (optional)',submitBtn:'Submit',thankYou:'Thank you for your kind response.',thankYouMsg:'We will cherish your warm wishes<br>as we prepare for our special day.',ddayWaiting:'Counting down to our wedding',ddayToday:'Today is our wedding day!',footerTogether:'Walking together',footerMsg:'Thank you for reading to the end.',copied:'Copied!',copyFail:'Failed to copy',calAdded:'Calendar file downloaded'},
-  ja:{greetingSection:'ご挨拶',familySection:'新郎・新婦紹介',weddingSection:'式場案内',gallerySection:'ギャラリー',locationSection:'アクセス',accountSection:'ご祝儀',rsvpSection:'出欠確認',groomRole:'新郎',brideRole:'新婦',callBtn:'電話',smsBtn:'SMS',addCal:'カレンダーに追加',liveBtn:'オンライン生中継',dowSun:'日',dowMon:'月',dowTue:'火',dowWed:'水',dowThu:'木',dowFri:'金',dowSat:'土',gridView:'グリッド',slideView:'スライド',photoNote:'大切な思い出の写真です。保存はご遠慮ください。',addrLabel:'住所',subwayLabel:'地下鉄',busLabel:'バス',parkingLabel:'駐車場',groomSide:'新郎側',brideSide:'新婦側',fatherLabel:'父',motherLabel:'母',copyBtn:'コピー',kakaoPayBtn:'カカオペイ',tossBtn:'Toss送金',accountDesc:'ご出席が難しい方のために<br>口座情報をご案内いたします。',rsvpDesc:'お食事の準備のため<br>ご出席の有無をお知らせください。',nameLabel:'お名前',attendLabel:'出欠',attendYes:'出席します',attendNo:'欠席します',mealLabel:'お食事',mealYes:'食事あり',mealNo:'食事なし',companionLabel:'同伴者数（ご本人除く）',memoLabel:'メッセージ（任意）',submitBtn:'送信',thankYou:'ご返信ありがとうございます。',thankYouMsg:'お二人のために<br>素敵な一日を準備いたします。',ddayWaiting:'結婚式まであと少し',ddayToday:'今日がその日です！',footerTogether:'ともに歩んでいきます',footerMsg:'最後までお読みいただきありがとうございます。',copied:'コピーしました',copyFail:'コピー失敗',calAdded:'ダウンロードしました'},
-  zh:{greetingSection:'致辞',familySection:'新郎·新娘介绍',weddingSection:'婚礼详情',gallerySection:'相册',locationSection:'交通指引',accountSection:'礼金账户',rsvpSection:'出席确认',groomRole:'新郎',brideRole:'新娘',callBtn:'电话',smsBtn:'短信',addCal:'添加到日历',liveBtn:'在线直播',dowSun:'日',dowMon:'一',dowTue:'二',dowWed:'三',dowThu:'四',dowFri:'五',dowSat:'六',gridView:'网格',slideView:'幻灯片',photoNote:'珍贵的回忆照片，请勿另存。',addrLabel:'地址',subwayLabel:'地铁',busLabel:'公交',parkingLabel:'停车',groomSide:'新郎方',brideSide:'新娘方',fatherLabel:'父亲',motherLabel:'母亲',copyBtn:'复制',kakaoPayBtn:'Kakao支付',tossBtn:'Toss转账',accountDesc:'为无法出席的宾客<br>提供以下账户信息。',rsvpDesc:'为了做好餐食准备<br>请告知您是否出席。',nameLabel:'姓名',attendLabel:'出席情况',attendYes:'出席',attendNo:'缺席',mealLabel:'用餐',mealYes:'用餐',mealNo:'不用餐',companionLabel:'同行人数（不含本人）',memoLabel:'留言（可选）',submitBtn:'提交',thankYou:'感谢您的回复。',thankYouMsg:'我们将带着您的祝福<br>准备一个美好的婚礼。',ddayWaiting:'期待与您相见',ddayToday:'今天是我们的婚礼！',footerTogether:'携手同行',footerMsg:'感谢您耐心阅读到最后。',copied:'已复制',copyFail:'复制失败',calAdded:'日历文件已下载'}
+  ko:{greetingSection:'마음을 전합니다',familySection:'신랑 · 신부 소개',weddingSection:'예식 안내',gallerySection:'갤러리',locationSection:'오시는 길',accountSection:'마음 전하실 곳',rsvpSection:'참석 의사 전달',groomRole:'신랑',brideRole:'신부',callBtn:'전화',smsBtn:'문자',addCal:'캘린더에 추가',liveBtn:'온라인 생중계',dowSun:'일',dowMon:'월',dowTue:'화',dowWed:'수',dowThu:'목',dowFri:'금',dowSat:'토',gridView:'격자형',slideView:'슬라이드형',photoNote:'소중한 추억이 담긴 사진입니다. 별도 저장은 자제해 주세요.',addrLabel:'주소',subwayLabel:'지하철',busLabel:'버스',parkingLabel:'주차',groomSide:'신랑측',brideSide:'신부측',fatherLabel:'부친',motherLabel:'모친',copyBtn:'복사',kakaoPayBtn:'카카오페이 송금',tossBtn:'토스로 보내기',accountDesc:'참석이 어려우신 분들을 위해 안내드립니다.<br>전해주시는 마음, 감사한 마음으로 잘 간직하겠습니다.',rsvpDesc:'따뜻한 식사 준비를 위해 참석 여부를 알려주시면<br>큰 도움이 됩니다. 감사합니다.',nameLabel:'성함',attendLabel:'참석 여부',attendYes:'참석합니다',attendNo:'참석이 어려워요',mealLabel:'식사 여부',mealYes:'식사 가능',mealNo:'식사 안 함',companionLabel:'동반 인원 (본인 제외)',memoLabel:'전하실 말씀 (선택)',submitBtn:'전달하기',thankYou:'소중한 답변, 감사합니다.',thankYouMsg:'전해주신 마음을 가지고<br>더 행복한 하루를 준비하겠습니다.',ddayWaiting:'우리, 함께할 날을 기다립니다',ddayToday:'오늘, 두 사람이 함께합니다',footerTogether:'함께 걷겠습니다',footerMsg:'귀한 시간 내어 끝까지 읽어주셔서 감사합니다.',copied:'계좌번호가 복사되었습니다',copyFail:'복사에 실패했습니다',calAdded:'캘린더 파일이 다운로드되었습니다',tapHint:'화면을 눌러 청첩장을 열어보세요'},
+  en:{greetingSection:'Our Message',familySection:'Groom & Bride',weddingSection:'Wedding Details',gallerySection:'Gallery',locationSection:'Directions',accountSection:'Gift Account',rsvpSection:'RSVP',groomRole:'Groom',brideRole:'Bride',callBtn:'Call',smsBtn:'Text',addCal:'Add to Calendar',liveBtn:'Live Stream',dowSun:'Sun',dowMon:'Mon',dowTue:'Tue',dowWed:'Wed',dowThu:'Thu',dowFri:'Fri',dowSat:'Sat',gridView:'Grid',slideView:'Slide',photoNote:'Precious memories. Please refrain from saving.',addrLabel:'Address',subwayLabel:'Subway',busLabel:'Bus',parkingLabel:'Parking',groomSide:"Groom's",brideSide:"Bride's",fatherLabel:'Father',motherLabel:'Mother',copyBtn:'Copy',kakaoPayBtn:'KakaoPay',tossBtn:'Toss',accountDesc:'For those unable to attend,<br>we have provided account details below.',rsvpDesc:'To help us prepare,<br>please let us know if you can attend.',nameLabel:'Name',attendLabel:'Attendance',attendYes:'Attending',attendNo:'Declining',mealLabel:'Meal',mealYes:'Yes',mealNo:'No',companionLabel:'Additional guests (excl. you)',memoLabel:'Message (optional)',submitBtn:'Submit',thankYou:'Thank you for your kind response.',thankYouMsg:'We will cherish your warm wishes<br>as we prepare for our special day.',ddayWaiting:'Counting down to our wedding',ddayToday:'Today is our wedding day!',footerTogether:'Walking together',footerMsg:'Thank you for reading to the end.',copied:'Copied!',copyFail:'Failed to copy',calAdded:'Calendar file downloaded',tapHint:'Tap the screen to open the invitation'},
+  ja:{greetingSection:'ご挨拶',familySection:'新郎・新婦紹介',weddingSection:'式場案内',gallerySection:'ギャラリー',locationSection:'アクセス',accountSection:'ご祝儀',rsvpSection:'出欠確認',groomRole:'新郎',brideRole:'新婦',callBtn:'電話',smsBtn:'SMS',addCal:'カレンダーに追加',liveBtn:'オンライン生中継',dowSun:'日',dowMon:'月',dowTue:'火',dowWed:'水',dowThu:'木',dowFri:'金',dowSat:'土',gridView:'グリッド',slideView:'スライド',photoNote:'大切な思い出の写真です。保存はご遠慮ください。',addrLabel:'住所',subwayLabel:'地下鉄',busLabel:'バス',parkingLabel:'駐車場',groomSide:'新郎側',brideSide:'新婦側',fatherLabel:'父',motherLabel:'母',copyBtn:'コピー',kakaoPayBtn:'カカオペイ',tossBtn:'Toss送金',accountDesc:'ご出席が難しい方のために<br>口座情報をご案内いたします。',rsvpDesc:'お食事の準備のため<br>ご出席の有無をお知らせください。',nameLabel:'お名前',attendLabel:'出欠',attendYes:'出席します',attendNo:'欠席します',mealLabel:'お食事',mealYes:'食事あり',mealNo:'食事なし',companionLabel:'同伴者数（ご本人除く）',memoLabel:'メッセージ（任意）',submitBtn:'送信',thankYou:'ご返信ありがとうございます。',thankYouMsg:'お二人のために<br>素敵な一日を準備いたします。',ddayWaiting:'結婚式まであと少し',ddayToday:'今日がその日です！',footerTogether:'ともに歩んでいきます',footerMsg:'最後までお読みいただきありがとうございます。',copied:'コピーしました',copyFail:'コピー失敗',calAdded:'ダウンロードしました',tapHint:'画面をタップして招待状を開く'},
+  zh:{greetingSection:'致辞',familySection:'新郎·新娘介绍',weddingSection:'婚礼详情',gallerySection:'相册',locationSection:'交通指引',accountSection:'礼金账户',rsvpSection:'出席确认',groomRole:'新郎',brideRole:'新娘',callBtn:'电话',smsBtn:'短信',addCal:'添加到日历',liveBtn:'在线直播',dowSun:'日',dowMon:'一',dowTue:'二',dowWed:'三',dowThu:'四',dowFri:'五',dowSat:'六',gridView:'网格',slideView:'幻灯片',photoNote:'珍贵的回忆照片，请勿另存。',addrLabel:'地址',subwayLabel:'地铁',busLabel:'公交',parkingLabel:'停车',groomSide:'新郎方',brideSide:'新娘方',fatherLabel:'父亲',motherLabel:'母亲',copyBtn:'复制',kakaoPayBtn:'Kakao支付',tossBtn:'Toss转账',accountDesc:'为无法出席的宾客<br>提供以下账户信息。',rsvpDesc:'为了做好餐食准备<br>请告知您是否出席。',nameLabel:'姓名',attendLabel:'出席情况',attendYes:'出席',attendNo:'缺席',mealLabel:'用餐',mealYes:'用餐',mealNo:'不用餐',companionLabel:'同行人数（不含本人）',memoLabel:'留言（可选）',submitBtn:'提交',thankYou:'感谢您的回复。',thankYouMsg:'我们将带着您的祝福<br>准备一个美好的婚礼。',ddayWaiting:'期待与您相见',ddayToday:'今天是我们的婚礼！',footerTogether:'携手同行',footerMsg:'感谢您耐心阅读到最后。',copied:'已复制',copyFail:'复制失败',calAdded:'日历文件已下载',tapHint:'点击屏幕打开请柬'}
 };
-let _lang='${D.lang||'ko'}';
+let _lang='${_uiLang||'ko'}';
 let _ddayWait=(I18N[_lang]||I18N.ko).ddayWaiting;
 let _ddayToday=(I18N[_lang]||I18N.ko).ddayToday;
 function applyLang(lang){
@@ -3777,27 +3978,8 @@ function applyLang(lang){
     const k=el.getAttribute('data-i18n');
     if(tr[k]!==undefined)el.innerHTML=tr[k];
   });
-  const flags={ko:'🇰🇷',en:'🇺🇸',ja:'🇯🇵',zh:'🇨🇳'};
-  const lbl=document.getElementById('_langLbl');
-  if(lbl)lbl.textContent=flags[lang]||'🌐';
-  document.querySelectorAll('.lang-opt').forEach(o=>{
-    o.style.fontWeight=o.dataset.lang===lang?'700':'400';
-    o.style.background=o.dataset.lang===lang?'var(--blush)':'';
-  });
-  try{sessionStorage.setItem('inv-lang',lang);}catch(e){}
 }
 applyLang(_lang);
-// lang switcher toggle
-(function(){
-  const lb=document.getElementById('_langBtn'),lp=document.getElementById('_langPop');
-  if(!lb||!lp)return;
-  lb.addEventListener('click',function(e){e.stopPropagation();lp.style.display=lp.style.display==='none'?'block':'none';});
-  document.addEventListener('click',function(){lp.style.display='none';});
-  document.querySelectorAll('.lang-opt').forEach(function(o){
-    o.addEventListener('click',function(e){e.stopPropagation();applyLang(o.dataset.lang);lp.style.display='none';});
-  });
-  try{const sl=sessionStorage.getItem('inv-lang');if(sl&&I18N[sl])applyLang(sl);}catch(e){}
-})();
 // ─────────────────────────────────────────────────────────────────────────
 document.getElementById('cover').addEventListener('click',function(){this.classList.add('hide');});
 const tf=document.getElementById('threadFill'),tm=document.getElementById('threadMark');
@@ -3922,7 +4104,7 @@ window.addEventListener('message',function(e){
             }
         } catch (error) {
             console.error('Error in downloadInvitation:', error);
-            showToast('오류가 발생했습니다. 다시 시도해주세요.');
+            showToast(uiT('genericErrorToast'));
         }
     }
 
@@ -3931,11 +4113,11 @@ window.addEventListener('message',function(e){
             const file = new File([blob], fileName, { type: 'text/html' });
 
             navigator.share({
-                title: '모바일 청첩장',
-                text: `${D.groom} ♥ ${D.bride}의 모바일 청첩장입니다.`,
+                title: uiT('shareTitle'),
+                text: uiT('shareTextTemplate').replace('{groom}', D.groom||'').replace('{bride}', D.bride||''),
                 files: [file]
             }).then(() => {
-                showToast('청첩장이 공유되었습니다 ✨');
+                showToast(uiT('shareSuccessToast'));
             }).catch((error) => {
                 // 사용자가 취소했거나 오류 발생 시 다운로드로 대체
                 if (error.name !== 'AbortError') {
@@ -3967,10 +4149,10 @@ window.addEventListener('message',function(e){
                 URL.revokeObjectURL(url);
             }, 100);
 
-            showToast('청첩장이 다운로드되었습니다 🎉');
+            showToast(uiT('downloadSuccessToast'));
         } catch (error) {
             console.error('Download error:', error);
-            showToast('다운로드에 실패했습니다. 다시 시도해주세요.');
+            showToast(uiT('downloadFailToast'));
         }
     }
 
@@ -3997,10 +4179,11 @@ window.addEventListener('message',function(e){
         const th = THEMES[themeId];
         if(!th) return;
         _currentModalTheme = themeId;
-        document.getElementById('tModalName').textContent = th.name;
-        document.getElementById('tModalDesc').textContent = th.desc;
+        const tt = themeText(themeId, _uiLang);
+        document.getElementById('tModalName').textContent = tt.name;
+        document.getElementById('tModalDesc').textContent = tt.desc;
         const tagsEl = document.getElementById('tModalTags');
-        tagsEl.innerHTML = (th.tags||[]).map(t=>`<span class="t-modal-tag">${t}</span>`).join('');
+        tagsEl.innerHTML = (tt.tags||[]).map(t=>`<span class="t-modal-tag">${t}</span>`).join('');
 
         const savedTheme = D.theme;
         D.theme = themeId;
@@ -4057,6 +4240,11 @@ window.addEventListener('message',function(e){
 
     /* ===== LANDING LOGIC ===== */
 
+    // 이 시점부터 D/THEMES/미리보기 등 빌더 상태가 모두 초기화되어 있다.
+    // applyUILang()이 이보다 먼저(initUILang 내부 최초 호출) 실행되면 테마/미리보기 갱신은 건너뛰고,
+    // 여기서 저장된 언어로 한 번 더 동기화해 새로고침 직후에도 테마 이름 등이 올바르게 보이도록 한다.
+    window._builderReady = true;
+    applyUILang(_uiLang);
 </script>
 </body>
 </html>
