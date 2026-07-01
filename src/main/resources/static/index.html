@@ -1843,6 +1843,15 @@
         showRsvp:true,
     };
 
+    /* ---- localStorage draft persistence: load ---- */
+    try {
+        const _saved = localStorage.getItem('withyou_draft_v1');
+        if (_saved) {
+            const _s = JSON.parse(_saved);
+            Object.keys(_s).forEach(k => { if (k in D) D[k] = _s[k]; });
+        }
+    } catch(e) {}
+
     const SUGGESTS = [
         `꽃이 피어나는 봄날,\n두 사람이 하나가 되어\n새로운 출발을 합니다.\n\n저희의 작은 시작을\n축복해 주시면 감사하겠습니다.`,
         `단풍이 물드는 가을,\n서로의 손을 꼭 잡고\n함께 걷고자 합니다.\n\n행복한 시작을\n함께해 주시겠습니까.`,
@@ -2028,6 +2037,67 @@
         tab.addEventListener('click', ()=> goStep(i));
     });
 
+    /* ---- restore form UI from saved state ---- */
+    function restoreFormUI(){
+        ['groom','bride','groomEn','brideEn','weddingDate','weddingTime',
+         'venueName','venueHall','greeting',
+         'gFather','gMother','gRel','groomPhone',
+         'bFather','bMother','bRel','bridePhone',
+         'galleryLayout',
+         'addr','subway','bus','parking','mapLat','mapLng','liveUrl',
+         'gAccName','gAccBank','gAccNum',
+         'bAccName','bAccBank','bAccNum',
+         'gFatherAccName','gFatherAccBank','gFatherAccNum',
+         'gMotherAccName','gMotherAccBank','gMotherAccNum',
+         'bFatherAccName','bFatherAccBank','bFatherAccNum',
+         'bMotherAccName','bMotherAccBank','bMotherAccNum',
+        ].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = D[id] != null ? D[id] : '';
+        });
+        ['showDday','photoProtect','showLive','showParentAcc','showRsvp'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.checked = !!D[id];
+        });
+        document.getElementById('liveUrlField').style.display = D.showLive ? 'block' : 'none';
+        document.getElementById('parentAccFields').style.display = D.showParentAcc ? 'block' : 'none';
+        document.querySelectorAll('.theme-opt').forEach(opt => {
+            opt.classList.toggle('selected', opt.dataset.theme === D.theme);
+        });
+        if (D.heroImgB64) {
+            const z = document.getElementById('heroUploadZone');
+            const thumb = document.getElementById('heroThumb');
+            z.classList.add('has-img');
+            thumb.src = D.heroImgB64;
+            thumb.style.display = 'block';
+            z.querySelector('.icon').style.display = 'none';
+            z.querySelector('p').style.display = 'none';
+            if (!document.getElementById('heroRemoveBtn')) {
+                const btn = document.createElement('button');
+                btn.id = 'heroRemoveBtn';
+                btn.innerHTML = '삭제';
+                btn.style = 'position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.5); color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:12px; z-index:10;';
+                btn.onclick = e => {
+                    e.stopPropagation();
+                    D.heroImgB64 = '';
+                    thumb.src = ''; thumb.style.display = 'none';
+                    z.classList.remove('has-img');
+                    z.querySelector('.icon').style.display = 'flex';
+                    z.querySelector('p').style.display = 'block';
+                    btn.remove();
+                    scheduleRefresh();
+                };
+                z.appendChild(btn);
+            }
+        }
+        if (D.bgmB64) {
+            document.getElementById('bgmFileName').textContent = '배경음악이 설정되었습니다';
+            document.getElementById('bgmRemoveBtn').style.display = 'inline-block';
+        }
+        if (D.photos && D.photos.length > 0) renderPhotoList();
+    }
+    restoreFormUI();
+
     /* ---- mobile editor toggle ---- */
     function closeEditorPanel(){
         document.getElementById('editorPanel').classList.remove('open');
@@ -2063,9 +2133,21 @@
         }
     }
 
+    /* ---- localStorage draft persistence: save ---- */
+    function saveState(){
+        try {
+            localStorage.setItem('withyou_draft_v1', JSON.stringify(D));
+        } catch(e){
+            try {
+                localStorage.setItem('withyou_draft_v1', JSON.stringify({...D, photos:[], heroImgB64:null, bgmB64:null}));
+            } catch(e2){}
+        }
+    }
+
     /* ---- refresh debounce ---- */
     let refreshTimer;
     function scheduleRefresh(){
+        saveState();
         clearTimeout(refreshTimer);
         refreshTimer = setTimeout(refreshPreview, 400);
     }
