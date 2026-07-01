@@ -227,43 +227,43 @@
         .swatch.t-classic{background:linear-gradient(160deg,#f8efe6,#e3c9c0);}
         .swatch.t-classic span{color:#8B3A42;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:17px;}
         /* 1. 심플 라인 아트 */
-        .swatch.t-simpleline{background:#fff;border-bottom:1px solid #eee;flex-direction:column;gap:6px;}
-        .swatch.t-simpleline .sw-art{width:38px;height:44px;flex-shrink:0;opacity:.85;}
-        .swatch.t-simpleline span{color:#1A1A1A;font-family:'Noto Sans KR',sans-serif;font-weight:300;letter-spacing:.22em;font-size:9px;text-transform:uppercase;}
+        .swatch.t-simpleline{background:#fff;overflow:hidden;}
+        .swatch.t-simpleline .sw-art{position:absolute;inset:0;width:100%;height:100%;}
+        .swatch.t-simpleline span{color:#1A1A1A;font-family:'Noto Sans KR',sans-serif;font-weight:300;letter-spacing:.22em;font-size:9px;text-transform:uppercase;position:relative;z-index:1;}
         /* 2. 클래식 화이트 */
-        .swatch.t-classicwhite{background:#fff;flex-direction:column;gap:6px;}
-        .swatch.t-classicwhite .sw-art{width:52px;height:56px;flex-shrink:0;}
-        .swatch.t-classicwhite span{color:#8B6A3A;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;}
+        .swatch.t-classicwhite{background:#fff;overflow:hidden;}
+        .swatch.t-classicwhite .sw-art{position:absolute;inset:0;width:100%;height:100%;}
+        .swatch.t-classicwhite span{color:#8B6A3A;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;position:relative;z-index:1;}
         /* 3. 내추럴 그린 */
         .swatch.t-naturalgreen{background:linear-gradient(160deg,#EDF6E2,#DEEFC8);overflow:hidden;}
         .swatch.t-naturalgreen .sw-art{position:absolute;inset:0;width:100%;height:100%;}
         .swatch.t-naturalgreen span{color:#3D6040;font-family:'Gowun Batang',serif;font-size:17px;position:relative;z-index:1;}
         /* 4. 로맨틱 핑코 */
-        .swatch.t-romanticpink{background:linear-gradient(160deg,#FFF0F4,#FFD8E4);flex-direction:column;gap:4px;}
-        .swatch.t-romanticpink .sw-art{width:54px;height:60px;flex-shrink:0;}
-        .swatch.t-romanticpink span{color:#C2607A;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;}
+        .swatch.t-romanticpink{background:linear-gradient(160deg,#FFF0F4,#FFD8E4);overflow:hidden;}
+        .swatch.t-romanticpink .sw-art{position:absolute;inset:0;width:100%;height:100%;}
+        .swatch.t-romanticpink span{color:#C2607A;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;position:relative;z-index:1;}
         /* 5. 모던 미니얼 */
-        .swatch.t-modernminimal{background:#fff;border-bottom:1px solid #ebebeb;flex-direction:column;gap:6px;}
-        .swatch.t-modernminimal .sw-art{width:32px;height:48px;flex-shrink:0;opacity:.7;}
-        .swatch.t-modernminimal span{color:#2A2A2A;font-family:'Noto Sans KR',sans-serif;font-weight:300;letter-spacing:.22em;font-size:9px;text-transform:uppercase;}
+        .swatch.t-modernminimal{background:#fff;overflow:hidden;}
+        .swatch.t-modernminimal .sw-art{position:absolute;right:0;top:0;width:55%;height:100%;opacity:.7;}
+        .swatch.t-modernminimal span{color:#2A2A2A;font-family:'Noto Sans KR',sans-serif;font-weight:300;letter-spacing:.18em;font-size:9px;text-transform:uppercase;position:relative;z-index:1;}
         /* 6. 빈티지 우드 */
-        .swatch.t-vintagewood{background:linear-gradient(160deg,#3C2810,#2C1A08);flex-direction:column;gap:4px;}
-        .swatch.t-vintagewood .sw-art{width:44px;height:52px;flex-shrink:0;}
-        .swatch.t-vintagewood span{color:#F0DCA8;font-family:'Gowun Batang',serif;font-size:17px;}
+        .swatch.t-vintagewood{background:#5A3010;overflow:hidden;}
+        .swatch.t-vintagewood .sw-art{position:absolute;inset:0;width:100%;height:100%;}
+        .swatch.t-vintagewood span{color:#F0DCA8;font-family:'Gowun Batang',serif;font-size:17px;position:relative;z-index:1;}
         /* 7. 트레디셔널 터치 */
         .swatch.t-traditional{background:#FBF0D0;overflow:hidden;}
         .swatch.t-traditional .sw-art{position:absolute;inset:0;width:100%;height:100%;}
         .swatch.t-traditional span{color:#B87800;font-family:'Gowun Batang',serif;font-size:17px;position:relative;z-index:1;}
         /* 8. 바다의 속사임 */
-        .swatch.t-oceanwhisper{background:linear-gradient(175deg,#A8D4F4 0%,#78B4E4 40%,#4E84C0 100%);overflow:hidden;}
+        .swatch.t-oceanwhisper{background:linear-gradient(180deg,#BEE0F8 0%,#88C0F0 40%,#5090D8 100%);overflow:hidden;}
         .swatch.t-oceanwhisper .sw-art{position:absolute;bottom:0;left:0;right:0;width:100%;}
         .swatch.t-oceanwhisper span{color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;z-index:1;}
         /* 9. 가을의 온도 */
-        .swatch.t-autumn{background:linear-gradient(160deg,#F8CC60,#E89830 50%,#C86020 100%);overflow:hidden;}
+        .swatch.t-autumn{background:linear-gradient(165deg,#F0C048 0%,#E08020 50%,#C05018 100%);overflow:hidden;}
         .swatch.t-autumn .sw-art{position:absolute;inset:0;width:100%;height:100%;}
-        .swatch.t-autumn span{color:#2A1200;font-family:'Gowun Batang',serif;font-size:17px;position:relative;z-index:1;}
+        .swatch.t-autumn span{color:#1E0800;font-family:'Gowun Batang',serif;font-size:17px;position:relative;z-index:1;}
         /* 10. 겨울의 노을 */
-        .swatch.t-winterdusk{background:linear-gradient(175deg,#4A18A0 0%,#C05880 55%,#E86840 78%,#1A0838 100%);overflow:hidden;}
+        .swatch.t-winterdusk{background:linear-gradient(180deg,#4820A8 0%,#B05090 50%,#E86040 80%,#120428 100%);overflow:hidden;}
         .swatch.t-winterdusk .sw-art{position:absolute;bottom:0;left:0;right:0;width:100%;}
         .swatch.t-winterdusk span{color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;position:relative;z-index:1;}
 
@@ -925,71 +925,196 @@
                 </div>
                 <div class="theme-card" onclick="openThemePreview('simpleline')">
                     <div class="swatch t-simpleline">
-                        <svg class="sw-art" viewBox="0 0 42 50" fill="none"><circle cx="15" cy="9" r="7" stroke="#1a1a1a" stroke-width="0.9"/><path d="M9 12 Q4 22 4 38" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M21 12 Q25 22 25 38" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M4 38 Q15 41 25 38" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round"/><circle cx="30" cy="7" r="8" stroke="#1a1a1a" stroke-width="0.9"/><path d="M22 13 Q18 23 17 40" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M38 13 Q42 22 41 40" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M17 40 Q29 44 41 40" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round"/><path d="M22 16 Q15 13 10 16" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 120 140" fill="none" preserveAspectRatio="xMidYMid meet">
+                            <circle cx="48" cy="32" r="16" stroke="#222" stroke-width="1"/>
+                            <path d="M36 48 Q26 68 24 100 Q23 112 24 124" stroke="#222" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M60 48 Q66 66 64 88" stroke="#222" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M24 124 Q40 130 56 126" stroke="#222" stroke-width="0.9" stroke-linecap="round"/>
+                            <path d="M64 88 Q62 106 58 120 Q54 128 56 126" stroke="#222" stroke-width="0.9" stroke-linecap="round"/>
+                            <path d="M36 48 Q48 42 60 48" stroke="#222" stroke-width="1" stroke-linecap="round"/>
+                            <circle cx="76" cy="26" r="17" stroke="#222" stroke-width="1"/>
+                            <path d="M59 44 Q52 64 50 100 Q49 114 50 128" stroke="#222" stroke-width="1.1" stroke-linecap="round"/>
+                            <path d="M93 44 Q100 64 100 100 Q100 114 98 128" stroke="#222" stroke-width="1.1" stroke-linecap="round"/>
+                            <path d="M50 128 Q74 136 98 128" stroke="#222" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M59 44 Q76 36 93 44" stroke="#222" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M59 58 Q50 62 44 68" stroke="#222" stroke-width="0.9" stroke-linecap="round" opacity=".6"/>
+                            <path d="M60 60 Q68 63 76 72" stroke="#222" stroke-width="0.8" stroke-linecap="round" opacity=".5"/>
+                            <line x1="16" y1="136" x2="104" y2="136" stroke="#e8e8e8" stroke-width="0.8"/>
+                        </svg>
                     </div>
                     <div class="label"><div class="name">심플 라인 아트</div><div class="desc">화이트 바탕, 세밀한 라인 드로잉 커플 일러스트</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('classicwhite')">
                     <div class="swatch t-classicwhite">
-                        <svg class="sw-art" viewBox="0 0 56 60" fill="none"><path d="M10 58 L10 34 Q10 14 28 14 Q46 14 46 34 L46 58" stroke="#C8A464" stroke-width="1.4"/><ellipse cx="28" cy="15" rx="6" ry="4" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><ellipse cx="12" cy="32" rx="5" ry="7" transform="rotate(-28,12,32)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><ellipse cx="44" cy="32" rx="5" ry="7" transform="rotate(28,44,32)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><path d="M8 34 Q2 27 6 22 Q10 28 8 34Z" fill="#9CAF70" opacity=".5"/><path d="M48 34 Q54 27 50 22 Q46 28 48 34Z" fill="#9CAF70" opacity=".5"/></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 120 140" fill="none" preserveAspectRatio="xMidYMid meet">
+                            <path d="M22 140 L22 78 Q22 30 60 30 Q98 30 98 78 L98 140" stroke="#C8A464" stroke-width="1.6"/>
+                            <path d="M32 140 L32 80 Q32 44 60 44 Q88 44 88 80 L88 140" stroke="#C8A464" stroke-width="0.5" opacity=".35"/>
+                            <g transform="translate(60,28)"><ellipse rx="7" ry="10" transform="rotate(0)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="7" ry="10" transform="rotate(60)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="7" ry="10" transform="rotate(120)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="7" ry="10" transform="rotate(180)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="7" ry="10" transform="rotate(240)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="7" ry="10" transform="rotate(300)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><circle r="4" fill="#F8E8C0"/></g>
+                            <g transform="translate(22,80)"><ellipse rx="8" ry="11" transform="rotate(-20)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="8" ry="11" transform="rotate(52)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="8" ry="11" transform="rotate(124)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="8" ry="11" transform="rotate(196)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><circle r="4" fill="#F8E8C0"/></g>
+                            <g transform="translate(14,60)"><ellipse rx="6" ry="9" transform="rotate(-35)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6" opacity=".85"/><ellipse rx="6" ry="9" transform="rotate(37)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6" opacity=".85"/><ellipse rx="6" ry="9" transform="rotate(109)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6" opacity=".85"/><circle r="3" fill="#F8E8C0" opacity=".85"/></g>
+                            <path d="M10 48 Q4 40 8 32 Q12 40 10 48Z" fill="#9CAF70" opacity=".55"/>
+                            <path d="M8 66 Q2 58 6 50 Q10 58 8 66Z" fill="#9CAF70" opacity=".5"/>
+                            <g transform="translate(98,80)"><ellipse rx="8" ry="11" transform="rotate(20)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="8" ry="11" transform="rotate(92)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="8" ry="11" transform="rotate(164)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="8" ry="11" transform="rotate(236)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><circle r="4" fill="#F8E8C0"/></g>
+                            <g transform="translate(106,60)"><ellipse rx="6" ry="9" transform="rotate(35)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6" opacity=".85"/><ellipse rx="6" ry="9" transform="rotate(107)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6" opacity=".85"/><ellipse rx="6" ry="9" transform="rotate(179)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6" opacity=".85"/><circle r="3" fill="#F8E8C0" opacity=".85"/></g>
+                            <path d="M110 48 Q116 40 112 32 Q108 40 110 48Z" fill="#9CAF70" opacity=".55"/>
+                            <path d="M112 66 Q118 58 114 50 Q110 58 112 66Z" fill="#9CAF70" opacity=".5"/>
+                        </svg>
                     </div>
                     <div class="label"><div class="name">클래식 화이트</div><div class="desc">흰 아치와 목련, 따뜻한 골드 텍스트</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('naturalgreen')">
                     <div class="swatch t-naturalgreen">
-                        <svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M5 140 C10 110 9 85 12 64 C15 46 18 26 22 8" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M12 64 Q2 57 4 48 Q12 54 12 64Z" fill="#7AAA66" opacity=".75"/><path d="M14 48 Q4 40 6 30 Q14 38 14 48Z" fill="#6A9858" opacity=".7"/><path d="M17 32 Q8 23 11 14 Q18 22 17 32Z" fill="#88B470" opacity=".62"/><path d="M10 82 Q0 74 2 65 Q10 72 10 82Z" fill="#7AAA66" opacity=".68"/><path d="M95 140 C90 110 91 85 88 64 C85 46 82 26 78 8" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M88 64 Q98 57 96 48 Q88 54 88 64Z" fill="#7AAA66" opacity=".75"/><path d="M86 48 Q96 40 94 30 Q86 38 86 48Z" fill="#6A9858" opacity=".7"/><path d="M83 32 Q92 23 89 14 Q82 22 83 32Z" fill="#88B470" opacity=".62"/><path d="M90 82 Q100 74 98 65 Q90 72 90 82Z" fill="#7AAA66" opacity=".68"/></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 120 140" fill="none" preserveAspectRatio="xMidYMid slice">
+                            <path d="M8 140 C12 110 11 85 14 62 C17 44 20 24 24 6" stroke="#5A8050" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M14 62 Q2 54 5 44 Q14 52 14 62Z" fill="#7AAA66" opacity=".78"/>
+                            <path d="M16 44 Q4 36 7 26 Q16 34 16 44Z" fill="#6A9858" opacity=".72"/>
+                            <path d="M19 26 Q8 17 12 8 Q20 16 19 26Z" fill="#88B470" opacity=".65"/>
+                            <path d="M12 80 Q0 72 3 62 Q12 70 12 80Z" fill="#7AAA66" opacity=".7"/>
+                            <path d="M10 98 Q-2 90 2 80 Q10 88 10 98Z" fill="#6A9858" opacity=".62"/>
+                            <path d="M112 140 C108 110 109 85 106 62 C103 44 100 24 96 6" stroke="#5A8050" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M106 62 Q118 54 115 44 Q106 52 106 62Z" fill="#7AAA66" opacity=".78"/>
+                            <path d="M104 44 Q116 36 113 26 Q104 34 104 44Z" fill="#6A9858" opacity=".72"/>
+                            <path d="M101 26 Q112 17 108 8 Q100 16 101 26Z" fill="#88B470" opacity=".65"/>
+                            <path d="M108 80 Q120 72 117 62 Q108 70 108 80Z" fill="#7AAA66" opacity=".7"/>
+                            <path d="M110 98 Q122 90 118 80 Q110 88 110 98Z" fill="#6A9858" opacity=".62"/>
+                        </svg>
                     </div>
                     <div class="label"><div class="name">내추럴 그린</div><div class="desc">세이지 그린 그라데이션, 보타니컬 잎사귀 프레임</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('romanticpink')">
                     <div class="swatch t-romanticpink">
-                        <svg class="sw-art" viewBox="0 0 60 68" fill="none"><ellipse cx="30" cy="34" rx="22" ry="28" stroke="#D890A8" stroke-width="1.2"/><path d="M10 15 Q18 11 25 7" stroke="#C2607A" stroke-width="0.9" stroke-linecap="round" opacity=".55"/><circle cx="12" cy="14" r="3.5" fill="#FFB8D0" opacity=".7"/><circle cx="18" cy="11" r="3" fill="#FFD0E4" opacity=".75"/><circle cx="25" cy="8" r="3.5" fill="#FFB8D0" opacity=".65"/><path d="M50 15 Q42 11 35 7" stroke="#C2607A" stroke-width="0.9" stroke-linecap="round" opacity=".55"/><circle cx="48" cy="14" r="3.5" fill="#FFB8D0" opacity=".7"/><circle cx="42" cy="11" r="3" fill="#FFD0E4" opacity=".75"/><circle cx="35" cy="8" r="3.5" fill="#FFB8D0" opacity=".65"/></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 120 140" fill="none" preserveAspectRatio="xMidYMid meet">
+                            <ellipse cx="60" cy="70" rx="44" ry="54" stroke="#D890A8" stroke-width="1.4"/>
+                            <ellipse cx="60" cy="70" rx="38" ry="47" stroke="#D890A8" stroke-width="0.5" opacity=".4"/>
+                            <g transform="translate(20,22)"><ellipse rx="5" ry="8" transform="rotate(0)" fill="#FFB8D0" opacity=".82"/><ellipse rx="5" ry="8" transform="rotate(72)" fill="#FFB8D0" opacity=".82"/><ellipse rx="5" ry="8" transform="rotate(144)" fill="#FFB8D0" opacity=".82"/><ellipse rx="5" ry="8" transform="rotate(216)" fill="#FFB8D0" opacity=".82"/><ellipse rx="5" ry="8" transform="rotate(288)" fill="#FFB8D0" opacity=".82"/><circle r="3.5" fill="#FFD0E4"/></g>
+                            <g transform="translate(100,22)"><ellipse rx="5" ry="8" transform="rotate(0)" fill="#FFB8D0" opacity=".82"/><ellipse rx="5" ry="8" transform="rotate(72)" fill="#FFB8D0" opacity=".82"/><ellipse rx="5" ry="8" transform="rotate(144)" fill="#FFB8D0" opacity=".82"/><ellipse rx="5" ry="8" transform="rotate(216)" fill="#FFB8D0" opacity=".82"/><ellipse rx="5" ry="8" transform="rotate(288)" fill="#FFB8D0" opacity=".82"/><circle r="3.5" fill="#FFD0E4"/></g>
+                            <g transform="translate(38,8)"><ellipse rx="4" ry="7" transform="rotate(20)" fill="#FFB8D0" opacity=".7"/><ellipse rx="4" ry="7" transform="rotate(92)" fill="#FFB8D0" opacity=".7"/><ellipse rx="4" ry="7" transform="rotate(164)" fill="#FFB8D0" opacity=".7"/><ellipse rx="4" ry="7" transform="rotate(236)" fill="#FFB8D0" opacity=".7"/><circle r="2.5" fill="#FFD0E4" opacity=".85"/></g>
+                            <g transform="translate(82,8)"><ellipse rx="4" ry="7" transform="rotate(-20)" fill="#FFB8D0" opacity=".7"/><ellipse rx="4" ry="7" transform="rotate(52)" fill="#FFB8D0" opacity=".7"/><ellipse rx="4" ry="7" transform="rotate(124)" fill="#FFB8D0" opacity=".7"/><ellipse rx="4" ry="7" transform="rotate(196)" fill="#FFB8D0" opacity=".7"/><circle r="2.5" fill="#FFD0E4" opacity=".85"/></g>
+                            <g transform="translate(8,60)"><ellipse rx="4" ry="6" transform="rotate(30)" fill="#FFB8D0" opacity=".6"/><ellipse rx="4" ry="6" transform="rotate(102)" fill="#FFB8D0" opacity=".6"/><ellipse rx="4" ry="6" transform="rotate(174)" fill="#FFB8D0" opacity=".6"/><circle r="2" fill="#FFD0E4" opacity=".7"/></g>
+                            <g transform="translate(112,60)"><ellipse rx="4" ry="6" transform="rotate(-30)" fill="#FFB8D0" opacity=".6"/><ellipse rx="4" ry="6" transform="rotate(42)" fill="#FFB8D0" opacity=".6"/><ellipse rx="4" ry="6" transform="rotate(114)" fill="#FFB8D0" opacity=".6"/><circle r="2" fill="#FFD0E4" opacity=".7"/></g>
+                        </svg>
                     </div>
                     <div class="label"><div class="name">로맨틱 핑코</div><div class="desc">핑크 그라데이션, 벚꽃잎과 오벌 프레임</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('modernminimal')">
                     <div class="swatch t-modernminimal">
-                        <svg class="sw-art" viewBox="0 0 32 50" fill="none"><path d="M8 48 Q14 38 18 28 Q22 18 26 8" stroke="#909090" stroke-width="1" stroke-linecap="round"/><path d="M20 26 Q26 20 30 22 Q26 28 20 26Z" fill="#A8A898" opacity=".5"/><path d="M22 18 Q28 13 31 16 Q27 21 22 18Z" fill="#A8A898" opacity=".44"/><path d="M16 33 Q10 28 11 22 Q16 26 16 33Z" fill="#B0B0A0" opacity=".44"/></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 60 140" fill="none" preserveAspectRatio="xMidYMid meet">
+                            <path d="M30 138 Q34 112 38 88 Q42 66 46 44 Q50 26 54 8" stroke="#b0b0a0" stroke-width="1.2" stroke-linecap="round"/>
+                            <path d="M42 72 Q52 62 58 66 Q52 74 42 72Z" fill="#C0C0B0" opacity=".55"/>
+                            <path d="M44 54 Q54 44 59 49 Q53 56 44 54Z" fill="#B8B8A8" opacity=".5"/>
+                            <path d="M46 38 Q55 30 59 35 Q53 42 46 38Z" fill="#C0C0B0" opacity=".45"/>
+                            <path d="M36 90 Q26 80 28 72 Q34 78 36 90Z" fill="#B8B8A8" opacity=".5"/>
+                            <path d="M34 110 Q24 100 26 92 Q32 98 34 110Z" fill="#C0C0B0" opacity=".45"/>
+                            <circle cx="54" cy="8" r="2.5" fill="#A8A898" opacity=".5"/>
+                        </svg>
                     </div>
                     <div class="label"><div class="name">모던 미니얼</div><div class="desc">퓨어 화이트, 싱글 브랜치 클린 산세리프</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('vintagewood')">
                     <div class="swatch t-vintagewood">
-                        <svg class="sw-art" viewBox="0 0 48 56" fill="none"><path d="M24 52 Q21 40 19 28 Q17 18 16 8" stroke="#D4A840" stroke-width="1.4" stroke-linecap="round"/><path d="M24 52 Q24 40 24 28 Q24 18 23 8" stroke="#D4A840" stroke-width="1.3" stroke-linecap="round"/><path d="M24 52 Q27 40 29 28 Q31 18 32 8" stroke="#D4A840" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="16" cy="6" rx="3" ry="7" transform="rotate(-8,16,6)" fill="#D4A840" opacity=".8"/><ellipse cx="21" cy="4" rx="3" ry="7" fill="#D4A840" opacity=".88"/><ellipse cx="27" cy="4" rx="3" ry="7" fill="#D4A840" opacity=".88"/><ellipse cx="32" cy="6" rx="3" ry="7" transform="rotate(8,32,6)" fill="#D4A840" opacity=".8"/><path d="M18 46 Q24 44 30 46" stroke="#7A5020" stroke-width="2.5" stroke-linecap="round" opacity=".7"/><path d="M20 50 Q24 48 28 50" stroke="#5A3010" stroke-width="1.5" stroke-linecap="round" opacity=".55"/></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 120 140" fill="none" preserveAspectRatio="xMidYMid slice">
+                            <rect width="120" height="140" fill="#6A3A18"/>
+                            <rect y="0" width="120" height="24" fill="#5A3010" opacity=".8"/>
+                            <rect y="24" width="120" height="20" fill="#723E1C" opacity=".7"/>
+                            <rect y="44" width="120" height="22" fill="#5E3214" opacity=".75"/>
+                            <rect y="66" width="120" height="20" fill="#6E3C1A" opacity=".7"/>
+                            <rect y="86" width="120" height="24" fill="#583010" opacity=".8"/>
+                            <rect y="110" width="120" height="20" fill="#703A1C" opacity=".7"/>
+                            <rect y="130" width="120" height="10" fill="#5C3212" opacity=".8"/>
+                            <path d="M0 8 Q60 5 120 8" stroke="#381408" stroke-width="0.5" opacity=".5"/>
+                            <path d="M0 18 Q80 14 120 17" stroke="#381408" stroke-width="0.4" opacity=".4"/>
+                            <path d="M0 36 Q40 32 120 36" stroke="#381408" stroke-width="0.5" opacity=".45"/>
+                            <path d="M0 52 Q70 48 120 51" stroke="#381408" stroke-width="0.4" opacity=".4"/>
+                            <path d="M0 68 Q50 64 120 67" stroke="#381408" stroke-width="0.5" opacity=".45"/>
+                            <path d="M0 84 Q90 80 120 83" stroke="#381408" stroke-width="0.4" opacity=".4"/>
+                            <path d="M0 100 Q40 96 120 100" stroke="#381408" stroke-width="0.5" opacity=".45"/>
+                            <path d="M0 120 Q70 116 120 119" stroke="#381408" stroke-width="0.4" opacity=".4"/>
+                            <rect x="28" y="35" width="50" height="70" rx="2" fill="#F0E0C0" opacity=".88"/>
+                            <rect x="30" y="37" width="46" height="66" rx="1" fill="#F8EDD5" opacity=".6"/>
+                            <path d="M90 80 Q90 50 92 30" stroke="#C89820" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+                            <ellipse cx="92" cy="22" rx="3" ry="9" fill="#D4A840" opacity=".82"/>
+                            <ellipse cx="96" cy="20" rx="2.5" ry="8" fill="#C89820" opacity=".72"/>
+                            <ellipse cx="88" cy="23" rx="2.5" ry="8" fill="#D4A840" opacity=".72"/>
+                            <path d="M86 72 Q92 70 98 72" stroke="#7A5020" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+                        </svg>
                     </div>
-                    <div class="label"><div class="name">빈티지 우드</div><div class="desc">다크 우드 배경, 드라이 팜파스 그라스 번들</div><button class="preview-btn">미리보기</button></div>
+                    <div class="label"><div class="name">빈티지 우드</div><div class="desc">다크 우드 배경, 양피지 카드와 드라이 플라워 번들</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('traditional')">
                     <div class="swatch t-traditional">
-                        <svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><rect x="4" y="4" width="92" height="132" stroke="#C89820" stroke-width="1.2"/><rect x="10" y="10" width="80" height="120" stroke="#C89820" stroke-width="0.5" opacity=".5"/><line x1="4" y1="24" x2="96" y2="24" stroke="#C89820" stroke-width="0.5" opacity=".4"/><line x1="4" y1="116" x2="96" y2="116" stroke="#C89820" stroke-width="0.5" opacity=".4"/><path d="M22 14 L26 10 L30 14 L26 18Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M48 14 L52 10 L56 14 L52 18Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M74 14 L78 10 L82 14 L78 18Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M22 126 L26 122 L30 126 L26 130Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M48 126 L52 122 L56 126 L52 130Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M74 126 L78 122 L82 126 L78 130Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".5"/><path d="M50 28 Q44 34 42 40 Q46 36 50 38 Q54 36 58 40 Q56 34 50 28Z" fill="#C89820" opacity=".7"/><line x1="47" y1="42" x2="47" y2="70" stroke="#8A6030" stroke-width="0.9" opacity=".65"/><line x1="50" y1="42" x2="50" y2="70" stroke="#8A6030" stroke-width="1" opacity=".7"/><line x1="53" y1="42" x2="53" y2="70" stroke="#8A6030" stroke-width="0.9" opacity=".65"/><rect x="44" y="39" width="12" height="4" rx="2" fill="#C89820" opacity=".75"/></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 120 140" fill="none" preserveAspectRatio="xMidYMid slice">
+                            <rect x="6" y="6" width="108" height="128" stroke="#C89820" stroke-width="1.4"/>
+                            <rect x="12" y="12" width="96" height="116" stroke="#C89820" stroke-width="0.5" opacity=".5"/>
+                            <line x1="6" y1="28" x2="114" y2="28" stroke="#C89820" stroke-width="0.5" opacity=".38"/>
+                            <line x1="6" y1="112" x2="114" y2="112" stroke="#C89820" stroke-width="0.5" opacity=".38"/>
+                            <path d="M18 18 L22 14 L26 18 L22 22 Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/>
+                            <path d="M42 18 L46 14 L50 18 L46 22 Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/>
+                            <path d="M70 18 L74 14 L78 18 L74 22 Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/>
+                            <path d="M94 18 L98 14 L102 18 L98 22 Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/>
+                            <path d="M18 122 L22 118 L26 122 L22 126 Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/>
+                            <path d="M42 122 L46 118 L50 122 L46 126 Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/>
+                            <path d="M70 122 L74 118 L78 122 L74 126 Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/>
+                            <path d="M94 122 L98 118 L102 122 L98 126 Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/>
+                            <line x1="24" y1="112" x2="24" y2="134" stroke="#C89820" stroke-width="0.4" opacity=".3"/>
+                            <line x1="36" y1="112" x2="36" y2="134" stroke="#C89820" stroke-width="0.4" opacity=".3"/>
+                            <line x1="48" y1="112" x2="48" y2="134" stroke="#C89820" stroke-width="0.4" opacity=".3"/>
+                            <line x1="60" y1="112" x2="60" y2="134" stroke="#C89820" stroke-width="0.4" opacity=".3"/>
+                            <line x1="72" y1="112" x2="72" y2="134" stroke="#C89820" stroke-width="0.4" opacity=".3"/>
+                            <line x1="84" y1="112" x2="84" y2="134" stroke="#C89820" stroke-width="0.4" opacity=".3"/>
+                            <line x1="96" y1="112" x2="96" y2="134" stroke="#C89820" stroke-width="0.4" opacity=".3"/>
+                            <line x1="6" y1="122" x2="114" y2="122" stroke="#C89820" stroke-width="0.4" opacity=".25"/>
+                            <circle cx="60" cy="38" r="10" fill="none" stroke="#C89820" stroke-width="1.2"/>
+                            <circle cx="60" cy="38" r="6" fill="#D4A840" opacity=".5"/>
+                            <path d="M56 24 Q60 16 64 24 Q68 28 60 30 Q52 28 56 24Z" fill="#C89820" opacity=".65"/>
+                            <line x1="57" y1="48" x2="56" y2="70" stroke="#8A6030" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+                            <line x1="60" y1="48" x2="60" y2="70" stroke="#8A6030" stroke-width="1.1" stroke-linecap="round" opacity=".75"/>
+                            <line x1="63" y1="48" x2="64" y2="70" stroke="#8A6030" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+                            <rect x="54" y="44" width="12" height="5" rx="2.5" fill="#C89820" opacity=".8"/>
+                            <path d="M78 50 Q86 44 90 50 Q88 56 82 54 Q78 56 76 62 Q80 58 86 60 Q84 66 78 66" stroke="#B87800" stroke-width="0.9" fill="none" opacity=".55" stroke-linecap="round"/>
+                            <circle cx="82" cy="46" r="2" fill="#FFE0C0" opacity=".6"/>
+                            <circle cx="90" cy="52" r="2" fill="#FFE0C0" opacity=".55"/>
+                        </svg>
                     </div>
                     <div class="label"><div class="name">트레디셔널 터치</div><div class="desc">크림 &amp; 한국 격자 보더, 매화 &amp; 매듭</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('oceanwhisper')">
                     <div class="swatch t-oceanwhisper">
-                        <svg class="sw-art" viewBox="0 0 100 50" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M0 20 Q12 14 25 20 Q37 26 50 20 Q62 14 75 20 Q87 26 100 20 L100 50 L0 50Z" fill="#3A6CA8" opacity=".5"/><path d="M0 30 Q15 24 30 30 Q45 36 60 30 Q75 24 90 30 Q95 33 100 30 L100 50 L0 50Z" fill="#2A5898" opacity=".55"/><path d="M0 20 Q12 14 25 20" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none"/><path d="M50 20 Q62 14 75 20" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none"/><path d="M28 8 Q32 5 36 8" stroke="rgba(255,255,255,0.5)" stroke-width="1" fill="none" stroke-linecap="round"/><path d="M60 4 Q64 1 68 4" stroke="rgba(255,255,255,0.4)" stroke-width="1" fill="none" stroke-linecap="round"/></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 120 80" fill="none" preserveAspectRatio="xMidYMax meet">
+                            <path d="M0 38 Q15 28 30 38 Q45 48 60 38 Q75 28 90 38 Q105 48 120 38 L120 80 L0 80Z" fill="#4A88C0" opacity=".55"/>
+                            <path d="M0 52 Q18 42 36 52 Q54 62 72 52 Q90 42 108 52 Q114 55 120 52 L120 80 L0 80Z" fill="#3878B0" opacity=".6"/>
+                            <path d="M0 64 Q20 56 40 64 Q60 72 80 64 Q100 56 120 64 L120 80 L0 80Z" fill="#2868A0" opacity=".65"/>
+                            <path d="M0 38 Q15 28 30 38" stroke="rgba(255,255,255,0.45)" stroke-width="1.3" fill="none"/>
+                            <path d="M60 38 Q75 28 90 38" stroke="rgba(255,255,255,0.45)" stroke-width="1.3" fill="none"/>
+                            <path d="M32 14 Q36 11 40 14" stroke="rgba(255,255,255,0.55)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <path d="M70 8 Q74 5 78 8" stroke="rgba(255,255,255,0.5)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+                            <path d="M88 20 Q91 18 94 20" stroke="rgba(255,255,255,0.4)" stroke-width="1" fill="none" stroke-linecap="round"/>
+                            <path d="M14 22 Q17 20 20 22" stroke="rgba(255,255,255,0.4)" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+                        </svg>
                     </div>
                     <div class="label"><div class="name">바다의 속사임</div><div class="desc">오션 블루 그라데이션, 파도와 갈매기, 글라스</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('autumn')">
                     <div class="swatch t-autumn">
-                        <svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M0 140 L0 104 Q20 88 40 96 Q50 100 60 90 Q75 76 90 94 Q95 98 100 92 L100 140Z" fill="rgba(0,0,0,0.2)"/><g transform="translate(12,18) rotate(-15)"><path d="M0 0 C-5-9-16-8-13 0 C-16 0-18-10-10-13 C-10-19-3-22 0-16 C3-22 10-19 10-13 C18-10 16 0 13 0 C16-8 5-9 0 0Z" fill="#C83010" opacity=".88"/></g><g transform="translate(52,12) rotate(-5)"><path d="M0 0 C-6-10-18-9-15 0 C-18 0-20-12-12-15 C-12-23-4-26 0-19 C4-26 12-23 12-15 C20-12 18 0 15 0 C18-9 6-10 0 0Z" fill="#B82808" opacity=".85"/></g><g transform="translate(82,20) rotate(20)"><path d="M0 0 C-4-8-14-7-12 0 C-14 0-16-10-9-12 C-9-18-3-20 0-15 C3-20 9-18 9-12 C16-10 14 0 12 0 C14-7 4-8 0 0Z" fill="#E08020" opacity=".78"/></g><g transform="translate(30,38) rotate(25) scale(0.75)"><path d="M0 0 C-4-8-14-7-12 0 C-14 0-16-10-9-12 C-9-18-3-20 0-15 C3-20 9-18 9-12 C16-10 14 0 12 0 C14-7 4-8 0 0Z" fill="#D06820" opacity=".7"/></g></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 120 140" fill="none" preserveAspectRatio="xMidYMid slice">
+                            <path d="M0 140 L0 108 Q25 90 50 102 Q65 108 80 96 Q98 82 120 100 L120 140Z" fill="rgba(0,0,0,0.22)"/>
+                            <g transform="translate(14,16) rotate(-18)"><path d="M0 0 C-6-11-20-9-17 0 C-20 0-22-12-13-16 C-13-24-4-27 0-20 C4-27 13-24 13-16 C22-12 20 0 17 0 C20-9 6-11 0 0Z" fill="#C83010" opacity=".9"/><line x1="0" y1="0" x2="0" y2="18" stroke="#9A1E08" stroke-width="0.9" opacity=".55"/></g>
+                            <g transform="translate(48,10) rotate(-4)"><path d="M0 0 C-7-13-22-10-19 0 C-22 0-24-14-15-18 C-15-26-5-29 0-22 C5-29 15-26 15-18 C24-14 22 0 19 0 C22-10 7-13 0 0Z" fill="#B82808" opacity=".88"/><line x1="0" y1="0" x2="0" y2="22" stroke="#8A1800" stroke-width="0.9" opacity=".5"/></g>
+                            <g transform="translate(84,16) rotate(18)"><path d="M0 0 C-6-11-20-9-17 0 C-20 0-22-12-13-16 C-13-24-4-27 0-20 C4-27 13-24 13-16 C22-12 20 0 17 0 C20-9 6-11 0 0Z" fill="#E06020" opacity=".82"/><line x1="0" y1="0" x2="0" y2="18" stroke="#B04010" stroke-width="0.9" opacity=".5"/></g>
+                            <g transform="translate(108,30) rotate(25)"><path d="M0 0 C-5-9-16-8-13 0 C-16 0-18-10-10-13 C-10-19-3-22 0-16 C3-22 10-19 10-13 C18-10 16 0 13 0 C16-8 5-9 0 0Z" fill="#D06820" opacity=".75"/></g>
+                            <g transform="translate(30,40) rotate(28) scale(0.8)"><path d="M0 0 C-5-9-16-8-13 0 C-16 0-18-10-10-13 C-10-19-3-22 0-16 C3-22 10-19 10-13 C18-10 16 0 13 0 C16-8 5-9 0 0Z" fill="#C84020" opacity=".7"/></g>
+                            <g transform="translate(70,36) rotate(-22) scale(0.75)"><path d="M0 0 C-5-9-16-8-13 0 C-16 0-18-10-10-13 C-10-19-3-22 0-16 C3-22 10-19 10-13 C18-10 16 0 13 0 C16-8 5-9 0 0Z" fill="#E07030" opacity=".7"/></g>
+                        </svg>
                     </div>
                     <div class="label"><div class="name">가을의 온도</div><div class="desc">앰버 그라데이션, 단풍잎과 산 실루엣</div><button class="preview-btn">미리보기</button></div>
                 </div>
                 <div class="theme-card" onclick="openThemePreview('winterdusk')">
                     <div class="swatch t-winterdusk">
-                        <svg class="sw-art" viewBox="0 0 100 60" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M8 60 L8 40 L2 44 L8 32 L3 36 L12 18 L21 36 L16 32 L22 44 L16 40 L20 60Z" fill="#120628" opacity=".88"/><path d="M42 60 L42 38 L36 42 L42 28 L38 32 L48 12 L58 32 L54 28 L60 42 L54 38 L56 60Z" fill="#120628" opacity=".92"/><path d="M80 60 L80 40 L74 44 L80 32 L75 36 L84 18 L93 36 L88 32 L94 44 L88 40 L92 60Z" fill="#120628" opacity=".88"/><path d="M0 54 Q25 50 50 52 Q75 54 100 51 L100 60 L0 60Z" fill="rgba(255,255,255,0.12)"/></svg>
-                        <span>With You</span>
+                        <svg class="sw-art" viewBox="0 0 120 72" fill="none" preserveAspectRatio="xMidYMax meet">
+                            <path d="M10 72 L10 48 L4 52 L10 38 L4 44 L16 20 L28 44 L22 38 L28 52 L22 48 L24 72Z" fill="#0E0420" opacity=".9"/>
+                            <path d="M50 72 L50 44 L44 48 L50 32 L45 38 L58 10 L71 38 L66 32 L72 48 L66 44 L68 72Z" fill="#0E0420" opacity=".94"/>
+                            <path d="M96 72 L96 48 L90 52 L96 38 L90 44 L102 20 L114 44 L108 38 L114 52 L108 48 L110 72Z" fill="#0E0420" opacity=".9"/>
+                            <path d="M0 64 Q30 60 60 62 Q90 64 120 61 L120 72 L0 72Z" fill="rgba(255,255,255,0.1)"/>
+                        </svg>
                     </div>
                     <div class="label"><div class="name">겨울의 노을</div><div class="desc">퍼플·오렌지 노을 그라데이션, 소나무 실루엣</div><button class="preview-btn">미리보기</button></div>
                 </div>
@@ -1128,43 +1253,43 @@
                             <div class="th-name">클래식 명조</div>
                         </div>
                         <div class="theme-opt" data-theme="simpleline">
-                            <div class="swatch t-simpleline"><svg class="sw-art" viewBox="0 0 42 50" fill="none"><circle cx="15" cy="9" r="7" stroke="#1a1a1a" stroke-width="0.9"/><path d="M9 12 Q4 22 4 38" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M21 12 Q25 22 25 38" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M4 38 Q15 41 25 38" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round"/><circle cx="30" cy="7" r="8" stroke="#1a1a1a" stroke-width="0.9"/><path d="M22 13 Q18 23 17 40" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M38 13 Q42 22 41 40" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/><path d="M17 40 Q29 44 41 40" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round"/><path d="M22 16 Q15 13 10 16" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round"/></svg><span>심플 라인</span></div>
+                            <div class="swatch t-simpleline"><svg class="sw-art" viewBox="0 0 100 56" fill="none" preserveAspectRatio="xMidYMid meet"><circle cx="38" cy="14" r="9" stroke="#222" stroke-width="0.9"/><path d="M30 22 Q24 32 22 48" stroke="#222" stroke-width="0.9" stroke-linecap="round"/><path d="M46 22 Q50 32 48 42" stroke="#222" stroke-width="0.9" stroke-linecap="round"/><path d="M22 48 Q34 52 46 48" stroke="#222" stroke-width="0.8" stroke-linecap="round"/><path d="M48 42 Q46 50 46 48" stroke="#222" stroke-width="0.8" stroke-linecap="round"/><path d="M30 22 Q38 18 46 22" stroke="#222" stroke-width="0.9" stroke-linecap="round"/><circle cx="62" cy="11" r="10" stroke="#222" stroke-width="0.9"/><path d="M52 22 Q46 33 44 52" stroke="#222" stroke-width="1" stroke-linecap="round"/><path d="M72 22 Q78 33 78 52" stroke="#222" stroke-width="1" stroke-linecap="round"/><path d="M44 52 Q62 58 78 52" stroke="#222" stroke-width="0.9" stroke-linecap="round"/><path d="M52 22 Q62 16 72 22" stroke="#222" stroke-width="0.9" stroke-linecap="round"/><path d="M52 30 Q46 32 42 36" stroke="#222" stroke-width="0.8" stroke-linecap="round" opacity=".55"/></svg><span>심플 라인</span></div>
                             <div class="th-name">심플 라인 아트</div>
                         </div>
                         <div class="theme-opt" data-theme="classicwhite">
-                            <div class="swatch t-classicwhite"><svg class="sw-art" viewBox="0 0 56 60" fill="none"><path d="M10 58 L10 34 Q10 14 28 14 Q46 14 46 34 L46 58" stroke="#C8A464" stroke-width="1.4"/><ellipse cx="28" cy="15" rx="6" ry="4" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><ellipse cx="12" cy="32" rx="5" ry="7" transform="rotate(-28,12,32)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/><ellipse cx="44" cy="32" rx="5" ry="7" transform="rotate(28,44,32)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.6"/></svg><span>클래식 화이트</span></div>
+                            <div class="swatch t-classicwhite"><svg class="sw-art" viewBox="0 0 100 56" fill="none" preserveAspectRatio="xMidYMid meet"><path d="M18 56 L18 32 Q18 10 50 10 Q82 10 82 32 L82 56" stroke="#C8A464" stroke-width="1.4"/><path d="M26 56 L26 34 Q26 18 50 18 Q74 18 74 34 L74 56" stroke="#C8A464" stroke-width="0.4" opacity=".35"/><g transform="translate(50,9)"><ellipse rx="5" ry="7" transform="rotate(0)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="5" ry="7" transform="rotate(60)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="5" ry="7" transform="rotate(120)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="5" ry="7" transform="rotate(180)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="5" ry="7" transform="rotate(240)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><ellipse rx="5" ry="7" transform="rotate(300)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7"/><circle r="3" fill="#F8E8C0"/></g><g transform="translate(18,32)"><ellipse rx="6" ry="8" transform="rotate(-15)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6"/><ellipse rx="6" ry="8" transform="rotate(57)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6"/><ellipse rx="6" ry="8" transform="rotate(129)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6"/><circle r="3" fill="#F8E8C0"/></g><g transform="translate(82,32)"><ellipse rx="6" ry="8" transform="rotate(15)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6"/><ellipse rx="6" ry="8" transform="rotate(87)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6"/><ellipse rx="6" ry="8" transform="rotate(159)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.6"/><circle r="3" fill="#F8E8C0"/></g><path d="M8 26 Q3 20 6 15 Q9 21 8 26Z" fill="#9CAF70" opacity=".5"/><path d="M92 26 Q97 20 94 15 Q91 21 92 26Z" fill="#9CAF70" opacity=".5"/></svg><span>클래식 화이트</span></div>
                             <div class="th-name">클래식 화이트</div>
                         </div>
                         <div class="theme-opt" data-theme="naturalgreen">
-                            <div class="swatch t-naturalgreen"><svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M5 140 C10 110 9 85 12 64 C15 46 18 26 22 8" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M12 64 Q2 57 4 48 Q12 54 12 64Z" fill="#7AAA66" opacity=".75"/><path d="M14 48 Q4 40 6 30 Q14 38 14 48Z" fill="#6A9858" opacity=".7"/><path d="M95 140 C90 110 91 85 88 64 C85 46 82 26 78 8" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M88 64 Q98 57 96 48 Q88 54 88 64Z" fill="#7AAA66" opacity=".75"/><path d="M86 48 Q96 40 94 30 Q86 38 86 48Z" fill="#6A9858" opacity=".7"/></svg><span>내추럴 그린</span></div>
+                            <div class="swatch t-naturalgreen"><svg class="sw-art" viewBox="0 0 100 56" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M6 56 C8 44 8 34 10 24 C12 16 14 8 16 2" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M10 24 Q2 19 4 13 Q10 18 10 24Z" fill="#7AAA66" opacity=".78"/><path d="M12 14 Q4 9 6 4 Q12 9 12 14Z" fill="#6A9858" opacity=".7"/><path d="M8 34 Q0 29 2 23 Q8 28 8 34Z" fill="#7AAA66" opacity=".7"/><path d="M94 56 C92 44 92 34 90 24 C88 16 86 8 84 2" stroke="#5A8050" stroke-width="1.6" stroke-linecap="round"/><path d="M90 24 Q98 19 96 13 Q90 18 90 24Z" fill="#7AAA66" opacity=".78"/><path d="M88 14 Q96 9 94 4 Q88 9 88 14Z" fill="#6A9858" opacity=".7"/><path d="M92 34 Q100 29 98 23 Q92 28 92 34Z" fill="#7AAA66" opacity=".7"/></svg><span>내추럴 그린</span></div>
                             <div class="th-name">내추럴 그린</div>
                         </div>
                         <div class="theme-opt" data-theme="romanticpink">
-                            <div class="swatch t-romanticpink"><svg class="sw-art" viewBox="0 0 60 68" fill="none"><ellipse cx="30" cy="34" rx="22" ry="28" stroke="#D890A8" stroke-width="1.2"/><circle cx="12" cy="14" r="3.5" fill="#FFB8D0" opacity=".7"/><circle cx="18" cy="11" r="3" fill="#FFD0E4" opacity=".75"/><circle cx="25" cy="8" r="3.5" fill="#FFB8D0" opacity=".65"/><circle cx="48" cy="14" r="3.5" fill="#FFB8D0" opacity=".7"/><circle cx="42" cy="11" r="3" fill="#FFD0E4" opacity=".75"/><circle cx="35" cy="8" r="3.5" fill="#FFB8D0" opacity=".65"/></svg><span>로맨틱 핑코</span></div>
+                            <div class="swatch t-romanticpink"><svg class="sw-art" viewBox="0 0 100 56" fill="none" preserveAspectRatio="xMidYMid meet"><ellipse cx="50" cy="28" rx="30" ry="24" stroke="#D890A8" stroke-width="1.2"/><g transform="translate(20,10)"><ellipse rx="4" ry="6" transform="rotate(0)" fill="#FFB8D0" opacity=".82"/><ellipse rx="4" ry="6" transform="rotate(72)" fill="#FFB8D0" opacity=".82"/><ellipse rx="4" ry="6" transform="rotate(144)" fill="#FFB8D0" opacity=".82"/><ellipse rx="4" ry="6" transform="rotate(216)" fill="#FFB8D0" opacity=".82"/><ellipse rx="4" ry="6" transform="rotate(288)" fill="#FFB8D0" opacity=".82"/><circle r="2.5" fill="#FFD0E4"/></g><g transform="translate(80,10)"><ellipse rx="4" ry="6" transform="rotate(0)" fill="#FFB8D0" opacity=".82"/><ellipse rx="4" ry="6" transform="rotate(72)" fill="#FFB8D0" opacity=".82"/><ellipse rx="4" ry="6" transform="rotate(144)" fill="#FFB8D0" opacity=".82"/><ellipse rx="4" ry="6" transform="rotate(216)" fill="#FFB8D0" opacity=".82"/><ellipse rx="4" ry="6" transform="rotate(288)" fill="#FFB8D0" opacity=".82"/><circle r="2.5" fill="#FFD0E4"/></g><g transform="translate(50,4)"><ellipse rx="3.5" ry="5.5" transform="rotate(20)" fill="#FFB8D0" opacity=".7"/><ellipse rx="3.5" ry="5.5" transform="rotate(92)" fill="#FFB8D0" opacity=".7"/><ellipse rx="3.5" ry="5.5" transform="rotate(164)" fill="#FFB8D0" opacity=".7"/><circle r="2" fill="#FFD0E4" opacity=".85"/></g></svg><span>로맨틱 핑코</span></div>
                             <div class="th-name">로맨틱 핑코</div>
                         </div>
                         <div class="theme-opt" data-theme="modernminimal">
-                            <div class="swatch t-modernminimal"><svg class="sw-art" viewBox="0 0 32 50" fill="none"><path d="M8 48 Q14 38 18 28 Q22 18 26 8" stroke="#909090" stroke-width="1" stroke-linecap="round"/><path d="M20 26 Q26 20 30 22 Q26 28 20 26Z" fill="#A8A898" opacity=".5"/><path d="M22 18 Q28 13 31 16 Q27 21 22 18Z" fill="#A8A898" opacity=".44"/><path d="M16 33 Q10 28 11 22 Q16 26 16 33Z" fill="#B0B0A0" opacity=".44"/></svg><span>모던 미니얼</span></div>
+                            <div class="swatch t-modernminimal"><svg class="sw-art" viewBox="0 0 50 56" fill="none" preserveAspectRatio="xMidYMid meet"><path d="M26 54 Q30 44 34 34 Q38 24 42 14 Q44 8 46 2" stroke="#b0b0a0" stroke-width="1.1" stroke-linecap="round"/><path d="M36 30 Q44 24 48 27 Q44 33 36 30Z" fill="#C0C0B0" opacity=".55"/><path d="M38 20 Q46 14 49 18 Q45 23 38 20Z" fill="#B8B8A8" opacity=".5"/><path d="M32 40 Q24 34 26 28 Q30 33 32 40Z" fill="#C0C0B0" opacity=".48"/></svg><span>모던 미니얼</span></div>
                             <div class="th-name">모던 미니얼</div>
                         </div>
                         <div class="theme-opt" data-theme="vintagewood">
-                            <div class="swatch t-vintagewood"><svg class="sw-art" viewBox="0 0 48 56" fill="none"><path d="M24 52 Q21 40 19 28 Q17 18 16 8" stroke="#D4A840" stroke-width="1.4" stroke-linecap="round"/><path d="M24 52 Q24 40 24 28 Q24 18 23 8" stroke="#D4A840" stroke-width="1.3" stroke-linecap="round"/><path d="M24 52 Q27 40 29 28 Q31 18 32 8" stroke="#D4A840" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="21" cy="4" rx="3" ry="7" fill="#D4A840" opacity=".88"/><ellipse cx="27" cy="4" rx="3" ry="7" fill="#D4A840" opacity=".88"/><path d="M18 46 Q24 44 30 46" stroke="#7A5020" stroke-width="2.5" stroke-linecap="round" opacity=".7"/></svg><span>빈티지 우드</span></div>
+                            <div class="swatch t-vintagewood"><svg class="sw-art" viewBox="0 0 100 56" fill="none" preserveAspectRatio="xMidYMid slice"><rect width="100" height="56" fill="#6A3A18"/><rect y="0" width="100" height="10" fill="#5A3010" opacity=".8"/><rect y="10" width="100" height="8" fill="#723E1C" opacity=".7"/><rect y="18" width="100" height="10" fill="#5E3214" opacity=".75"/><rect y="28" width="100" height="8" fill="#6E3C1A" opacity=".7"/><rect y="36" width="100" height="10" fill="#583010" opacity=".8"/><rect y="46" width="100" height="10" fill="#703A1C" opacity=".7"/><path d="M0 4 Q50 2 100 4" stroke="#381408" stroke-width="0.4" opacity=".5"/><path d="M0 14 Q70 12 100 14" stroke="#381408" stroke-width="0.35" opacity=".4"/><path d="M0 24 Q40 22 100 24" stroke="#381408" stroke-width="0.4" opacity=".45"/><path d="M0 34 Q60 32 100 34" stroke="#381408" stroke-width="0.35" opacity=".4"/><path d="M0 44 Q50 42 100 44" stroke="#381408" stroke-width="0.4" opacity=".42"/><rect x="26" y="10" width="36" height="36" rx="1" fill="#F0E0C0" opacity=".88"/><rect x="28" y="12" width="32" height="32" rx="1" fill="#F8EDD5" opacity=".55"/><path d="M70 36 Q70 22 72 12" stroke="#C89820" stroke-width="1" stroke-linecap="round" opacity=".7"/><ellipse cx="72" cy="8" rx="2.5" ry="7" fill="#D4A840" opacity=".82"/><ellipse cx="76" cy="7" rx="2" ry="6" fill="#C89820" opacity=".7"/><path d="M66 30 Q72 28 78 30" stroke="#7A5020" stroke-width="1.8" stroke-linecap="round" opacity=".72"/></svg><span>빈티지 우드</span></div>
                             <div class="th-name">빈티지 우드</div>
                         </div>
                         <div class="theme-opt" data-theme="traditional">
-                            <div class="swatch t-traditional"><svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><rect x="4" y="4" width="92" height="132" stroke="#C89820" stroke-width="1.2"/><rect x="10" y="10" width="80" height="120" stroke="#C89820" stroke-width="0.5" opacity=".5"/><line x1="4" y1="24" x2="96" y2="24" stroke="#C89820" stroke-width="0.5" opacity=".4"/><line x1="4" y1="116" x2="96" y2="116" stroke="#C89820" stroke-width="0.5" opacity=".4"/><path d="M50 28 Q44 34 42 40 Q46 36 50 38 Q54 36 58 40 Q56 34 50 28Z" fill="#C89820" opacity=".7"/><line x1="50" y1="42" x2="50" y2="70" stroke="#8A6030" stroke-width="1" opacity=".7"/></svg><span>트레디셔널</span></div>
+                            <div class="swatch t-traditional"><svg class="sw-art" viewBox="0 0 100 56" fill="none" preserveAspectRatio="xMidYMid slice"><rect x="4" y="3" width="92" height="50" stroke="#C89820" stroke-width="1.2"/><rect x="8" y="7" width="84" height="42" stroke="#C89820" stroke-width="0.5" opacity=".4"/><line x1="4" y1="14" x2="96" y2="14" stroke="#C89820" stroke-width="0.4" opacity=".35"/><line x1="4" y1="42" x2="96" y2="42" stroke="#C89820" stroke-width="0.4" opacity=".35"/><path d="M14 9 L17 6 L20 9 L17 12Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/><path d="M38 9 L41 6 L44 9 L41 12Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/><path d="M62 9 L65 6 L68 9 L65 12Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/><path d="M86 9 L89 6 L92 9 L89 12Z" fill="none" stroke="#B87800" stroke-width="0.6" opacity=".55"/><line x1="18" y1="42" x2="18" y2="53" stroke="#C89820" stroke-width="0.4" opacity=".3"/><line x1="30" y1="42" x2="30" y2="53" stroke="#C89820" stroke-width="0.4" opacity=".3"/><line x1="42" y1="42" x2="42" y2="53" stroke="#C89820" stroke-width="0.4" opacity=".3"/><line x1="54" y1="42" x2="54" y2="53" stroke="#C89820" stroke-width="0.4" opacity=".3"/><line x1="66" y1="42" x2="66" y2="53" stroke="#C89820" stroke-width="0.4" opacity=".3"/><line x1="78" y1="42" x2="78" y2="53" stroke="#C89820" stroke-width="0.4" opacity=".3"/><line x1="90" y1="42" x2="90" y2="53" stroke="#C89820" stroke-width="0.4" opacity=".3"/><line x1="4" y1="48" x2="96" y2="48" stroke="#C89820" stroke-width="0.4" opacity=".22"/><circle cx="50" cy="24" r="7" fill="none" stroke="#C89820" stroke-width="1"/><circle cx="50" cy="24" r="4" fill="#D4A840" opacity=".45"/><path d="M47 16 Q50 10 53 16 Q55 19 50 21 Q45 19 47 16Z" fill="#C89820" opacity=".65"/><line x1="48" y1="31" x2="48" y2="42" stroke="#8A6030" stroke-width="0.9" stroke-linecap="round" opacity=".7"/><line x1="50" y1="31" x2="50" y2="42" stroke="#8A6030" stroke-width="1" stroke-linecap="round" opacity=".75"/><line x1="52" y1="31" x2="52" y2="42" stroke="#8A6030" stroke-width="0.9" stroke-linecap="round" opacity=".7"/><rect x="46" y="28" width="8" height="4" rx="2" fill="#C89820" opacity=".78"/></svg><span>트레디셔널</span></div>
                             <div class="th-name">트레디셔널 터치</div>
                         </div>
                         <div class="theme-opt" data-theme="oceanwhisper">
-                            <div class="swatch t-oceanwhisper"><svg class="sw-art" viewBox="0 0 100 50" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M0 20 Q12 14 25 20 Q37 26 50 20 Q62 14 75 20 Q87 26 100 20 L100 50 L0 50Z" fill="#3A6CA8" opacity=".5"/><path d="M0 30 Q15 24 30 30 Q45 36 60 30 Q75 24 90 30 L100 50 L0 50Z" fill="#2A5898" opacity=".55"/><path d="M28 8 Q32 5 36 8" stroke="rgba(255,255,255,0.5)" stroke-width="1" fill="none" stroke-linecap="round"/></svg><span>바다의 속사임</span></div>
+                            <div class="swatch t-oceanwhisper"><svg class="sw-art" viewBox="0 0 100 44" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M0 18 Q12 11 25 18 Q37 25 50 18 Q62 11 75 18 Q87 25 100 18 L100 44 L0 44Z" fill="#4A88C0" opacity=".55"/><path d="M0 28 Q14 21 28 28 Q42 35 56 28 Q70 21 84 28 Q92 32 100 28 L100 44 L0 44Z" fill="#3878B0" opacity=".6"/><path d="M0 36 Q18 30 36 36 Q54 42 72 36 Q90 30 100 36 L100 44 L0 44Z" fill="#2868A0" opacity=".65"/><path d="M0 18 Q12 11 25 18" stroke="rgba(255,255,255,0.4)" stroke-width="1.1" fill="none"/><path d="M50 18 Q62 11 75 18" stroke="rgba(255,255,255,0.4)" stroke-width="1.1" fill="none"/><path d="M28 6 Q32 4 36 6" stroke="rgba(255,255,255,0.55)" stroke-width="1" fill="none" stroke-linecap="round"/><path d="M62 3 Q66 1 70 3" stroke="rgba(255,255,255,0.45)" stroke-width="0.9" fill="none" stroke-linecap="round"/></svg><span>바다의 속사임</span></div>
                             <div class="th-name">바다의 속사임</div>
                         </div>
                         <div class="theme-opt" data-theme="autumn">
-                            <div class="swatch t-autumn"><svg class="sw-art" viewBox="0 0 100 140" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M30 140 Q34 110 40 85 Q48 60 50 40" stroke="#C86020" stroke-width="1.8" stroke-linecap="round" opacity=".6"/><path d="M70 140 Q66 110 60 85 Q52 60 50 40" stroke="#C86020" stroke-width="1.8" stroke-linecap="round" opacity=".6"/><ellipse cx="25" cy="68" rx="9" ry="13" transform="rotate(-25,25,68)" fill="#E84010" opacity=".45"/><ellipse cx="75" cy="72" rx="9" ry="13" transform="rotate(25,75,72)" fill="#E05010" opacity=".45"/><ellipse cx="42" cy="55" rx="8" ry="11" transform="rotate(-15,42,55)" fill="#F06020" opacity=".4"/><path d="M20 115 Q35 108 50 114 Q65 108 80 115" stroke="#F09848" stroke-width="2" stroke-linecap="round" opacity=".35"/></svg><span>가을의 온도</span></div>
+                            <div class="swatch t-autumn"><svg class="sw-art" viewBox="0 0 100 56" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M0 56 L0 42 Q18 32 36 38 Q50 42 62 34 Q78 24 100 36 L100 56Z" fill="rgba(0,0,0,0.22)"/><g transform="translate(12,10) rotate(-18)"><path d="M0 0 C-5-9-16-8-13 0 C-16 0-18-10-10-13 C-10-19-3-22 0-16 C3-22 10-19 10-13 C18-10 16 0 13 0 C16-8 5-9 0 0Z" fill="#C83010" opacity=".9"/></g><g transform="translate(40,6) rotate(-4)"><path d="M0 0 C-6-11-20-9-17 0 C-20 0-22-12-13-16 C-13-24-4-27 0-20 C4-27 13-24 13-16 C22-12 20 0 17 0 C20-9 6-11 0 0Z" fill="#B82808" opacity=".85"/></g><g transform="translate(72,10) rotate(16)"><path d="M0 0 C-5-9-16-8-13 0 C-16 0-18-10-10-13 C-10-19-3-22 0-16 C3-22 10-19 10-13 C18-10 16 0 13 0 C16-8 5-9 0 0Z" fill="#E06020" opacity=".82"/></g><g transform="translate(24,24) rotate(25) scale(0.8)"><path d="M0 0 C-4-8-13-7-11 0 C-13 0-15-9-8-12 C-8-18-3-20 0-15 C3-20 8-18 8-12 C15-9 13 0 11 0 C13-7 4-8 0 0Z" fill="#D06820" opacity=".72"/></g><g transform="translate(56,22) rotate(-20) scale(0.75)"><path d="M0 0 C-4-8-13-7-11 0 C-13 0-15-9-8-12 C-8-18-3-20 0-15 C3-20 8-18 8-12 C15-9 13 0 11 0 C13-7 4-8 0 0Z" fill="#E07030" opacity=".72"/></g></svg><span>가을의 온도</span></div>
                             <div class="th-name">가을의 온도</div>
                         </div>
                         <div class="theme-opt" data-theme="winterdusk">
-                            <div class="swatch t-winterdusk"><svg class="sw-art" viewBox="0 0 100 50" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M50 0 L44 20 L50 18 L56 20Z" fill="rgba(255,255,255,0.25)"/><path d="M50 20 L46 32 L50 30 L54 32Z" fill="rgba(255,255,255,0.2)"/><path d="M10 50 L16 36 L22 50Z" fill="rgba(255,255,255,0.2)"/><path d="M78 50 L84 36 L90 50Z" fill="rgba(255,255,255,0.2)"/><path d="M0 42 Q25 38 50 42 Q75 38 100 42 L100 50 L0 50Z" fill="rgba(30,8,56,0.5)"/></svg><span>겨울의 노을</span></div>
+                            <div class="swatch t-winterdusk"><svg class="sw-art" viewBox="0 0 100 44" fill="none" preserveAspectRatio="xMidYMax meet"><path d="M8 44 L8 28 L3 32 L8 20 L3 24 L13 8 L23 24 L18 20 L23 32 L18 28 L20 44Z" fill="#0E0420" opacity=".9"/><path d="M40 44 L40 26 L35 30 L40 16 L36 20 L48 2 L60 20 L56 16 L62 30 L57 26 L58 44Z" fill="#0E0420" opacity=".94"/><path d="M80 44 L80 28 L75 32 L80 20 L75 24 L85 8 L95 24 L90 20 L95 32 L90 28 L92 44Z" fill="#0E0420" opacity=".9"/><path d="M0 39 Q25 36 50 38 Q75 40 100 37 L100 44 L0 44Z" fill="rgba(255,255,255,0.1)"/></svg><span>겨울의 노을</span></div>
                             <div class="th-name">겨울의 노을</div>
                         </div>
                     </div>
@@ -2479,22 +2604,38 @@
         case 'simpleline': return `
         <div style="position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
             <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                <svg viewBox="0 0 200 220" fill="none" style="width:64%;max-width:200px;">
-                    <circle cx="76" cy="42" r="19" stroke="#1a1a1a" stroke-width="1.2"/>
-                    <path d="M58 37 Q50 54 52 78 Q54 92 58 98" stroke="#1a1a1a" stroke-width="1.1" stroke-linecap="round"/>
-                    <path d="M58 58 Q46 94 44 156" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
-                    <path d="M94 58 Q106 90 110 156" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
-                    <path d="M44 156 Q77 166 110 156" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
-                    <path d="M58 58 Q76 52 94 58" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
-                    <path d="M60 95 Q77 99 94 95" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round" opacity=".3"/>
-                    <circle cx="128" cy="35" r="21" stroke="#1a1a1a" stroke-width="1.2"/>
-                    <path d="M107 56 Q96 92 92 162" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
-                    <path d="M149 56 Q162 90 166 162" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
-                    <path d="M92 162 Q129 174 166 162" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
-                    <path d="M107 56 Q128 48 149 56" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
-                    <path d="M128 55 L120 77 L128 71 L136 77 L128 55" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round" opacity=".4"/>
-                    <path d="M107 67 Q92 60 76 68" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
-                    <line x1="38" y1="188" x2="162" y2="188" stroke="#e8e8e8" stroke-width="0.8"/>
+                <svg viewBox="0 0 220 250" fill="none" style="width:68%;max-width:220px;">
+                    <!-- Woman - left figure -->
+                    <circle cx="80" cy="46" r="22" stroke="#1a1a1a" stroke-width="1.2"/>
+                    <!-- Woman flowing hair -->
+                    <path d="M60 38 Q50 22 55 10 Q65 20 64 34" stroke="#1a1a1a" stroke-width="1" fill="none" opacity=".5"/>
+                    <path d="M100 36 Q108 20 105 8 Q97 18 97 32" stroke="#1a1a1a" stroke-width="0.9" fill="none" opacity=".45"/>
+                    <!-- Woman shoulders -->
+                    <path d="M62 68 Q80 60 98 68" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+                    <!-- Woman body / dress -->
+                    <path d="M62 68 Q54 96 50 136 Q46 164 44 192" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
+                    <path d="M98 68 Q104 92 102 120" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
+                    <!-- Dress skirt flare -->
+                    <path d="M44 192 Q64 202 84 196" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M102 120 Q100 156 96 178 Q90 198 84 196" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+                    <!-- Man - right figure, slightly taller -->
+                    <circle cx="138" cy="38" r="24" stroke="#1a1a1a" stroke-width="1.2"/>
+                    <!-- Man shoulders/suit -->
+                    <path d="M114 62 Q138 52 162 62" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
+                    <!-- Man suit lapels -->
+                    <path d="M114 62 Q124 72 130 88" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round" opacity=".5"/>
+                    <path d="M162 62 Q152 72 146 88" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round" opacity=".5"/>
+                    <!-- Man body -->
+                    <path d="M114 62 Q106 94 104 148 Q102 168 104 194" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M162 62 Q170 92 172 146 Q174 168 172 194" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M104 194 Q138 206 172 194" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round"/>
+                    <!-- Embracing arms -->
+                    <path d="M114 80 Q102 85 94 94" stroke="#1a1a1a" stroke-width="1.1" stroke-linecap="round" opacity=".65"/>
+                    <path d="M98 82 Q108 85 120 96" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round" opacity=".55"/>
+                    <!-- Heads gently touching -->
+                    <path d="M102 44 Q110 40 114 46" stroke="#1a1a1a" stroke-width="0.9" stroke-linecap="round" opacity=".38"/>
+                    <!-- Divider line -->
+                    <line x1="30" y1="218" x2="190" y2="218" stroke="#e8e8e8" stroke-width="0.8"/>
                 </svg>
             </div>
             <div style="text-align:center;padding:0 28px;flex-shrink:0;">
@@ -2507,22 +2648,29 @@
         case 'classicwhite': return `
         <div style="position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
             <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                <svg viewBox="0 0 240 250" fill="none" style="width:80%;max-width:260px;">
-                    <path d="M50 248 L50 145 Q50 58 120 58 Q190 58 190 145 L190 248" stroke="#C8A464" stroke-width="1.8"/>
-                    <path d="M65 248 L65 148 Q65 80 120 80 Q175 80 175 148 L175 248" stroke="#C8A464" stroke-width="0.6" opacity=".4"/>
-                    <ellipse cx="120" cy="60" rx="13" ry="9" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8"/>
-                    <ellipse cx="106" cy="68" rx="11" ry="7" transform="rotate(-20,106,68)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".82"/>
-                    <ellipse cx="134" cy="68" rx="11" ry="7" transform="rotate(20,134,68)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".82"/>
-                    <ellipse cx="53" cy="140" rx="11" ry="15" transform="rotate(-30,53,140)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8"/>
-                    <ellipse cx="43" cy="126" rx="9" ry="12" transform="rotate(-50,43,126)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".78"/>
-                    <ellipse cx="39" cy="152" rx="8" ry="11" transform="rotate(-12,39,152)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".72"/>
-                    <path d="M36 128 Q28 118 34 110 Q39 120 36 128Z" fill="#9CAF70" opacity=".5"/>
-                    <path d="M33 150 Q23 142 29 133 Q35 144 33 150Z" fill="#9CAF70" opacity=".45"/>
-                    <ellipse cx="187" cy="140" rx="11" ry="15" transform="rotate(30,187,140)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8"/>
-                    <ellipse cx="197" cy="126" rx="9" ry="12" transform="rotate(50,197,126)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".78"/>
-                    <ellipse cx="201" cy="152" rx="8" ry="11" transform="rotate(12,201,152)" fill="#FEF5E8" stroke="#D4B07A" stroke-width="0.8" opacity=".72"/>
-                    <path d="M204 128 Q212 118 206 110 Q201 120 204 128Z" fill="#9CAF70" opacity=".5"/>
-                    <path d="M207 150 Q217 142 211 133 Q205 144 207 150Z" fill="#9CAF70" opacity=".45"/>
+                <svg viewBox="0 0 280 300" fill="none" style="width:88%;max-width:290px;">
+                    <!-- Arch -->
+                    <path d="M44 298 L44 148 Q44 52 140 52 Q236 52 236 148 L236 298" stroke="#C8A464" stroke-width="1.8"/>
+                    <path d="M62 298 L62 152 Q62 78 140 78 Q218 78 218 152 L218 298" stroke="#C8A464" stroke-width="0.55" opacity=".35"/>
+                    <!-- Top center flower cluster -->
+                    <g transform="translate(140,50)"><ellipse rx="9" ry="13" transform="rotate(0)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="9" ry="13" transform="rotate(60)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="9" ry="13" transform="rotate(120)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="9" ry="13" transform="rotate(180)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="9" ry="13" transform="rotate(240)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="9" ry="13" transform="rotate(300)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><circle r="6" fill="#F8E8C0"/><circle r="2.5" fill="#D4A460"/></g>
+                    <!-- Left side flowers - lower cluster -->
+                    <g transform="translate(44,152)"><ellipse rx="10" ry="14" transform="rotate(-18)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="10" ry="14" transform="rotate(54)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="10" ry="14" transform="rotate(126)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="10" ry="14" transform="rotate(198)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="10" ry="14" transform="rotate(270)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><circle r="5.5" fill="#F8E8C0"/></g>
+                    <!-- Left upper small flower -->
+                    <g transform="translate(32,116)"><ellipse rx="7" ry="11" transform="rotate(-30)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".9"/><ellipse rx="7" ry="11" transform="rotate(42)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".9"/><ellipse rx="7" ry="11" transform="rotate(114)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".9"/><ellipse rx="7" ry="11" transform="rotate(186)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".9"/><circle r="4" fill="#F8E8C0"/></g>
+                    <!-- Left lower flower -->
+                    <g transform="translate(38,185)"><ellipse rx="8" ry="12" transform="rotate(15)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(87)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(159)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(231)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".85"/><circle r="4" fill="#F8E8C0" opacity=".85"/></g>
+                    <!-- Left green leaves -->
+                    <path d="M24 100 Q14 88 20 78 Q26 90 24 100Z" fill="#9CAF70" opacity=".55"/>
+                    <path d="M20 124 Q8 114 14 104 Q22 116 20 124Z" fill="#9CAF70" opacity=".5"/>
+                    <path d="M26 162 Q14 154 18 144 Q26 156 26 162Z" fill="#9CAF70" opacity=".48"/>
+                    <!-- Right side flowers - mirror -->
+                    <g transform="translate(236,152)"><ellipse rx="10" ry="14" transform="rotate(18)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="10" ry="14" transform="rotate(90)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="10" ry="14" transform="rotate(162)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="10" ry="14" transform="rotate(234)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><ellipse rx="10" ry="14" transform="rotate(306)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.8"/><circle r="5.5" fill="#F8E8C0"/></g>
+                    <g transform="translate(248,116)"><ellipse rx="7" ry="11" transform="rotate(30)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".9"/><ellipse rx="7" ry="11" transform="rotate(102)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".9"/><ellipse rx="7" ry="11" transform="rotate(174)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".9"/><ellipse rx="7" ry="11" transform="rotate(246)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".9"/><circle r="4" fill="#F8E8C0"/></g>
+                    <g transform="translate(242,185)"><ellipse rx="8" ry="12" transform="rotate(-15)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(57)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(129)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(201)" fill="#FEF8F0" stroke="#D4B07A" stroke-width="0.7" opacity=".85"/><circle r="4" fill="#F8E8C0" opacity=".85"/></g>
+                    <path d="M256 100 Q266 88 260 78 Q254 90 256 100Z" fill="#9CAF70" opacity=".55"/>
+                    <path d="M260 124 Q272 114 266 104 Q258 116 260 124Z" fill="#9CAF70" opacity=".5"/>
+                    <path d="M254 162 Q266 154 262 144 Q254 156 254 162Z" fill="#9CAF70" opacity=".48"/>
                 </svg>
             </div>
             <div style="text-align:center;padding:0 28px;flex-shrink:0;">
@@ -2533,30 +2681,44 @@
         </div>`;
 
         case 'naturalgreen': return `
-        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#EDF6E2,#DEEFC8);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#EDF6E2,#DDEFC4);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
             <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
-                <svg viewBox="0 0 280 400" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;">
-                    <path d="M18 400 C28 340 26 275 34 210 C40 158 50 100 58 40" stroke="#5A8050" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M34 210 Q10 193 14 172 Q32 187 34 210Z" fill="#7AAA66" opacity=".72"/>
-                    <path d="M38 170 Q12 152 16 130 Q36 148 38 170Z" fill="#6A9858" opacity=".68"/>
-                    <path d="M43 130 Q20 110 26 90 Q44 108 43 130Z" fill="#88B470" opacity=".62"/>
-                    <path d="M50 90 Q30 72 36 54 Q52 70 50 90Z" fill="#7AAA66" opacity=".58"/>
-                    <path d="M30 250 Q4 234 8 214 Q26 228 30 250Z" fill="#7AAA66" opacity=".66"/>
-                    <path d="M24 292 Q-2 276 4 256 Q22 272 24 292Z" fill="#6A9858" opacity=".6"/>
-                    <path d="M262 400 C252 340 254 275 246 210 C240 158 230 100 222 40" stroke="#5A8050" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M246 210 Q270 193 266 172 Q248 187 246 210Z" fill="#7AAA66" opacity=".72"/>
-                    <path d="M242 170 Q268 152 264 130 Q244 148 242 170Z" fill="#6A9858" opacity=".68"/>
-                    <path d="M237 130 Q260 110 254 90 Q236 108 237 130Z" fill="#88B470" opacity=".62"/>
-                    <path d="M230 90 Q250 72 244 54 Q228 70 230 90Z" fill="#7AAA66" opacity=".58"/>
-                    <path d="M250 250 Q276 234 272 214 Q254 228 250 250Z" fill="#7AAA66" opacity=".66"/>
-                    <path d="M256 292 Q282 276 276 256 Q258 272 256 292Z" fill="#6A9858" opacity=".6"/>
-                    <path d="M58 40 Q100 20 140 15 Q180 10 222 40" stroke="#5A8050" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".55"/>
-                    <path d="M130 14 Q120 0 112 8 Q124 12 130 14Z" fill="#7AAA66" opacity=".5"/>
-                    <path d="M150 14 Q160 0 168 8 Q156 12 150 14Z" fill="#6A9858" opacity=".5"/>
+                <svg viewBox="0 0 300 420" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;">
+                    <!-- Left stem -->
+                    <path d="M16 420 C22 356 20 290 26 224 C32 168 42 108 52 46" stroke="#4A7040" stroke-width="2" stroke-linecap="round"/>
+                    <!-- Left leaves - large -->
+                    <path d="M26 224 Q2 206 6 184 Q26 202 26 224Z" fill="#7AAA66" opacity=".75"/>
+                    <path d="M30 182 Q4 162 8 140 Q30 160 30 182Z" fill="#6A9858" opacity=".7"/>
+                    <path d="M36 140 Q12 118 18 96 Q38 116 36 140Z" fill="#88B470" opacity=".65"/>
+                    <path d="M44 96 Q24 74 30 54 Q48 72 44 96Z" fill="#7AAA66" opacity=".6"/>
+                    <path d="M22 268 Q-4 250 2 228 Q22 246 22 268Z" fill="#7AAA66" opacity=".68"/>
+                    <path d="M18 312 Q-8 294 -2 272 Q18 290 18 312Z" fill="#6A9858" opacity=".62"/>
+                    <path d="M14 358 Q-12 340 -6 318 Q14 336 14 358Z" fill="#88B470" opacity=".55"/>
+                    <!-- Extra left leaves going inward -->
+                    <path d="M28 148 Q42 132 56 138 Q42 152 28 148Z" fill="#8AB868" opacity=".55"/>
+                    <path d="M32 200 Q46 185 60 192 Q46 206 32 200Z" fill="#7AAA66" opacity=".5"/>
+                    <!-- Right stem -->
+                    <path d="M284 420 C278 356 280 290 274 224 C268 168 258 108 248 46" stroke="#4A7040" stroke-width="2" stroke-linecap="round"/>
+                    <!-- Right leaves - large -->
+                    <path d="M274 224 Q298 206 294 184 Q274 202 274 224Z" fill="#7AAA66" opacity=".75"/>
+                    <path d="M270 182 Q296 162 292 140 Q270 160 270 182Z" fill="#6A9858" opacity=".7"/>
+                    <path d="M264 140 Q288 118 282 96 Q262 116 264 140Z" fill="#88B470" opacity=".65"/>
+                    <path d="M256 96 Q276 74 270 54 Q252 72 256 96Z" fill="#7AAA66" opacity=".6"/>
+                    <path d="M278 268 Q304 250 298 228 Q278 246 278 268Z" fill="#7AAA66" opacity=".68"/>
+                    <path d="M282 312 Q308 294 302 272 Q282 290 282 312Z" fill="#6A9858" opacity=".62"/>
+                    <path d="M286 358 Q312 340 306 318 Q286 336 286 358Z" fill="#88B470" opacity=".55"/>
+                    <!-- Extra right leaves going inward -->
+                    <path d="M272 148 Q258 132 244 138 Q258 152 272 148Z" fill="#8AB868" opacity=".55"/>
+                    <path d="M268 200 Q254 185 240 192 Q254 206 268 200Z" fill="#7AAA66" opacity=".5"/>
+                    <!-- Top arch of leaves -->
+                    <path d="M52 46 Q100 20 150 14 Q200 8 248 46" stroke="#4A7040" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".6"/>
+                    <path d="M120 13 Q110 -2 100 6 Q114 10 120 13Z" fill="#7AAA66" opacity=".55"/>
+                    <path d="M150 12 Q140 -4 130 4 Q144 8 150 12Z" fill="#6A9858" opacity=".5"/>
+                    <path d="M180 13 Q192 -2 200 6 Q186 10 180 13Z" fill="#88B470" opacity=".5"/>
                 </svg>
             </div>
             <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
-                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.38em;color:#5A8050;text-transform:uppercase;margin-bottom:11px;">WE ARE GETTING MARRIED</p>
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:7.5px;letter-spacing:.38em;color:#4A7040;text-transform:uppercase;margin-bottom:11px;">WE ARE GETTING MARRIED</p>
                 ${names('#3D6040','#4A6440')}
             </div>
             ${tap('rgba(61,96,64,0.45)')}
@@ -2564,29 +2726,30 @@
 
         case 'romanticpink': return `
         <div style="position:absolute;inset:0;background:linear-gradient(160deg,#FFF0F4,#FFD8E4);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
-            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                <svg viewBox="0 0 260 290" fill="none" style="width:82%;max-width:270px;">
-                    <ellipse cx="130" cy="145" rx="96" ry="120" stroke="#D890A8" stroke-width="1.5"/>
-                    <ellipse cx="130" cy="145" rx="83" ry="104" stroke="#D890A8" stroke-width="0.5" opacity=".4"/>
-                    <path d="M50 65 Q80 50 108 30" stroke="#C2607A" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-                    <circle cx="56" cy="62" r="7" fill="#FFB8D0" opacity=".7"/>
-                    <circle cx="70" cy="53" r="6.5" fill="#FFD0E4" opacity=".75"/>
-                    <circle cx="85" cy="45" r="8" fill="#FFB8D0" opacity=".68"/>
-                    <g transform="translate(70,53)"><ellipse rx="5" ry="8" transform="rotate(0)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(72)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(144)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(216)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(288)" fill="#FFD0E4" opacity=".55"/><circle r="4" fill="#FFB8D0" opacity=".8"/></g>
-                    <path d="M210 65 Q180 50 152 30" stroke="#C2607A" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-                    <circle cx="204" cy="62" r="7" fill="#FFB8D0" opacity=".7"/>
-                    <circle cx="190" cy="53" r="6.5" fill="#FFD0E4" opacity=".75"/>
-                    <circle cx="175" cy="45" r="8" fill="#FFB8D0" opacity=".68"/>
-                    <g transform="translate(190,53)"><ellipse rx="5" ry="8" transform="rotate(0)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(72)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(144)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(216)" fill="#FFD0E4" opacity=".55"/><ellipse rx="5" ry="8" transform="rotate(288)" fill="#FFD0E4" opacity=".55"/><circle r="4" fill="#FFB8D0" opacity=".8"/></g>
-                    <ellipse cx="38" cy="122" rx="5" ry="8" transform="rotate(30,38,122)" fill="#FFD0E4" opacity=".45"/>
-                    <ellipse cx="222" cy="108" rx="4" ry="7" transform="rotate(-20,222,108)" fill="#FFB8D0" opacity=".4"/>
-                    <path d="M68 240 Q100 252 130 250 Q160 252 192 240" stroke="#C2607A" stroke-width="1" stroke-linecap="round" opacity=".38"/>
-                    <circle cx="100" cy="248" r="5" fill="#FFB8D0" opacity=".52"/>
-                    <circle cx="130" cy="251" r="6" fill="#FFD0E4" opacity=".58"/>
-                    <circle cx="160" cy="248" r="5" fill="#FFB8D0" opacity=".52"/>
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
+                <svg viewBox="0 0 300 380" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;">
+                    <!-- Oval frame -->
+                    <ellipse cx="150" cy="190" rx="118" ry="148" stroke="#D890A8" stroke-width="1.6"/>
+                    <ellipse cx="150" cy="190" rx="105" ry="132" stroke="#D890A8" stroke-width="0.5" opacity=".4"/>
+                    <!-- Top left cherry blossom cluster -->
+                    <g transform="translate(44,38)"><ellipse rx="8" ry="12" transform="rotate(0)" fill="#FFB8D0" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(72)" fill="#FFB8D0" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(144)" fill="#FFB8D0" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(216)" fill="#FFB8D0" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(288)" fill="#FFB8D0" opacity=".85"/><circle r="5" fill="#FFD0E4"/><circle r="2" fill="#E890A8"/></g>
+                    <g transform="translate(74,22)"><ellipse rx="7" ry="10" transform="rotate(15)" fill="#FFB8D0" opacity=".78"/><ellipse rx="7" ry="10" transform="rotate(87)" fill="#FFB8D0" opacity=".78"/><ellipse rx="7" ry="10" transform="rotate(159)" fill="#FFB8D0" opacity=".78"/><ellipse rx="7" ry="10" transform="rotate(231)" fill="#FFB8D0" opacity=".78"/><ellipse rx="7" ry="10" transform="rotate(303)" fill="#FFB8D0" opacity=".78"/><circle r="4" fill="#FFD0E4"/></g>
+                    <g transform="translate(106,12)"><ellipse rx="6" ry="9" transform="rotate(-10)" fill="#FFB8D0" opacity=".7"/><ellipse rx="6" ry="9" transform="rotate(62)" fill="#FFB8D0" opacity=".7"/><ellipse rx="6" ry="9" transform="rotate(134)" fill="#FFB8D0" opacity=".7"/><ellipse rx="6" ry="9" transform="rotate(206)" fill="#FFB8D0" opacity=".7"/><ellipse rx="6" ry="9" transform="rotate(278)" fill="#FFB8D0" opacity=".7"/><circle r="3.5" fill="#FFD0E4"/></g>
+                    <!-- Top right cherry blossom cluster -->
+                    <g transform="translate(256,38)"><ellipse rx="8" ry="12" transform="rotate(0)" fill="#FFB8D0" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(72)" fill="#FFB8D0" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(144)" fill="#FFB8D0" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(216)" fill="#FFB8D0" opacity=".85"/><ellipse rx="8" ry="12" transform="rotate(288)" fill="#FFB8D0" opacity=".85"/><circle r="5" fill="#FFD0E4"/><circle r="2" fill="#E890A8"/></g>
+                    <g transform="translate(226,22)"><ellipse rx="7" ry="10" transform="rotate(-15)" fill="#FFB8D0" opacity=".78"/><ellipse rx="7" ry="10" transform="rotate(57)" fill="#FFB8D0" opacity=".78"/><ellipse rx="7" ry="10" transform="rotate(129)" fill="#FFB8D0" opacity=".78"/><ellipse rx="7" ry="10" transform="rotate(201)" fill="#FFB8D0" opacity=".78"/><ellipse rx="7" ry="10" transform="rotate(273)" fill="#FFB8D0" opacity=".78"/><circle r="4" fill="#FFD0E4"/></g>
+                    <g transform="translate(194,12)"><ellipse rx="6" ry="9" transform="rotate(10)" fill="#FFB8D0" opacity=".7"/><ellipse rx="6" ry="9" transform="rotate(82)" fill="#FFB8D0" opacity=".7"/><ellipse rx="6" ry="9" transform="rotate(154)" fill="#FFB8D0" opacity=".7"/><ellipse rx="6" ry="9" transform="rotate(226)" fill="#FFB8D0" opacity=".7"/><ellipse rx="6" ry="9" transform="rotate(298)" fill="#FFB8D0" opacity=".7"/><circle r="3.5" fill="#FFD0E4"/></g>
+                    <!-- Side scattered petals -->
+                    <g transform="translate(16,130)"><ellipse rx="5" ry="8" transform="rotate(20)" fill="#FFB8D0" opacity=".6"/><ellipse rx="5" ry="8" transform="rotate(92)" fill="#FFB8D0" opacity=".6"/><ellipse rx="5" ry="8" transform="rotate(164)" fill="#FFB8D0" opacity=".6"/><ellipse rx="5" ry="8" transform="rotate(236)" fill="#FFB8D0" opacity=".6"/><circle r="3" fill="#FFD0E4" opacity=".75"/></g>
+                    <g transform="translate(284,110)"><ellipse rx="5" ry="8" transform="rotate(-20)" fill="#FFB8D0" opacity=".6"/><ellipse rx="5" ry="8" transform="rotate(52)" fill="#FFB8D0" opacity=".6"/><ellipse rx="5" ry="8" transform="rotate(124)" fill="#FFB8D0" opacity=".6"/><ellipse rx="5" ry="8" transform="rotate(196)" fill="#FFB8D0" opacity=".6"/><circle r="3" fill="#FFD0E4" opacity=".75"/></g>
+                    <!-- Floating petals -->
+                    <ellipse cx="22" cy="70" rx="4" ry="6" transform="rotate(30,22,70)" fill="#FFB8D0" opacity=".45"/>
+                    <ellipse cx="278" cy="60" rx="4" ry="6" transform="rotate(-30,278,60)" fill="#FFB8D0" opacity=".45"/>
+                    <ellipse cx="36" cy="280" rx="3.5" ry="5.5" transform="rotate(15,36,280)" fill="#FFD0E4" opacity=".4"/>
+                    <ellipse cx="264" cy="270" rx="3.5" ry="5.5" transform="rotate(-15,264,270)" fill="#FFD0E4" opacity=".4"/>
                 </svg>
             </div>
-            <div style="text-align:center;padding:0 28px;flex-shrink:0;">
+            <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
                 <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.18em;color:#C2607A;margin-bottom:11px;">The Wedding of</p>
                 ${names('#C2607A','#986078')}
             </div>
@@ -2595,174 +2758,283 @@
 
         case 'modernminimal': return `
         <div style="position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
-            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                <svg viewBox="0 0 200 240" fill="none" style="width:66%;max-width:200px;">
-                    <path d="M38 230 Q58 190 78 150 Q98 110 118 76 Q132 50 142 32" stroke="#909090" stroke-width="1.2" stroke-linecap="round"/>
-                    <path d="M93 108 Q109 94 119 99 Q111 113 93 108Z" fill="#A8A898" opacity=".48"/>
-                    <path d="M107 84 Q124 70 132 77 Q124 90 107 84Z" fill="#A8A898" opacity=".44"/>
-                    <path d="M118 62 Q134 50 141 58 Q132 69 118 62Z" fill="#A8A898" opacity=".4"/>
-                    <path d="M71 135 Q54 122 55 112 Q68 118 71 135Z" fill="#B0B0A0" opacity=".44"/>
-                    <path d="M84 112 Q67 100 68 90 Q82 97 84 112Z" fill="#A8A898" opacity=".4"/>
-                    <circle cx="143" cy="33" r="3" fill="#888" opacity=".48"/>
-                    <circle cx="137" cy="39" r="2.5" fill="#888" opacity=".42"/>
-                    <circle cx="148" cy="27" r="2" fill="#888" opacity=".38"/>
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
+                <!-- Single botanical branch on right side -->
+                <svg viewBox="0 0 160 420" fill="none" preserveAspectRatio="xMidYMid meet" style="position:absolute;right:0;top:0;width:42%;height:100%;opacity:.72;">
+                    <path d="M80 420 Q84 370 88 320 Q92 270 96 220 Q100 168 104 118 Q108 74 112 32" stroke="#b8b8a8" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M96 220 Q116 200 130 206 Q118 222 96 220Z" fill="#C8C8B8" opacity=".6"/>
+                    <path d="M100 168 Q120 148 134 156 Q122 170 100 168Z" fill="#C0C0B0" opacity=".55"/>
+                    <path d="M104 118 Q124 98 136 108 Q124 120 104 118Z" fill="#C8C8B8" opacity=".5"/>
+                    <path d="M108 72 Q126 54 138 64 Q126 76 108 72Z" fill="#C0C0B0" opacity=".48"/>
+                    <path d="M88 270 Q68 252 70 240 Q84 248 88 270Z" fill="#C8C8B8" opacity=".55"/>
+                    <path d="M84 320 Q64 304 66 292 Q80 300 84 320Z" fill="#C0C0B0" opacity=".5"/>
+                    <path d="M80 370 Q60 356 62 342 Q76 350 80 370Z" fill="#C8C8B8" opacity=".45"/>
+                    <circle cx="112" cy="30" r="3.5" fill="#B0B0A0" opacity=".55"/>
+                    <circle cx="106" cy="23" r="2.5" fill="#B8B8A8" opacity=".45"/>
+                    <circle cx="118" cy="24" r="2" fill="#B0B0A0" opacity=".4"/>
                 </svg>
             </div>
-            <div style="text-align:center;padding:0 28px;flex-shrink:0;">
-                <p style="font-family:'Noto Sans KR',sans-serif;font-size:7.5px;letter-spacing:.48em;color:#aaa;text-transform:uppercase;margin-bottom:11px;">WE ARE GETTING MARRIED</p>
-                <p style="font-family:'Noto Sans KR',sans-serif;font-size:23px;font-weight:300;color:#2a2a2a;line-height:1.6;letter-spacing:.08em;">${gr}<br>&amp;<br>${br}</p>
-                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:#666;line-height:2;">${dStr}<br>${tStr}</p>
-                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:#666;opacity:.82;">${vn}</p>
+            <div style="text-align:center;padding:0 32px;flex-shrink:0;position:relative;z-index:1;">
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:7px;letter-spacing:.5em;color:#bbb;text-transform:uppercase;margin-bottom:13px;">WE ARE GETTING MARRIED</p>
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:24px;font-weight:300;color:#2a2a2a;line-height:1.6;letter-spacing:.08em;">${gr}<br>&amp;<br>${br}</p>
+                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:#888;line-height:2;">${dStr}<br>${tStr}</p>
+                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:#888;opacity:.82;">${vn}</p>
             </div>
             ${tap('#d0d0d0')}
         </div>`;
 
         case 'vintagewood': return `
-        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#3C2810 0%,#2C1A08 60%,#1E1208 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
-            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                <svg viewBox="0 0 200 230" fill="none" style="width:70%;max-width:210px;">
-                    <path d="M100 210 Q94 168 86 128 Q80 90 76 52" stroke="#D4A840" stroke-width="1.6" stroke-linecap="round"/>
-                    <path d="M100 210 Q100 166 100 126 Q100 88 98 50" stroke="#D4A840" stroke-width="1.5" stroke-linecap="round"/>
-                    <path d="M100 210 Q106 168 114 128 Q120 90 124 52" stroke="#D4A840" stroke-width="1.6" stroke-linecap="round"/>
-                    <path d="M100 210 Q88 168 78 130 Q68 94 62 56" stroke="#C89820" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
-                    <path d="M100 210 Q112 168 122 130 Q132 94 138 56" stroke="#C89820" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
-                    <path d="M100 210 Q84 170 70 135 Q58 100 52 62" stroke="#B87800" stroke-width="1" stroke-linecap="round" opacity=".5"/>
-                    <path d="M100 210 Q116 170 130 135 Q142 100 148 62" stroke="#B87800" stroke-width="1" stroke-linecap="round" opacity=".5"/>
-                    <ellipse cx="76" cy="44" rx="5.5" ry="14" transform="rotate(-8,76,44)" fill="#D4A840" opacity=".78"/>
-                    <ellipse cx="87" cy="38" rx="5.5" ry="14" transform="rotate(-3,87,38)" fill="#D4A840" opacity=".84"/>
-                    <ellipse cx="99" cy="36" rx="5.5" ry="14" fill="#D4A840" opacity=".9"/>
-                    <ellipse cx="111" cy="38" rx="5.5" ry="14" transform="rotate(3,111,38)" fill="#D4A840" opacity=".84"/>
-                    <ellipse cx="122" cy="44" rx="5.5" ry="14" transform="rotate(8,122,44)" fill="#D4A840" opacity=".78"/>
-                    <ellipse cx="62" cy="54" rx="4" ry="12" transform="rotate(-14,62,54)" fill="#C89820" opacity=".6"/>
-                    <ellipse cx="138" cy="54" rx="4" ry="12" transform="rotate(14,138,54)" fill="#C89820" opacity=".6"/>
-                    <ellipse cx="52" cy="58" rx="7" ry="16" transform="rotate(-18,52,58)" fill="#E0C870" opacity=".5"/>
-                    <ellipse cx="148" cy="58" rx="7" ry="16" transform="rotate(18,148,58)" fill="#E0C870" opacity=".5"/>
-                    <path d="M74 190 Q100 184 126 190" stroke="#7A5020" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>
-                    <path d="M78 198 Q100 193 122 198" stroke="#7A5020" stroke-width="2" stroke-linecap="round" opacity=".55"/>
-                    <path d="M88 190 Q78 178 84 170 Q94 180 88 190Z" fill="#5A3010" opacity=".65"/>
-                    <path d="M112 190 Q122 178 116 170 Q106 180 112 190Z" fill="#5A3010" opacity=".65"/>
-                    <circle cx="100" cy="189" r="4.5" fill="#3E1E08" opacity=".75"/>
+        <div style="position:absolute;inset:0;background:#6A3818;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <!-- Wood grain background -->
+            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 320 620" preserveAspectRatio="xMidYMid slice">
+                <rect width="320" height="620" fill="#6A3818"/>
+                <rect y="0" width="320" height="56" fill="#5A2E10" opacity=".82"/>
+                <rect y="56" width="320" height="48" fill="#703C1C" opacity=".75"/>
+                <rect y="104" width="320" height="54" fill="#5C2C0E" opacity=".8"/>
+                <rect y="158" width="320" height="46" fill="#6E3A1A" opacity=".72"/>
+                <rect y="204" width="320" height="52" fill="#583010" opacity=".82"/>
+                <rect y="256" width="320" height="48" fill="#6C3818" opacity=".75"/>
+                <rect y="304" width="320" height="54" fill="#5A2C0E" opacity=".78"/>
+                <rect y="358" width="320" height="46" fill="#703E1C" opacity=".72"/>
+                <rect y="404" width="320" height="52" fill="#5E3012" opacity=".8"/>
+                <rect y="456" width="320" height="48" fill="#6A3816" opacity=".75"/>
+                <rect y="504" width="320" height="56" fill="#562A0C" opacity=".82"/>
+                <rect y="560" width="320" height="60" fill="#6E3C1A" opacity=".75"/>
+                <path d="M0 12 Q160 8 320 12" stroke="#2A1206" stroke-width="0.6" opacity=".55"/>
+                <path d="M0 26 Q220 20 320 24" stroke="#2A1206" stroke-width="0.4" opacity=".4"/>
+                <path d="M0 42 Q100 38 320 42" stroke="#2A1206" stroke-width="0.55" opacity=".48"/>
+                <path d="M0 68 Q140 64 320 68" stroke="#2A1206" stroke-width="0.5" opacity=".45"/>
+                <path d="M0 82 Q80 78 320 82" stroke="#2A1206" stroke-width="0.4" opacity=".38"/>
+                <path d="M0 116 Q200 112 320 116" stroke="#2A1206" stroke-width="0.55" opacity=".45"/>
+                <path d="M0 134 Q100 130 320 134" stroke="#2A1206" stroke-width="0.4" opacity=".38"/>
+                <path d="M0 166 Q160 162 320 166" stroke="#2A1206" stroke-width="0.5" opacity=".45"/>
+                <path d="M0 184 Q80 180 320 184" stroke="#2A1206" stroke-width="0.4" opacity=".38"/>
+                <path d="M0 212 Q220 208 320 212" stroke="#2A1206" stroke-width="0.55" opacity=".45"/>
+                <path d="M0 228 Q140 224 320 228" stroke="#2A1206" stroke-width="0.4" opacity=".38"/>
+                <path d="M0 268 Q100 264 320 268" stroke="#2A1206" stroke-width="0.5" opacity=".42"/>
+                <path d="M0 286 Q200 282 320 286" stroke="#2A1206" stroke-width="0.4" opacity=".38"/>
+                <path d="M0 318 Q80 314 320 318" stroke="#2A1206" stroke-width="0.5" opacity=".42"/>
+                <path d="M0 338 Q160 334 320 338" stroke="#2A1206" stroke-width="0.4" opacity=".38"/>
+                <path d="M0 368 Q220 364 320 368" stroke="#2A1206" stroke-width="0.5" opacity=".42"/>
+                <path d="M0 388 Q100 384 320 388" stroke="#2A1206" stroke-width="0.4" opacity=".35"/>
+                <path d="M0 414 Q140 410 320 414" stroke="#2A1206" stroke-width="0.5" opacity=".42"/>
+                <path d="M0 434 Q80 430 320 434" stroke="#2A1206" stroke-width="0.4" opacity=".35"/>
+                <path d="M0 466 Q200 462 320 466" stroke="#2A1206" stroke-width="0.5" opacity=".42"/>
+                <path d="M0 482 Q160 478 320 482" stroke="#2A1206" stroke-width="0.4" opacity=".35"/>
+                <path d="M0 516 Q100 512 320 516" stroke="#2A1206" stroke-width="0.5" opacity=".42"/>
+                <path d="M0 534 Q220 530 320 534" stroke="#2A1206" stroke-width="0.4" opacity=".35"/>
+                <path d="M0 572 Q80 568 320 572" stroke="#2A1206" stroke-width="0.5" opacity=".4"/>
+                <path d="M0 590 Q160 586 320 590" stroke="#2A1206" stroke-width="0.4" opacity=".32"/>
+                <!-- Vignette -->
+                <radialGradient id="wv" cx="50%" cy="50%" r="65%"><stop offset="35%" stop-opacity="0" stop-color="#000"/><stop offset="100%" stop-opacity="0.5" stop-color="#000"/></radialGradient>
+                <rect width="320" height="620" fill="url(#wv)"/>
+            </svg>
+            <!-- Parchment card -->
+            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+                <div style="background:linear-gradient(145deg,#F5E8C8,#EDD8A8,#F0E2C0);width:56%;border-radius:3px;padding:28px 18px;box-shadow:4px 6px 28px rgba(0,0,0,0.6),inset 0 0 20px rgba(160,120,40,0.1);text-align:center;position:relative;z-index:2;">
+                    <p style="font-family:'Noto Sans KR',sans-serif;font-size:7.5px;letter-spacing:.42em;color:#5A3808;text-transform:uppercase;margin-bottom:12px;">THE WEDDING OF</p>
+                    <p style="font-family:'Gowun Batang',serif;font-size:22px;font-weight:700;color:#2A1200;line-height:1.6;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
+                    <p style="margin-top:11px;font-family:'Noto Sans KR',sans-serif;font-size:8.5px;letter-spacing:.07em;color:#5A3808;line-height:2;">${dStr}<br>${tStr}</p>
+                    <p style="margin-top:2px;font-family:'Noto Sans KR',sans-serif;font-size:8px;color:#5A3808;opacity:.82;">${vn}</p>
+                </div>
+                <!-- Dried botanical bundle - right side -->
+                <svg style="position:absolute;right:0;bottom:0;width:30%;height:68%;z-index:3;" viewBox="0 0 90 200" fill="none">
+                    <path d="M45 195 Q42 162 38 128 Q34 98 30 68 Q26 42 22 18" stroke="#8A6030" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M45 195 Q45 160 45 126 Q45 96 44 66 Q43 40 42 16" stroke="#906838" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M45 195 Q48 162 52 128 Q56 98 60 68 Q64 42 68 18" stroke="#8A6030" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M45 195 Q40 162 32 130 Q24 100 18 72 Q12 48 8 24" stroke="#7A5828" stroke-width="1.1" stroke-linecap="round" opacity=".7"/>
+                    <path d="M45 195 Q50 162 58 130 Q66 100 72 72 Q78 48 82 24" stroke="#7A5828" stroke-width="1.1" stroke-linecap="round" opacity=".7"/>
+                    <path d="M45 195 Q36 164 24 134 Q14 106 6 78" stroke="#6A4E20" stroke-width="0.9" stroke-linecap="round" opacity=".55"/>
+                    <path d="M45 195 Q54 164 66 134 Q76 106 84 78" stroke="#6A4E20" stroke-width="0.9" stroke-linecap="round" opacity=".55"/>
+                    <!-- Wheat/grain heads -->
+                    <ellipse cx="22" cy="12" rx="4" ry="12" fill="#D4A840" opacity=".88"/>
+                    <ellipse cx="32" cy="8" rx="4.5" ry="13" fill="#E0B848" opacity=".9"/>
+                    <ellipse cx="44" cy="6" rx="4.5" ry="14" fill="#D4A840" opacity=".92"/>
+                    <ellipse cx="56" cy="7" rx="4.5" ry="13" fill="#E0B848" opacity=".9"/>
+                    <ellipse cx="68" cy="11" rx="4" ry="12" fill="#D4A840" opacity=".88"/>
+                    <ellipse cx="8" cy="18" rx="3" ry="10" fill="#C89820" opacity=".72"/>
+                    <ellipse cx="82" cy="18" rx="3" ry="10" fill="#C89820" opacity=".72"/>
+                    <!-- Small buds -->
+                    <circle cx="22" cy="0" r="3.5" fill="#E8C860" opacity=".75"/>
+                    <circle cx="44" cy="-4" r="4" fill="#F0D068" opacity=".8"/>
+                    <circle cx="68" cy="-1" r="3.5" fill="#E8C860" opacity=".75"/>
+                    <!-- Twine binding -->
+                    <path d="M24 158 Q45 153 66 158" stroke="#8A6030" stroke-width="3" stroke-linecap="round" opacity=".78"/>
+                    <path d="M26 164 Q45 160 64 164" stroke="#7A5020" stroke-width="1.8" stroke-linecap="round" opacity=".62"/>
                 </svg>
             </div>
-            <div style="text-align:center;padding:0 28px;flex-shrink:0;">
-                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.42em;color:#A88040;text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
-                <p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:#F0DCA8;line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
-                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:#C8A870;line-height:2;">${dStr}<br>${tStr}</p>
-                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:#C8A870;opacity:.82;">${vn}</p>
-            </div>
-            ${tap('rgba(240,220,168,0.38)')}
+            ${tap('rgba(240,220,168,0.42)')}
         </div>`;
 
         case 'traditional': return `
-        <div style="position:absolute;inset:0;background:#FBF0D0;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
-            <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
-                <svg viewBox="0 0 280 380" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;">
-                    <rect x="10" y="10" width="260" height="360" stroke="#C89820" stroke-width="1.5"/>
-                    <rect x="18" y="18" width="244" height="344" stroke="#C89820" stroke-width="0.6" opacity=".5"/>
-                    <line x1="10" y1="52" x2="270" y2="52" stroke="#C89820" stroke-width="0.5" opacity=".35"/>
-                    <line x1="10" y1="328" x2="270" y2="328" stroke="#C89820" stroke-width="0.5" opacity=".35"/>
-                    <line x1="10" y1="340" x2="270" y2="340" stroke="#C89820" stroke-width="0.5" opacity=".25"/>
-                    <path d="M47 10 L47 52 M94 10 L94 52 M141 10 L141 52 M188 10 L188 52 M235 10 L235 52" stroke="#C89820" stroke-width="0.5" opacity=".3"/>
-                    <path d="M47 328 L47 370 M94 328 L94 370 M141 328 L141 370 M188 328 L188 370 M235 328 L235 370" stroke="#C89820" stroke-width="0.5" opacity=".3"/>
-                    <path d="M28 31 L34 25 L40 31 L34 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M75 31 L81 25 L87 31 L81 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M122 31 L128 25 L134 31 L128 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M169 31 L175 25 L181 31 L175 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M216 31 L222 25 L228 31 L222 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M242 31 L248 25 L254 31 L248 37 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M28 349 L34 343 L40 349 L34 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M75 349 L81 343 L87 349 L81 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M122 349 L128 343 L134 349 L128 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M169 349 L175 343 L181 349 L175 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M216 349 L222 343 L228 349 L222 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
-                    <path d="M242 349 L248 343 L254 349 L248 355 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".5"/>
+        <div style="position:absolute;inset:0;background:#F8EEC8;display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+            <!-- Full decorative SVG layer -->
+            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 300 620" preserveAspectRatio="xMidYMid slice">
+                <!-- Outer border frame -->
+                <rect x="10" y="10" width="280" height="600" stroke="#C89820" stroke-width="1.8"/>
+                <rect x="16" y="16" width="268" height="588" stroke="#C89820" stroke-width="0.6" opacity=".5"/>
+                <!-- Top band with lattice pattern -->
+                <line x1="10" y1="56" x2="290" y2="56" stroke="#C89820" stroke-width="0.6" opacity=".4"/>
+                <!-- Top diamond ornaments row -->
+                <path d="M34 34 L40 28 L46 34 L40 40 Z" fill="none" stroke="#B87800" stroke-width="0.8" opacity=".6"/>
+                <path d="M70 34 L76 28 L82 34 L76 40 Z" fill="none" stroke="#B87800" stroke-width="0.8" opacity=".6"/>
+                <path d="M108 34 L114 28 L120 34 L114 40 Z" fill="none" stroke="#B87800" stroke-width="0.8" opacity=".6"/>
+                <path d="M146 34 L152 28 L158 34 L152 40 Z" fill="none" stroke="#B87800" stroke-width="0.8" opacity=".6"/>
+                <path d="M184 34 L190 28 L196 34 L190 40 Z" fill="none" stroke="#B87800" stroke-width="0.8" opacity=".6"/>
+                <path d="M220 34 L226 28 L232 34 L226 40 Z" fill="none" stroke="#B87800" stroke-width="0.8" opacity=".6"/>
+                <path d="M256 34 L262 28 L268 34 L262 40 Z" fill="none" stroke="#B87800" stroke-width="0.8" opacity=".6"/>
+                <!-- Bottom 창살 (lattice) section -->
+                <line x1="10" y1="468" x2="290" y2="468" stroke="#C89820" stroke-width="0.6" opacity=".4"/>
+                <!-- Vertical lines of lattice -->
+                <line x1="34" y1="468" x2="34" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="58" y1="468" x2="58" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="82" y1="468" x2="82" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="106" y1="468" x2="106" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="130" y1="468" x2="130" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="154" y1="468" x2="154" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="178" y1="468" x2="178" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="202" y1="468" x2="202" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="226" y1="468" x2="226" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="250" y1="468" x2="250" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <line x1="274" y1="468" x2="274" y2="610" stroke="#C89820" stroke-width="0.6" opacity=".32"/>
+                <!-- Horizontal lines of lattice -->
+                <line x1="10" y1="492" x2="290" y2="492" stroke="#C89820" stroke-width="0.5" opacity=".28"/>
+                <line x1="10" y1="516" x2="290" y2="516" stroke="#C89820" stroke-width="0.5" opacity=".28"/>
+                <line x1="10" y1="540" x2="290" y2="540" stroke="#C89820" stroke-width="0.5" opacity=".28"/>
+                <line x1="10" y1="564" x2="290" y2="564" stroke="#C89820" stroke-width="0.5" opacity=".28"/>
+                <line x1="10" y1="588" x2="290" y2="588" stroke="#C89820" stroke-width="0.5" opacity=".28"/>
+                <!-- Bottom diamond ornaments row -->
+                <path d="M34 478 L40 472 L46 478 L40 484 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".55"/>
+                <path d="M70 478 L76 472 L82 478 L76 484 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".55"/>
+                <path d="M108 478 L114 472 L120 478 L114 484 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".55"/>
+                <path d="M146 478 L152 472 L158 478 L152 484 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".55"/>
+                <path d="M184 478 L190 472 L196 478 L190 484 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".55"/>
+                <path d="M220 478 L226 472 L232 478 L226 484 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".55"/>
+                <path d="M256 478 L262 472 L268 478 L262 484 Z" fill="none" stroke="#B87800" stroke-width="0.7" opacity=".55"/>
+                <!-- Plum blossom branch - left side -->
+                <path d="M44 250 Q56 220 68 188 Q76 162 82 132" stroke="#C89820" stroke-width="1.2" stroke-linecap="round" opacity=".55"/>
+                <path d="M56 220 Q42 210 40 198 Q52 206 56 220Z" fill="#F0C8A0" opacity=".5"/>
+                <path d="M62 198 Q48 188 48 176 Q60 184 62 198Z" fill="#E8B890" opacity=".45"/>
+                <g transform="translate(52,212)"><circle r="6" fill="#FFF0E8" stroke="#D4A870" stroke-width="0.7" opacity=".7"/><circle r="2.5" fill="#E8A860" opacity=".6"/></g>
+                <g transform="translate(66,182)"><circle r="5" fill="#FFF0E8" stroke="#D4A870" stroke-width="0.7" opacity=".65"/><circle r="2" fill="#E8A860" opacity=".55"/></g>
+            </svg>
+            <!-- 매듭 (traditional knot) at top center -->
+            <div style="flex-shrink:0;padding-top:28px;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;">
+                <svg viewBox="0 0 80 130" fill="none" style="width:52px;flex-shrink:0;">
+                    <!-- Circular knot body -->
+                    <circle cx="40" cy="28" r="18" fill="none" stroke="#C89820" stroke-width="1.6"/>
+                    <circle cx="40" cy="28" r="12" fill="#D4A840" opacity=".5"/>
+                    <circle cx="40" cy="28" r="7" fill="#E0B840" opacity=".6"/>
+                    <!-- Knot string loops -->
+                    <path d="M28 18 Q20 10 24 4 Q32 10 28 18Z" fill="#C89820" opacity=".65"/>
+                    <path d="M52 18 Q60 10 56 4 Q48 10 52 18Z" fill="#C89820" opacity=".65"/>
+                    <path d="M22 28 Q12 24 12 16 Q20 22 22 28Z" fill="#D4A840" opacity=".55"/>
+                    <path d="M58 28 Q68 24 68 16 Q60 22 58 28Z" fill="#D4A840" opacity=".55"/>
+                    <!-- Tassel strings -->
+                    <line x1="35" y1="46" x2="32" y2="126" stroke="#8A6030" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+                    <line x1="38" y1="46" x2="37" y2="126" stroke="#8A6030" stroke-width="1.1" stroke-linecap="round" opacity=".75"/>
+                    <line x1="40" y1="46" x2="40" y2="126" stroke="#9A6830" stroke-width="1.2" stroke-linecap="round" opacity=".8"/>
+                    <line x1="42" y1="46" x2="43" y2="126" stroke="#8A6030" stroke-width="1.1" stroke-linecap="round" opacity=".75"/>
+                    <line x1="45" y1="46" x2="48" y2="126" stroke="#8A6030" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+                    <!-- Tassel tip -->
+                    <rect x="31" y="44" width="18" height="6" rx="3" fill="#C89820" opacity=".85"/>
+                    <rect x="29" y="118" width="22" height="10" rx="5" fill="#B87800" opacity=".65"/>
                 </svg>
-                <div style="text-align:center;position:relative;z-index:1;">
-                    <svg viewBox="0 0 100 120" fill="none" style="width:52px;display:block;margin:0 auto 4px;">
-                        <path d="M50 8 Q42 22 34 28 Q42 34 50 28 Q58 34 66 28 Q58 22 50 8Z" fill="#C89820" opacity=".8"/>
-                        <path d="M34 28 Q24 36 26 48 Q34 40 50 44 Q66 40 74 48 Q76 36 66 28 Q58 34 50 38 Q42 34 34 28Z" fill="#D4A840" opacity=".7"/>
-                        <path d="M50 44 Q34 48 32 58 Q50 56 68 58 Q66 48 50 44Z" fill="#C89820" opacity=".65"/>
-                        <line x1="44" y1="62" x2="44" y2="115" stroke="#8A6030" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
-                        <line x1="47" y1="62" x2="45" y2="115" stroke="#8A6030" stroke-width="1" stroke-linecap="round" opacity=".6"/>
-                        <line x1="50" y1="62" x2="50" y2="115" stroke="#8A6030" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
-                        <line x1="53" y1="62" x2="55" y2="115" stroke="#8A6030" stroke-width="1" stroke-linecap="round" opacity=".6"/>
-                        <line x1="56" y1="62" x2="56" y2="115" stroke="#8A6030" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
-                        <rect x="40" y="58" width="20" height="5" rx="2.5" fill="#C89820" opacity=".8"/>
-                    </svg>
-                </div>
             </div>
-            <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
-                <p style="font-family:'Gowun Batang',serif;font-size:8.5px;letter-spacing:.4em;color:#906800;text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
-                ${names('#B87800','#7A5020')}
+            <!-- Text section -->
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;">
+                <div style="text-align:center;padding:0 36px;">
+                    <p style="font-family:'Gowun Batang',serif;font-size:8px;letter-spacing:.4em;color:#906800;text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
+                    ${names('#B87800','#7A5020')}
+                </div>
             </div>
             ${tap('rgba(184,120,0,0.4)')}
         </div>`;
 
         case 'oceanwhisper': return `
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#A8D4F4 0%,#78B4E4 35%,#4E84C0 65%,#2A5898 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#C4E8FF 0%,#90C8F0 30%,#5098D8 60%,#2868B0 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
             <div style="flex:1;min-height:0;width:100%;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative;">
-                <svg viewBox="0 0 280 200" fill="none" preserveAspectRatio="xMidYMax meet" style="position:absolute;bottom:0;left:0;right:0;width:100%;">
-                    <path d="M0 100 Q35 80 70 100 Q105 120 140 100 Q175 80 210 100 Q245 120 280 100 L280 200 L0 200 Z" fill="#3A6CA8" opacity=".5"/>
-                    <path d="M0 120 Q40 105 80 120 Q120 135 160 120 Q200 105 240 120 Q260 128 280 120 L280 200 L0 200 Z" fill="#2A5898" opacity=".55"/>
-                    <path d="M0 145 Q45 132 90 145 Q135 158 180 145 Q225 132 280 145 L280 200 L0 200 Z" fill="#1A4888" opacity=".6"/>
-                    <path d="M0 100 Q35 80 70 100" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
-                    <path d="M70 100 Q105 120 140 100" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
-                    <path d="M140 100 Q175 80 210 100" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
-                    <path d="M210 100 Q245 120 280 100" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
-                    <path d="M72 42 Q80 37 88 42" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-                    <path d="M156 30 Q164 25 172 30" stroke="rgba(255,255,255,0.45)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-                    <path d="M204 55 Q210 51 216 55" stroke="rgba(255,255,255,0.35)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+                <!-- Birds in sky -->
+                <svg style="position:absolute;top:12%;left:0;width:100%;" viewBox="0 0 300 60" fill="none">
+                    <path d="M56 22 Q62 18 68 22" stroke="rgba(255,255,255,0.55)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+                    <path d="M110 14 Q118 10 126 14" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                    <path d="M168 28 Q174 24 180 28" stroke="rgba(255,255,255,0.48)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    <path d="M220 18 Q225 15 230 18" stroke="rgba(255,255,255,0.42)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+                    <path d="M76 36 Q80 33 84 36" stroke="rgba(255,255,255,0.38)" stroke-width="1" fill="none" stroke-linecap="round"/>
+                    <path d="M196 40 Q200 37 204 40" stroke="rgba(255,255,255,0.35)" stroke-width="1" fill="none" stroke-linecap="round"/>
+                    <path d="M140 8 Q145 5 150 8" stroke="rgba(255,255,255,0.44)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+                </svg>
+                <!-- Wave layers -->
+                <svg viewBox="0 0 300 240" fill="none" preserveAspectRatio="xMidYMax meet" style="position:absolute;bottom:0;left:0;right:0;width:100%;">
+                    <path d="M0 110 Q18 95 38 110 Q58 125 78 110 Q98 95 118 110 Q138 125 158 110 Q178 95 198 110 Q218 125 238 110 Q258 95 278 110 Q290 118 300 110 L300 240 L0 240 Z" fill="#4A8CC4" opacity=".5"/>
+                    <path d="M0 110 Q18 95 38 110" stroke="rgba(255,255,255,0.45)" stroke-width="1.6" fill="none"/>
+                    <path d="M78 110 Q98 95 118 110" stroke="rgba(255,255,255,0.45)" stroke-width="1.6" fill="none"/>
+                    <path d="M158 110 Q178 95 198 110" stroke="rgba(255,255,255,0.45)" stroke-width="1.6" fill="none"/>
+                    <path d="M238 110 Q258 95 278 110" stroke="rgba(255,255,255,0.4)" stroke-width="1.4" fill="none"/>
+                    <path d="M0 140 Q22 126 44 140 Q66 154 88 140 Q110 126 132 140 Q154 154 176 140 Q198 126 220 140 Q242 154 264 140 Q282 130 300 140 L300 240 L0 240 Z" fill="#3878B8" opacity=".55"/>
+                    <path d="M0 165 Q28 152 56 165 Q84 178 112 165 Q140 152 168 165 Q196 178 224 165 Q252 152 280 165 Q292 170 300 166 L300 240 L0 240 Z" fill="#2868A8" opacity=".62"/>
+                    <path d="M0 190 Q36 178 72 190 Q108 202 144 190 Q180 178 216 190 Q252 202 288 190 Q296 194 300 191 L300 240 L0 240 Z" fill="#1858A0" opacity=".65"/>
                 </svg>
             </div>
             <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
-                <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.2em;color:rgba(255,255,255,0.8);margin-bottom:11px;">The Wedding of</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.2em;color:rgba(255,255,255,0.85);margin-bottom:11px;">The Wedding of</p>
                 <p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:#fff;line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
-                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:rgba(255,255,255,0.78);line-height:2;">${dStr}<br>${tStr}</p>
-                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:rgba(255,255,255,0.72);">${vn}</p>
+                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:rgba(255,255,255,0.82);line-height:2;">${dStr}<br>${tStr}</p>
+                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:rgba(255,255,255,0.75);">${vn}</p>
             </div>
             ${tap('rgba(255,255,255,0.38)')}
         </div>`;
 
         case 'autumn': return `
-        <div style="position:absolute;inset:0;background:linear-gradient(175deg,#F8CC60 0%,#E89830 45%,#C86020 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+        <div style="position:absolute;inset:0;background:linear-gradient(175deg,#F0C048 0%,#E08020 45%,#C05018 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
             <div style="flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
-                <svg viewBox="0 0 280 360" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;">
-                    <path d="M0 360 L0 285 Q40 248 80 268 Q100 276 120 256 Q150 228 180 260 Q200 272 220 255 Q250 233 280 260 L280 360 Z" fill="rgba(0,0,0,0.18)"/>
-                    <g transform="translate(30,42) rotate(-15)"><path d="M0 0 C-6-11-20-9-17 0 C-20 0-22-13-13-16 C-13-24-4-27 0-20 C4-27 13-24 13-16 C22-13 20 0 17 0 C20-9 6-11 0 0Z" fill="#C83010" opacity=".88"/><line x1="0" y1="0" x2="0" y2="22" stroke="#9A1E08" stroke-width="0.9" opacity=".6"/></g>
-                    <g transform="translate(82,22) rotate(10)"><path d="M0 0 C-5-10-18-8-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-8 5-10 0 0Z" fill="#E06020" opacity=".82"/><line x1="0" y1="0" x2="0" y2="18" stroke="#B04010" stroke-width="0.9" opacity=".5"/></g>
-                    <g transform="translate(145,16) rotate(-5)"><path d="M0 0 C-7-13-22-10-19 0 C-22 0-24-14-15-18 C-15-26-5-29 0-22 C5-29 15-26 15-18 C24-14 22 0 19 0 C22-10 7-13 0 0Z" fill="#B82808" opacity=".88"/><line x1="0" y1="0" x2="0" y2="24" stroke="#8A1800" stroke-width="0.9" opacity=".5"/></g>
-                    <g transform="translate(205,32) rotate(22)"><path d="M0 0 C-5-10-18-8-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-8 5-10 0 0Z" fill="#E08020" opacity=".78"/></g>
-                    <g transform="translate(255,52) rotate(-12)"><path d="M0 0 C-4-8-14-6-12 0 C-14 0-16-10-9-12 C-9-18-3-20 0-15 C3-20 9-18 9-12 C16-10 14 0 12 0 C14-6 4-8 0 0Z" fill="#D06820" opacity=".72"/></g>
-                    <g transform="translate(56,66) rotate(28) scale(0.75)"><path d="M0 0 C-5-10-18-8-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-8 5-10 0 0Z" fill="#C84020" opacity=".7"/></g>
-                    <g transform="translate(172,56) rotate(-24) scale(0.7)"><path d="M0 0 C-5-10-18-8-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-8 5-10 0 0Z" fill="#E07030" opacity=".65"/></g>
+                <svg viewBox="0 0 300 380" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;">
+                    <!-- Mountain silhouette at bottom -->
+                    <path d="M0 380 L0 300 Q30 268 60 285 Q80 295 100 276 Q128 250 158 272 Q180 286 200 268 Q230 244 260 268 Q280 280 300 262 L300 380 Z" fill="rgba(0,0,0,0.22)"/>
+                    <!-- Large autumn leaves falling from top -->
+                    <g transform="translate(26,30) rotate(-18)"><path d="M0 0 C-7-13-22-11-19 0 C-22 0-24-14-15-18 C-15-27-5-30 0-22 C5-30 15-27 15-18 C24-14 22 0 19 0 C22-11 7-13 0 0Z" fill="#C83010" opacity=".92"/><line x1="0" y1="0" x2="0" y2="26" stroke="#8A1808" stroke-width="1" opacity=".6"/></g>
+                    <g transform="translate(78,14) rotate(-4)"><path d="M0 0 C-8-14-24-12-20 0 C-24 0-26-15-17-20 C-17-28-6-32 0-24 C6-32 17-28 17-20 C26-15 24 0 20 0 C24-12 8-14 0 0Z" fill="#B82808" opacity=".9"/><line x1="0" y1="0" x2="0" y2="28" stroke="#7A1800" stroke-width="1" opacity=".55"/></g>
+                    <g transform="translate(150,10) rotate(-8)"><path d="M0 0 C-7-13-22-11-19 0 C-22 0-24-14-15-18 C-15-27-5-30 0-22 C5-30 15-27 15-18 C24-14 22 0 19 0 C22-11 7-13 0 0Z" fill="#E05818" opacity=".88"/><line x1="0" y1="0" x2="0" y2="24" stroke="#A83808" stroke-width="1" opacity=".55"/></g>
+                    <g transform="translate(220,20) rotate(16)"><path d="M0 0 C-7-13-22-11-19 0 C-22 0-24-14-15-18 C-15-27-5-30 0-22 C5-30 15-27 15-18 C24-14 22 0 19 0 C22-11 7-13 0 0Z" fill="#E06820" opacity=".85"/><line x1="0" y1="0" x2="0" y2="22" stroke="#B04010" stroke-width="0.9" opacity=".5"/></g>
+                    <g transform="translate(274,42) rotate(-12)"><path d="M0 0 C-6-11-18-9-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-9 6-11 0 0Z" fill="#D06820" opacity=".78"/></g>
+                    <!-- Mid-level leaves -->
+                    <g transform="translate(48,60) rotate(24) scale(0.85)"><path d="M0 0 C-6-11-18-9-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-9 6-11 0 0Z" fill="#C84018" opacity=".75"/><line x1="0" y1="0" x2="0" y2="18" stroke="#901808" stroke-width="0.8" opacity=".5"/></g>
+                    <g transform="translate(118,48) rotate(-22) scale(0.78)"><path d="M0 0 C-5-10-16-8-14 0 C-16 0-18-11-11-14 C-11-20-4-23 0-17 C4-23 11-20 11-14 C18-11 16 0 14 0 C16-8 5-10 0 0Z" fill="#E07828" opacity=".7"/></g>
+                    <g transform="translate(192,52) rotate(30) scale(0.8)"><path d="M0 0 C-6-11-18-9-15 0 C-18 0-20-12-12-15 C-12-22-4-25 0-18 C4-25 12-22 12-15 C20-12 18 0 15 0 C18-9 6-11 0 0Z" fill="#C84818" opacity=".72"/></g>
+                    <g transform="translate(252,68) rotate(-8) scale(0.75)"><path d="M0 0 C-5-10-16-8-14 0 C-16 0-18-11-11-14 C-11-20-4-23 0-17 C4-23 11-20 11-14 C18-11 16 0 14 0 C16-8 5-10 0 0Z" fill="#E08030" opacity=".65"/></g>
                 </svg>
             </div>
             <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
-                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.42em;color:rgba(42,18,0,0.65);text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
-                <p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:#2A1200;line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
-                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:#5A2400;line-height:2;">${dStr}<br>${tStr}</p>
-                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:#5A2400;opacity:.85;">${vn}</p>
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.42em;color:rgba(42,12,0,0.62);text-transform:uppercase;margin-bottom:11px;">THE WEDDING OF</p>
+                <p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:#1E0800;line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
+                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:#4A1E00;line-height:2;">${dStr}<br>${tStr}</p>
+                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:#4A1E00;opacity:.85;">${vn}</p>
             </div>
-            ${tap('rgba(42,18,0,0.35)')}
+            ${tap('rgba(42,12,0,0.35)')}
         </div>`;
 
         case 'winterdusk': return `
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#4A18A0 0%,#7828B8 20%,#C05880 55%,#E86840 78%,#1A0838 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#4018A0 0%,#8030C0 22%,#C05888 52%,#E86838 76%,#F09048 86%,#120430 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;animation:coverIn 1.4s ease both;">
             <div style="flex:1;min-height:0;width:100%;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative;">
-                <svg viewBox="0 0 280 260" fill="none" preserveAspectRatio="xMidYMax meet" style="position:absolute;bottom:0;left:0;right:0;width:100%;">
-                    <path d="M28 260 L28 188 L12 196 L28 170 L18 178 L32 148 L20 158 L36 122 L28 132 L46 82 L64 132 L56 122 L72 158 L60 148 L76 178 L66 170 L82 196 L68 188 L68 260 Z" fill="#120628" opacity=".88"/>
-                    <path d="M0 260 L0 204 L-10 210 L0 188 L-8 195 L4 170 L12 195 L4 188 L16 210 L6 204 L6 260 Z" fill="#120628" opacity=".72"/>
-                    <path d="M212 260 L212 188 L196 196 L212 170 L202 178 L216 148 L204 158 L220 122 L212 132 L230 82 L248 132 L240 122 L256 158 L244 148 L260 178 L250 170 L266 196 L252 188 L252 260 Z" fill="#120628" opacity=".88"/>
-                    <path d="M274 260 L274 204 L264 210 L274 188 L266 195 L278 170 L286 195 L278 188 L290 210 L280 204 L280 260 Z" fill="#120628" opacity=".72"/>
-                    <path d="M130 260 L130 200 L118 206 L130 182 L122 190 L134 162 L124 170 L138 138 L130 148 L146 102 L162 148 L154 138 L168 170 L158 162 L172 190 L164 182 L176 206 L164 200 L164 260 Z" fill="#120628" opacity=".94"/>
-                    <path d="M0 248 Q70 238 140 244 Q210 250 280 242 L280 260 L0 260 Z" fill="rgba(255,255,255,0.12)"/>
+                <svg viewBox="0 0 300 280" fill="none" preserveAspectRatio="xMidYMax meet" style="position:absolute;bottom:0;left:0;right:0;width:100%;">
+                    <!-- Far background trees (lighter) -->
+                    <path d="M0 280 L0 232 L-8 238 L0 218 L-6 224 L4 204 L10 224 L4 218 L12 234 L6 230 L8 280Z" fill="#160530" opacity=".55"/>
+                    <path d="M280 280 L280 230 L274 234 L280 215 L275 221 L286 200 L297 221 L292 215 L298 234 L292 230 L296 280Z" fill="#160530" opacity=".55"/>
+                    <!-- Main pine trees -->
+                    <path d="M18 280 L18 210 L8 216 L18 196 L10 204 L22 178 L12 186 L26 156 L18 166 L34 128 L50 166 L42 156 L56 186 L46 178 L58 204 L50 196 L60 216 L50 210 L52 280Z" fill="#0E0424" opacity=".92"/>
+                    <path d="M82 280 L82 222 L74 228 L82 208 L75 215 L86 190 L77 198 L90 168 L82 176 L98 132 L114 176 L106 168 L118 198 L110 190 L120 215 L113 208 L122 228 L112 222 L114 280Z" fill="#0E0424" opacity=".94"/>
+                    <path d="M150 280 L150 215 L141 221 L150 200 L143 207 L154 182 L145 190 L158 160 L150 169 L164 118 L178 169 L170 160 L182 190 L174 182 L184 207 L178 200 L186 221 L177 215 L178 280Z" fill="#0A0320" opacity=".96"/>
+                    <path d="M220 280 L220 222 L212 228 L220 208 L213 215 L224 190 L215 198 L228 168 L220 176 L236 132 L252 176 L244 168 L256 198 L248 190 L258 215 L251 208 L260 228 L250 222 L252 280Z" fill="#0E0424" opacity=".94"/>
+                    <path d="M284 280 L284 215 L277 220 L284 202 L278 208 L288 185 L280 192 L292 164 L285 172 L300 128 L315 172 L308 164 L320 192 L312 185 L322 208 L316 202 L324 220 L316 215 L318 280Z" fill="#0E0424" opacity=".9"/>
+                    <!-- Snow/light on ground -->
+                    <path d="M0 270 Q75 262 150 266 Q225 270 300 262 L300 280 L0 280 Z" fill="rgba(255,255,255,0.14)"/>
                 </svg>
             </div>
             <div style="text-align:center;padding:0 28px;flex-shrink:0;position:relative;z-index:1;">
-                <p style="font-family:'Noto Sans KR',sans-serif;font-size:8px;letter-spacing:.42em;color:rgba(255,255,255,0.62);text-transform:uppercase;margin-bottom:11px;">WE ARE GETTING MARRIED</p>
+                <p style="font-family:'Noto Sans KR',sans-serif;font-size:7.5px;letter-spacing:.45em;color:rgba(255,255,255,0.65);text-transform:uppercase;margin-bottom:11px;">WE ARE GETTING MARRIED</p>
                 <p style="font-family:'Gowun Batang',serif;font-size:24px;font-weight:700;color:#fff;line-height:1.55;letter-spacing:.03em;">${gr}<br>&amp;<br>${br}</p>
-                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:rgba(255,255,255,0.75);line-height:2;">${dStr}<br>${tStr}</p>
-                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:rgba(255,255,255,0.68);">${vn}</p>
+                <p style="margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:9px;letter-spacing:.07em;color:rgba(255,255,255,0.78);line-height:2;">${dStr}<br>${tStr}</p>
+                <p style="margin-top:3px;font-family:'Noto Sans KR',sans-serif;font-size:9px;color:rgba(255,255,255,0.7);">${vn}</p>
             </div>
             ${tap('rgba(255,255,255,0.35)')}
         </div>`;
