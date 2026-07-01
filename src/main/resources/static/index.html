@@ -219,7 +219,7 @@
         .theme-card{
             border-radius:12px; overflow:hidden; border:1px solid var(--line);
         }
-        .theme-card .swatch{height:140px; display:flex; align-items:center; justify-content:center;}
+        .theme-card .swatch{height:140px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
         .theme-card .swatch span{font-family:var(--serif); font-size:18px;}
         .theme-card .label{padding:14px 16px; font-size:13px; background:var(--paper);}
         .theme-card .label .name{font-family:var(--serif); font-size:15px; color:var(--ink); margin-bottom:2px;}
@@ -2909,7 +2909,7 @@ body{font-family:var(--sans);color:var(--ink);background:${t.bodyBg};-webkit-fon
 .thread-fill{position:absolute;left:0;top:0;width:100%;height:0%;background:linear-gradient(to bottom,var(--sage),var(--wine));transition:height .15s linear;}
 .thread-mark{position:absolute;left:50%;top:0%;transform:translate(-50%,-50%);width:18px;height:18px;transition:top .15s linear;color:var(--wine);}
 .thread-mark svg{width:100%;height:100%;display:block;}
-#cover{position:fixed;inset:0;z-index:9999;cursor:pointer;transition:opacity 1s ease,visibility 1s ease;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+#cover{position:fixed;inset:0;z-index:9999;background:var(--ivory);cursor:pointer;transition:opacity 1s ease,visibility 1s ease;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;}
 #cover.hide{opacity:0;visibility:hidden;pointer-events:none;}
 #cover .frame{width:min(78vw,300px);aspect-ratio:3/4;border:1px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;animation:coverIn 1.4s ease both;}
 @keyframes coverIn{from{opacity:0;transform:scale(.94);}to{opacity:1;transform:scale(1);}}
