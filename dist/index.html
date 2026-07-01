@@ -1361,6 +1361,18 @@
                     </div>
                 </div>
 
+                <hr class="sep">
+
+                <div class="field">
+                    <label>청첩장 기본 언어 <span style="font-size:10px;color:var(--sage-deep);">· 하객이 변경 가능</span></label>
+                    <select id="invLang">
+                        <option value="ko">🇰🇷 한국어</option>
+                        <option value="en">🇺🇸 English</option>
+                        <option value="ja">🇯🇵 日本語</option>
+                        <option value="zh">🇨🇳 中文</option>
+                    </select>
+                </div>
+
                 <div class="toggle-row">
                     <label>디데이 카운트다운 표시</label>
                     <label class="toggle"><input type="checkbox" id="showDday" checked><span class="slider"></span></label>
@@ -1818,7 +1830,7 @@
 
     /* ---- state ---- */
     const D = {
-        theme:'classic',
+        theme:'classic', lang:'ko',
         groom:'이도현', bride:'박서연',
         groomEn:'Lee Dohyun', brideEn:'Park Seoyeon',
         weddingDate:'2026-11-14', weddingTime:'13:00',
@@ -1889,6 +1901,7 @@
     bind('bFatherAccName','bFatherAccName'); bind('bFatherAccBank','bFatherAccBank'); bind('bFatherAccNum','bFatherAccNum');
     bind('bMotherAccName','bMotherAccName'); bind('bMotherAccBank','bMotherAccBank'); bind('bMotherAccNum','bMotherAccNum');
     bind('showRsvp','showRsvp');
+    bind('invLang','lang');
 
     /* live URL toggle */
     document.getElementById('showLive').addEventListener('change', function(){
@@ -2043,7 +2056,7 @@
          'venueName','venueHall','greeting',
          'gFather','gMother','gRel','groomPhone',
          'bFather','bMother','bRel','bridePhone',
-         'galleryLayout',
+         'galleryLayout', 'invLang',
          'addr','subway','bus','parking','mapLat','mapLng','liveUrl',
          'gAccName','gAccBank','gAccNum',
          'bAccName','bAccBank','bAccNum',
@@ -3205,35 +3218,35 @@
         const rsvpSection = D.showRsvp ? `
   <section id="rsvp">
     <span class="eyebrow"><span class="num">07</span> · RSVP</span>
-    <h2 class="title">참석 의사 전달</h2>
-    <p style="font-size:13px;color:var(--ink-soft);line-height:1.8;margin-bottom:24px;">
+    <h2 class="title" data-i18n="rsvpSection">참석 의사 전달</h2>
+    <p data-i18n="rsvpDesc" style="font-size:13px;color:var(--ink-soft);line-height:1.8;margin-bottom:24px;">
       따뜻한 식사 준비를 위해 참석 여부를 알려주시면<br>큰 도움이 됩니다. 감사합니다.
     </p>
     <form id="rsvpForm">
-      <div class="rsvp-field"><label>성함</label><input type="text" placeholder="이름을 입력해주세요" required></div>
-      <div class="rsvp-field"><label>참석 여부</label>
+      <div class="rsvp-field"><label data-i18n="nameLabel">성함</label><input type="text" placeholder="이름을 입력해주세요" required></div>
+      <div class="rsvp-field"><label data-i18n="attendLabel">참석 여부</label>
         <div class="seg">
-          <input type="radio" name="attend" id="att-yes" value="참석" checked><label for="att-yes">참석합니다</label>
-          <input type="radio" name="attend" id="att-no" value="불참"><label for="att-no">참석이 어려워요</label>
+          <input type="radio" name="attend" id="att-yes" value="참석" checked><label for="att-yes" data-i18n="attendYes">참석합니다</label>
+          <input type="radio" name="attend" id="att-no" value="불참"><label for="att-no" data-i18n="attendNo">참석이 어려워요</label>
         </div>
       </div>
-      <div class="rsvp-field"><label>식사 여부</label>
+      <div class="rsvp-field"><label data-i18n="mealLabel">식사 여부</label>
         <div class="seg">
-          <input type="radio" name="meal" id="meal-yes" value="식사함" checked><label for="meal-yes">식사 가능</label>
-          <input type="radio" name="meal" id="meal-no" value="식사안함"><label for="meal-no">식사 안 함</label>
+          <input type="radio" name="meal" id="meal-yes" value="식사함" checked><label for="meal-yes" data-i18n="mealYes">식사 가능</label>
+          <input type="radio" name="meal" id="meal-no" value="식사안함"><label for="meal-no" data-i18n="mealNo">식사 안 함</label>
         </div>
       </div>
-      <div class="rsvp-field"><label>동반 인원 (본인 제외)</label>
-        <select><option>0명</option><option>1명</option><option>2명</option><option>3명</option><option>4명 이상</option></select>
+      <div class="rsvp-field"><label data-i18n="companionLabel">동반 인원 (본인 제외)</label>
+        <select><option>0</option><option>1</option><option>2</option><option>3</option><option>4+</option></select>
       </div>
-      <div class="rsvp-field"><label>전하실 말씀 (선택)</label>
-        <textarea placeholder="신랑·신부에게 전할 메시지를 남겨주세요"></textarea>
+      <div class="rsvp-field"><label data-i18n="memoLabel">전하실 말씀 (선택)</label>
+        <textarea placeholder=""></textarea>
       </div>
-      <button type="submit" class="submit-btn">전달하기</button>
+      <button type="submit" class="submit-btn" data-i18n="submitBtn">전달하기</button>
     </form>
     <div class="rsvp-thanks" id="rsvpThanks" style="display:none;">
-      소중한 답변, 감사합니다.
-      <p>전해주신 마음을 가지고<br>더 행복한 하루를 준비하겠습니다.</p>
+      <strong data-i18n="thankYou">소중한 답변, 감사합니다.</strong>
+      <p data-i18n="thankYouMsg">전해주신 마음을 가지고<br>더 행복한 하루를 준비하겠습니다.</p>
     </div>
   </section>` : '';
 
@@ -3376,6 +3389,11 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
 .float-btn{position:fixed;right:18px;z-index:50;width:46px;height:46px;border-radius:50%;background:var(--ivory);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--wine);box-shadow:0 4px 14px rgba(0,0,0,0.1);}
 #bgm-btn{bottom:24px;}
 @media(min-width:540px){.float-btn{right:calc(50% - 240px + 18px);}}
+#_langSw{position:fixed;right:18px;bottom:80px;z-index:53;}
+@media(min-width:540px){#_langSw{right:calc(50% - 240px + 18px);}}
+#_langBtn{width:46px;height:46px;border-radius:50%;background:white;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;box-shadow:0 4px 14px rgba(0,0,0,0.12);line-height:1;padding:0;}
+#_langPop{display:none;position:absolute;bottom:54px;right:0;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.18);overflow:hidden;border:1px solid rgba(0,0,0,0.07);min-width:136px;}
+.lang-opt{display:block;padding:11px 16px;border:none;background:none;font-size:14px;cursor:pointer;white-space:nowrap;width:100%;text-align:left;font-family:var(--sans);transition:background .15s;}
 #toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--ivory);font-size:13px;letter-spacing:.05em;padding:10px 20px;border-radius:999px;z-index:200;opacity:0;transition:opacity .3s ease,transform .3s ease;pointer-events:none;white-space:nowrap;}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
@@ -3411,33 +3429,33 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
 
   <section id="greeting">
     <span class="eyebrow"><span class="num">01</span> · Prologue</span>
-    <h2 class="title">마음을 전합니다</h2>
+    <h2 class="title" data-i18n="greetingSection">마음을 전합니다</h2>
     ${greetingLines}
     <div class="closing">${D.groom||'신랑'} · ${D.bride||'신부'} 올림</div>
   </section>
 
   <section id="family">
     <span class="eyebrow"><span class="num">02</span> · Our Family</span>
-    <h2 class="title">신랑 · 신부 소개</h2>
+    <h2 class="title" data-i18n="familySection">신랑 · 신부 소개</h2>
     <div class="family-card">
-      <span class="role">신랑</span>
+      <span class="role" data-i18n="groomRole">신랑</span>
       <div class="info">
         <div class="name">${D.groom||'신랑'}</div>
         <div class="rel">${D.gRel}</div>
         <div class="actions">
-          <a class="pill-btn" href="tel:${D.groomPhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>전화</a>
-          <a class="pill-btn" href="sms:${D.groomPhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg>문자</a>
+          <a class="pill-btn" href="tel:${D.groomPhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-i18n="callBtn">전화</span></a>
+          <a class="pill-btn" href="sms:${D.groomPhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg><span data-i18n="smsBtn">문자</span></a>
         </div>
       </div>
     </div>
     <div class="family-card">
-      <span class="role">신부</span>
+      <span class="role" data-i18n="brideRole">신부</span>
       <div class="info">
         <div class="name">${D.bride||'신부'}</div>
         <div class="rel">${D.bRel}</div>
         <div class="actions">
-          <a class="pill-btn" href="tel:${D.bridePhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>전화</a>
-          <a class="pill-btn" href="sms:${D.bridePhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg>문자</a>
+          <a class="pill-btn" href="tel:${D.bridePhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-i18n="callBtn">전화</span></a>
+          <a class="pill-btn" href="sms:${D.bridePhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg><span data-i18n="smsBtn">문자</span></a>
         </div>
       </div>
     </div>
@@ -3445,27 +3463,27 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
 
   <section id="theday">
     <span class="eyebrow"><span class="num">03</span> · The Day</span>
-    <h2 class="title">예식 안내</h2>
+    <h2 class="title" data-i18n="weddingSection">예식 안내</h2>
     <div class="cal">
       <div class="cal-head">${yyyy} . ${dateObj.toLocaleString('en',{month:'long'})}</div>
       <div class="cal-grid">
-        <div class="dow sun">일</div><div class="dow">월</div><div class="dow">화</div><div class="dow">수</div><div class="dow">목</div><div class="dow">금</div><div class="dow sat">토</div>
+        <div class="dow sun" data-i18n="dowSun">일</div><div class="dow" data-i18n="dowMon">월</div><div class="dow" data-i18n="dowTue">화</div><div class="dow" data-i18n="dowWed">수</div><div class="dow" data-i18n="dowThu">목</div><div class="dow" data-i18n="dowFri">금</div><div class="dow sat" data-i18n="dowSat">토</div>
         ${calRows}
       </div>
-      <div class="cal-foot">${yyyy}년 ${mm}월 ${dd}일 ${dayKr}요일 ${ampm} ${h12}시</div>
+      <div class="cal-foot">${yyyy}. ${mm}. ${dd}.</div>
       <div class="cal-actions">
-        <button class="pill-btn" id="icsBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>캘린더에 추가</button>
-        ${D.showLive ? `<a class="pill-btn" href="${D.liveUrl}" target="_blank"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="14" height="12" rx="1"/><path d="M17 9l4-2v10l-4-2"/></svg>온라인 생중계</a>` : ''}
+        <button class="pill-btn" id="icsBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg><span data-i18n="addCal">캘린더에 추가</span></button>
+        ${D.showLive ? `<a class="pill-btn" href="${D.liveUrl}" target="_blank"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="14" height="12" rx="1"/><path d="M17 9l4-2v10l-4-2"/></svg><span data-i18n="liveBtn">온라인 생중계</span></a>` : ''}
       </div>
     </div>
   </section>
 
   <section id="gallery">
     <span class="eyebrow"><span class="num">04</span> · Our Story in Photos</span>
-    <h2 class="title">갤러리</h2>
+    <h2 class="title" data-i18n="gallerySection">갤러리</h2>
     <div class="gallery-toggle">
-      <button class="toggle-btn ${D.galleryLayout==='grid'?'active':''}" data-view="grid">격자형</button>
-      <button class="toggle-btn ${D.galleryLayout==='swipe'?'active':''}" data-view="swipe">슬라이드형</button>
+      <button class="toggle-btn ${D.galleryLayout==='grid'?'active':''}" data-view="grid" data-i18n="gridView">격자형</button>
+      <button class="toggle-btn ${D.galleryLayout==='swipe'?'active':''}" data-view="swipe" data-i18n="slideView">슬라이드형</button>
     </div>
     <div id="gallery-grid" style="${D.galleryLayout==='swipe'?'display:none;':''}">
       ${galleryGridItems}
@@ -3483,50 +3501,50 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
     </div>
     <div class="gallery-note">
       <svg class="ic" style="color:var(--sage-deep)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-      소중한 추억이 담긴 사진입니다. 별도 저장은 자제해 주세요.
+      <span data-i18n="photoNote">소중한 추억이 담긴 사진입니다. 별도 저장은 자제해 주세요.</span>
     </div>
   </section>
 
   <section id="location">
     <span class="eyebrow"><span class="num">05</span> · Find Us</span>
-    <h2 class="title">오시는 길</h2>
+    <h2 class="title" data-i18n="locationSection">오시는 길</h2>
     <div class="map-box"><iframe loading="lazy" title="예식장 위치 지도" src="${mapSrc}"></iframe></div>
     <div class="loc-info">
-      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg><div><span class="lab" style="color:var(--ink-soft);width:54px;flex-shrink:0;">주소</span><br>${D.addr}</div></div>
-      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="16" rx="2"/><path d="M9 19l-1 2M15 19l1 2M8 7h8"/></svg><div><span class="lab" style="color:var(--ink-soft);">지하철</span><br>${D.subway}</div></div>
-      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16l1.5-6h13L20 16M4 16h16v3H4z"/><circle cx="7.5" cy="19" r="1"/><circle cx="16.5" cy="19" r="1"/></svg><div><span class="lab" style="color:var(--ink-soft);">버스</span><br>${D.bus}</div></div>
-      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="11" rx="1"/><path d="M7 18v2M17 18v2"/></svg><div><span class="lab" style="color:var(--ink-soft);">주차</span><br>${D.parking}</div></div>
+      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg><div><span class="lab" data-i18n="addrLabel" style="color:var(--ink-soft);width:54px;flex-shrink:0;">주소</span><br>${D.addr}</div></div>
+      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="16" rx="2"/><path d="M9 19l-1 2M15 19l1 2M8 7h8"/></svg><div><span class="lab" data-i18n="subwayLabel" style="color:var(--ink-soft);">지하철</span><br>${D.subway}</div></div>
+      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16l1.5-6h13L20 16M4 16h16v3H4z"/><circle cx="7.5" cy="19" r="1"/><circle cx="16.5" cy="19" r="1"/></svg><div><span class="lab" data-i18n="busLabel" style="color:var(--ink-soft);">버스</span><br>${D.bus}</div></div>
+      <div class="row"><svg class="ic" style="color:var(--sage-deep);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="11" rx="1"/><path d="M7 18v2M17 18v2"/></svg><div><span class="lab" data-i18n="parkingLabel" style="color:var(--ink-soft);">주차</span><br>${D.parking}</div></div>
     </div>
   </section>
 
   <section id="account">
     <span class="eyebrow"><span class="num">06</span> · With Love</span>
-    <h2 class="title">마음 전하실 곳</h2>
-    <p style="font-size:13px;color:var(--ink-soft);line-height:1.8;margin-bottom:18px;">참석이 어려우신 분들을 위해 안내드립니다.<br>전해주시는 마음, 감사한 마음으로 잘 간직하겠습니다.</p>
+    <h2 class="title" data-i18n="accountSection">마음 전하실 곳</h2>
+    <p data-i18n="accountDesc" style="font-size:13px;color:var(--ink-soft);line-height:1.8;margin-bottom:18px;">참석이 어려우신 분들을 위해 안내드립니다.<br>전해주시는 마음, 감사한 마음으로 잘 간직하겠습니다.</p>
 
     <div class="acc-item">
       <div class="acc-head" data-acc>
-        <span class="label"><svg class="ic" style="color:var(--wine)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg>신랑측</span>
+        <span class="label"><svg class="ic" style="color:var(--wine)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg><span data-i18n="groomSide">신랑측</span></span>
         <span class="acc-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
       </div>
       <div class="acc-body">
-        <div class="acc-row"><div><div class="who">${D.gAccName}</div><div class="num">${D.gAccNum}</div><div class="bank">${D.gAccBank}</div></div><button class="copy-btn" data-copy="${D.gAccNum}">복사</button></div>
-        ${D.showParentAcc && D.gFatherAccName ? `<div class="acc-row"><div><div class="who" style="font-size:12px;color:var(--ink-soft);">부친</div><div class="who">${D.gFatherAccName}</div><div class="num">${D.gFatherAccNum}</div><div class="bank">${D.gFatherAccBank}</div></div><button class="copy-btn" data-copy="${D.gFatherAccNum}">복사</button></div>` : ''}
-        ${D.showParentAcc && D.gMotherAccName ? `<div class="acc-row"><div><div class="who" style="font-size:12px;color:var(--ink-soft);">모친</div><div class="who">${D.gMotherAccName}</div><div class="num">${D.gMotherAccNum}</div><div class="bank">${D.gMotherAccBank}</div></div><button class="copy-btn" data-copy="${D.gMotherAccNum}">복사</button></div>` : ''}
-        <div class="acc-pay"><a class="pill-btn" href="#" style="flex:1;justify-content:center;">카카오페이 송금</a><a class="pill-btn" href="#" style="flex:1;justify-content:center;">토스로 보내기</a></div>
+        <div class="acc-row"><div><div class="who">${D.gAccName}</div><div class="num">${D.gAccNum}</div><div class="bank">${D.gAccBank}</div></div><button class="copy-btn" data-i18n="copyBtn" data-copy="${D.gAccNum}">복사</button></div>
+        ${D.showParentAcc && D.gFatherAccName ? `<div class="acc-row"><div><div class="who" data-i18n="fatherLabel" style="font-size:12px;color:var(--ink-soft);">부친</div><div class="who">${D.gFatherAccName}</div><div class="num">${D.gFatherAccNum}</div><div class="bank">${D.gFatherAccBank}</div></div><button class="copy-btn" data-i18n="copyBtn" data-copy="${D.gFatherAccNum}">복사</button></div>` : ''}
+        ${D.showParentAcc && D.gMotherAccName ? `<div class="acc-row"><div><div class="who" data-i18n="motherLabel" style="font-size:12px;color:var(--ink-soft);">모친</div><div class="who">${D.gMotherAccName}</div><div class="num">${D.gMotherAccNum}</div><div class="bank">${D.gMotherAccBank}</div></div><button class="copy-btn" data-i18n="copyBtn" data-copy="${D.gMotherAccNum}">복사</button></div>` : ''}
+        <div class="acc-pay"><a class="pill-btn" data-i18n="kakaoPayBtn" href="#" style="flex:1;justify-content:center;">카카오페이 송금</a><a class="pill-btn" data-i18n="tossBtn" href="#" style="flex:1;justify-content:center;">토스로 보내기</a></div>
       </div>
     </div>
 
     <div class="acc-item">
       <div class="acc-head" data-acc>
-        <span class="label"><svg class="ic" style="color:var(--wine)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg>신부측</span>
+        <span class="label"><svg class="ic" style="color:var(--wine)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-9.6-9.4C1.2 8.6 3 5.5 6.3 5.5c2 0 3.6 1.2 4.7 2.9 1.1-1.7 2.7-2.9 4.7-2.9 3.3 0 5.1 3.1 3.9 6.1C19.5 16.2 12 21 12 21z"/></svg><span data-i18n="brideSide">신부측</span></span>
         <span class="acc-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
       </div>
       <div class="acc-body">
-        <div class="acc-row"><div><div class="who">${D.bAccName}</div><div class="num">${D.bAccNum}</div><div class="bank">${D.bAccBank}</div></div><button class="copy-btn" data-copy="${D.bAccNum}">복사</button></div>
-        ${D.showParentAcc && D.bFatherAccName ? `<div class="acc-row"><div><div class="who" style="font-size:12px;color:var(--ink-soft);">부친</div><div class="who">${D.bFatherAccName}</div><div class="num">${D.bFatherAccNum}</div><div class="bank">${D.bFatherAccBank}</div></div><button class="copy-btn" data-copy="${D.bFatherAccNum}">복사</button></div>` : ''}
-        ${D.showParentAcc && D.bMotherAccName ? `<div class="acc-row"><div><div class="who" style="font-size:12px;color:var(--ink-soft);">모친</div><div class="who">${D.bMotherAccName}</div><div class="num">${D.bMotherAccNum}</div><div class="bank">${D.bMotherAccBank}</div></div><button class="copy-btn" data-copy="${D.bMotherAccNum}">복사</button></div>` : ''}
-        <div class="acc-pay"><a class="pill-btn" href="#" style="flex:1;justify-content:center;">카카오페이 송금</a><a class="pill-btn" href="#" style="flex:1;justify-content:center;">토스로 보내기</a></div>
+        <div class="acc-row"><div><div class="who">${D.bAccName}</div><div class="num">${D.bAccNum}</div><div class="bank">${D.bAccBank}</div></div><button class="copy-btn" data-i18n="copyBtn" data-copy="${D.bAccNum}">복사</button></div>
+        ${D.showParentAcc && D.bFatherAccName ? `<div class="acc-row"><div><div class="who" data-i18n="fatherLabel" style="font-size:12px;color:var(--ink-soft);">부친</div><div class="who">${D.bFatherAccName}</div><div class="num">${D.bFatherAccNum}</div><div class="bank">${D.bFatherAccBank}</div></div><button class="copy-btn" data-i18n="copyBtn" data-copy="${D.bFatherAccNum}">복사</button></div>` : ''}
+        ${D.showParentAcc && D.bMotherAccName ? `<div class="acc-row"><div><div class="who" data-i18n="motherLabel" style="font-size:12px;color:var(--ink-soft);">모친</div><div class="who">${D.bMotherAccName}</div><div class="num">${D.bMotherAccNum}</div><div class="bank">${D.bMotherAccBank}</div></div><button class="copy-btn" data-i18n="copyBtn" data-copy="${D.bMotherAccNum}">복사</button></div>` : ''}
+        <div class="acc-pay"><a class="pill-btn" data-i18n="kakaoPayBtn" href="#" style="flex:1;justify-content:center;">카카오페이 송금</a><a class="pill-btn" data-i18n="tossBtn" href="#" style="flex:1;justify-content:center;">토스로 보내기</a></div>
       </div>
     </div>
   </section>
@@ -3537,12 +3555,21 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
     <div class="names-kr" style="font-size:32px; font-weight:700; color:var(--wine); display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:10px;">
       ${D.groom||'신랑'} <span style="font-size:18px; color:var(--wine); margin-top:2px;">♥</span> ${D.bride||'신부'}
     </div>
-    <div class="names-kr">${D.groom} · ${D.bride}, 함께 걷겠습니다</div>
-    <div class="msg">귀한 시간 내어 끝까지 읽어주셔서 감사합니다.<br>${yyyy}년 ${mm}월 ${dd}일, 그 자리에서 뵙겠습니다.</div>
+    <div class="names-kr">${D.groom} · ${D.bride}, <span data-i18n="footerTogether">함께 걷겠습니다</span></div>
+    <div class="msg" data-i18n="footerMsg">귀한 시간 내어 끝까지 읽어주셔서 감사합니다.<br>${yyyy}.${mm}.${dd}</div>
     <div class="copyright">With You — Wedding Invitation</div>
   </section>
 </div>
 
+<div id="_langSw">
+  <button id="_langBtn" aria-label="언어 선택"><span id="_langLbl">🌐</span></button>
+  <div id="_langPop">
+    <button class="lang-opt" data-lang="ko">🇰🇷 한국어</button>
+    <button class="lang-opt" data-lang="en">🇺🇸 English</button>
+    <button class="lang-opt" data-lang="ja">🇯🇵 日本語</button>
+    <button class="lang-opt" data-lang="zh">🇨🇳 中文</button>
+  </div>
+</div>
 <button class="float-btn" id="bgm-btn" aria-label="배경음악 재생" style="bottom:24px; font-size:20px; color:var(--wine); background:white; border:1px solid var(--wine); display:none; align-items:center; justify-content:center;">
   ♬
 </button>
@@ -3553,6 +3580,46 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
 <div id="toast"></div>
 
 <script>
+// ── i18n ──────────────────────────────────────────────────────────────────
+const I18N={
+  ko:{greetingSection:'마음을 전합니다',familySection:'신랑 · 신부 소개',weddingSection:'예식 안내',gallerySection:'갤러리',locationSection:'오시는 길',accountSection:'마음 전하실 곳',rsvpSection:'참석 의사 전달',groomRole:'신랑',brideRole:'신부',callBtn:'전화',smsBtn:'문자',addCal:'캘린더에 추가',liveBtn:'온라인 생중계',dowSun:'일',dowMon:'월',dowTue:'화',dowWed:'수',dowThu:'목',dowFri:'금',dowSat:'토',gridView:'격자형',slideView:'슬라이드형',photoNote:'소중한 추억이 담긴 사진입니다. 별도 저장은 자제해 주세요.',addrLabel:'주소',subwayLabel:'지하철',busLabel:'버스',parkingLabel:'주차',groomSide:'신랑측',brideSide:'신부측',fatherLabel:'부친',motherLabel:'모친',copyBtn:'복사',kakaoPayBtn:'카카오페이 송금',tossBtn:'토스로 보내기',accountDesc:'참석이 어려우신 분들을 위해 안내드립니다.<br>전해주시는 마음, 감사한 마음으로 잘 간직하겠습니다.',rsvpDesc:'따뜻한 식사 준비를 위해 참석 여부를 알려주시면<br>큰 도움이 됩니다. 감사합니다.',nameLabel:'성함',attendLabel:'참석 여부',attendYes:'참석합니다',attendNo:'참석이 어려워요',mealLabel:'식사 여부',mealYes:'식사 가능',mealNo:'식사 안 함',companionLabel:'동반 인원 (본인 제외)',memoLabel:'전하실 말씀 (선택)',submitBtn:'전달하기',thankYou:'소중한 답변, 감사합니다.',thankYouMsg:'전해주신 마음을 가지고<br>더 행복한 하루를 준비하겠습니다.',ddayWaiting:'우리, 함께할 날을 기다립니다',ddayToday:'오늘, 두 사람이 함께합니다',footerTogether:'함께 걷겠습니다',footerMsg:'귀한 시간 내어 끝까지 읽어주셔서 감사합니다.',copied:'계좌번호가 복사되었습니다',copyFail:'복사에 실패했습니다',calAdded:'캘린더 파일이 다운로드되었습니다'},
+  en:{greetingSection:'Our Message',familySection:'Groom & Bride',weddingSection:'Wedding Details',gallerySection:'Gallery',locationSection:'Directions',accountSection:'Gift Account',rsvpSection:'RSVP',groomRole:'Groom',brideRole:'Bride',callBtn:'Call',smsBtn:'Text',addCal:'Add to Calendar',liveBtn:'Live Stream',dowSun:'Sun',dowMon:'Mon',dowTue:'Tue',dowWed:'Wed',dowThu:'Thu',dowFri:'Fri',dowSat:'Sat',gridView:'Grid',slideView:'Slide',photoNote:'Precious memories. Please refrain from saving.',addrLabel:'Address',subwayLabel:'Subway',busLabel:'Bus',parkingLabel:'Parking',groomSide:"Groom's",brideSide:"Bride's",fatherLabel:'Father',motherLabel:'Mother',copyBtn:'Copy',kakaoPayBtn:'KakaoPay',tossBtn:'Toss',accountDesc:'For those unable to attend,<br>we have provided account details below.',rsvpDesc:'To help us prepare,<br>please let us know if you can attend.',nameLabel:'Name',attendLabel:'Attendance',attendYes:'Attending',attendNo:'Declining',mealLabel:'Meal',mealYes:'Yes',mealNo:'No',companionLabel:'Additional guests (excl. you)',memoLabel:'Message (optional)',submitBtn:'Submit',thankYou:'Thank you for your kind response.',thankYouMsg:'We will cherish your warm wishes<br>as we prepare for our special day.',ddayWaiting:'Counting down to our wedding',ddayToday:'Today is our wedding day!',footerTogether:'Walking together',footerMsg:'Thank you for reading to the end.',copied:'Copied!',copyFail:'Failed to copy',calAdded:'Calendar file downloaded'},
+  ja:{greetingSection:'ご挨拶',familySection:'新郎・新婦紹介',weddingSection:'式場案内',gallerySection:'ギャラリー',locationSection:'アクセス',accountSection:'ご祝儀',rsvpSection:'出欠確認',groomRole:'新郎',brideRole:'新婦',callBtn:'電話',smsBtn:'SMS',addCal:'カレンダーに追加',liveBtn:'オンライン生中継',dowSun:'日',dowMon:'月',dowTue:'火',dowWed:'水',dowThu:'木',dowFri:'金',dowSat:'土',gridView:'グリッド',slideView:'スライド',photoNote:'大切な思い出の写真です。保存はご遠慮ください。',addrLabel:'住所',subwayLabel:'地下鉄',busLabel:'バス',parkingLabel:'駐車場',groomSide:'新郎側',brideSide:'新婦側',fatherLabel:'父',motherLabel:'母',copyBtn:'コピー',kakaoPayBtn:'カカオペイ',tossBtn:'Toss送金',accountDesc:'ご出席が難しい方のために<br>口座情報をご案内いたします。',rsvpDesc:'お食事の準備のため<br>ご出席の有無をお知らせください。',nameLabel:'お名前',attendLabel:'出欠',attendYes:'出席します',attendNo:'欠席します',mealLabel:'お食事',mealYes:'食事あり',mealNo:'食事なし',companionLabel:'同伴者数（ご本人除く）',memoLabel:'メッセージ（任意）',submitBtn:'送信',thankYou:'ご返信ありがとうございます。',thankYouMsg:'お二人のために<br>素敵な一日を準備いたします。',ddayWaiting:'結婚式まであと少し',ddayToday:'今日がその日です！',footerTogether:'ともに歩んでいきます',footerMsg:'最後までお読みいただきありがとうございます。',copied:'コピーしました',copyFail:'コピー失敗',calAdded:'ダウンロードしました'},
+  zh:{greetingSection:'致辞',familySection:'新郎·新娘介绍',weddingSection:'婚礼详情',gallerySection:'相册',locationSection:'交通指引',accountSection:'礼金账户',rsvpSection:'出席确认',groomRole:'新郎',brideRole:'新娘',callBtn:'电话',smsBtn:'短信',addCal:'添加到日历',liveBtn:'在线直播',dowSun:'日',dowMon:'一',dowTue:'二',dowWed:'三',dowThu:'四',dowFri:'五',dowSat:'六',gridView:'网格',slideView:'幻灯片',photoNote:'珍贵的回忆照片，请勿另存。',addrLabel:'地址',subwayLabel:'地铁',busLabel:'公交',parkingLabel:'停车',groomSide:'新郎方',brideSide:'新娘方',fatherLabel:'父亲',motherLabel:'母亲',copyBtn:'复制',kakaoPayBtn:'Kakao支付',tossBtn:'Toss转账',accountDesc:'为无法出席的宾客<br>提供以下账户信息。',rsvpDesc:'为了做好餐食准备<br>请告知您是否出席。',nameLabel:'姓名',attendLabel:'出席情况',attendYes:'出席',attendNo:'缺席',mealLabel:'用餐',mealYes:'用餐',mealNo:'不用餐',companionLabel:'同行人数（不含本人）',memoLabel:'留言（可选）',submitBtn:'提交',thankYou:'感谢您的回复。',thankYouMsg:'我们将带着您的祝福<br>准备一个美好的婚礼。',ddayWaiting:'期待与您相见',ddayToday:'今天是我们的婚礼！',footerTogether:'携手同行',footerMsg:'感谢您耐心阅读到最后。',copied:'已复制',copyFail:'复制失败',calAdded:'日历文件已下载'}
+};
+let _lang='${D.lang||'ko'}';
+let _ddayWait=(I18N[_lang]||I18N.ko).ddayWaiting;
+let _ddayToday=(I18N[_lang]||I18N.ko).ddayToday;
+function applyLang(lang){
+  _lang=lang;
+  const tr=I18N[lang]||I18N.ko;
+  _ddayWait=tr.ddayWaiting; _ddayToday=tr.ddayToday;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(tr[k]!==undefined)el.innerHTML=tr[k];
+  });
+  const flags={ko:'🇰🇷',en:'🇺🇸',ja:'🇯🇵',zh:'🇨🇳'};
+  const lbl=document.getElementById('_langLbl');
+  if(lbl)lbl.textContent=flags[lang]||'🌐';
+  document.querySelectorAll('.lang-opt').forEach(o=>{
+    o.style.fontWeight=o.dataset.lang===lang?'700':'400';
+    o.style.background=o.dataset.lang===lang?'var(--blush)':'';
+  });
+  try{sessionStorage.setItem('inv-lang',lang);}catch(e){}
+}
+applyLang(_lang);
+// lang switcher toggle
+(function(){
+  const lb=document.getElementById('_langBtn'),lp=document.getElementById('_langPop');
+  if(!lb||!lp)return;
+  lb.addEventListener('click',function(e){e.stopPropagation();lp.style.display=lp.style.display==='none'?'block':'none';});
+  document.addEventListener('click',function(){lp.style.display='none';});
+  document.querySelectorAll('.lang-opt').forEach(function(o){
+    o.addEventListener('click',function(e){e.stopPropagation();applyLang(o.dataset.lang);lp.style.display='none';});
+  });
+  try{const sl=sessionStorage.getItem('inv-lang');if(sl&&I18N[sl])applyLang(sl);}catch(e){}
+})();
+// ─────────────────────────────────────────────────────────────────────────
 document.getElementById('cover').addEventListener('click',function(){this.classList.add('hide');});
 const tf=document.getElementById('threadFill'),tm=document.getElementById('threadMark');
 function ut(){
@@ -3589,13 +3656,13 @@ document.querySelectorAll('section').forEach(s=>io.observe(s));
 ${D.showDday?`
 const target=new Date('${weddingISO}').getTime();
 function tick(){const now=Date.now();let diff=target-now;const flag=document.getElementById('ddFlag');
-if(diff<=0){['dd-d','dd-h','dd-m','dd-s'].forEach(id=>document.getElementById(id).textContent='00');flag.textContent='오늘, 두 사람이 함께합니다';return;}
+if(diff<=0){['dd-d','dd-h','dd-m','dd-s'].forEach(id=>document.getElementById(id).textContent='00');flag.textContent=_ddayToday;return;}
 const d=Math.floor(diff/(1000*60*60*24)),h=Math.floor((diff/(1000*60*60))%24),m=Math.floor((diff/(1000*60))%60),s=Math.floor((diff/1000)%60);
 document.getElementById('dd-d').textContent=String(d).padStart(2,'0');
 document.getElementById('dd-h').textContent=String(h).padStart(2,'0');
 document.getElementById('dd-m').textContent=String(m).padStart(2,'0');
 document.getElementById('dd-s').textContent=String(s).padStart(2,'0');
-flag.textContent='D-'+d+', 우리 함께할 날을 기다립니다';}
+flag.textContent='D-'+d+' · '+_ddayWait;}
 tick();setInterval(tick,1000);`:''}
 const gv=document.getElementById('gallery-grid'),sv=document.getElementById('gallery-swipe');
 function swipeGallery(dir){
@@ -3616,9 +3683,9 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{btn.addEventListener('cli
 ${D.photoProtect?`document.querySelectorAll('.ph-photo').forEach(el=>{el.addEventListener('contextmenu',e=>e.preventDefault());el.addEventListener('dragstart',e=>e.preventDefault());});`:''}
 document.querySelectorAll('[data-acc]').forEach(head=>{head.addEventListener('click',()=>{const item=head.closest('.acc-item');const wasOpen=item.classList.contains('open');document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),1800);}
-document.querySelectorAll('.copy-btn').forEach(btn=>{btn.addEventListener('click',(e)=>{e.stopPropagation();const text=btn.dataset.copy;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>showToast('계좌번호가 복사되었습니다')).catch(()=>showToast('복사에 실패했습니다'));}else{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');showToast('계좌번호가 복사되었습니다');}catch(err){showToast('복사에 실패했습니다');}ta.remove();}});});
+document.querySelectorAll('.copy-btn').forEach(btn=>{btn.addEventListener('click',(e)=>{e.stopPropagation();const text=btn.dataset.copy;const tr=I18N[_lang]||I18N.ko;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>showToast(tr.copied)).catch(()=>showToast(tr.copyFail));}else{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');showToast(tr.copied);}catch(err){showToast(tr.copyFail);}ta.remove();}});});
 const icsBtn=document.getElementById('icsBtn');
-if(icsBtn)icsBtn.addEventListener('click',()=>{const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','SUMMARY:${D.groom} · ${D.bride} 결혼식','DTSTART:${weddingISO.replace(/[-:]/g,'').replace('+0900','').slice(0,13)}0000Z','LOCATION:${D.venueName} ${D.venueHall}','DESCRIPTION:With You - Wedding Invitation','END:VEVENT','END:VCALENDAR'].join('\\r\\n');const blob=new Blob([ics],{type:'text/calendar'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='wedding.ics';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);showToast('캘린더 파일이 다운로드되었습니다');});
+if(icsBtn)icsBtn.addEventListener('click',()=>{const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','SUMMARY:${D.groom} · ${D.bride} 결혼식','DTSTART:${weddingISO.replace(/[-:]/g,'').replace('+0900','').slice(0,13)}0000Z','LOCATION:${D.venueName} ${D.venueHall}','DESCRIPTION:With You - Wedding Invitation','END:VEVENT','END:VCALENDAR'].join('\\r\\n');const blob=new Blob([ics],{type:'text/calendar'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='wedding.ics';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);showToast((I18N[_lang]||I18N.ko).calAdded);});
 ${D.showRsvp?`document.getElementById('rsvpForm').addEventListener('submit',(e)=>{e.preventDefault();document.getElementById('rsvpForm').style.display='none';document.getElementById('rsvpThanks').style.display='block';});`:''}
 
 window.addEventListener('message',function(e){
