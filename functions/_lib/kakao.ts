@@ -25,7 +25,8 @@ export async function exchangeCodeForToken(params: {
     body,
   });
   if (!res.ok) {
-    throw new Error(`카카오 토큰 발급 실패: ${res.status}`);
+    const errBody = await res.text().catch(() => '');
+    throw new Error(`카카오 토큰 발급 실패: ${res.status} ${errBody}`);
   }
   const data = (await res.json()) as { access_token?: string };
   if (!data.access_token) {
@@ -45,7 +46,8 @@ export async function fetchKakaoUser(accessToken: string): Promise<KakaoUser> {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
   if (!res.ok) {
-    throw new Error(`카카오 사용자 정보 조회 실패: ${res.status}`);
+    const errBody = await res.text().catch(() => '');
+    throw new Error(`카카오 사용자 정보 조회 실패: ${res.status} ${errBody}`);
   }
   const data = (await res.json()) as {
     id: number;

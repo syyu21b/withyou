@@ -29,6 +29,7 @@ app.get('/kakao/callback', async (c) => {
     await setSessionCookie(c, member.id);
     return c.redirect('/');
   } catch (e) {
+    console.error('kakao login callback failed:', e instanceof Error ? e.stack ?? e.message : e);
     return c.text('카카오 로그인에 실패했습니다.', 500);
   }
 });
