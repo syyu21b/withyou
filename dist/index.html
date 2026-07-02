@@ -185,16 +185,17 @@
             display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
             position:relative;
         }
-        .phone .screen .mini-wreath{width:70%; opacity:.9;}
         .phone .notch{
             position:absolute; top:10px; left:50%; transform:translateX(-50%);
             width:70px; height:18px; background:var(--ink); border-radius:0 0 12px 12px; z-index:2;
         }
-        .phone .badge{
-            position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
-            background:rgba(255,255,255,.85); border:1px solid var(--gold); border-radius:999px;
-            padding:6px 16px; font-family:var(--accent-font); font-style:italic; font-size:12px; letter-spacing:.15em; color:var(--wine-deep);
+        .hero-slides{position:absolute; inset:0;}
+        .hero-slide{
+            position:absolute; inset:0; opacity:0;
+            transition:opacity 1s ease;
+            pointer-events:none;
         }
+        .hero-slide.active{opacity:1;}
         .float-card{
             position:absolute; background:#fff; border-radius:10px; padding:10px 14px;
             box-shadow:0 12px 30px -10px rgba(110,44,51,0.25); font-size:12px; color:var(--ink-soft);
@@ -904,22 +905,7 @@
                 <div class="phone">
                     <div class="notch"></div>
                     <div class="screen">
-                        <svg class="mini-wreath" viewBox="0 0 320 320" fill="none" stroke="#8B3A42" stroke-width="1.4" stroke-linecap="round">
-                            <g opacity="0.55">
-                                <path d="M60 160c-10-40 10-80 50-90"/>
-                                <path d="M260 160c10-40-10-80-50-90"/>
-                                <path d="M110 250c-30-10-50-40-46-78"/>
-                                <path d="M210 250c30-10 50-40 46-78"/>
-                            </g>
-                            <g stroke="#9CAF93">
-                                <ellipse cx="92" cy="120" rx="10" ry="16" transform="rotate(-30 92 120)"/>
-                                <ellipse cx="228" cy="120" rx="10" ry="16" transform="rotate(30 228 120)"/>
-                            </g>
-                            <g stroke="#C8A464"><circle cx="160" cy="90" r="14"/><circle cx="160" cy="90" r="5"/></g>
-                            <text x="160" y="170" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="26" fill="#8B3A42" stroke="none">D &amp; S</text>
-                            <text x="160" y="192" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="11" letter-spacing="3" fill="#7A6F68" stroke="none">2026 . 11 . 14</text>
-                        </svg>
-                        <div class="badge">With You</div>
+                        <div class="hero-slides" id="heroSlides"></div>
                     </div>
                 </div>
                 <div class="float-card f1">
@@ -4440,6 +4426,47 @@ window.addEventListener('message',function(e){
     // 여기서 저장된 언어로 한 번 더 동기화해 새로고침 직후에도 테마 이름 등이 올바르게 보이도록 한다.
     window._builderReady = true;
     applyUILang(_uiLang);
+
+    /* ===== 메인페이지 히어로 폰 목업: 더미 청첩장 슬라이드쇼 ===== */
+    (function initHeroSlider(){
+        const track = document.getElementById('heroSlides');
+        if (!track) return;
+
+        const DAYS = ['일','월','화','수','목','금','토'];
+        function buildDemoCoverHTML(demo){
+            const t = THEMES[demo.theme] || THEMES.classic;
+            const dateObj = new Date(demo.weddingDate);
+            const dayKr = DAYS[dateObj.getDay()];
+            const yyyy = dateObj.getFullYear();
+            const mm = dateObj.getMonth() + 1;
+            const dd = dateObj.getDate();
+            const [hh] = demo.weddingTime.split(':').map(Number);
+            const ampm = hh < 12 ? '오전' : '오후';
+            const h12 = hh % 12 || 12;
+            return getCoverHTML(demo.theme, t, demo, yyyy, mm, dd, dayKr, ampm, h12);
+        }
+
+        const demos = [
+            { theme:'simpleline',   groom:'이준서', bride:'김은재', weddingDate:'2026-10-24', weddingTime:'14:00', venueName:'더클래스웨딩홀', venueHall:'1층 그랜드홀' },
+            { theme:'classicwhite', groom:'이도현', bride:'박서연', weddingDate:'2026-11-14', weddingTime:'13:00', venueName:'라비두스 컨벤션', venueHall:'3F 그랑블루홀' },
+            { theme:'naturalgreen', groom:'정우진', bride:'한소율', weddingDate:'2026-05-09', weddingTime:'11:30', venueName:'가든플레이스', venueHall:'야외 가든홀' },
+            { theme:'oceanwhisper', groom:'강민재', bride:'윤아름', weddingDate:'2026-08-15', weddingTime:'16:00', venueName:'씨사이드 웨딩홀', venueHall:'오션뷰홀' },
+            { theme:'autumn',       groom:'김태양', bride:'오하늘', weddingDate:'2026-09-27', weddingTime:'12:00', venueName:'힐탑가든', venueHall:'선셋테라스' },
+        ];
+
+        track.innerHTML = demos.map((demo, i) =>
+            `<div class="hero-slide${i === 0 ? ' active' : ''}">${buildDemoCoverHTML(demo)}</div>`
+        ).join('');
+
+        const slides = track.querySelectorAll('.hero-slide');
+        if (slides.length < 2) return;
+        let idx = 0;
+        setInterval(() => {
+            slides[idx].classList.remove('active');
+            idx = (idx + 1) % slides.length;
+            slides[idx].classList.add('active');
+        }, 3000);
+    })();
 </script>
 </body>
 </html>
