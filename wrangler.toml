@@ -1,2 +1,20 @@
 name = "withyou"
 pages_build_output_dir = "dist"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "withyou"
+database_id = "REPLACE_WITH_WRANGLER_D1_CREATE_OUTPUT"
+
+[vars]
+# REST API 키는 카카오 인가 URL에 공개적으로 노출되는 값이라 여기 두어도 안전합니다.
+KAKAO_REST_API_KEY = "d572812fa661494c23ee0f12b5d11860"
+
+# 아래 두 값은 절대 이 파일(커밋되는 파일)에 넣지 않습니다.
+# 로컬 개발: 저장소 루트에 .dev.vars 파일(git 미포함)을 만들어
+#   KAKAO_CLIENT_SECRET=...
+#   SESSION_SECRET=...
+# 를 적어두면 `wrangler pages dev`가 자동으로 읽습니다.
+# 운영 배포: `wrangler pages secret put KAKAO_CLIENT_SECRET` / `SESSION_SECRET` 로 등록합니다.

@@ -103,6 +103,18 @@
             .kakao-login-btn span{display:none;}
             .kakao-login-btn{padding:9px;}
         }
+        .kakao-profile-chip{
+            display:flex; align-items:center; gap:8px;
+            padding:6px 8px 6px 6px; border-radius:999px; border:1px solid var(--line); background:var(--paper);
+            font-size:12px; color:var(--ink-soft); font-family:var(--sans);
+        }
+        .kakao-profile-chip img{width:24px;height:24px;border-radius:50%;object-fit:cover;background:var(--blush);}
+        .kakao-profile-chip #kakaoProfileName{font-weight:600;color:var(--ink);white-space:nowrap;max-width:80px;overflow:hidden;text-overflow:ellipsis;}
+        .kakao-profile-chip button{border:none;background:transparent;color:var(--wine);cursor:pointer;font-size:12px;white-space:nowrap;padding:2px 4px;}
+        .kakao-profile-chip button:hover{text-decoration:underline;}
+        @media (max-width:600px){
+            .kakao-profile-chip #kakaoProfileName, .kakao-profile-chip button[onclick*="openMyInvitations"]{display:none;}
+        }
         .ui-lang-sw{position:relative;display:flex;align-items:center;}
         .ui-lang-btn{display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;font-size:13px;color:var(--ink-soft);cursor:pointer;font-family:var(--sans);letter-spacing:.04em;transition:border-color .2s,color .2s;}
         .ui-lang-btn:hover{border-color:var(--wine);color:var(--wine);}
@@ -421,6 +433,14 @@
         }
         .btn-download:hover{background:var(--wine-deep);}
         .btn-download svg{width:14px;height:14px;}
+        .btn-save-online{
+            padding:9px 20px; border-radius:999px; background:transparent; color:var(--wine-deep);
+            border:1px solid var(--wine-deep); font-size:13px; letter-spacing:.06em; transition:background .2s,color .2s;
+            display:flex; align-items:center; gap:6px;
+        }
+        .btn-save-online:hover{background:var(--wine-deep); color:#fff;}
+        .btn-save-online svg{width:14px;height:14px;}
+        @media(max-width:860px){ .btn-save-online{padding:8px 12px;font-size:11px;} }
 
         /* ============================================================
            LAYOUT
@@ -833,6 +853,12 @@
                     <svg class="ic" viewBox="0 0 24 24" fill="#191919"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.79 1.85 5.24 4.65 6.67-.2.75-.73 2.71-.84 3.13-.13.52.19.51.4.37.16-.11 2.6-1.76 3.66-2.48.7.1 1.42.15 2.13.15 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
                     <span data-ui-i18n="kakaoLoginBtn">카카오로 시작하기</span>
                 </button>
+                <div class="kakao-profile-chip" id="kakaoProfileChip" style="display:none;">
+                    <img id="kakaoProfileImg" src="" alt="" onerror="this.style.display='none';">
+                    <span id="kakaoProfileName"></span>
+                    <button type="button" onclick="openMyInvitations(); return false;" data-ui-i18n="myInvitationsBtn">내 청첩장</button>
+                    <button type="button" onclick="kakaoLogout(); return false;" data-ui-i18n="logoutBtn">로그아웃</button>
+                </div>
                 <div class="ui-lang-sw" id="uiLangSw">
                     <button class="ui-lang-btn" id="uiLangBtn" aria-label="UI 언어 선택">
                         <span id="uiLangFlag">🌐</span><span id="uiLangName" data-ui-i18n="langName">한국어</span>
@@ -1188,6 +1214,17 @@
             </div>
         </div>
 
+        <div id="myInvitationsModal" class="t-modal">
+            <div class="t-modal-backdrop" onclick="closeMyInvitationsModal()"></div>
+            <div class="t-modal-box" style="max-width:520px;flex-direction:column;align-items:stretch;">
+                <button class="t-modal-close" onclick="closeMyInvitationsModal()">✕</button>
+                <h3 style="font-family:var(--serif);font-size:20px;color:var(--wine-deep);margin-bottom:16px;" data-ui-i18n="myInvitationsBtn">내 청첩장</h3>
+                <div id="myInvitationsList" style="display:flex;flex-direction:column;gap:10px;max-height:400px;overflow-y:auto;">
+                    <p style="color:var(--ink-soft);font-size:13px;">불러오는 중...</p>
+                </div>
+            </div>
+        </div>
+
         <!-- ===== How it works ===== -->
         <section id="how">
             <div class="section-head">
@@ -1264,6 +1301,10 @@
             <button class="btn-preview-toggle" id="editorToggle" data-ui-i18n="btnEdit">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
                 편집
+            </button>
+            <button class="btn-save-online" id="saveOnlineBtn" onclick="saveInvitationOnline()" data-ui-i18n="btnSaveOnline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
+                온라인 저장
             </button>
             <button class="btn-download" id="downloadBtn" data-ui-i18n="btnDownload">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
@@ -1806,7 +1847,7 @@
     const UI_I18N = {
         ko: {
             langName:'한국어',
-            navFeatures:'기능', navThemes:'테마', navHow:'이용 방법', navCta:'청첩장 만들기', kakaoLoginBtn:'카카오로 시작하기',
+            navFeatures:'기능', navThemes:'테마', navHow:'이용 방법', navCta:'청첩장 만들기', kakaoLoginBtn:'카카오로 시작하기', myInvitationsBtn:'내 청첩장', logoutBtn:'로그아웃',
             heroH1:'두 사람의 이야기를,<br>가장 아름다운 <span>모바일 청첩장</span>으로',
             heroLead:'사진 업로드부터 디데이 카운트다운, 갤러리, 계좌 안내, 참석 여부 확인까지. With You에서는 별도의 디자인 지식 없이도 감성적인 모바일 청첩장을 직접 만들고, 실시간으로 미리 보며 완성할 수 있습니다.',
             heroCta:'모바일 청첩장 만들기 <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
@@ -1830,7 +1871,7 @@
             ctaH2:'지금, 두 사람의 이야기를 시작하세요',
             ctaP:'입력한 내용은 바로 미리보기에 반영됩니다. 편하게 둘러보며 우리만의 청첩장을 완성해보세요.',
             tab1:'① 기본 정보', tab2:'② 인사말·가족', tab3:'③ 갤러리', tab4:'④ 오시는 길', tab5:'⑤ 계좌·RSVP',
-            btnEdit:'편집', btnDownload:'청첩장 다운로드',
+            btnEdit:'편집', btnDownload:'청첩장 다운로드', btnSaveOnline:'온라인 저장',
             ddayToggleLabel:'디데이 카운트다운 표시',
             panelTitleStep0:'기본 정보', panelSubStep0:'신랑·신부 이름, 예식 일시, 장소를 입력하세요.',
             themeSelectLabel:'테마 선택', themeSelectHint:'(스크롤하여 더 보기)',
@@ -1873,7 +1914,7 @@
         },
         en: {
             langName:'English',
-            navFeatures:'Features', navThemes:'Themes', navHow:'How it works', navCta:'Create Invitation', kakaoLoginBtn:'Continue with Kakao',
+            navFeatures:'Features', navThemes:'Themes', navHow:'How it works', navCta:'Create Invitation', kakaoLoginBtn:'Continue with Kakao', myInvitationsBtn:'My Invitations', logoutBtn:'Log out',
             heroH1:'Your Love Story,<br>as a beautiful <span>Mobile Invitation</span>',
             heroLead:'From photo uploads to D-day countdowns, gallery, account info, and RSVP — create a gorgeous mobile wedding invitation with With You, no design skills needed.',
             heroCta:'Create Invitation <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
@@ -1897,7 +1938,7 @@
             ctaH2:'Start your story, right now',
             ctaP:'Everything you enter is reflected in the preview immediately. Browse freely and create your perfect invitation.',
             tab1:'① Basic Info', tab2:'② Greeting·Family', tab3:'③ Gallery', tab4:'④ Location', tab5:'⑤ Account·RSVP',
-            btnEdit:'Edit', btnDownload:'Download Invitation',
+            btnEdit:'Edit', btnDownload:'Download Invitation', btnSaveOnline:'Save Online',
             ddayToggleLabel:'Show D-Day countdown',
             panelTitleStep0:'Basic Info', panelSubStep0:"Enter the couple's names, ceremony date/time, and venue.",
             themeSelectLabel:'Choose a theme', themeSelectHint:'(scroll for more)',
@@ -1940,7 +1981,7 @@
         },
         ja: {
             langName:'日本語',
-            navFeatures:'機能', navThemes:'テーマ', navHow:'使い方', navCta:'招待状を作る', kakaoLoginBtn:'カカオでログイン',
+            navFeatures:'機能', navThemes:'テーマ', navHow:'使い方', navCta:'招待状を作る', kakaoLoginBtn:'カカオでログイン', myInvitationsBtn:'マイ招待状', logoutBtn:'ログアウト',
             heroH1:'二人の物語を、<br>最も美しい <span>モバイル招待状</span>に',
             heroLead:'写真アップロードからDデーカウントダウン、ギャラリー、口座案内、出欠確認まで。With Youならデザインの知識がなくても、感性豊かなモバイル招待状を作れます。',
             heroCta:'招待状を作る <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
@@ -1964,7 +2005,7 @@
             ctaH2:'今すぐ、二人の物語を始めましょう',
             ctaP:'入力内容はリアルタイムでプレビューに反映されます。気軽に試しながら招待状を完成させてください。',
             tab1:'① 基本情報', tab2:'② 挨拶·家族', tab3:'③ ギャラリー', tab4:'④ アクセス', tab5:'⑤ 口座·RSVP',
-            btnEdit:'編集', btnDownload:'招待状をダウンロード',
+            btnEdit:'編集', btnDownload:'招待状をダウンロード', btnSaveOnline:'オンライン保存',
             ddayToggleLabel:'Dデーカウントダウンを表示',
             panelTitleStep0:'基本情報', panelSubStep0:'新郎新婦のお名前、挙式日時、会場を入力してください。',
             themeSelectLabel:'テーマ選択', themeSelectHint:'(スクロールでさらに表示)',
@@ -2007,7 +2048,7 @@
         },
         zh: {
             langName:'中文',
-            navFeatures:'功能', navThemes:'主题', navHow:'使用方法', navCta:'制作请柬', kakaoLoginBtn:'使用Kakao登录',
+            navFeatures:'功能', navThemes:'主题', navHow:'使用方法', navCta:'制作请柬', kakaoLoginBtn:'使用Kakao登录', myInvitationsBtn:'我的请柬', logoutBtn:'退出登录',
             heroH1:'记录两个人的故事，<br>制作最美的 <span>手机婚礼请柬</span>',
             heroLead:'从上传照片到倒计时、相册、账户信息、出席确认，With You 让您无需设计技能，也能轻松制作精美的手机婚礼请柬，实时预览效果。',
             heroCta:'制作请柬 <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
@@ -2031,7 +2072,7 @@
             ctaH2:'现在就开始，记录你们的故事',
             ctaP:'输入的内容会实时反映在预览中，轻松浏览并完成专属请柬。',
             tab1:'① 基本信息', tab2:'② 致辞·家庭', tab3:'③ 相册', tab4:'④ 地址', tab5:'⑤ 账户·RSVP',
-            btnEdit:'编辑', btnDownload:'下载请柬',
+            btnEdit:'编辑', btnDownload:'下载请柬', btnSaveOnline:'在线保存',
             ddayToggleLabel:'显示倒计时',
             panelTitleStep0:'基本信息', panelSubStep0:'请输入新郎新娘姓名、婚礼日期时间及地点。',
             themeSelectLabel:'选择主题', themeSelectHint:'(滚动查看更多)',
@@ -2147,14 +2188,117 @@
     let pendingPreviewScrollId = null;
 
     /* ---- Kakao Login ----
-       REST API 키는 카카오 인가 코드 요청 URL에 client_id로 노출되는 값이라 프론트에 두어도 안전합니다.
-       Client Secret은 인가 코드를 토큰으로 교환할 때만 필요하며, 그 작업은 반드시 서버에서 처리해야 하므로
-       여기에는 포함하지 않았습니다 (백엔드 콜백 구현 전까지는 버튼 UI만 동작합니다). */
-    const KAKAO_REST_API_KEY = 'd572812fa661494c23ee0f12b5d11860';
+       인가 URL 조립과 토큰 교환(Client Secret 필요)은 모두 서버(/auth/kakao/login, /auth/kakao/callback)가
+       처리합니다. 프론트는 그 엔드포인트로 이동하고, 로그인 후에는 세션 쿠키로 로그인 상태를 유지합니다. */
+    let currentMember = null;
+
     function kakaoLogin() {
-        const redirectUri = `${window.location.origin}/auth/kakao/callback`;
-        const url = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_API_KEY}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code`;
-        window.location.href = url;
+        window.location.href = '/auth/kakao/login';
+    }
+
+    function kakaoLogout() {
+        fetch('/api/auth/logout', { method: 'POST' })
+            .finally(() => { window.location.reload(); });
+    }
+
+    function checkKakaoSession() {
+        fetch('/api/auth/me')
+            .then(r => r.ok ? r.json() : null)
+            .then(me => { if (me) showLoggedInHeader(me); })
+            .catch(() => {});
+    }
+
+    function showLoggedInHeader(me) {
+        currentMember = me;
+        const loginBtn = document.getElementById('kakaoLoginBtn');
+        const chip = document.getElementById('kakaoProfileChip');
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (chip) {
+            chip.style.display = 'flex';
+            const img = document.getElementById('kakaoProfileImg');
+            const name = document.getElementById('kakaoProfileName');
+            if (img) { img.src = me.profileImageUrl || ''; img.style.display = me.profileImageUrl ? '' : 'none'; }
+            if (name) name.textContent = me.nickname || '회원';
+        }
+    }
+
+    function escapeHtml(str) {
+        return String(str == null ? '' : str).replace(/[&<>"']/g, ch => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[ch]));
+    }
+
+    /* ---- 온라인 저장 / 내 청첩장 ---- */
+    function saveInvitationOnline() {
+        if (!currentMember) {
+            if (confirm('카카오 로그인이 필요합니다. 로그인할까요?')) kakaoLogin();
+            return;
+        }
+        const payload = { theme: D.theme, groomName: D.groom, brideName: D.bride, weddingDate: D.weddingDate, content: D };
+        const method = D._invitationId ? 'PUT' : 'POST';
+        const url = D._invitationId ? `/api/invitations/${D._invitationId}` : '/api/invitations';
+        fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+            .then(r => { if (!r.ok) throw new Error('save failed'); return r.json(); })
+            .then(saved => {
+                D._invitationId = saved.id;
+                D._slug = saved.slug;
+                saveState();
+                const shareUrl = `${window.location.origin}/i/${saved.slug}`;
+                prompt('청첩장이 저장되었습니다. 아래 링크를 복사해 공유하세요:', shareUrl);
+            })
+            .catch(() => alert('저장에 실패했습니다. 잠시 후 다시 시도해주세요.'));
+    }
+
+    function openMyInvitations() {
+        if (!currentMember) {
+            if (confirm('카카오 로그인이 필요합니다. 로그인할까요?')) kakaoLogin();
+            return;
+        }
+        document.getElementById('myInvitationsModal').classList.add('open');
+        const list = document.getElementById('myInvitationsList');
+        list.innerHTML = '<p style="color:var(--ink-soft);font-size:13px;">불러오는 중...</p>';
+        fetch('/api/invitations/mine')
+            .then(r => r.ok ? r.json() : [])
+            .then(items => {
+                if (!items.length) {
+                    list.innerHTML = '<p style="color:var(--ink-soft);font-size:13px;">저장된 청첩장이 없습니다.</p>';
+                    return;
+                }
+                list.innerHTML = items.map(it => `
+                    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;">
+                        <div>
+                            <div style="font-size:14px;color:var(--ink);font-weight:600;">${escapeHtml(it.groomName || '')} ♥ ${escapeHtml(it.brideName || '')}</div>
+                            <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;">${escapeHtml(it.weddingDate || '')}</div>
+                        </div>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <button class="t-modal-use" style="padding:6px 12px;font-size:12px;" onclick="loadInvitation(${it.id})">불러오기</button>
+                            <button style="padding:6px 12px;font-size:12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink-soft);cursor:pointer;" onclick="deleteInvitation(${it.id})">삭제</button>
+                        </div>
+                    </div>
+                `).join('');
+            });
+    }
+
+    function closeMyInvitationsModal() {
+        document.getElementById('myInvitationsModal').classList.remove('open');
+    }
+
+    function loadInvitation(id) {
+        fetch(`/api/invitations/${id}`)
+            .then(r => r.ok ? r.json() : Promise.reject())
+            .then(data => {
+                Object.assign(D, data.content);
+                D._invitationId = id;
+                closeMyInvitationsModal();
+                showBuilder();
+            })
+            .catch(() => alert('불러오기에 실패했습니다.'));
+    }
+
+    function deleteInvitation(id) {
+        if (!confirm('이 청첩장을 삭제할까요?')) return;
+        fetch(`/api/invitations/${id}`, { method: 'DELETE' })
+            .then(() => openMyInvitations());
     }
 
     function showLanding() {
@@ -4253,12 +4397,31 @@ window.addEventListener('message',function(e){
 
     /* ---- initial load ---- */
     document.addEventListener('DOMContentLoaded', () => {
+        const guestMatch = window.location.pathname.match(/^\/i\/([A-Za-z0-9]+)\/?$/);
+        if (guestMatch) {
+            fetch(`/api/invitations/public/${guestMatch[1]}`)
+                .then(r => r.ok ? r.json() : Promise.reject())
+                .then(data => {
+                    D.theme = data.theme;
+                    Object.assign(D, data.content);
+                    document.open();
+                    document.write(buildHTML());
+                    document.close();
+                })
+                .catch(() => {
+                    document.body.innerHTML = '<div style="padding:120px 20px;text-align:center;color:#999;font-family:\'Noto Sans KR\',sans-serif;">청첩장을 찾을 수 없습니다.</div>';
+                });
+            return;
+        }
+
         const shouldOpenBuilder = window.location.hash === BUILDER_HASH || getStoredBuilderState();
         if (shouldOpenBuilder) {
             showBuilder();
         } else {
             refreshPreview();
         }
+
+        checkKakaoSession();
     });
 
     function getStoredBuilderState() {
