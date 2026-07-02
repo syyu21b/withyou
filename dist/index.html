@@ -241,8 +241,8 @@
         /* 섹션마다 살짝 다른 배경 톤을 줘서 스크롤할 때 구간이 또렷하게 구분되도록 한다.
            section은 max-width:1080px .wrap 안에 있어서, box-shadow로 뷰포트 끝까지 배경을 채운다
            (일반 background색은 .wrap 너비만큼만 칠해져 잘려 보이므로 이 트릭이 필요하다). */
-        #features{ box-shadow:0 0 0 100vmax #FBF0EC; clip-path:inset(0 -100vmax); }
-        #themes{ box-shadow:0 0 0 100vmax #F1F5EA; clip-path:inset(0 -100vmax); }
+        #features{ box-shadow:0 0 0 100vmax #F7EAE2; clip-path:inset(0 -100vmax); }
+        #themes{ box-shadow:0 0 0 100vmax #F1DCD1; clip-path:inset(0 -100vmax); }
         .section-head{text-align:center; max-width:560px; margin:0 auto 48px;}
         .section-head h2{
             font-family:var(--serif); font-size:30px; font-weight:700; color:var(--wine-deep); margin-top:14px;
@@ -4486,9 +4486,9 @@ window.addEventListener('message',function(e){
             { theme:'classic',      groom:'이재현', bride:'최수아', weddingDate:'2026-04-18', weddingTime:'12:00', venueName:'더채플앳청담', venueHall:'2층 채플홀' },
             { theme:'simpleline',   groom:'이준서', bride:'김은재', weddingDate:'2026-10-24', weddingTime:'14:00', venueName:'더클래스웨딩홀', venueHall:'1층 그랜드홀' },
             { theme:'classicwhite', groom:'이도현', bride:'박서연', weddingDate:'2026-11-14', weddingTime:'13:00', venueName:'라비두스 컨벤션', venueHall:'3F 그랑블루홀' },
-            { theme:'naturalgreen', groom:'정우진', bride:'한소율', weddingDate:'2026-05-09', weddingTime:'11:30', venueName:'가든플레이스', venueHall:'야외 가든홀' },
-            { theme:'oceanwhisper', groom:'강민재', bride:'윤아름', weddingDate:'2026-08-15', weddingTime:'16:00', venueName:'씨사이드 웨딩홀', venueHall:'오션뷰홀' },
-            { theme:'autumn',       groom:'김태양', bride:'오하늘', weddingDate:'2026-09-27', weddingTime:'12:00', venueName:'힐탑가든', venueHall:'선셋테라스' },
+            { theme:'romanticpink', groom:'조현우', bride:'백서진', weddingDate:'2026-04-05', weddingTime:'15:00', venueName:'더 로즈가든', venueHall:'2층 블룸홀' },
+            { theme:'vintagewood',  groom:'한지호', bride:'유나은', weddingDate:'2026-11-07', weddingTime:'12:30', venueName:'포레스트리 하우스', venueHall:'우드홀' },
+            { theme:'traditional',  groom:'박도윤', bride:'임세아', weddingDate:'2026-03-21', weddingTime:'11:00', venueName:'한옥마루 웨딩', venueHall:'대청마루' },
         ];
 
         track.innerHTML = demos.map((demo, i) =>
