@@ -574,6 +574,7 @@
             display:flex; align-items:center; justify-content:space-between;
             margin-bottom:12px;
         }
+        .toggle-row.deceased-row{margin-top:6px; margin-bottom:0;}
         .toggle-row label{font-size:12px; color:var(--ink-soft);}
         .toggle{
             position:relative; width:38px; height:22px; display:inline-block;
@@ -1491,10 +1492,18 @@
                     <div class="field">
                         <label data-ui-i18n="fatherNameLabel">아버지 성함</label>
                         <input type="text" id="gFather" placeholder="이재호" value="이재호">
+                        <div class="toggle-row deceased-row">
+                            <label data-ui-i18n="deceasedLabel">🏵️ 故人(고인)이신가요</label>
+                            <label class="toggle"><input type="checkbox" id="gFatherDeceased"><span class="slider"></span></label>
+                        </div>
                     </div>
                     <div class="field">
                         <label data-ui-i18n="motherNameLabel">어머니 성함</label>
                         <input type="text" id="gMother" placeholder="김미정" value="김미정">
+                        <div class="toggle-row deceased-row">
+                            <label data-ui-i18n="deceasedLabel">🏵️ 故人(고인)이신가요</label>
+                            <label class="toggle"><input type="checkbox" id="gMotherDeceased"><span class="slider"></span></label>
+                        </div>
                     </div>
                     <div class="field">
                         <label data-ui-i18n="relationLabel">관계 설명</label>
@@ -1511,10 +1520,18 @@
                     <div class="field">
                         <label data-ui-i18n="fatherNameLabel">아버지 성함</label>
                         <input type="text" id="bFather" placeholder="박준영" value="박준영">
+                        <div class="toggle-row deceased-row">
+                            <label data-ui-i18n="deceasedLabel">🏵️ 故人(고인)이신가요</label>
+                            <label class="toggle"><input type="checkbox" id="bFatherDeceased"><span class="slider"></span></label>
+                        </div>
                     </div>
                     <div class="field">
                         <label data-ui-i18n="motherNameLabel">어머니 성함</label>
                         <input type="text" id="bMother" placeholder="한지수" value="한지수">
+                        <div class="toggle-row deceased-row">
+                            <label data-ui-i18n="deceasedLabel">🏵️ 故人(고인)이신가요</label>
+                            <label class="toggle"><input type="checkbox" id="bMotherDeceased"><span class="slider"></span></label>
+                        </div>
                     </div>
                     <div class="field">
                         <label data-ui-i18n="relationLabel">관계 설명</label>
@@ -1890,7 +1907,7 @@
             suggestAutumn:'가을 — 단풍이 물드는 계절, 서로의 손을 꼭 잡고 함께 걸어가려 합니다...',
             suggestWinter:'겨울 — 포근한 겨울날, 따뜻한 마음 하나로 평생을 함께하려 합니다...',
             groomFamilyLabel:'신랑측 혼주', brideFamilyLabel:'신부측 혼주',
-            fatherNameLabel:'아버지 성함', motherNameLabel:'어머니 성함', relationLabel:'관계 설명',
+            fatherNameLabel:'아버지 성함', motherNameLabel:'어머니 성함', relationLabel:'관계 설명', deceasedLabel:'🏵️ 故人(고인)이신가요',
             groomPhoneLabel:'신랑 연락처', bridePhoneLabel:'신부 연락처',
             panelTitleStep2:'갤러리 사진', panelSubStep2:'최대 15장까지 업로드할 수 있습니다. 드래그로 순서를 바꿔보세요.',
             galleryLayoutLabel:'갤러리 레이아웃', galleryLayoutGrid:'격자형 (Grid)', galleryLayoutSwipe:'슬라이드형 (Swipe)',
@@ -1956,7 +1973,7 @@
             suggestAutumn:'Autumn — As the leaves turn, we wish to walk forward hand in hand...',
             suggestWinter:'Winter — On a cozy winter day, we hope to spend a lifetime together with one warm heart...',
             groomFamilyLabel:"Groom's Parents", brideFamilyLabel:"Bride's Parents",
-            fatherNameLabel:"Father's Name", motherNameLabel:"Mother's Name", relationLabel:'Relationship',
+            fatherNameLabel:"Father's Name", motherNameLabel:"Mother's Name", relationLabel:'Relationship', deceasedLabel:'🏵️ Deceased',
             groomPhoneLabel:"Groom's Phone", bridePhoneLabel:"Bride's Phone",
             panelTitleStep2:'Gallery Photos', panelSubStep2:'Upload up to 15 photos. Drag to reorder.',
             galleryLayoutLabel:'Gallery Layout', galleryLayoutGrid:'Grid', galleryLayoutSwipe:'Swipe',
@@ -2022,7 +2039,7 @@
             suggestAutumn:'秋 — 紅葉の季節、互いの手をしっかり握り共に歩んでいきます...',
             suggestWinter:'冬 — 温かな冬の日、ひとつの温かい心で一生を共にします...',
             groomFamilyLabel:'新郎側ご家族', brideFamilyLabel:'新婦側ご家族',
-            fatherNameLabel:'お父様のお名前', motherNameLabel:'お母様のお名前', relationLabel:'続柄',
+            fatherNameLabel:'お父様のお名前', motherNameLabel:'お母様のお名前', relationLabel:'続柄', deceasedLabel:'🏵️ 故人ですか',
             groomPhoneLabel:'新郎の連絡先', bridePhoneLabel:'新婦の連絡先',
             panelTitleStep2:'ギャラリー写真', panelSubStep2:'最大15枚までアップロードできます。ドラッグで順番を変更できます。',
             galleryLayoutLabel:'ギャラリーレイアウト', galleryLayoutGrid:'グリッド (Grid)', galleryLayoutSwipe:'スライド (Swipe)',
@@ -2088,7 +2105,7 @@
             suggestAutumn:'秋 — 在枫叶染红的季节，愿紧握彼此的手一同前行...',
             suggestWinter:'冬 — 在温暖的冬日，愿以一颗真心相伴一生...',
             groomFamilyLabel:'新郎方家长', brideFamilyLabel:'新娘方家长',
-            fatherNameLabel:'父亲姓名', motherNameLabel:'母亲姓名', relationLabel:'关系说明',
+            fatherNameLabel:'父亲姓名', motherNameLabel:'母亲姓名', relationLabel:'关系说明', deceasedLabel:'🏵️ 已故',
             groomPhoneLabel:'新郎联系方式', bridePhoneLabel:'新娘联系方式',
             panelTitleStep2:'相册照片', panelSubStep2:'最多可上传15张照片，可拖拽调整顺序。',
             galleryLayoutLabel:'相册布局', galleryLayoutGrid:'网格 (Grid)', galleryLayoutSwipe:'滑动 (Swipe)',
@@ -2366,7 +2383,9 @@
         showDday:true,
         greeting:`두 사람이 마주 보던 시간이\n이제는 함께 걷는 길이 되었습니다.\n\n오랜 시간, 서로의 곁에서\n가장 큰 위로가 되어준 사람과\n이제 같은 곳을 바라보며 걸어가려 합니다.\n\n저희 두 사람이 만들어갈 새로운 시작을\n귀한 발걸음으로 함께해 주시면\n더없이 큰 기쁨이겠습니다.`,
         gFather:'이재호', gMother:'김미정', gRel:'이재호·김미정의 장남', groomPhone:'010-0000-0000',
+        gFatherDeceased:false, gMotherDeceased:false,
         bFather:'박준영', bMother:'한지수', bRel:'박준영·한지수의 차녀', bridePhone:'010-0000-0000',
+        bFatherDeceased:false, bMotherDeceased:false,
         galleryLayout:'grid', photos:[], photoProtect:true,
         addr:'서울특별시 종로구 라비두스로 12', subway:'3호선 안국역 4번 출구 도보 5분',
         bus:'안국역 정류장 하차 (간선 102, 151)', parking:'건물 내 지하주차장 2시간 무료 (발렛 가능)',
@@ -2415,7 +2434,9 @@
     bind('venueName','venueName'); bind('venueHall','venueHall');
     bind('showDday','showDday'); bind('greeting','greeting');
     bind('gFather','gFather'); bind('gMother','gMother'); bind('gRel','gRel'); bind('groomPhone','groomPhone');
+    bind('gFatherDeceased','gFatherDeceased'); bind('gMotherDeceased','gMotherDeceased');
     bind('bFather','bFather'); bind('bMother','bMother'); bind('bRel','bRel'); bind('bridePhone','bridePhone');
+    bind('bFatherDeceased','bFatherDeceased'); bind('bMotherDeceased','bMotherDeceased');
     bind('galleryLayout','galleryLayout'); bind('photoProtect','photoProtect');
     bind('addr','addr'); bind('subway','subway'); bind('bus','bus'); bind('parking','parking');
     bind('mapLat','mapLat'); bind('mapLng','mapLng'); bind('showLive','showLive'); bind('liveUrl','liveUrl');
@@ -2593,7 +2614,9 @@
             const el = document.getElementById(id);
             if (el) el.value = D[id] != null ? D[id] : '';
         });
-        ['showDday','photoProtect','showLive','showParentAcc','showRsvp'].forEach(id => {
+        ['showDday','photoProtect','showLive','showParentAcc','showRsvp',
+         'gFatherDeceased','gMotherDeceased','bFatherDeceased','bMotherDeceased',
+        ].forEach(id => {
             const el = document.getElementById(id);
             if (el) el.checked = !!D[id];
         });
@@ -3721,6 +3744,14 @@
         const gFirst = (D.groom||'신랑').charAt(0).toUpperCase();
         const bFirst = (D.bride||'신부').charAt(0).toUpperCase();
 
+        /* 고인이신 부모님 성함 앞에 국화(🏵️) 표시를 붙여준다 */
+        const parentsLine = (father, mother, fatherDeceased, motherDeceased) => {
+            const parts = [];
+            if (father) parts.push(`${fatherDeceased ? '<span class="deceased-mark">🏵️</span>' : ''}${father}`);
+            if (mother) parts.push(`${motherDeceased ? '<span class="deceased-mark">🏵️</span>' : ''}${mother}`);
+            return parts.length ? `<div class="parents">${parts.join(' · ')}</div>` : '';
+        };
+
         const dateObj = D.weddingDate ? new Date(D.weddingDate) : new Date('2026-11-14');
         const DAYS = ['일','월','화','수','목','금','토'];
         const dayKr = DAYS[dateObj.getDay()];
@@ -3882,6 +3913,8 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
 .family-card .role{font-family:var(--accent-font);font-style:italic;font-size:13px;color:var(--sage-deep);width:46px;flex-shrink:0;padding-top:3px;}
 .family-card .info .name{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);}
 .family-card .info .rel{margin-top:4px;font-size:13px;color:var(--ink-soft);line-height:1.7;}
+.family-card .info .parents{margin-top:3px;font-size:12px;color:var(--ink-soft);opacity:.85;letter-spacing:.02em;}
+.family-card .info .parents .deceased-mark{font-size:11px;margin-right:2px;}
 .family-card .actions{margin-top:10px;display:flex;gap:8px;}
 .pill-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;font-size:12px;color:var(--wine-deep);letter-spacing:.04em;cursor:pointer;font-family:var(--sans);text-decoration:none;transition:background .2s ease,color .2s ease;}
 .pill-btn:hover{background:var(--wine);color:#fff;border-color:var(--wine);}
@@ -4008,6 +4041,7 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
       <div class="info">
         <div class="name">${D.groom||'신랑'}</div>
         <div class="rel">${D.gRel}</div>
+        ${parentsLine(D.gFather, D.gMother, D.gFatherDeceased, D.gMotherDeceased)}
         <div class="actions">
           <a class="pill-btn" href="tel:${D.groomPhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-i18n="callBtn">전화</span></a>
           <a class="pill-btn" href="sms:${D.groomPhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg><span data-i18n="smsBtn">문자</span></a>
@@ -4019,6 +4053,7 @@ h2.title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:
       <div class="info">
         <div class="name">${D.bride||'신부'}</div>
         <div class="rel">${D.bRel}</div>
+        ${parentsLine(D.bFather, D.bMother, D.bFatherDeceased, D.bMotherDeceased)}
         <div class="actions">
           <a class="pill-btn" href="tel:${D.bridePhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-i18n="callBtn">전화</span></a>
           <a class="pill-btn" href="sms:${D.bridePhone}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H7l-3 3z"/></svg><span data-i18n="smsBtn">문자</span></a>
