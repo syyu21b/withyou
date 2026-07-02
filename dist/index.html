@@ -226,15 +226,6 @@
         .hero-slide .frame .names-kr .heart{font-size:13px; color:var(--wine); margin-top:1px;}
         .hero-slide .frame .sub-title{font-family:var(--serif); font-size:12px; color:var(--ink); letter-spacing:.1em;}
         .hero-slide .frame .tap{margin-top:18px; font-size:9px; color:rgba(0,0,0,0.3); letter-spacing:.12em;}
-        .float-card{
-            position:absolute; z-index:1; background:#fff; border-radius:10px; padding:10px 14px;
-            box-shadow:0 12px 30px -10px rgba(110,44,51,0.25); font-size:12px; color:var(--ink-soft);
-            display:flex; align-items:center; gap:8px;
-        }
-        .float-card .ic{width:16px;height:16px; color:var(--sage-deep); flex-shrink:0;}
-        .float-card.f1{top:8%; left:-14%;}
-        .float-card.f2{bottom:18%; right:-16%;}
-        @media (max-width:540px){ .float-card{display:none;} }
 
         /* ===== Section shared ===== */
         section{padding:64px 0; position:relative;}
@@ -943,14 +934,6 @@
                     <div class="screen">
                         <div class="hero-slides" id="heroSlides"></div>
                     </div>
-                </div>
-                <div class="float-card f1">
-                    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>
-                    D-155
-                </div>
-                <div class="float-card f2">
-                    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg></span>
-                    <span data-ui-i18n="heroRsvpDone">참석 의사 전달 완료</span>
                 </div>
             </div>
         </section>
@@ -1874,7 +1857,6 @@
             heroLead:'사진 업로드부터 디데이 카운트다운, 갤러리, 계좌 안내, 참석 여부 확인까지. With You에서는 별도의 디자인 지식 없이도 감성적인 모바일 청첩장을 직접 만들고, 실시간으로 미리 보며 완성할 수 있습니다.',
             heroCta:'모바일 청첩장 만들기 <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
             heroThemes:'테마 둘러보기',
-            heroRsvpDone:'참석 의사 전달 완료',
             featH2:'하나의 페이지에, 필요한 모든 것',
             featDesc:'하객을 위한 화면부터 신랑·신부를 위한 관리 기능까지, 청첩장에 필요한 모든 요소를 담았습니다.',
             feat1H:'실시간 디데이', feat1P:'예식일까지 남은 시간을 일·시·분·초 단위로 보여주는 카운트다운으로 설레는 마음을 더합니다.',
@@ -1941,7 +1923,6 @@
             heroLead:'From photo uploads to D-day countdowns, gallery, account info, and RSVP — create a gorgeous mobile wedding invitation with With You, no design skills needed.',
             heroCta:'Create Invitation <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
             heroThemes:'Browse Themes',
-            heroRsvpDone:'RSVP Submitted',
             featH2:'Everything you need, in one page',
             featDesc:'From the guest-facing view to management features for the couple — every element a wedding invitation needs.',
             feat1H:'Live D-Day', feat1P:'A countdown showing days, hours, minutes, and seconds until the ceremony — building anticipation for the big day.',
@@ -2008,7 +1989,6 @@
             heroLead:'写真アップロードからDデーカウントダウン、ギャラリー、口座案内、出欠確認まで。With Youならデザインの知識がなくても、感性豊かなモバイル招待状を作れます。',
             heroCta:'招待状を作る <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
             heroThemes:'テーマを見る',
-            heroRsvpDone:'出欠を送信しました',
             featH2:'必要なすべてが、一つのページに',
             featDesc:'ゲスト向け画面から新郎新婦の管理機能まで、招待状に必要な全要素を揃えました。',
             feat1H:'リアルタイムDデー', feat1P:'挙式まで残り日数・時間・分・秒をカウントダウンで表示し、ワクワク感を高めます。',
@@ -2075,7 +2055,6 @@
             heroLead:'从上传照片到倒计时、相册、账户信息、出席确认，With You 让您无需设计技能，也能轻松制作精美的手机婚礼请柬，实时预览效果。',
             heroCta:'制作请柬 <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
             heroThemes:'浏览主题',
-            heroRsvpDone:'已确认出席',
             featH2:'一个页面，满足所有需求',
             featDesc:'从宾客浏览界面到新郎新娘管理功能，请柬所需的一切尽在其中。',
             feat1H:'实时倒计时', feat1P:'以天、时、分、秒显示婚礼剩余时间，让期待感倍增。',
