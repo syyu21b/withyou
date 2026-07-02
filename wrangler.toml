@@ -6,7 +6,7 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB"
 database_name = "withyou"
-database_id = "REPLACE_WITH_WRANGLER_D1_CREATE_OUTPUT"
+database_id = "f0e87356-8dc1-476f-ba5e-ceef95ceba24"
 
 [vars]
 # REST API 키는 카카오 인가 URL에 공개적으로 노출되는 값이라 여기 두어도 안전합니다.
